@@ -16,11 +16,14 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
 	rel="stylesheet">
+<link rel="stylesheet" href="/resources/css/jquery-ui.css" type="text/css" />
 <link rel="stylesheet" href="/resources/css/core/bootstrap-5.min.css"
 	type="text/css" />
 <link rel="stylesheet" href="/resources/css/custom.css" type="text/css" />
 <link rel="stylesheet" href="/resources/css/core/flag-icon.min.css" type="text/css" />
 <title>품목 정보 등록</title>
+<script type="text/javascript" src="/resources/js/txn-add-scripts.js"></script>
+<script type="text/javascript" src="/resources/js/common-scripts.js"></script>
 <script type="text/javascript" src="/resources/js/navbar-scripts.js"></script>
 </head>
 <body>
@@ -81,7 +84,68 @@
 						<b>품목 정보 조회</b>
 					</div>
 					<div class="card-body">
-						조회 화면
+						<div class="row g-3">
+							<div class="col-md-6">
+	                            <div class="input-group mb-3">
+									<label for="itemCode" class="input-group-text">품목 코드</label>
+									<input type="text" class="form-control" id="item_code" name="item_code"/>
+									<input class="btn btn-primary" value="불러오기" type="button" />
+								</div>
+							</div>
+							<div class="col-md-6">
+	                            <div class="input-group mb-3">
+									<label for="itemName" class="input-group-text">품목명</label>
+									<input type="text" class="form-control" id="item_name" name="item_name" />
+								</div>
+							</div>
+							<div class="col-md-6">
+	                            <div class="input-group mb-3">
+									<label for="standard" class="input-group-text">규격</label>
+									<input type="text" class="form-control" id="standard" name="standard" />
+								</div>
+							</div>
+							<div class="col-md-6">
+	                            <div class="input-group mb-3">
+									<label for="material" class="input-group-text">재질</label>
+									<input type="text" class="form-control" id="material" name="material" />
+								</div>
+							</div>
+							<div class="col-md-6">
+	                            <div class="input-group mb-3">
+									<label for="specificationFile" class="input-group-text">제작 사양</label>
+									<input type="text" class="form-control" id="specification_file" name="specification_file" />
+									<input class="btn btn-primary" value="찾아보기" type="button" />
+								</div>
+							</div>
+							<div class="col-md-6">
+	                            <div class="input-group mb-3">
+									<label for="drawFile" class="input-group-text">도면 파일</label>
+									<input type="text" class="form-control" id="draw_file" name="draw_file" />
+									<input class="btn btn-primary" value="찾아보기" type="button" />
+								</div>
+							</div>				
+							<div class="col-md-6">
+	                            <div class="input-group mb-3">
+									<label for="McName" class="input-group-text">대분류</label>
+									<input type="text" class="form-control" id="mc_name" name="mc_name" />
+								</div>
+							</div>
+							<div class="col-md-6">
+	                            <div class="input-group mb-3">
+									<label for="ScName" class="input-group-text">중분류</label>
+									<input type="text" class="form-control" id="sc_name" name="sc_name" />
+								</div>
+							</div>
+							<div class="col-md-1">
+								<button type="button" class="btn btn-primary btn-primary">조회</button>
+							</div>
+							<div class="col-md-1">
+                            	<button type="button" class="btn btn-primary btn-danger">삭제</button>
+                            </div>
+                            <div class="col-md-1">
+                            	<button type="button" class="btn btn-primary btn-primary">수정</button>
+                            </div>
+                        </div>
 					</div>
 				</div>
 				<br /> <br />
@@ -110,24 +174,44 @@
 					</caption>
 					<thead class="table-dark">
 						<tr>
-							<th scope="col" style="text-align: center;">열 내용</th>
-						</tr>
+                            <th scope="col"></th>
+                            <th scope="col">순번</th>
+                            <th scope="col">품목 번호</th>
+                            <th scope="col">품목명</th>
+                            <th scope="col">규격</th>
+                            <th scope="col">재질</th>
+                            <th scope="col">제작 사양</th>
+                            <th scope="col">도면 파일</th>
+                            <th scope="col">대분류</th>
+                            <th scope="col">중분류</th>
+                            <th scope="col"></th>
+                        </tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td style="text-align: center;">첫 번째 행 내용</td>
-						</tr>
-						<tr>
-							<td style="text-align: center;">두 번째 행 내용</td>
-						</tr>
+						 <tr>
+                            <th scope="row" style="text-align: center;"><input type="checkbox" name="checkField" onclick="checkCall(this)"
+                                       value="1" /></th>
+                            <td><span>1</span></td>
+                            <td><span>A01</span></td>
+                            <td><span>A자재</span></td>
+                            <td><span>30</span></td>
+                            <td><span>플라스틱</span></td>
+                            <td><span>(사양서 파일)</span></td>
+                            <td><span>(도면 파일)</span></td>
+                            <td><span>(대분류)</span></td>
+                            <td><span>(중분류)</span></td>
+                            <td style="text-align: center;"><span><button type="button" class="btn btn-success btn-sm">저장</button></span></td>  
+                        </tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
 	</form>
 	<input type="hidden" value="2" id="flag">
+	<script src="/resources/js/core/jquery-3.2.1.min.js" type="text/javascript"></script>
 	<script src="/resources/js/core/popper.min.js" type="text/javascript"></script>
 	<script src="/resources/js/core/bootstrap-5.min.js" type="text/javascript"></script>
+	<script src="/resources/js/core/jquery-ui.min.js" type="text/javascript"></script>
 	<script>
 		if (document.getElementById("flag").value == 2) {
 			document.getElementById("outbound").style.backgroundColor = "#fff";

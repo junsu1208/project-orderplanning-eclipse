@@ -16,11 +16,14 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
 	rel="stylesheet">
+<link rel="stylesheet" href="/resources/css/jquery-ui.css" type="text/css" />
 <link rel="stylesheet" href="/resources/css/core/bootstrap-5.min.css"
 	type="text/css" />
 <link rel="stylesheet" href="/resources/css/custom.css" type="text/css" />
 <link rel="stylesheet" href="/resources/css/core/flag-icon.min.css" type="text/css" />
 <title>조달 계획 등록</title>
+<script type="text/javascript" src="/resources/js/txn-add-scripts.js"></script>
+<script type="text/javascript" src="/resources/js/common-scripts.js"></script>
 <script type="text/javascript" src="/resources/js/navbar-scripts.js"></script>
 </head>
 <body>
@@ -81,7 +84,62 @@
 						<b>조달 계획 등록 및 조회</b>
 					</div>
 					<div class="card-body">
-						등록 및 조회 화면
+						<div class="row g-3">
+							<div class="col-md-6">
+	                            <div class="input-group mb-3">
+									<label for="itemCode" class="input-group-text">품목 코드</label>
+									<input type="text" class="form-control" id="item_code" name="item_code" value="(불러온 값)" readonly />
+								</div>
+							</div>
+							<div class="col-md-6">
+	                            <div class="input-group mb-3">
+									<label for="itemName" class="input-group-text">품목명</label>
+									<input type="text" class="form-control" id="item_name" name="item_name" value="(불러온 값)" readonly />
+								</div>
+							</div>
+							<div class="col-md-6">
+	                            <div class="input-group mb-3">
+									<label for="process" class="input-group-text">자재 소요 공정</label>
+									<input type="text" class="form-control" id="process" name="standard" value="(불러온 값)" readonly />
+								</div>
+							</div>
+							<div class="col-md-6">
+	                            <div class="input-group mb-3">
+									<label for="productionDate" class="input-group-text">생산일</label>
+									<input type="text" class="form-control" id="production_date" name="production_date" value="(불러온 값)" readonly />
+								</div>
+							</div>
+							<div class="col-md-6">
+	                            <div class="input-group mb-3">
+									<label for="consumption" class="input-group-text">소요량</label>
+									<input type="text" class="form-control" id="production_date" name="production_date" value="(불러온 값)" readonly />
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="input-group mb-3">
+									<span class="input-group-text">조달 납기</span>
+									<input type="text" class="date-picker form-control" id="procurementDate" name="procurement_date" value="" />
+									<span class="input-group-text"><img src="/resources/img/calendar3.svg" alt="" width="16" height="16" title="calendar" /></span>
+								</div>
+							</div>
+							<div>
+                              <label for="address" class="form-label">비고:</label>
+                                <textarea rows="5" class="form-control"
+                                          id="text" name="text"></textarea>
+                            </div>
+							<div class="col-md-1">
+								<button type="button" class="btn btn-primary btn-primary">조회</button>
+							</div>
+							<div class="col-md-1">
+								<button type="button" class="btn btn-primary btn-success">등록</button>
+							</div>
+							<div class="col-md-1">
+                            	<button type="button" class="btn btn-primary btn-danger">삭제</button>
+                            </div>
+                            <div class="col-md-1">
+                            	<button type="button" class="btn btn-primary btn-primary">수정</button>
+                            </div>
+                        </div>
 					</div>
 				</div>
 				<br /> <br />
@@ -106,19 +164,28 @@
 				<table id='myTable'
 					class="table table-bordered table-striped table-hover caption-top">
 					<caption style="color: black;">
-						<b>품목 정보 목록</b>
+						<b>조달 예정 품목 목록</b>
 					</caption>
 					<thead class="table-dark">
 						<tr>
-							<th scope="col" style="text-align: center;">열 내용</th>
+                            <th scope="col">순번</th>
+                            <th scope="col">조달 계획</th>
+                            <th scope="col">품목명</th>
+                            <th scope="col">품목코드</th>
+                            <th scope="col">자재 소요 공정</th>
+                            <th scope="col">생산일</th>
+                            <th scope="col">소요량</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td style="text-align: center;">첫 번째 행 내용</td>
-						</tr>
-						<tr>
-							<td style="text-align: center;">두 번째 행 내용</td>
+							<td><span>1</span></td>
+							<td><span>등록</span></td>
+							<td><span>A자재</span></td>
+							<td><span>A01</span></td>
+							<td><span>A공정</span></td>
+							<td><span>2023.05.18</span></td>
+							<td><span>400</span></td>
 						</tr>
 					</tbody>
 				</table>
@@ -126,8 +193,17 @@
 		</div>
 	</form>
 	<input type="hidden" value="2" id="flag">
+	<script src="/resources/js/core/jquery-3.2.1.min.js" type="text/javascript"></script>
 	<script src="/resources/js/core/popper.min.js" type="text/javascript"></script>
 	<script src="/resources/js/core/bootstrap-5.min.js" type="text/javascript"></script>
+	<script src="/resources/js/core/jquery-ui.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(function() {
+				$("#procurementDate").datepicker();
+			});	
+		});
+	</script>
 	<script>
 		if (document.getElementById("flag").value == 2) {
 			document.getElementById("outbound").style.backgroundColor = "#fff";
@@ -138,6 +214,5 @@
 			document.getElementById("procurement").style.fontWeight = "bold";
 		}
 	</script>
-
 </body>
 </html>

@@ -16,11 +16,14 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
 	rel="stylesheet">
+<link rel="stylesheet" href="/resources/css/jquery-ui.css" type="text/css" />
 <link rel="stylesheet" href="/resources/css/core/bootstrap-5.min.css"
 	type="text/css" />
 <link rel="stylesheet" href="/resources/css/custom.css" type="text/css" />
 <link rel="stylesheet" href="/resources/css/core/flag-icon.min.css" type="text/css" />
 <title>계약 등록</title>
+<script type="text/javascript" src="/resources/js/txn-add-scripts.js"></script>
+<script type="text/javascript" src="/resources/js/common-scripts.js"></script>
 <script type="text/javascript" src="/resources/js/navbar-scripts.js"></script>
 </head>
 <body>
@@ -81,7 +84,129 @@
 						<b>계약 등록 및 조회</b>
 					</div>
 					<div class="card-body">
-						등록 및 조회 화면
+						<div class="row g-3">
+							<div>
+	                            <div class="input-group mb-3">
+									<label for="contactName" class="input-group-text">계약명</label>
+									<input type="text" class="form-control" id="contact_name" name="contact_name" />
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="input-group mb-3">
+									<label for="subcontractorName" class="input-group-text">협력 업체명</label>
+									<select id="subcontractorName" class="form-select" tabindex="1" name="subcontractor_name">
+										<option value="">(협력 업체 찾기)</option>
+										<option value="1">협력 업체 1
+										<option value="2">협력 업체 2
+										<option value="3">협력 업체 3
+										<option value="4">협력 업체 4
+										<option value="5">협력 업체 5</select>
+								</div>
+							</div>
+							<div class="col-md-6">
+	                            <div class="input-group mb-3">
+									<label for="subcontractorTel" class="input-group-text">협력 업체 전화번호</label>
+									<input type="text" class="form-control" id="subcontractor_tel" name="subcontractor_tel" value="(불러온 협력 업체 전화번호)" readonly />
+								</div>
+							</div>
+							<div class="col-md-6">
+	                            <div class="input-group mb-3">
+									<label for="subcontractorEmail" class="input-group-text">협력 업체 이메일</label>
+									<input type="text" class="form-control" id="subcontractor_email" name="subcontractor_email" value="(불러온 협력 업체 이메일 주소)" readonly />
+								</div>
+							</div>
+							<div class="col-md-6">
+	                            <div class="input-group mb-3">
+									<label for="subcontractorPerson" class="input-group-text">협력 업체 담당자</label>
+									<input type="text" class="form-control" id="subcontractor_person" name="subcontractor_person" value="(불러온 협력 업체 담당자 성함)" readonly />
+								</div>
+							</div>
+							<div class="col-md-6">
+	                            <div class="input-group mb-3">
+									<label for="productName" class="input-group-text">제품명</label>
+									<input type="text" class="form-control" id="product_name" name="product_name" value="(불러온 제품명)" readonly />
+								</div>
+							</div>
+							<div class="col-md-6">
+	                            <div class="input-group mb-3">
+									<label for="itemCode" class="input-group-text">품목 코드</label>
+									<input type="text" class="form-control" id="item_code" name="item_code" value="(불러온 품목 코드)" readonly />
+								</div>
+							</div>
+							<div class="col-md-6">
+	                            <div class="input-group mb-3">
+									<label for="itemName" class="input-group-text">품목명</label>
+									<input type="text" class="form-control" id="item_name" name="item_name" value="(불러온 품목명)" readonly />
+								</div>
+							</div>
+							<div class="col-md-6">
+	                            <div class="input-group mb-3">
+									<label for="standard" class="input-group-text">규격</label>
+									<input type="text" class="form-control" id="standard" name="standard" value="(불러온 규격)" readonly />
+								</div>
+							</div>
+							<div class="col-md-6">
+	                            <div class="input-group mb-3">
+									<label for="material" class="input-group-text">재질</label>
+									<input type="text" class="form-control" id="material" name="material" value="(불러온 재질)" readonly />
+								</div>
+							</div>
+							<div class="col-md-6">
+	                            <div class="input-group mb-3">
+									<label for="specificationFile" class="input-group-text">제작 사양</label>
+									<input type="text" class="form-control" id="specification_file" name="specification_file" value="(불러온 사양서 파일)" readonly />
+								</div>
+							</div>
+							<div class="col-md-6">
+	                            <div class="input-group mb-3">
+									<label for="drawFile" class="input-group-text">도면 파일</label>
+									<input type="text" class="form-control" id="draw_file" name="draw_file" value="(불러온 도면 파일)" readonly />
+								</div>
+							</div>
+							<div class="col-md-6">
+	                            <div class="input-group mb-3">
+									<label for="supplyPrice" class="input-group-text">공급 가격</label>
+									<input type="text" class="form-control" id="supply_price" name="supply_price" />
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="input-group mb-3">
+									<span class="input-group-text">계약 날짜</span>
+									<input type="text" class="date-picker form-control" id="agreementDate" name="agreement_date" value="" />
+									<span class="input-group-text"><img src="/resources/img/calendar3.svg" alt="" width="16" height="16" title="calendar" /></span>
+								</div>
+							</div>
+							<div class="col-md-6">
+	                            <div class="input-group mb-3">
+									<label for="leadtime" class="input-group-text">L/T</label>
+									<input type="text" class="form-control" id="leadtime" name="leadtime" />
+								</div>
+							</div>
+							<div>
+	                            <div class="input-group mb-3">
+									<label for="contactFile" class="input-group-text">계약서 첨부</label>
+									<input type="text" class="form-control" id="contact_file" name="contact_file" />
+									<input class="btn btn-primary" value="불러오기" type="button" />
+								</div>
+							</div>
+							<div>
+                              <label for="address" class="form-label">비고:</label>
+                                <textarea rows="5" class="form-control"
+                                          id="text" name="text"></textarea>
+                            </div>
+							<div class="col-md-1">
+								<button type="button" class="btn btn-primary btn-primary">조회</button>
+							</div>
+							<div class="col-md-1">
+								<button type="button" class="btn btn-primary btn-success">등록</button>
+							</div>
+							<div class="col-md-1">
+                            	<button type="button" class="btn btn-primary btn-danger">삭제</button>
+                            </div>
+                            <div class="col-md-1">
+                            	<button type="button" class="btn btn-primary btn-primary">수정</button>
+                            </div>
+                        </div>
 					</div>
 				</div>
 				<br /> <br />
@@ -110,15 +235,26 @@
 					</caption>
 					<thead class="table-dark">
 						<tr>
-							<th scope="col" style="text-align: center;">열 내용</th>
+                            <th scope="col">순번</th>
+                            <th scope="col">계약명</th>
+                            <th scope="col">제품명</th>
+                            <th scope="col">품목 코드</th>
+                            <th scope="col">품목명</th>
+                            <th scope="col">협력 업체</th>
+                            <th scope="col">계약 날짜</th>
+                            <th scope="col">L/T</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td style="text-align: center;">첫 번째 행 내용</td>
-						</tr>
-						<tr>
-							<td style="text-align: center;">두 번째 행 내용</td>
+							<td><span>1</span></td>
+							<td><span>계약서 1</span></td>
+							<td><span>A제품</span></td>
+							<td><span>A01</span></td>
+							<td><span>A자재</span></td>
+							<td><span>A업체</span></td>
+							<td><span>2023.05.18</span></td>
+							<td><span>8</span></td>
 						</tr>
 					</tbody>
 				</table>
@@ -126,8 +262,20 @@
 		</div>
 	</form>
 	<input type="hidden" value="2" id="flag">
+	<script src="/resources/js/core/jquery-3.2.1.min.js" type="text/javascript"></script>
 	<script src="/resources/js/core/popper.min.js" type="text/javascript"></script>
 	<script src="/resources/js/core/bootstrap-5.min.js" type="text/javascript"></script>
+	<script src="/resources/js/core/jquery-ui.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(function() {
+				$("#agreementDate").datepicker();
+			});
+			$('#subcontractorName').change(function() {
+				$("#subcontractorName").prop("disabled", false);
+			});
+		});
+	</script>
 	<script>
 		if (document.getElementById("flag").value == 2) {
 			document.getElementById("outbound").style.backgroundColor = "#fff";
@@ -138,6 +286,5 @@
 			document.getElementById("procurement").style.fontWeight = "bold";
 		}
 	</script>
-
 </body>
 </html>

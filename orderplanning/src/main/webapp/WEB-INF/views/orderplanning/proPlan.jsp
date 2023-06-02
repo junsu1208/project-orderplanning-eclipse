@@ -39,11 +39,11 @@
 					style="position: absolute; left: 250px; top: 40px;">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item" style="margin-left: 10px;"><a
-							class="nav-link" href="#" id="inbound">품목 정보 등록</a></li>
+							class="nav-link" href="/orderplanning/itemInfo" id="inbound">품목 정보 등록</a></li>
 						<li class="nav-item" style="margin-left: 10px;"><a
-							class="nav-link" href="#" id="inbound">계약 등록</a></li>
+							class="nav-link" href="/orderplanning/contract"" id="inbound">계약 등록</a></li>
 						<li class="nav-item" style="margin-left: 10px;"><a
-							class="nav-link" href="#" id="outbound">조달 계획 등록</a></li>
+							class="nav-link" href="/orderplanning/proPlan"" id="outbound">조달 계획 등록</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->

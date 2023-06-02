@@ -88,7 +88,7 @@
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="itemCode" class="input-group-text">품목 코드</label>
-									<input type="text" class="form-control" id="item_code" name="item_code"/>
+									<input type="number" class="form-control" id="item_code" name="item_code"/>
 									<input class="btn btn-primary" value="불러오기" type="button" />
 								</div>
 							</div>
@@ -192,7 +192,7 @@
                             <th scope="row" style="text-align: center;"><input type="checkbox" name="checkField" onclick="checkCall(this)"
                                        value="1" /></th>
                             <td><span>1</span></td>
-                            <td><span>A01</span></td>
+                            <td><span>1</span></td>
                             <td><span>A자재</span></td>
                             <td><span>30</span></td>
                             <td><span>플라스틱</span></td>

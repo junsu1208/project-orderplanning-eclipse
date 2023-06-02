@@ -88,7 +88,7 @@
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="itemCode" class="input-group-text">품목 코드</label>
-									<input type="text" class="form-control" id="item_code" name="item_code" value="(불러온 값)" readonly />
+									<input type="number" class="form-control" id="item_code" name="item_code" value="1" readonly />
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -106,19 +106,23 @@
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="productionDate" class="input-group-text">생산일</label>
-									<input type="text" class="form-control" id="production_date" name="production_date" value="(불러온 값)" readonly />
+									<input type="date" class="form-control" id="production_date" name="production_date" value="2023-05-18" readonly />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="consumption" class="input-group-text">소요량</label>
-									<input type="text" class="form-control" id="production_date" name="production_date" value="(불러온 값)" readonly />
+									<input type="number" class="form-control" id="production_date" name="production_date" value="400" readonly />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="input-group mb-3">
 									<span class="input-group-text">조달 납기</span>
-									<input type="text" class="date-picker form-control" id="procurementDate" name="procurement_date" value="" />
+									<input
+										type="date" id="txnProcurementDate"
+										class="form-control datepicker"
+										name="txnReportTransactionVO.procurementDate"
+										aria-label="procurementDate">
 									<span class="input-group-text"><img src="/resources/img/calendar3.svg" alt="" width="16" height="16" title="calendar" /></span>
 								</div>
 							</div>
@@ -182,9 +186,9 @@
 							<td><span>1</span></td>
 							<td><span>등록</span></td>
 							<td><span>A자재</span></td>
-							<td><span>A01</span></td>
+							<td><span>1</span></td>
 							<td><span>A공정</span></td>
-							<td><span>2023.05.18</span></td>
+							<td><span>2023-05-18</span></td>
 							<td><span>400</span></td>
 						</tr>
 					</tbody>

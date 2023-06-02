@@ -130,7 +130,7 @@
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="itemCode" class="input-group-text">품목 코드</label>
-									<input type="text" class="form-control" id="item_code" name="item_code" value="(불러온 품목 코드)" readonly />
+									<input type="number" class="form-control" id="item_code" name="item_code" value="1" readonly />
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -166,20 +166,24 @@
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="supplyPrice" class="input-group-text">공급 가격</label>
-									<input type="text" class="form-control" id="supply_price" name="supply_price" />
+									<input type="number" class="form-control" id="supply_price" name="supply_price" />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="input-group mb-3">
 									<span class="input-group-text">계약 날짜</span>
-									<input type="text" class="date-picker form-control" id="agreementDate" name="agreement_date" value="" />
+									<input
+										type="date" id="txnAgreementDate"
+										class="form-control datepicker"
+										name="txnReportTransactionVO.agreementDate"
+										aria-label="agreementDate">
 									<span class="input-group-text"><img src="/resources/img/calendar3.svg" alt="" width="16" height="16" title="calendar" /></span>
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="leadtime" class="input-group-text">L/T</label>
-									<input type="text" class="form-control" id="leadtime" name="leadtime" />
+									<input type="number" class="form-control" id="leadtime" name="leadtime" />
 								</div>
 							</div>
 							<div>
@@ -250,10 +254,10 @@
 							<td><span>1</span></td>
 							<td><span>계약서 1</span></td>
 							<td><span>A제품</span></td>
-							<td><span>A01</span></td>
+							<td><span>1</span></td>
 							<td><span>A자재</span></td>
 							<td><span>A업체</span></td>
-							<td><span>2023.05.18</span></td>
+							<td><span>2023-05-18</span></td>
 							<td><span>8</span></td>
 						</tr>
 					</tbody>

@@ -21,8 +21,8 @@ public class OrderPlanningController {
 		log.info("계약 등록 페이지 요청");
 	}
 	
-	@GetMapping("/proPlan")
-	public void proPlan() {
+	@GetMapping("/procurementPlan")
+	public void procurementPlan() {
 		log.info("조달 계획 등록 페이지 요청");
 	}
 

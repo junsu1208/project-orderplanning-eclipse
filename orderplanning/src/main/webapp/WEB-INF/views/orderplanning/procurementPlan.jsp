@@ -46,7 +46,7 @@
 						<li class="nav-item" style="margin-left: 10px;"><a
 							class="nav-link" href="/orderplanning/contract"" id="inbound">계약 등록</a></li>
 						<li class="nav-item" style="margin-left: 10px;"><a
-							class="nav-link" href="/orderplanning/proPlan"" id="outbound">조달 계획 등록</a></li>
+							class="nav-link" href="/orderplanning/procurementPlan"" id="outbound">조달 계획 등록</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->

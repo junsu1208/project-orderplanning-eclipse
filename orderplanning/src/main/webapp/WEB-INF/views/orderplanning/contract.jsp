@@ -235,7 +235,7 @@
 				<table id='myTable'
 					class="table table-bordered table-striped table-hover caption-top">
 					<caption style="color: black;">
-						<b>품목 정보 목록</b>
+						<b>계약 품목 정보 목록</b>
 					</caption>
 					<thead class="table-dark">
 						<tr>

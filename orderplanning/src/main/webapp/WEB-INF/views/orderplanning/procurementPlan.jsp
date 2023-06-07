@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -183,7 +184,7 @@
 					</thead>
 					<tbody>
 						<c:set var="no" value="0"/>
-						<c:forEach var="list" items="${ procurementPlan }">
+						<c:forEach var="getProcurementPlan" items="${ list }">
 						<tr>
 							<td>${ no = no + 1 }</td>
 							<td><span>등록</span></td>

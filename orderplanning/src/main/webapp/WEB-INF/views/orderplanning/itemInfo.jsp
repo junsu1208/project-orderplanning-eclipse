@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -189,7 +190,7 @@
 					</thead>
 					<tbody>
 						<c:set var="no" value="0"/>
-						<c:forEach var="list" items="${ itemInfo }">
+						<c:forEach var="getInfo" items="${ list }">
 						 <tr>
                             <th scope="row" style="text-align: center;"><input type="checkbox" name="checkField" onclick="checkCall(this)"
                                        value="1" /></th>

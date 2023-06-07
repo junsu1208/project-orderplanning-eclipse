@@ -2,6 +2,8 @@ package com.overc1ock.domain;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 @Data
@@ -19,6 +21,8 @@ public class ContractVO {
 	private String specification_file;
 	private String draw_file;
 	private int supply_price;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date agreement_date;
 	private int leadtime;
 	private String contract_file;

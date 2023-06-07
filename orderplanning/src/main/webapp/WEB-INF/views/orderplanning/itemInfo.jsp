@@ -188,10 +188,12 @@
                         </tr>
 					</thead>
 					<tbody>
+						<c:set var="no" value="0"/>
+						<c:forEach var="list" items="${ itemInfo }">
 						 <tr>
                             <th scope="row" style="text-align: center;"><input type="checkbox" name="checkField" onclick="checkCall(this)"
                                        value="1" /></th>
-                            <td><span>1</span></td>
+                            <td>${ no = no + 1 }</td>
                             <td><span>1</span></td>
                             <td><span>A자재</span></td>
                             <td><span>30</span></td>
@@ -202,6 +204,7 @@
                             <td><span>(중분류)</span></td>
                             <td style="text-align: center;"><span><button type="button" class="btn btn-success btn-sm">저장</button></span></td>  
                         </tr>
+                        </c:forEach>
 					</tbody>
 				</table>
 			</div>

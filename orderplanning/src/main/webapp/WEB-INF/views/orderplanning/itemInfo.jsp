@@ -190,7 +190,7 @@
 					</thead>
 					<tbody>
 						<c:set var="no" value="0"/>
-						<c:forEach var="getInfo" items="${ list }">
+						<c:forEach var="orderplanning" items="${ list }">
 						 <tr>
                             <th scope="row" style="text-align: center;"><input type="checkbox" name="checkField" onclick="checkCall(this)"
                                        value="1" /></th>

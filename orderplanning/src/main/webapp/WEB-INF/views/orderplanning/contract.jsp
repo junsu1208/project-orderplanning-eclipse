@@ -252,7 +252,7 @@
 					</thead>
 					<tbody>
 						<c:set var="no" value="0"/>
-						<c:forEach var="getContract" items="${ list }">
+						<c:forEach var="orderplanning" items="${ list }">
 						<tr>
 							<td>${ no = no + 1 }</td>
 							<td><span>계약서 1</span></td>

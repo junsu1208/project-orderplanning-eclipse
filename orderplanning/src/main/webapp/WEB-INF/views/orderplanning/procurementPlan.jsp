@@ -175,8 +175,8 @@
 						<tr>
                             <th scope="col">순번</th>
                             <th scope="col">조달 계획</th>
-                            <th scope="col">품목명</th>
                             <th scope="col">품목코드</th>
+                            <th scope="col">품목명</th>
                             <th scope="col">자재 소요 공정</th>
                             <th scope="col">생산일</th>
                             <th scope="col">소요량</th>
@@ -188,8 +188,8 @@
 						<tr>
 							<td>${ no = no + 1 }</td>
 							<td><span>등록</span></td>
-							<td><span>A자재</span></td>
 							<td><span>1</span></td>
+							<td><span>A자재</span></td>
 							<td><span>A공정</span></td>
 							<td><span>2023-05-18</span></td>
 							<td><span>400</span></td>

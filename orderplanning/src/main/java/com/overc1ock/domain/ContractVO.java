@@ -11,12 +11,13 @@ import lombok.Data;
 @Data
 public class ContractVO {
 	
-	private Long contract_code;
 	private String contract_name;
 	private String subconductor_name;
 	private String subconductor_tel;
 	private String subconductor_email;
 	private String subconductor_person;
+	private String product_name;
+	private String item_code;
 	private String item_name;
 	private String standard;
 	private String material;
@@ -32,10 +33,10 @@ public class ContractVO {
 	
 	@Override
 	public String toString() {
-		return "ContractVO [contract_code=" + contract_code + ", contract_name=" + contract_name
-				+ ", subconductor_name=" + subconductor_name + ", subconductor_tel=" + subconductor_tel
-				+ ", subconductor_email=" + subconductor_email + ", subconductor_person=" + subconductor_person
-				+ ", item_name=" + item_name + ", standard=" + standard + ", material=" + material
+		return "ContractVO [contract_name=" + contract_name + ", subconductor_name=" + subconductor_name
+				+ ", subconductor_tel=" + subconductor_tel + ", subconductor_email=" + subconductor_email
+				+ ", subconductor_person=" + subconductor_person + ", product_name=" + product_name + ", item_code="
+				+ item_code + ", item_name=" + item_name + ", standard=" + standard + ", material=" + material
 				+ ", specification_file=" + specification_file + ", draw_file=" + draw_file + ", supply_price="
 				+ supply_price + ", agreement_date=" + agreement_date + ", leadtime=" + leadtime + ", contract_file="
 				+ contract_file + ", contract_text=" + contract_text + "]";

@@ -10,8 +10,7 @@ import lombok.Data;
 @Component
 @Data
 public class ProcurementPlanVO {
-
-	private Long pp_code;
+	
 	private Long item_code;
 	private String item_name;
 	private String process;
@@ -26,9 +25,9 @@ public class ProcurementPlanVO {
 	
 	@Override
 	public String toString() {
-		return "ProcurementPlanVO [pp_code=" + pp_code + ", item_code=" + item_code + ", item_name=" + item_name
-				+ ", process=" + process + ", production_date=" + production_date + ", consumption=" + consumption
-				+ ", procurement_date=" + procurement_date + ", pp_text=" + pp_text + "]";
+		return "ProcurementPlanVO [item_code=" + item_code + ", item_name=" + item_name + ", process=" + process
+				+ ", production_date=" + production_date + ", consumption=" + consumption + ", procurement_date="
+				+ procurement_date + ", pp_text=" + pp_text + "]";
 	}
 	
 }

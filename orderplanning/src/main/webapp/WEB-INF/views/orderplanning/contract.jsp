@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -251,10 +252,8 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:set var="no" value="0"/>
-						<c:forEach var="getContract" items="${ list }">
 						<tr>
-							<td>${ no = no + 1 }</td>
+							<td>1</td>
 							<td><span>계약서 1</span></td>
 							<td><span>A제품</span></td>
 							<td><span>1</span></td>
@@ -263,7 +262,6 @@
 							<td><span>2023-05-18</span></td>
 							<td><span>8</span></td>
 						</tr>
-						</c:forEach>
 					</tbody>
 				</table>
 			</div>

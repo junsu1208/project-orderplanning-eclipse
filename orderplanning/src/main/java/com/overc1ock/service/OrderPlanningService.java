@@ -23,10 +23,10 @@ public interface OrderPlanningService {
 	boolean modifyContract(ContractVO vo); // 수정
 	
 	// 조달 계획 등록
-	List<ProcurementPlanVO> getProcurementPlan();
-	ProcurementPlanVO inquiryProcurementPlan(Long pp_code);
-	void registerProcurementPlan(ProcurementPlanVO vo);
-	boolean deleteProcurementPlan(Long pp_code);
-	boolean modifyProcurementPlan(ProcurementPlanVO vo);
+	List<ProcurementPlanVO> getProcurementPlan(); // 목록 가져오기
+	ProcurementPlanVO inquiryProcurementPlan(Long pp_code); // 저장
+	void registerProcurementPlan(ProcurementPlanVO vo); // 조회
+	boolean deleteProcurementPlan(Long pp_code); // 삭제
+	boolean modifyProcurementPlan(ProcurementPlanVO vo); // 수정
 
 }

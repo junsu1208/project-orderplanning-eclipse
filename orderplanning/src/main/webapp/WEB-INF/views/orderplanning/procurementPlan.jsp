@@ -184,7 +184,7 @@
 					</thead>
 					<tbody>
 						<c:set var="no" value="0"/>
-						<c:forEach var="orderplanning" items="${ list }">
+						<c:forEach var="getProcurementPlan" items="${ list }">
 						<tr>
 							<td>${ no = no + 1 }</td>
 							<td><span>등록</span></td>

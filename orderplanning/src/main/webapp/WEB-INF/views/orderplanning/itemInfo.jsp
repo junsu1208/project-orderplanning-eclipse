@@ -178,7 +178,7 @@
 						<tr>
                             <th scope="col"></th>
                             <th scope="col">순번</th>
-                            <th scope="col">품목 번호</th>
+                            <th scope="col">품목 코드</th>
                             <th scope="col">품목명</th>
                             <th scope="col">규격</th>
                             <th scope="col">재질</th>

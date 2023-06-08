@@ -184,15 +184,18 @@
 						</tr>
 					</thead>
 					<tbody>
+					<c:set var="no" value="0"/>
+					<c:forEach items="${ procurementPlan }" var="procurementPlan">
 						<tr>
-							<td>1</td>
+							<td>${ no = no + 1 }</td>
 							<td><span>등록</span></td>
-							<td><span>1</span></td>
-							<td><span>A자재</span></td>
-							<td><span>A공정</span></td>
-							<td><span>2023-05-18</span></td>
-							<td><span>400</span></td>
+							<td><span>${ procurementPlan.item_code }</span></td>
+							<td><span>${ procurementPlan.item_name }</span></td>
+							<td><span>${ procurementPlan.process }</span></td>
+							<td><span><fmt:formatDate pattern="yyyy-MM-dd" value="${ procurementPlan.production_date }"/></span></td>
+							<td><span>${ procurementPlan.consumption }</span></td>
 						</tr>
+					</c:forEach>
 					</tbody>
 				</table>
 			</div>

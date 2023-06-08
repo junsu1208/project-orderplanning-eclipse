@@ -24,22 +24,9 @@ public class ContractVO {
 	private String specification_file;
 	private String draw_file;
 	private int supply_price;
-	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date agreement_date;
 	private int leadtime;
 	private String contract_file;
 	private String contract_text;
-	
-	@Override
-	public String toString() {
-		return "ContractVO [contract_name=" + contract_name + ", subconductor_name=" + subconductor_name
-				+ ", subconductor_tel=" + subconductor_tel + ", subconductor_email=" + subconductor_email
-				+ ", subconductor_person=" + subconductor_person + ", product_name=" + product_name + ", item_code="
-				+ item_code + ", item_name=" + item_name + ", standard=" + standard + ", material=" + material
-				+ ", specification_file=" + specification_file + ", draw_file=" + draw_file + ", supply_price="
-				+ supply_price + ", agreement_date=" + agreement_date + ", leadtime=" + leadtime + ", contract_file="
-				+ contract_file + ", contract_text=" + contract_text + "]";
-	}
 	
 }

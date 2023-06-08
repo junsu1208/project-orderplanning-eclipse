@@ -14,20 +14,9 @@ public class ProcurementPlanVO {
 	private Long item_code;
 	private String item_name;
 	private String process;
-	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date production_date;
 	private int consumption;
-	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date procurement_date;
 	private String pp_text;
-	
-	@Override
-	public String toString() {
-		return "ProcurementPlanVO [item_code=" + item_code + ", item_name=" + item_name + ", process=" + process
-				+ ", production_date=" + production_date + ", consumption=" + consumption + ", procurement_date="
-				+ procurement_date + ", pp_text=" + pp_text + "]";
-	}
 	
 }

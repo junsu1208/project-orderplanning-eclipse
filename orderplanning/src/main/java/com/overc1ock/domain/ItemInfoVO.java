@@ -17,11 +17,4 @@ public class ItemInfoVO {
 	private String mc_name;
 	private String sc_name;
 	
-	@Override
-	public String toString() {
-		return "ItemInfoVO [item_code=" + item_code + ", item_name=" + item_name + ", standard=" + standard
-				+ ", material=" + material + ", specification_file=" + specification_file + ", draw_file=" + draw_file
-				+ ", mc_name=" + mc_name + ", sc_name=" + sc_name + "]";
-	}
-	
 }

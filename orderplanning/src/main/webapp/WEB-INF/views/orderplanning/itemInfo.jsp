@@ -190,20 +190,23 @@
                         </tr>
 					</thead>
 					<tbody>
+					<c:set var="no" value="0"/>
+					<c:forEach items="${ itemInfo }" var="itemInfo">
 						 <tr>
                             <th scope="row" style="text-align: center;"><input type="checkbox" name="checkField" onclick="checkCall(this)"
                                        value="1" /></th>
-                            <td>1</td>
-                            <td><span>1</span></td>
-                            <td><span>A자재</span></td>
-                            <td><span>30</span></td>
-                            <td><span>플라스틱</span></td>
-                            <td><span>(사양서 파일)</span></td>
-                            <td><span>(도면 파일)</span></td>
-                            <td><span>(대분류)</span></td>
-                            <td><span>(중분류)</span></td>
+                            <td>${ no = no + 1 }</td>
+                            <td><span>${ itemInfo.item_code }</span></td>
+                            <td><span>${ itemInfo.item_name }</span></td>
+                            <td><span>${ itemInfo.standard }</span></td>
+                            <td><span>${ itemInfo.material }</span></td>
+                            <td><span>${ itemInfo.specification_file }</span></td>
+                            <td><span>${ itemInfo.draw_file }</span></td>
+                            <td><span>${ itemInfo.mc_name }</span></td>
+                            <td><span>${ itemInfo.sc_name }</span></td>
                             <td style="text-align: center;"><span><button type="button" class="btn btn-success btn-sm">저장</button></span></td>  
                         </tr>
+					</c:forEach>
 					</tbody>
 				</table>
 			</div>

@@ -18,8 +18,8 @@ public interface OrderPlanningMapper {
 	int modifyItemInfo(ItemInfoVO vo); // 수정
 	
 	// 계약 등록
-	List<ContractVO> getContact(); // 목록 가져오기
-	List<ContractVO> getContactWithPaging(Criteria cri); // 페이징 처리
+	List<ContractVO> getContract(); // 목록 가져오기
+	List<ContractVO> getContractWithPaging(Criteria cri); // 페이징 처리
 	ContractVO inquiryContract(Long contract_code); // 조회
 	int registerContract(ContractVO vo); // 등록
 	int deleteContract(Long contract_code); // 삭제

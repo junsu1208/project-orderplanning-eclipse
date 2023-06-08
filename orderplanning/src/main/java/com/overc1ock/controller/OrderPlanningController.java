@@ -19,6 +19,8 @@ import lombok.extern.log4j.Log4j;
 public class OrderPlanningController {
 	
 	ItemInfoService itemInfoService;
+	ContractService contractService;
+	ProcurementPlanService procurementPlanService;
 
 	@GetMapping("/itemInfo")
 	public void itemInfo(Model model) {
@@ -27,13 +29,15 @@ public class OrderPlanningController {
 	}
 	
 	@GetMapping("/contract")
-	public void contract() {
+	public void contract(Model model) {
 		log.info("계약 등록 페이지 요청");
+		model.addAttribute("contract", contractService.getContract());
 	}
 	
 	@GetMapping("/procurementPlan")
-	public void procurementPlan() {
+	public void procurementPlan(Model model) {
 		log.info("조달 계획 등록 페이지 요청");
+		model.addAttribute("procurementPlan", procurementPlanService.getProcurementPlan());
 	}
 
 }

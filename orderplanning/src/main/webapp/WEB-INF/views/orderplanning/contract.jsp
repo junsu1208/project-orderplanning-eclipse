@@ -252,16 +252,19 @@
 						</tr>
 					</thead>
 					<tbody>
+					<c:set var="no" value="0"/>
+					<c:forEach items="${ contract }" var="contract">
 						<tr>
-							<td>1</td>
-							<td><span>계약서 1</span></td>
-							<td><span>A제품</span></td>
-							<td><span>1</span></td>
-							<td><span>A자재</span></td>
-							<td><span>A업체</span></td>
-							<td><span>2023-05-18</span></td>
-							<td><span>8</span></td>
+							<td>${ no = no + 1 }</td>
+							<td><span>${ contract.contract_name }</span></td>
+							<td><span>${ contract.product_name }</span></td>
+							<td><span>${ contract.item_code }</span></td>
+							<td><span>${ contract.item_name }</span></td>
+							<td><span>${ contract.subcontractor_name }</span></td>
+							<td><span><fmt:formatDate pattern="yyyy-MM-dd" value="${ contract.agreement_date }"/></span></td>
+							<td><span>${ contract.leadtime }</span></td>
 						</tr>
+					</c:forEach>
 					</tbody>
 				</table>
 			</div>

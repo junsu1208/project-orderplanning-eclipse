@@ -25,4 +25,14 @@ public class OrderPlanningMapperTests {
 		mapper.getItemInfo().forEach(vo -> log.info(vo));
 	}
 	
+	@Test
+	public void testGetContract() {
+		mapper.getContract().forEach(vo -> log.info(vo));
+	}
+	
+	@Test
+	public void testGetProcurementPlan() {
+		mapper.getProcurementPlan().forEach(vo -> log.info(vo));
+	}
+	
 }

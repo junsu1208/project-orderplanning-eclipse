@@ -20,7 +20,7 @@ public class ContractServiceImpl implements ContractService {
 	@Override
 	public List<ContractVO> getContract() {
 		log.info("계약 품목 정보 목록 요청");
-		return mapper.getContact();
+		return mapper.getContract();
 	}
 
 	@Override

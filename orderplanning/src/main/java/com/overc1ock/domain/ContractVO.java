@@ -12,10 +12,10 @@ import lombok.Data;
 public class ContractVO {
 	
 	private String contract_name;
-	private String subconductor_name;
-	private String subconductor_tel;
-	private String subconductor_email;
-	private String subconductor_person;
+	private String subcontractor_name;
+	private String subcontractor_tel;
+	private String subcontractor_email;
+	private String subcontractor_person;
 	private String product_name;
 	private String item_code;
 	private String item_name;

@@ -15,7 +15,7 @@ public class ProcurementPlanVO {
 	private String item_name;
 	private String process;
 	private Date production_date;
-	private int consumption;
+	private Integer consumption;
 	private Date procurement_date;
 	private String pp_text;
 	

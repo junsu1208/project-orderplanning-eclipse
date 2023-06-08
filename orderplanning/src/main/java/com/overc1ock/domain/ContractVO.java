@@ -23,9 +23,9 @@ public class ContractVO {
 	private String material;
 	private String specification_file;
 	private String draw_file;
-	private int supply_price;
+	private Integer supply_price;
 	private Date agreement_date;
-	private int leadtime;
+	private Integer leadtime;
 	private String contract_file;
 	private String contract_text;
 	

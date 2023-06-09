@@ -174,26 +174,26 @@
 					</caption>
 					<thead class="table-dark">
 						<tr>
-                            <th scope="col">순번</th>
-                            <th scope="col">조달 계획</th>
-                            <th scope="col">품목코드</th>
-                            <th scope="col">품목명</th>
-                            <th scope="col">자재 소요 공정</th>
-                            <th scope="col">생산일</th>
-                            <th scope="col">소요량</th>
+                            <th scope="col" style="text-align: center;">순번</th>
+                            <th scope="col" style="text-align: center;">조달 계획</th>
+                            <th scope="col" style="text-align: center;">품목코드</th>
+                            <th scope="col" style="text-align: center;">품목명</th>
+                            <th scope="col" style="text-align: center;">자재 소요 공정</th>
+                            <th scope="col" style="text-align: center;">생산일</th>
+                            <th scope="col" style="text-align: center;">소요량</th>
 						</tr>
 					</thead>
 					<tbody>
 					<c:set var="no" value="0"/>
 					<c:forEach items="${ procurementPlan }" var="procurementPlan">
 						<tr>
-							<td>${ no = no + 1 }</td>
-							<td><span>등록</span></td>
-							<td><span>${ procurementPlan.item_code }</span></td>
-							<td><span>${ procurementPlan.item_name }</span></td>
-							<td><span>${ procurementPlan.process }</span></td>
-							<td><span><fmt:formatDate pattern="yyyy-MM-dd" value="${ procurementPlan.production_date }"/></span></td>
-							<td><span>${ procurementPlan.consumption }</span></td>
+							<td style="text-align: center;">${ no = no + 1 }</td>
+							<td style="text-align: center;"><span>등록</span></td>
+							<td style="text-align: center;"><span>${ procurementPlan.item_code }</span></td>
+							<td style="text-align: center;"><span>${ procurementPlan.item_name }</span></td>
+							<td style="text-align: center;"><span>${ procurementPlan.process }</span></td>
+							<td style="text-align: center;"><span><fmt:formatDate pattern="yyyy-MM-dd" value="${ procurementPlan.production_date }"/></span></td>
+							<td style="text-align: center;"><span>${ procurementPlan.consumption }</span></td>
 						</tr>
 					</c:forEach>
 					</tbody>

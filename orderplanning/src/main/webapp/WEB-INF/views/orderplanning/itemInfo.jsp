@@ -87,55 +87,36 @@
 					<div class="card-body">
 						<div class="row g-3">
 							<div class="col-md-6">
-	                            <div class="input-group mb-3">
-									<label for="itemCode" class="input-group-text">품목 코드</label>
-									<input type="number" class="form-control" id="item_code" name="item_code"/>
-									<input class="btn btn-primary" value="불러오기" type="button" />
-								</div>
+								<label for="itemCode" class="form-label">품목 코드: </label>
+								<input type="number" class="form-control" id="item_code" name="item_code"/>
 							</div>
 							<div class="col-md-6">
-	                            <div class="input-group mb-3">
-									<label for="itemName" class="input-group-text">품목명</label>
-									<input type="text" class="form-control" id="item_name" name="item_name" />
-								</div>
+								<label for="itemName" class="form-label">품목명: </label>
+								<input type="text" class="form-control" id="item_name" name="item_name" />
 							</div>
 							<div class="col-md-6">
-	                            <div class="input-group mb-3">
-									<label for="standard" class="input-group-text">규격</label>
-									<input type="text" class="form-control" id="standard" name="standard" />
-								</div>
+								<label for="standard" class="form-label">규격: </label>
+								<input type="text" class="form-control" id="standard" name="standard" />
 							</div>
 							<div class="col-md-6">
-	                            <div class="input-group mb-3">
-									<label for="material" class="input-group-text">재질</label>
-									<input type="text" class="form-control" id="material" name="material" />
-								</div>
+								<label for="material" class="form-label">재질: </label>
+								<input type="text" class="form-control" id="material" name="material" />
 							</div>
 							<div class="col-md-6">
-	                            <div class="input-group mb-3">
-									<label for="specificationFile" class="input-group-text">제작 사양</label>
-									<input type="text" class="form-control" id="specification_file" name="specification_file" />
-									<input class="btn btn-primary" value="찾아보기" type="button" />
-								</div>
+								<label for="specificationFile" class="form-label">제작 사양: </label>
+                              	<input type="file" class="form-control" id="specification_file" name="specification_file" />
 							</div>
 							<div class="col-md-6">
-	                            <div class="input-group mb-3">
-									<label for="drawFile" class="input-group-text">도면 파일</label>
-									<input type="text" class="form-control" id="draw_file" name="draw_file" />
-									<input class="btn btn-primary" value="찾아보기" type="button" />
-								</div>
+								<label for="drawFile" class="form-label">도면 파일: </label>
+                              	<input type="file" class="form-control" id="draw_file" name="draw_file" />
 							</div>				
 							<div class="col-md-6">
-	                            <div class="input-group mb-3">
-									<label for="McName" class="input-group-text">대분류</label>
-									<input type="text" class="form-control" id="mc_name" name="mc_name" />
-								</div>
+								<label for="McName" class="form-label">대분류: </label>
+								<input type="text" class="form-control" id="mc_name" name="mc_name" />
 							</div>
 							<div class="col-md-6">
-	                            <div class="input-group mb-3">
-									<label for="ScName" class="input-group-text">중분류</label>
-									<input type="text" class="form-control" id="sc_name" name="sc_name" />
-								</div>
+								<label for="ScName" class="form-label">중분류: </label>
+								<input type="text" class="form-control" id="sc_name" name="sc_name" />
 							</div>
 							<div class="col-md-1">
 								<button type="button" class="btn btn-primary btn-primary">조회</button>
@@ -175,35 +156,52 @@
 					</caption>
 					<thead class="table-dark">
 						<tr>
-                            <th scope="col"></th>
-                            <th scope="col">순번</th>
-                            <th scope="col">품목 코드</th>
-                            <th scope="col">품목명</th>
-                            <th scope="col">규격</th>
-                            <th scope="col">재질</th>
-                            <th scope="col">제작 사양</th>
-                            <th scope="col">도면 파일</th>
-                            <th scope="col">대분류</th>
-                            <th scope="col">중분류</th>
-                            <th scope="col"></th>
+                            <th scope="col" style="text-align: center;"></th>
+                            <th scope="col" style="text-align: center;">순번</th>
+                            <th scope="col" style="text-align: center;">품목 코드</th>
+                            <th scope="col" style="text-align: center;">품목명</th>
+                            <th scope="col" style="text-align: center;">규격</th>
+                            <th scope="col" style="text-align: center;">재질</th>
+                            <th scope="col" style="text-align: center;">제작 사양</th>
+                            <th scope="col" style="text-align: center;">도면 파일</th>
+                            <th scope="col" style="text-align: center;">대분류</th>
+                            <th scope="col" style="text-align: center;">중분류</th>
+                            <th scope="col" style="text-align: center;" width="100"></th>
                         </tr>
 					</thead>
 					<tbody>
+						<tr>
+                            <th style="text-align: center;"></th>
+                            <td style="text-align: center;"></td>
+                            <td style="text-align: center;"><span><input type="number" name="item_code" id="item_code" style="width:100px"/></span></td>
+                            <td style="text-align: center;"><span><input type="text" name="item_name" id="item_name" style="width:100px"/></span></td>
+                            <td style="text-align: center;"><span><input type="text" name="standard" id="standard" style="width:100px"/></span></td>
+                            <td style="text-align: center;"><span><input type="text" name="material" id="material" style="width:100px"/></span></td>
+                            <td style="text-align: center;"><span><input type="file" name="specification_file" id="specification_file" style="width:80px"/></span></td>
+                            <td style="text-align: center;"><span><input type="file" name="draw_file" id="draw_file" style="width:80px"/></span></td>
+                            <td style="text-align: center;"><span><input type="text" name="mc_name" id="mc_name" style="width:100px"/></span></td>
+                            <td style="text-align: center;"><span><input type="text" name="mc_name" id="sc_name" style="width:100px"/></span></td>
+                            <td style="text-align: center;"><span><button type="button" class="btn btn-success btn-sm">저장</button></span></td>
+                        </tr>
 					<c:set var="no" value="0"/>
 					<c:forEach items="${ itemInfo }" var="itemInfo">
 						 <tr>
-                            <th scope="row" style="text-align: center;"><input type="checkbox" name="checkField" onclick="checkCall(this)"
+                            <th scope="row" style="text-align: center;"><input type="checkbox" name="inquiry" onclick="checkOnlyOne(this)"
                                        value="1" /></th>
-                            <td>${ no = no + 1 }</td>
-                            <td><span>${ itemInfo.item_code }</span></td>
-                            <td><span>${ itemInfo.item_name }</span></td>
-                            <td><span>${ itemInfo.standard }</span></td>
-                            <td><span>${ itemInfo.material }</span></td>
-                            <td><span>${ itemInfo.specification_file }</span></td>
-                            <td><span>${ itemInfo.draw_file }</span></td>
-                            <td><span>${ itemInfo.mc_name }</span></td>
-                            <td><span>${ itemInfo.sc_name }</span></td>
-                            <td style="text-align: center;"><span><button type="button" class="btn btn-success btn-sm">저장</button></span></td>  
+                            <td style="text-align: center;">${ no = no + 1 }</td>
+                            <td style="text-align: center;"><span>${ itemInfo.item_code }</span></td>
+                            <td style="text-align: center;"><span>${ itemInfo.item_name }</span></td>
+                            <td style="text-align: center;"><span>${ itemInfo.standard }</span></td>
+                            <td style="text-align: center;"><span>${ itemInfo.material }</span></td>
+                            <td style="text-align: center;">
+                            	<span><button type="button" class="btn btn-secondary btn-sm">다운로드</button></span>
+                            </td>
+                            <td style="text-align: center;">
+                            	<span><button type="button" class="btn btn-secondary btn-sm">다운로드</button></span>
+                            </td>
+                            <td style="text-align: center;"><span>${ itemInfo.mc_name }</span></td>
+                            <td style="text-align: center;"><span>${ itemInfo.sc_name }</span></td>
+                            <td style="text-align: center;"></td>
                         </tr>
 					</c:forEach>
 					</tbody>
@@ -226,6 +224,15 @@
 			document.getElementById("procurement").style.fontWeight = "bold";
 		}
 	</script>
-
+	<script type="text/javascript">
+		function checkOnlyOne(element) {
+			const checkboxes 
+				= document.getElementsByName("inquiry");
+			checkboxes.forEach((cb) => {
+				cb.checked = false;
+			})
+			element.checked = true;
+		}
+	</script>
 </body>
 </html>

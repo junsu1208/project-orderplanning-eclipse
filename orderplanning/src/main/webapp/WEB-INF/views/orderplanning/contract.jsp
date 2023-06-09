@@ -189,16 +189,12 @@
 								</div>
 							</div>
 							<div>
-	                            <div class="input-group mb-3">
-									<label for="contactFile" class="input-group-text">계약서 첨부</label>
-									<input type="text" class="form-control" id="contact_file" name="contact_file" />
-									<input class="btn btn-primary" value="불러오기" type="button" />
-								</div>
+								<label for="contactFile" class="form-label">계약서 첨부: </label>
+								<input type="file" class="form-control" id="contact_file" name="contact_file" />
 							</div>
 							<div>
-                              <label for="address" class="form-label">비고:</label>
-                                <textarea rows="5" class="form-control"
-                                          id="text" name="text"></textarea>
+                              <label for="address" class="form-label">비고: </label>
+							  <textarea rows="5" class="form-control" id="text" name="text"></textarea>
                             </div>
 							<div class="col-md-1">
 								<button type="button" class="btn btn-primary btn-primary">조회</button>
@@ -241,28 +237,28 @@
 					</caption>
 					<thead class="table-dark">
 						<tr>
-                            <th scope="col">순번</th>
-                            <th scope="col">계약명</th>
-                            <th scope="col">제품명</th>
-                            <th scope="col">품목 코드</th>
-                            <th scope="col">품목명</th>
-                            <th scope="col">협력 업체</th>
-                            <th scope="col">계약 날짜</th>
-                            <th scope="col">L/T</th>
+                            <th scope="col" style="text-align: center;">순번</th>
+                            <th scope="col" style="text-align: center;">계약명</th>
+                            <th scope="col" style="text-align: center;">제품명</th>
+                            <th scope="col" style="text-align: center;">품목 코드</th>
+                            <th scope="col" style="text-align: center;">품목명</th>
+                            <th scope="col" style="text-align: center;">협력 업체</th>
+                            <th scope="col" style="text-align: center;">계약 날짜</th>
+                            <th scope="col" style="text-align: center;">L/T</th>
 						</tr>
 					</thead>
 					<tbody>
 					<c:set var="no" value="0"/>
 					<c:forEach items="${ contract }" var="contract">
 						<tr>
-							<td>${ no = no + 1 }</td>
-							<td><span>${ contract.contract_name }</span></td>
-							<td><span>${ contract.product_name }</span></td>
-							<td><span>${ contract.item_code }</span></td>
-							<td><span>${ contract.item_name }</span></td>
-							<td><span>${ contract.subcontractor_name }</span></td>
-							<td><span><fmt:formatDate pattern="yyyy-MM-dd" value="${ contract.agreement_date }"/></span></td>
-							<td><span>${ contract.leadtime }</span></td>
+							<td style="text-align: center;">${ no = no + 1 }</td>
+							<td style="text-align: center;"><span>${ contract.contract_name }</span></td>
+							<td style="text-align: center;"><span>${ contract.product_name }</span></td>
+							<td style="text-align: center;"><span>${ contract.item_code }</span></td>
+							<td style="text-align: center;"><span>${ contract.item_name }</span></td>
+							<td style="text-align: center;"><span>${ contract.subcontractor_name }</span></td>
+							<td style="text-align: center;"><span><fmt:formatDate pattern="yyyy-MM-dd" value="${ contract.agreement_date }"/></span></td>
+							<td style="text-align: center;"><span>${ contract.leadtime }</span></td>
 						</tr>
 					</c:forEach>
 					</tbody>

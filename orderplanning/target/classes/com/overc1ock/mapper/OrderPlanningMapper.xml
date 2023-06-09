@@ -7,19 +7,21 @@
 	
 	<select id="getItemInfo" resultType="com.overc1ock.domain.ItemInfoVO">
 		SELECT item_code, item_name, standard, material, specification_file, draw_file, mc_name, sc_name 
-		FROM item LEFT JOIN sub_category USING(sc_code) LEFT JOIN major_category USING(mc_code)
+		FROM item LEFT JOIN sub_category USING(sc_code) LEFT JOIN major_category USING(mc_code) 
+		ORDER BY item_registration_date desc
 	</select>
 	
 	<select id="getContract" resultType="com.overc1ock.domain.ContractVO">
 		SELECT contract_name, product_name, item_code, item_name, subcontractor_name, agreement_date, leadtime
-		FROM contract LEFT JOIN item USING(item_code) LEFT JOIN item_has_product USING(item_code)
+		FROM contract LEFT JOIN item USING(item_code) LEFT JOIN item_has_product USING(item_code) 
+		ORDER BY agreement_date desc
 	</select>
 	
 	<select id="getProcurementPlan" resultType="com.overc1ock.domain.ProcurementPlanVO">
 		SELECT item_code, item_name, process, production_date, consumption
 		FROM item LEFT JOIN item_has_product USING(item_code) 
 		LEFT JOIN products_production_plan USING(product_name) 
-		LEFT JOIN item_use_plan USING(item_code)
+		LEFT JOIN item_use_plan USING(item_code) ORDER BY item_registration_date desc
 	</select>
 	
 </mapper>

@@ -204,7 +204,7 @@
 					<c:set var="no" value="0"/>
 					<c:forEach items="${ itemInfo }" var="itemInfo">
 						 <tr>
-                            <th scope="row" style="text-align: center;"><input type="checkbox" name="inquiry" onclick="checkOnlyOne(this)"
+                            <th scope="row" style="text-align: center;"><input type="checkbox" name="selection" onclick="checkOnlyOne(this)"
                                        value="1" /></th>
                             <td style="text-align: center;">${ no = no + 1 }</td>
                             <td style="text-align: center;"><span>${ itemInfo.item_code }</span></td>
@@ -245,7 +245,7 @@
 	<script type="text/javascript">
 		function checkOnlyOne(element) {
 			const checkboxes 
-				= document.getElementsByName("inquiry");
+				= document.getElementsByName("selection");
 			checkboxes.forEach((cb) => {
 				cb.checked = false;
 			})

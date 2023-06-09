@@ -11,6 +11,6 @@ public interface ItemInfoService {
 	void saveItemInfo(ItemInfoVO vo); // 저장
 	ItemInfoVO inquiryItemInfo(Long item_code); // 조회
 	boolean deleteItemInfo(Long item_code); // 삭제
-	boolean modifyItemInfo(Long item_code); // 수정
+	boolean modifyItemInfo(ItemInfoVO vo); // 수정
 
 }

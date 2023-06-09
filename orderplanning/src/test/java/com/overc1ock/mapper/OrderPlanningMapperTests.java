@@ -37,7 +37,29 @@ public class OrderPlanningMapperTests {
 		vo.setDraw_file("테스트 도면 파일");
 		vo.setSc_code(1);
 		mapper.saveItemInfo(vo);
-		log.info(vo);
+	}
+	
+	@Test
+	public void testInquiryItemInfo() {
+		mapper.inquiryItemInfo(1L);
+	}
+	
+	@Test
+	public void testDeleteItemInfo() {
+		mapper.deleteItemInfo(27L);
+	}
+	
+	@Test
+	public void testModifyItemInfo() {
+		ItemInfoVO vo = new ItemInfoVO();
+		vo.setItem_name("수정된 품목");
+		vo.setStandard("수정된 규격");
+		vo.setMaterial("수정된 재질");
+		vo.setSpecification_file("수정된 제작 사양 파일");
+		vo.setDraw_file("수정된 도면 파일");
+		vo.setSc_code(2);
+		vo.setItem_code(30L);
+		mapper.modifyItemInfo(vo);
 	}
 	
 	@Test

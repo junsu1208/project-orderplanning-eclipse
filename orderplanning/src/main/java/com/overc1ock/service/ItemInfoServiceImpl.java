@@ -42,9 +42,9 @@ public class ItemInfoServiceImpl implements ItemInfoService {
 	}
 
 	@Override
-	public boolean modifyItemInfo(Long item_code) {
-		log.info("품목 정보 수정 요청, 변수값: " + item_code);
-		return mapper.modifyItemInfo(item_code) == 1;
+	public boolean modifyItemInfo(ItemInfoVO vo) {
+		log.info("품목 정보 수정 요청, 변수값: " + vo);
+		return mapper.modifyItemInfo(vo) == 1;
 	}
 
 }

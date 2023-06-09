@@ -97,12 +97,12 @@
 								<div class="input-group mb-3">
 									<label for="subcontractorName" class="input-group-text">협력 업체명</label>
 									<select id="subcontractorName" class="form-select" tabindex="1" name="subcontractor_name">
-										<option value="">(협력 업체 찾기)</option>
+										<option value="">(협력 업체 찾기)
 										<option value="1">협력 업체 1
 										<option value="2">협력 업체 2
 										<option value="3">협력 업체 3
 										<option value="4">협력 업체 4
-										<option value="5">협력 업체 5</select>
+										<option value="5">협력 업체 5</option></select>
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -177,7 +177,7 @@
 									<input
 										type="date" id="txnAgreementDate"
 										class="form-control datepicker"
-										name="txnReportTransactionVO.agreementDate"
+										name="txnContractVO.agreementDate"
 										aria-label="agreementDate">
 									<span class="input-group-text"><img src="/resources/img/calendar3.svg" alt="" width="16" height="16" title="calendar" /></span>
 								</div>

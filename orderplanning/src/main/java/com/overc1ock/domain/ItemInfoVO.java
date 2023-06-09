@@ -1,5 +1,7 @@
 package com.overc1ock.domain;
 
+import java.util.Date;
+
 import org.springframework.stereotype.Component;
 
 import lombok.Data;
@@ -14,7 +16,7 @@ public class ItemInfoVO {
 	private String material;
 	private String specification_file;
 	private String draw_file;
-	private String mc_name;
-	private String sc_name;
+	private Date item_registration_date;
+	private Integer sc_code;
 	
 }

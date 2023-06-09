@@ -6,10 +6,30 @@
 <mapper namespace="com.overc1ock.mapper.OrderPlanningMapper">
 	
 	<select id="getItemInfo" resultType="com.overc1ock.domain.ItemInfoVO">
-		SELECT item_code, item_name, standard, material, specification_file, draw_file, mc_name, sc_name 
+		SELECT item_code, item_name, standard, material, specification_file, draw_file, item_registration_date, sc_code
 		FROM item LEFT JOIN sub_category USING(sc_code) LEFT JOIN major_category USING(mc_code) 
 		ORDER BY item_registration_date desc
 	</select>
+	
+	<insert id="saveItemInfo">
+		INSERT INTO `mesdb`.`item` (`item_name`, `standard`, `material`, `specification_file`, `draw_file`, `sc_code`) 
+		VALUES (#{ item_name }, #{ standard }, #{ material }, #{ specification_file }, #{ draw_file }, #{ sc_code });
+	</insert>
+	
+	<select id="inquiryItemInfo" resultType="com.overc1ock.domain.ItemInfoVO">
+		SELECT `item_code`, `item_name`, `standard`, `material`, `specification_file`, `draw_file`, `item_registration_date`, `sc_code` 
+		FROM `mesdb`.`item` WHERE  `item_code`=#{ item_code }
+	</select>
+	
+	<delete id="deleteItemInfo">
+		DELETE FROM `mesdb`.`item` WHERE  `item_code`=#{ item_code }
+	</delete>
+	
+	<update id="modifyItemInfo">
+		UPDATE `mesdb`.`item` 
+		SET `item_name`=#{ item_name }, `standard`=#{ standard }, `material`=#{ material }, 
+		`specification_file`=#{ specification_file }, `draw_file`=#{ draw_file }, `sc_code`=#{ sc_code } WHERE  `item_code`=#{ item_code };
+	</update>
 	
 	<select id="getContract" resultType="com.overc1ock.domain.ContractVO">
 		SELECT contract_name, product_name, item_code, item_name, subcontractor_name, agreement_date, leadtime

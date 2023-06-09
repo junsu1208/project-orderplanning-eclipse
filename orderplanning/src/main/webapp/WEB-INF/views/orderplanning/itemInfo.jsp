@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,8 +76,7 @@
 			<br />
 		</div>
 	</div>
-	<form method="POST" action="listTransactions"
-		style="position: relative;">
+	<form action="itemInfo" method="post">
 		<div class="container"
 			style="position: absolute; left: 250px; width: 3000px;">
 			<div class="wrap">
@@ -111,12 +111,21 @@
                               	<input type="file" class="form-control" id="draw_file" name="draw_file" />
 							</div>				
 							<div class="col-md-6">
-								<label for="McName" class="form-label">대분류: </label>
-								<input type="text" class="form-control" id="mc_name" name="mc_name" />
+								<label for="ItemRegistrationDate" class="form-label">등록일: </label>
+								<input type="date" 
+									   id="txnItemRegistrationDate" 
+									   class="form-control datepicker"
+									   name="txnItemInfoVO.ItemRegistrationDate" aria-label="itemRegistrationDate">
 							</div>
 							<div class="col-md-6">
-								<label for="ScName" class="form-label">중분류: </label>
-								<input type="text" class="form-control" id="sc_name" name="sc_name" />
+								<label for="ScCode" class="form-label">중분류 코드: </label>
+								<select id="scCode" class="form-select" tabindex="1" name="sc_code" id="sc_code">
+									<option value="">입력
+									<option value="1">1
+									<option value="2">2
+									<option value="3">3
+									<option value="4">4</option>
+								</select>
 							</div>
 							<div class="col-md-1">
 								<button type="button" class="btn btn-primary btn-primary">조회</button>
@@ -130,6 +139,7 @@
                         </div>
 					</div>
 				</div>
+			</form>
 				<br /> <br />
 				<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
 		                <symbol id="check-circle-fill" fill="currentColor"
@@ -148,7 +158,7 @@
 						d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
 		                </symbol>
 		            </svg>
-
+				<form action="saveItemInfo" method="post">
 				<table id='myTable'
 					class="table table-bordered table-striped table-hover caption-top">
 					<caption style="color: black;">
@@ -164,24 +174,32 @@
                             <th scope="col" style="text-align: center;">재질</th>
                             <th scope="col" style="text-align: center;">제작 사양</th>
                             <th scope="col" style="text-align: center;">도면 파일</th>
-                            <th scope="col" style="text-align: center;">대분류</th>
-                            <th scope="col" style="text-align: center;">중분류</th>
-                            <th scope="col" style="text-align: center;" width="100"></th>
+                            <th scope="col" style="text-align: center;">등록일</th>
+                            <th scope="col" style="text-align: center;">중분류 코드</th>
+                            <th scope="col" style="text-align: center;"></th>
                         </tr>
 					</thead>
 					<tbody>
 						<tr>
                             <th style="text-align: center;"></th>
                             <td style="text-align: center;"></td>
-                            <td style="text-align: center;"><span><input type="number" name="item_code" id="item_code" style="width:100px"/></span></td>
+                            <td style="text-align: center;">자동 입력</td>
                             <td style="text-align: center;"><span><input type="text" name="item_name" id="item_name" style="width:100px"/></span></td>
                             <td style="text-align: center;"><span><input type="text" name="standard" id="standard" style="width:100px"/></span></td>
                             <td style="text-align: center;"><span><input type="text" name="material" id="material" style="width:100px"/></span></td>
                             <td style="text-align: center;"><span><input type="file" name="specification_file" id="specification_file" style="width:80px"/></span></td>
                             <td style="text-align: center;"><span><input type="file" name="draw_file" id="draw_file" style="width:80px"/></span></td>
-                            <td style="text-align: center;"><span><input type="text" name="mc_name" id="mc_name" style="width:100px"/></span></td>
-                            <td style="text-align: center;"><span><input type="text" name="mc_name" id="sc_name" style="width:100px"/></span></td>
-                            <td style="text-align: center;"><span><button type="button" class="btn btn-success btn-sm">저장</button></span></td>
+                            <td style="text-align: center;">자동 입력</td>
+                            <td style="text-align: center;"><span>
+								<select id="scCode" class="form-select" tabindex="1" name="sc_code" id="sc_code" style="width:80px">
+									<option value="">입력
+									<option value="1">1
+									<option value="2">2
+									<option value="3">3
+									<option value="4">4</option>
+								</select>
+							</span></td>
+                            <td style="text-align: center;"><span><button type="submit" class="btn btn-success btn-sm">저장</button></span></td>
                         </tr>
 					<c:set var="no" value="0"/>
 					<c:forEach items="${ itemInfo }" var="itemInfo">
@@ -199,16 +217,16 @@
                             <td style="text-align: center;">
                             	<span><button type="button" class="btn btn-secondary btn-sm">다운로드</button></span>
                             </td>
-                            <td style="text-align: center;"><span>${ itemInfo.mc_name }</span></td>
-                            <td style="text-align: center;"><span>${ itemInfo.sc_name }</span></td>
+                            <td style="text-align: center;"><span><fmt:formatDate pattern="yyyy-MM-dd" value="${ itemInfo.item_registration_date }"/></span></td>
+                            <td style="text-align: center;"><span>${ itemInfo.sc_code }</span></td>
                             <td style="text-align: center;"></td>
                         </tr>
 					</c:forEach>
 					</tbody>
 				</table>
+				</form>
 			</div>
 		</div>
-	</form>
 	<input type="hidden" value="2" id="flag">
 	<script src="/resources/js/core/jquery-3.2.1.min.js" type="text/javascript"></script>
 	<script src="/resources/js/core/popper.min.js" type="text/javascript"></script>

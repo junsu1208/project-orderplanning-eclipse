@@ -15,7 +15,7 @@ public interface OrderPlanningMapper {
 	int saveItemInfo(ItemInfoVO vo); // 저장
 	ItemInfoVO inquiryItemInfo(Long item_code); // 조회
 	int deleteItemInfo(Long item_code); // 삭제
-	int modifyItemInfo(ItemInfoVO vo); // 수정
+	int modifyItemInfo(Long item_code); // 수정
 	
 	// 계약 등록
 	List<ContractVO> getContract(); // 목록 가져오기

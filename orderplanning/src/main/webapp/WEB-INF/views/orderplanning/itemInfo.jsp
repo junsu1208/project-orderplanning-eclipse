@@ -183,13 +183,13 @@
 						<tr>
                             <th style="text-align: center;"></th>
                             <td style="text-align: center;"></td>
-                            <td style="text-align: center;">자동 입력</td>
+                            <td style="text-align: center;"></td>
                             <td style="text-align: center;"><span><input type="text" name="item_name" id="item_name" style="width:100px"/></span></td>
                             <td style="text-align: center;"><span><input type="text" name="standard" id="standard" style="width:100px"/></span></td>
                             <td style="text-align: center;"><span><input type="text" name="material" id="material" style="width:100px"/></span></td>
                             <td style="text-align: center;"><span><input type="file" name="specification_file" id="specification_file" style="width:80px"/></span></td>
                             <td style="text-align: center;"><span><input type="file" name="draw_file" id="draw_file" style="width:80px"/></span></td>
-                            <td style="text-align: center;">자동 입력</td>
+                            <td style="text-align: center;"></td>
                             <td style="text-align: center;"><span>
 								<select id="scCode" class="form-select" tabindex="1" name="sc_code" id="sc_code" style="width:80px">
 									<option value="">입력

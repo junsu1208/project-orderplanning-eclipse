@@ -90,40 +90,40 @@
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="itemCode" class="input-group-text">품목 코드</label>
-									<input type="number" class="form-control" id="item_code" name="item_code" />
+									<input type="number" class="form-control" id="item_code" name="item_code_input" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="itemName" class="input-group-text">품목명</label>
-									<input type="text" class="form-control" id="item_name" name="item_name" />
+									<input type="text" class="form-control" id="item_name" name="item_name_input" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="process" class="input-group-text">자재 소요 공정</label>
-									<input type="text" class="form-control" id="process" name="standard" />
+									<input type="text" class="form-control" id="process" name="standard_input" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="productionDate" class="input-group-text">생산일</label>
-									<input type="date" class="form-control" id="production_date" name="production_date" />
+									<input type="date" class="form-control" id="production_date" name="production_date_input" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="consumption" class="input-group-text">소요량</label>
-									<input type="number" class="form-control" id="production_date" name="production_date" />
+									<input type="number" class="form-control" id="consumption" name="consumption_input" />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="input-group mb-3">
 									<span class="input-group-text">조달 납기</span>
 									<input
-										type="date" id="txnProcurementDate"
+										type="date" id="procurement_date"
 										class="form-control datepicker"
-										name="txnReportTransactionVO.procurementDate"
+										name="procurement_date_input"
 										aria-label="procurementDate">
 									<span class="input-group-text"><img src="/resources/img/calendar3.svg" alt="" width="16" height="16" title="calendar" /></span>
 								</div>
@@ -131,7 +131,7 @@
 							<div>
                               <label for="address" class="form-label">비고:</label>
                                 <textarea rows="5" class="form-control"
-                                          id="text" name="text"></textarea>
+                                          id="text" name="text_input"></textarea>
                             </div>
 							<div class="col-md-1">
 								<button type="button" class="btn btn-primary btn-primary">조회</button>

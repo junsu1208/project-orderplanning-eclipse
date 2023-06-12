@@ -90,13 +90,13 @@
 							<div>
 	                            <div class="input-group mb-3">
 									<label for="contactName" class="input-group-text">계약명</label>
-									<input type="text" class="form-control" id="contact_name" name="contact_name" />
+									<input type="text" class="form-control" id="contact_name" name="contact_name_input" />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="input-group mb-3">
 									<label for="subcontractorName" class="input-group-text">협력 업체명</label>
-									<select id="subcontractorName" class="form-select" tabindex="1" name="subcontractor_name">
+									<select id="subcontractorName" class="form-select" tabindex="1" name="subcontractor_name_input">
 										<option value="">(협력 업체 찾기)
 										<option value="1">협력 업체 1
 										<option value="2">협력 업체 2
@@ -108,76 +108,76 @@
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="subcontractorTel" class="input-group-text">협력 업체 전화번호</label>
-									<input type="text" class="form-control" id="subcontractor_tel" name="subcontractor_tel" />
+									<input type="text" class="form-control" id="subcontractor_tel" name="subcontractor_tel_input" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="subcontractorEmail" class="input-group-text">협력 업체 이메일</label>
-									<input type="text" class="form-control" id="subcontractor_email" name="subcontractor_email" />
+									<input type="text" class="form-control" id="subcontractor_email" name="subcontractor_email_input" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="subcontractorPerson" class="input-group-text">협력 업체 담당자</label>
-									<input type="text" class="form-control" id="subcontractor_person" name="subcontractor_person" />
+									<input type="text" class="form-control" id="subcontractor_person" name="subcontractor_person_input" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="productName" class="input-group-text">제품명</label>
-									<input type="text" class="form-control" id="product_name" name="product_name" />
+									<input type="text" class="form-control" id="product_name" name="product_name_input" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="itemCode" class="input-group-text">품목 코드</label>
-									<input type="number" class="form-control" id="item_code" name="item_code" />
+									<input type="number" class="form-control" id="item_code" name="item_code_input" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="itemName" class="input-group-text">품목명</label>
-									<input type="text" class="form-control" id="item_name" name="item_name" />
+									<input type="text" class="form-control" id="item_name" name="item_name_input" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="standard" class="input-group-text">규격</label>
-									<input type="text" class="form-control" id="standard" name="standard" />
+									<input type="text" class="form-control" id="standard" name="standard_input" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="material" class="input-group-text">재질</label>
-									<input type="text" class="form-control" id="material" name="material" />
+									<input type="text" class="form-control" id="material" name="material_input" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="specificationFile" class="input-group-text">제작 사양</label>
-									<input type="text" class="form-control" id="specification_file" name="specification_file" />
+									<input type="text" class="form-control" id="specification_file" name="specification_file_input" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="drawFile" class="input-group-text">도면 파일</label>
-									<input type="text" class="form-control" id="draw_file" name="draw_file" />
+									<input type="text" class="form-control" id="draw_file" name="draw_file_input" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="supplyPrice" class="input-group-text">공급 가격</label>
-									<input type="number" class="form-control" id="supply_price" name="supply_price" />
+									<input type="number" class="form-control" id="supply_price" name="supply_price_input" />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="input-group mb-3">
 									<span class="input-group-text">계약 날짜</span>
 									<input
-										type="date" id="txnAgreementDate"
+										type="date" id="agreement_date"
 										class="form-control datepicker"
-										name="txnContractVO.agreementDate"
+										name="agreement_date_input"
 										aria-label="agreementDate">
 									<span class="input-group-text"><img src="/resources/img/calendar3.svg" alt="" width="16" height="16" title="calendar" /></span>
 								</div>
@@ -185,16 +185,16 @@
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="leadtime" class="input-group-text">L/T</label>
-									<input type="number" class="form-control" id="leadtime" name="leadtime" />
+									<input type="number" class="form-control" id="leadtime" name="leadtime_input" />
 								</div>
 							</div>
 							<div>
 								<label for="contactFile" class="form-label">계약서 첨부: </label>
-								<input type="file" class="form-control" id="contact_file" name="contact_file" />
+								<input type="file" class="form-control" id="contact_file" name="contact_file_input" />
 							</div>
 							<div>
                               <label for="address" class="form-label">비고: </label>
-							  <textarea rows="5" class="form-control" id="text" name="text"></textarea>
+							  <textarea rows="5" class="form-control" id="text" name="text_input"></textarea>
                             </div>
 							<div class="col-md-1">
 								<button type="button" class="btn btn-primary btn-primary">조회</button>

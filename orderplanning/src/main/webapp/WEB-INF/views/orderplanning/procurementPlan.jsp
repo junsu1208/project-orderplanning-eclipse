@@ -90,31 +90,31 @@
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="itemCode" class="input-group-text">품목 코드</label>
-									<input type="number" class="form-control" id="item_code" name="item_code" value="1" readonly />
+									<input type="number" class="form-control" id="item_code" name="item_code" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="itemName" class="input-group-text">품목명</label>
-									<input type="text" class="form-control" id="item_name" name="item_name" value="(불러온 값)" readonly />
+									<input type="text" class="form-control" id="item_name" name="item_name" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="process" class="input-group-text">자재 소요 공정</label>
-									<input type="text" class="form-control" id="process" name="standard" value="(불러온 값)" readonly />
+									<input type="text" class="form-control" id="process" name="standard" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="productionDate" class="input-group-text">생산일</label>
-									<input type="date" class="form-control" id="production_date" name="production_date" value="2023-05-18" readonly />
+									<input type="date" class="form-control" id="production_date" name="production_date" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="consumption" class="input-group-text">소요량</label>
-									<input type="number" class="form-control" id="production_date" name="production_date" value="400" readonly />
+									<input type="number" class="form-control" id="production_date" name="production_date" />
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -174,6 +174,7 @@
 					</caption>
 					<thead class="table-dark">
 						<tr>
+							<th scope="col" style="text-align: center;"></th>
                             <th scope="col" style="text-align: center;">순번</th>
                             <th scope="col" style="text-align: center;">조달 계획</th>
                             <th scope="col" style="text-align: center;">품목코드</th>
@@ -187,6 +188,8 @@
 					<c:set var="no" value="0"/>
 					<c:forEach items="${ procurementPlan }" var="procurementPlan">
 						<tr>
+							<th scope="row" style="text-align: center;"><input type="checkbox" name="selection" onclick="checkOnlyOne(this)"
+                                       value="1" /></th>
 							<td style="text-align: center;">${ no = no + 1 }</td>
 							<td style="text-align: center;"><span>등록</span></td>
 							<td style="text-align: center;"><span>${ procurementPlan.item_code }</span></td>

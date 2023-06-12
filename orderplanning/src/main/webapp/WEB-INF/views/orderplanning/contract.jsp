@@ -108,61 +108,61 @@
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="subcontractorTel" class="input-group-text">협력 업체 전화번호</label>
-									<input type="text" class="form-control" id="subcontractor_tel" name="subcontractor_tel" value="(불러온 협력 업체 전화번호)" readonly />
+									<input type="text" class="form-control" id="subcontractor_tel" name="subcontractor_tel" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="subcontractorEmail" class="input-group-text">협력 업체 이메일</label>
-									<input type="text" class="form-control" id="subcontractor_email" name="subcontractor_email" value="(불러온 협력 업체 이메일 주소)" readonly />
+									<input type="text" class="form-control" id="subcontractor_email" name="subcontractor_email" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="subcontractorPerson" class="input-group-text">협력 업체 담당자</label>
-									<input type="text" class="form-control" id="subcontractor_person" name="subcontractor_person" value="(불러온 협력 업체 담당자 성함)" readonly />
+									<input type="text" class="form-control" id="subcontractor_person" name="subcontractor_person" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="productName" class="input-group-text">제품명</label>
-									<input type="text" class="form-control" id="product_name" name="product_name" value="(불러온 제품명)" readonly />
+									<input type="text" class="form-control" id="product_name" name="product_name" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="itemCode" class="input-group-text">품목 코드</label>
-									<input type="number" class="form-control" id="item_code" name="item_code" value="1" readonly />
+									<input type="number" class="form-control" id="item_code" name="item_code" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="itemName" class="input-group-text">품목명</label>
-									<input type="text" class="form-control" id="item_name" name="item_name" value="(불러온 품목명)" readonly />
+									<input type="text" class="form-control" id="item_name" name="item_name" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="standard" class="input-group-text">규격</label>
-									<input type="text" class="form-control" id="standard" name="standard" value="(불러온 규격)" readonly />
+									<input type="text" class="form-control" id="standard" name="standard" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="material" class="input-group-text">재질</label>
-									<input type="text" class="form-control" id="material" name="material" value="(불러온 재질)" readonly />
+									<input type="text" class="form-control" id="material" name="material" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="specificationFile" class="input-group-text">제작 사양</label>
-									<input type="text" class="form-control" id="specification_file" name="specification_file" value="(불러온 사양서 파일)" readonly />
+									<input type="text" class="form-control" id="specification_file" name="specification_file" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="drawFile" class="input-group-text">도면 파일</label>
-									<input type="text" class="form-control" id="draw_file" name="draw_file" value="(불러온 도면 파일)" readonly />
+									<input type="text" class="form-control" id="draw_file" name="draw_file" />
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -237,6 +237,7 @@
 					</caption>
 					<thead class="table-dark">
 						<tr>
+							<th scope="col" style="text-align: center;"></th>
                             <th scope="col" style="text-align: center;">순번</th>
                             <th scope="col" style="text-align: center;">계약명</th>
                             <th scope="col" style="text-align: center;">제품명</th>
@@ -251,6 +252,8 @@
 					<c:set var="no" value="0"/>
 					<c:forEach items="${ contract }" var="contract">
 						<tr>
+							<th scope="row" style="text-align: center;"><input type="checkbox" name="selection" onclick="checkOnlyOne(this)"
+                                       value="1" /></th>
 							<td style="text-align: center;">${ no = no + 1 }</td>
 							<td style="text-align: center;"><span>${ contract.contract_name }</span></td>
 							<td style="text-align: center;"><span>${ contract.product_name }</span></td>

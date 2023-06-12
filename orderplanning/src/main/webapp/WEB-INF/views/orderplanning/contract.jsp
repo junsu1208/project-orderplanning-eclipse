@@ -156,13 +156,13 @@
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="specificationFile" class="input-group-text">제작 사양</label>
-									<input type="text" class="form-control" id="specification_file" name="specification_file" />
+									<input type="file" class="form-control" id="specification_file" name="specification_file" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="drawFile" class="input-group-text">도면 파일</label>
-									<input type="text" class="form-control" id="draw_file" name="draw_file" />
+									<input type="file" class="form-control" id="draw_file" name="draw_file" />
 								</div>
 							</div>
 							<div class="col-md-6">

@@ -88,38 +88,38 @@
 						<div class="row g-3">
 							<div class="col-md-6">
 								<label for="itemCode" class="form-label">품목 코드: </label>
-								<input type="number" class="form-control" id="item_code" name="item_code_inquiry"/>
+								<input type="number" class="form-control" id="item_code" name="item_code"/>
 							</div>
 							<div class="col-md-6">
 								<label for="itemName" class="form-label">품목명: </label>
-								<input type="text" class="form-control" id="item_name" name="item_name_inquiry" />
+								<input type="text" class="form-control" id="item_name" name="item_name" />
 							</div>
 							<div class="col-md-6">
 								<label for="standard" class="form-label">규격: </label>
-								<input type="text" class="form-control" id="standard" name="standard_inquiry" />
+								<input type="text" class="form-control" id="standard" name="standard" />
 							</div>
 							<div class="col-md-6">
 								<label for="material" class="form-label">재질: </label>
-								<input type="text" class="form-control" id="material" name="material_inquiry" />
+								<input type="text" class="form-control" id="material" name="material" />
 							</div>
 							<div class="col-md-6">
 								<label for="specificationFile" class="form-label">제작 사양: </label>
-                              	<input type="file" class="form-control" id="specification_file" name="specification_file_inquiry" />
+                              	<input type="file" class="form-control" id="specification_file" name="specification_file" />
 							</div>
 							<div class="col-md-6">
 								<label for="drawFile" class="form-label">도면 파일: </label>
-                              	<input type="file" class="form-control" id="draw_file" name="draw_file_inquiry" />
+                              	<input type="file" class="form-control" id="draw_file" name="draw_file" />
 							</div>				
 							<div class="col-md-6">
 								<label for="itemRegistrationDate" class="form-label">등록일: </label>
 								<input type="date" id="item_registration_date" 
 									   class="form-control datepicker"
-									   name="item_registration_date_inquiry"
+									   name="item_registration_date"
 									   aria-label="itemRegistrationDate">
 							</div>
 							<div class="col-md-6">
 								<label for="scCode" class="form-label">중분류 코드: </label>
-								<select id="scCode" class="form-select" tabindex="1" id="sc_code" name="sc_code_inquiry">
+								<select id="scCode" class="form-select" tabindex="1" id="sc_code" name="sc_code">
 									<option value="">입력
 									<option value="1">1
 									<option value="2">2
@@ -184,14 +184,14 @@
                             <th style="text-align: center;"></th>
                             <td style="text-align: center;"></td>
                             <td style="text-align: center;"></td>
-                            <td style="text-align: center;"><span><input type="text" name="item_name_list" id="item_name" style="width:100px"/></span></td>
-                            <td style="text-align: center;"><span><input type="text" name="standard_list" id="standard" style="width:100px"/></span></td>
-                            <td style="text-align: center;"><span><input type="text" name="material_list" id="material" style="width:100px"/></span></td>
-                            <td style="text-align: center;"><span><input type="file" name="specification_file_list" id="specification_file" style="width:80px"/></span></td>
-                            <td style="text-align: center;"><span><input type="file" name="draw_file_list" id="draw_file" style="width:80px"/></span></td>
+                            <td style="text-align: center;"><span><input type="text" name="item_name" id="item_name" style="width:100px"/></span></td>
+                            <td style="text-align: center;"><span><input type="text" name="standard" id="standard" style="width:100px"/></span></td>
+                            <td style="text-align: center;"><span><input type="text" name="material" id="material" style="width:100px"/></span></td>
+                            <td style="text-align: center;"><span><input type="file" name="specification_file" id="specification_file" style="width:80px"/></span></td>
+                            <td style="text-align: center;"><span><input type="file" name="draw_file" id="draw_file" style="width:80px"/></span></td>
                             <td style="text-align: center;"></td>
                             <td style="text-align: center;"><span>
-								<select id="scCode" class="form-select" tabindex="1" name="sc_code_list" id="sc_code" style="width:80px">
+								<select id="scCode" class="form-select" tabindex="1" name="sc_code" id="sc_code" style="width:80px">
 									<option value="">입력
 									<option value="1">1
 									<option value="2">2

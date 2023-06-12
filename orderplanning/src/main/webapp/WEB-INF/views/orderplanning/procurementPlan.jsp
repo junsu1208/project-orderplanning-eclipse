@@ -90,19 +90,19 @@
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="itemCode" class="input-group-text">품목 코드</label>
-									<input type="number" class="form-control" id="item_code" name="item_code_input" />
+									<input type="number" class="form-control" id="item_code" name="item_code" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="itemName" class="input-group-text">품목명</label>
-									<input type="text" class="form-control" id="item_name" name="item_name_input" />
+									<input type="text" class="form-control" id="item_name" name="item_name" />
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="process" class="input-group-text">자재 소요 공정</label>
-									<input type="text" class="form-control" id="process" name="standard_input" />
+									<input type="text" class="form-control" id="process" name="standard" />
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -111,14 +111,14 @@
 									<input
 										type="date" id="production_date"
 										class="form-control datepicker"
-										name="production_date_input"
+										name="production_date"
 										aria-label="productionDate">
 								</div>
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
 									<label for="consumption" class="input-group-text">소요량</label>
-									<input type="number" class="form-control" id="consumption" name="consumption_input" />
+									<input type="number" class="form-control" id="consumption" name="consumption" />
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -127,14 +127,14 @@
 									<input
 										type="date" id="procurement_date"
 										class="form-control datepicker"
-										name="procurement_date_input"
+										name="procurement_date"
 										aria-label="procurementDate">
 								</div>
 							</div>
 							<div>
                               <label for="address" class="form-label">비고:</label>
                                 <textarea rows="5" class="form-control"
-                                          id="text" name="text_input"></textarea>
+                                          id="text" name="text"></textarea>
                             </div>
 							<div class="col-md-1">
 								<button type="button" class="btn btn-primary btn-primary">조회</button>

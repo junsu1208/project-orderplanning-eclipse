@@ -179,7 +179,6 @@
 										class="form-control datepicker"
 										name="agreement_date_input"
 										aria-label="agreementDate">
-									<span class="input-group-text"><img src="/resources/img/calendar3.svg" alt="" width="16" height="16" title="calendar" /></span>
 								</div>
 							</div>
 							<div class="col-md-6">

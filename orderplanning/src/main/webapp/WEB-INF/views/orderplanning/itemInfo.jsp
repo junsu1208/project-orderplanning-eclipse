@@ -112,10 +112,10 @@
 							</div>				
 							<div class="col-md-6">
 								<label for="itemRegistrationDate" class="form-label">등록일: </label>
-								<input type="date" 
-									   id="item_registration_date" 
+								<input type="date" id="item_registration_date" 
 									   class="form-control datepicker"
-									   name="item_registration_date_inquiry" aria-label="itemRegistrationDate">
+									   name="item_registration_date_inquiry"
+									   aria-label="itemRegistrationDate">
 							</div>
 							<div class="col-md-6">
 								<label for="scCode" class="form-label">중분류 코드: </label>

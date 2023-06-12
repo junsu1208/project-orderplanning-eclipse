@@ -107,8 +107,12 @@
 							</div>
 							<div class="col-md-6">
 	                            <div class="input-group mb-3">
-									<label for="productionDate" class="input-group-text">생산일</label>
-									<input type="date" class="form-control" id="production_date" name="production_date_input" />
+									<span class="input-group-text">생산일</span>
+									<input
+										type="date" id="production_date"
+										class="form-control datepicker"
+										name="production_date_input"
+										aria-label="productionDate">
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -125,7 +129,6 @@
 										class="form-control datepicker"
 										name="procurement_date_input"
 										aria-label="procurementDate">
-									<span class="input-group-text"><img src="/resources/img/calendar3.svg" alt="" width="16" height="16" title="calendar" /></span>
 								</div>
 							</div>
 							<div>

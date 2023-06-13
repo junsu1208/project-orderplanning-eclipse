@@ -103,23 +103,16 @@
 							</div>
 							<div class="col-md-6">
 								<label for="subcontractorTel" class="form-label">협력 업체 전화번호: </label>
-								<c:forEach items="${getSubcontractor}" var="subcontractor">
-									<input type="text" class="form-control" id="subcontractor_tel" name="subcontractor_tel" value="${ subcontractor.subcontractor_tel }" readonly />
-								</c:forEach>
+								<input type="text" class="form-control" id="subcontractor_tel" name="subcontractor_tel" readonly />
 							</div>
 							<div class="col-md-6">
 								<label for="subcontractorEmail" class="form-label">협력 업체 이메일: </label>
-								<c:forEach items="${getSubcontractor}" var="subcontractor">
-									<input type="text" class="form-control" id="subcontractor_email" name="subcontractor_email" value="${ subcontractor.subcontractor_email }" readonly />
-								</c:forEach>
+								<input type="text" class="form-control" id="subcontractor_email" name="subcontractor_email" readonly />
 							</div>
 							<div class="col-md-6">
 								<label for="subcontractorPerson" class="form-label">협력 업체 담당자: </label>
-								<c:forEach items="${getSubcontractor}" var="subcontractor">
-									<input type="text" class="form-control" id="subcontractor_person" name="subcontractor_person" value="${ subcontractor.subcontractor_person }" readonly />
-								</c:forEach>
+								<input type="text" class="form-control" id="subcontractor_person" name="subcontractor_person" readonly />
 							</div>
-							
 							<div class="col-md-6">
 								<label for="itemCode" class="form-label">품목 코드: </label>
 								<select id="itemCode" class="form-select" tabindex="1" 
@@ -132,39 +125,27 @@
 							</div>
 							<div class="col-md-6">
 								<label for="productName" class="form-label">제품명: </label>
-								<c:forEach items="${getItemInfoForContract}" var="item">
-									<input type="text" class="form-control" id="product_name" name="product_name" value="${item.product_name}" readonly />
-								</c:forEach>
+								<input type="text" class="form-control" id="product_name" name="product_name" readonly />
 							</div>
 							<div class="col-md-6">
 								<label for="itemName" class="form-label">품목명: </label>
-								<c:forEach items="${getItemInfoForContract}" var="item">
-									<input type="text" class="form-control" id="item_name" name="item_name" value="${item.item_name}"  readonly />
-								</c:forEach>
+								<input type="text" class="form-control" id="item_name" name="item_name" readonly />
 							</div>
 							<div class="col-md-6">
 								<label for="standard" class="form-label">규격: </label>
-								<c:forEach items="${getItemInfoForContract}" var="item">
-									<input type="text" class="form-control" id="standard" name="standard" value="${item.standard}"  readonly />
-								</c:forEach>
+								<input type="text" class="form-control" id="standard" name="standard" readonly />
 							</div>
 							<div class="col-md-6">
 								<label for="material" class="form-label">재질: </label>
-								<c:forEach items="${getItemInfoForContract}" var="item">
-									<input type="text" class="form-control" id="material" name="material" value="${item.material}"  readonly />
-								</c:forEach>
+								<input type="text" class="form-control" id="material" name="material" readonly />
 							</div>
 							<div class="col-md-6">
 								<label for="specificationFile" class="form-label">제작 사양: </label>
-								<c:forEach items="${getItemInfoForContract}" var="item">
-									<input type="text" class="form-control" id="specification_file" name="specification_file" value="${item.specification_file}"  readonly />
-								</c:forEach>
+								<input type="text" class="form-control" id="specification_file" name="specification_file" readonly />
 							</div>
 							<div class="col-md-6">
 								<label for="drawFile" class="form-label">도면 파일: </label>
-								<c:forEach items="${getItemInfoForContract}" var="item">
-									<input type="text" class="form-control" id="draw_file" name="draw_file" value="${item.draw_file}" readonly />
-								</c:forEach>
+								<input type="text" class="form-control" id="draw_file" name="draw_file" readonly />
 							</div>
 							<div class="col-md-6">
 								<label for="supplyPrice" class="form-label">공급 가격: </label>

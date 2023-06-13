@@ -60,7 +60,7 @@
 	<!-- 품목 정보 목록 가져오기 -->
 	<select id="getItemInfoForContract" resultType="com.overc1ock.domain.ContractVO">
 		SELECT *
-		FROM item_has_product
+		FROM item_has_product LEFT JOIN item USING(item_code)
 		ORDER BY item_code
 	</select>
 	
@@ -75,7 +75,7 @@
 	<!-- 품목 정보 목록 가져오기 -->
 	<select id="getItemInfoForProcurementPlan" resultType="com.overc1ock.domain.ProcurementPlanVO">
 		SELECT *
-		FROM item_has_product
+		FROM item_has_product LEFT JOIN item USING(item_code)
 		ORDER BY item_code
 	</select>
 	

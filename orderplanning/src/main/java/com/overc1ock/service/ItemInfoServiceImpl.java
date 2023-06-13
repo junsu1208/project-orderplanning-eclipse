@@ -28,6 +28,11 @@ public class ItemInfoServiceImpl implements ItemInfoService {
 		log.info("품목 정보 저장 요청, 변수값: " + vo);
 		mapper.saveItemInfo(vo);
 	}
+	
+	@Override
+	public List<ItemInfoVO> getSubCategory() {
+		return mapper.getSubCategory();
+	}
 
 	@Override
 	public ItemInfoVO inquiryItemInfo(Long item_code) {

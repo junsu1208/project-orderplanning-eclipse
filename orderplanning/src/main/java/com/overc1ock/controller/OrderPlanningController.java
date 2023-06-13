@@ -28,6 +28,7 @@ public class OrderPlanningController {
 	public void itemInfo(Model model) {
 		log.info("품목 정보 등록 페이지 요청");
 		model.addAttribute("itemInfo", itemInfoService.getItemInfo());
+		model.addAttribute("getSubCategory", itemInfoService.getSubCategory());
 	}
 	
 	@PostMapping("/saveItemInfo")

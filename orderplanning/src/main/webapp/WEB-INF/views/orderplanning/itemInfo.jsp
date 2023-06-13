@@ -120,11 +120,10 @@
 							<div class="col-md-6">
 								<label for="scCode" class="form-label">중분류 코드: </label>
 								<select id="scCode" class="form-select" tabindex="1" id="sc_code" name="sc_code">
-									<option value="">입력
-									<option value="1">1
-									<option value="2">2
-									<option value="3">3
-									<option value="4">4</option>
+									<option selected>입력</option>
+									<c:forEach items="${getSubCategory}" var="sub_category">
+										<option><c:out value="${sub_category.sc_code}"></c:out>
+									</c:forEach>
 								</select>
 							</div>
 							<div class="col-md-1">
@@ -192,11 +191,10 @@
                             <td style="text-align: center;"></td>
                             <td style="text-align: center;"><span>
 								<select id="scCode" class="form-select" tabindex="1" name="sc_code" id="sc_code" style="width:80px">
-									<option value="">입력
-									<option value="1">1
-									<option value="2">2
-									<option value="3">3
-									<option value="4">4</option>
+									<option selected>입력</option>
+									<c:forEach items="${getSubCategory}" var="sub_category">
+										<option><c:out value="${sub_category.sc_code}"></c:out>
+									</c:forEach>
 								</select>
 							</span></td>
                             <td style="text-align: center;"><span><button type="submit" class="btn btn-success btn-sm">저장</button></span></td>

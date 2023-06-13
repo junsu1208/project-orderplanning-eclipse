@@ -18,6 +18,13 @@
 		VALUES (#{ item_name }, #{ standard }, #{ material }, #{ specification_file }, #{ draw_file }, #{ sc_code });
 	</insert>
 	
+	<!-- 중분류 코드 가져오기 -->
+	<select id="getSubCategory" resultType="com.overc1ock.domain.ItemInfoVO">
+		SELECT *
+		FROM sub_category
+		ORDER BY sc_code ASC
+	</select>
+	
 	<!-- 품목 정보 조회 -->
 	<select id="inquiryItemInfo" resultType="com.overc1ock.domain.ItemInfoVO">
 		SELECT `item_code`, `item_name`, `standard`, `material`, `specification_file`, `draw_file`, `item_registration_date`, `sc_code` 

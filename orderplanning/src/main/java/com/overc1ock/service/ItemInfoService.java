@@ -9,6 +9,7 @@ public interface ItemInfoService {
 	// 품목 정보 등록
 	List<ItemInfoVO> getItemInfo(); // 목록 가져오기
 	void saveItemInfo(ItemInfoVO vo); // 저장
+	List<ItemInfoVO> getSubCategory(); // 중분류 코드 가져오기
 	ItemInfoVO inquiryItemInfo(Long item_code); // 조회
 	boolean deleteItemInfo(Long item_code); // 삭제
 	boolean modifyItemInfo(ItemInfoVO vo); // 수정

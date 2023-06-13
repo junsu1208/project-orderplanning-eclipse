@@ -93,47 +93,59 @@
 							</div>
 							<div class="col-md-6">
 								<label for="subcontractorName" class="form-label">협력 업체명: </label>
-								<input type="text" class="form-control" id="subcontractor_name" name="subcontractor_name" />
+								<select id="subcontractorName" class="form-select" tabindex="1" 
+									id="subcontractor_name" name="subcontractor_name">
+									<option selected>(협력 업체명)</option>
+									<c:forEach items="${getSubcontractor}" var="subcontractor">
+										<option><c:out value="${subcontractor.subcontractor_name}"></c:out>
+									</c:forEach>
+								</select>
 							</div>
 							<div class="col-md-6">
 								<label for="subcontractorTel" class="form-label">협력 업체 전화번호: </label>
-								<input type="text" class="form-control" id="subcontractor_tel" name="subcontractor_tel" />
+								<input type="text" class="form-control" id="subcontractor_tel" name="subcontractor_tel" readonly />
 							</div>
 							<div class="col-md-6">
 								<label for="subcontractorEmail" class="form-label">협력 업체 이메일: </label>
-								<input type="text" class="form-control" id="subcontractor_email" name="subcontractor_email" />
+								<input type="text" class="form-control" id="subcontractor_email" name="subcontractor_email" readonly />
 							</div>
 							<div class="col-md-6">
 								<label for="subcontractorPerson" class="form-label">협력 업체 담당자: </label>
-								<input type="text" class="form-control" id="subcontractor_person" name="subcontractor_person" />
-							</div>
-							<div class="col-md-6">
-								<label for="productName" class="form-label">제품명: </label>
-								<input type="text" class="form-control" id="product_name" name="product_name" />
+								<input type="text" class="form-control" id="subcontractor_person" name="subcontractor_person" readonly />
 							</div>
 							<div class="col-md-6">
 								<label for="itemCode" class="form-label">품목 코드: </label>
-								<input type="number" class="form-control" id="item_code" name="item_code" />
+								<select id="itemCode" class="form-select" tabindex="1" 
+									id="item_code" name="item_code">
+									<option selected>(품목 코드)</option>
+									<c:forEach items="${getItemInfoForContract}" var="item">
+										<option><c:out value="${item.item_code}"></c:out>
+									</c:forEach>
+								</select>
+							</div>
+							<div class="col-md-6">
+								<label for="productName" class="form-label">제품명: </label>
+								<input type="text" class="form-control" id="product_name" name="product_name" readonly />
 							</div>
 							<div class="col-md-6">
 								<label for="itemName" class="form-label">품목명: </label>
-								<input type="text" class="form-control" id="item_name" name="item_name" />
+								<input type="text" class="form-control" id="item_name" name="item_name" readonly />
 							</div>
 							<div class="col-md-6">
 								<label for="standard" class="form-label">규격: </label>
-								<input type="text" class="form-control" id="standard" name="standard" />
+								<input type="text" class="form-control" id="standard" name="standard" readonly />
 							</div>
 							<div class="col-md-6">
 								<label for="material" class="form-label">재질: </label>
-								<input type="text" class="form-control" id="material" name="material" />
+								<input type="text" class="form-control" id="material" name="material" readonly />
 							</div>
 							<div class="col-md-6">
 								<label for="specificationFile" class="form-label">제작 사양: </label>
-								<input type="file" class="form-control" id="specification_file" name="specification_file" />
+								<input type="text" class="form-control" id="specification_file" name="specification_file" readonly />
 							</div>
 							<div class="col-md-6">
 								<label for="drawFile" class="form-label">도면 파일: </label>
-								<input type="file" class="form-control" id="draw_file" name="draw_file" />
+								<input type="text" class="form-control" id="draw_file" name="draw_file" readonly />
 							</div>
 							<div class="col-md-6">
 								<label for="supplyPrice" class="form-label">공급 가격: </label>

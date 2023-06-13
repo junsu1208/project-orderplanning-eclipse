@@ -12,8 +12,8 @@ public interface OrderPlanningMapper {
 	// 품목 정보 목록
 	List<ItemInfoVO> getItemInfo(); // 목록 가져오기
 	List<ItemInfoVO> getItemInfoWithPaging(Criteria cri); // 페이징 처리
-	int saveItemInfo(ItemInfoVO vo); // 저장
 	List<ItemInfoVO> getSubCategory(); // 중분류 코드 가져오기
+	int saveItemInfo(ItemInfoVO vo); // 저장
 	ItemInfoVO inquiryItemInfo(Long item_code); // 조회
 	int deleteItemInfo(Long item_code); // 삭제
 	int modifyItemInfo(ItemInfoVO vo); // 수정
@@ -21,6 +21,8 @@ public interface OrderPlanningMapper {
 	// 계약 등록
 	List<ContractVO> getContract(); // 목록 가져오기
 	List<ContractVO> getContractWithPaging(Criteria cri); // 페이징 처리
+	List<ContractVO> getSubcontractor(); // 협력 업체 정보 가져오기
+	List<ContractVO> getItemInfoForContract(); // 품목 정보 목록 가져오기
 	ContractVO inquiryContract(Long contract_code); // 조회
 	int registerContract(ContractVO vo); // 등록
 	int deleteContract(Long contract_code); // 삭제
@@ -29,6 +31,7 @@ public interface OrderPlanningMapper {
 	// 조달 계획 등록
 	List<ProcurementPlanVO> getProcurementPlan(); // 목록 가져오기
 	List<ProcurementPlanVO> getProcurementPlanWithPaging(Criteria cri); // 페이징 처리
+	List<ProcurementPlanVO> getItemInfoForProcurementPlan(); // 품목 정보 목록 가져오기
 	ProcurementPlanVO inquiryProcurementPlan(Long pp_code); // 조회
 	int registerProcurementPlan(ProcurementPlanVO vo); // 등록
 	int deleteProcurementPlan(Long pp_code); // 삭제

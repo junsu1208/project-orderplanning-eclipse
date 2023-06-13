@@ -89,11 +89,17 @@
 						<div class="row g-3">
 							<div class="col-md-6">
 								<label for="itemCode" class="form-label">품목 코드: </label>
-								<input type="number" class="form-control" id="item_code" name="item_code" />
+								<select id="itemCode" class="form-select" tabindex="1" 
+									id="item_code" name="item_code">
+									<option selected>(품목 코드)</option>
+									<c:forEach items="${getItemInfoForProcurementPlan}" var="item">
+										<option><c:out value="${item.item_code}"></c:out>
+									</c:forEach>
+								</select>
 							</div>
 							<div class="col-md-6">
 								<label for="itemName" class="form-label">품목명: </label>
-								<input type="text" class="form-control" id="item_name" name="item_name" />
+								<input type="text" class="form-control" id="item_name" name="item_name" readonly />
 							</div>
 							<div class="col-md-6">
 								<label for="process" class="form-label">자재 소요 공정: </label>

@@ -22,6 +22,16 @@ public class ContractServiceImpl implements ContractService {
 		log.info("계약 품목 정보 목록 요청");
 		return mapper.getContract();
 	}
+	
+	@Override
+	public List<ContractVO> getSubcontractor() {
+		return mapper.getSubcontractor();
+	}
+	
+	@Override
+	public List<ContractVO> getItemInfoForContract() {
+		return mapper.getItemInfoForContract();
+	}
 
 	@Override
 	public ContractVO inquiryContract(Long contract_code) {

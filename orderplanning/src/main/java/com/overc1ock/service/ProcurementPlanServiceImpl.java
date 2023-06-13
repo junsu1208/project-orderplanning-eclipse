@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.overc1ock.domain.ContractVO;
 import com.overc1ock.domain.ProcurementPlanVO;
 import com.overc1ock.mapper.OrderPlanningMapper;
 
@@ -21,6 +22,11 @@ public class ProcurementPlanServiceImpl implements ProcurementPlanService {
 	public List<ProcurementPlanVO> getProcurementPlan() {
 		log.info("조달 예정 품목 목록 요청");
 		return mapper.getProcurementPlan();
+	}
+	
+	@Override
+	public List<ProcurementPlanVO> getItemInfoForProcurementPlan() {
+		return mapper.getItemInfoForProcurementPlan();
 	}
 
 	@Override

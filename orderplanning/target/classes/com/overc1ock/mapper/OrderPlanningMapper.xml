@@ -12,12 +12,6 @@
 		ORDER BY item_registration_date DESC
 	</select>
 	
-	<!-- 품목 정보 저장 -->
-	<insert id="saveItemInfo">
-		INSERT INTO `mesdb`.`item` (`item_name`, `standard`, `material`, `specification_file`, `draw_file`, `sc_code`) 
-		VALUES (#{ item_name }, #{ standard }, #{ material }, #{ specification_file }, #{ draw_file }, #{ sc_code });
-	</insert>
-	
 	<!-- 중분류 코드 가져오기 -->
 	<select id="getSubCategory" resultType="com.overc1ock.domain.ItemInfoVO">
 		SELECT *
@@ -25,27 +19,34 @@
 		ORDER BY sc_code
 	</select>
 	
+	<!-- 품목 정보 저장 -->
+	<insert id="saveItemInfo">
+		INSERT INTO item (item_name, standard, material, specification_file, draw_file, sc_code)
+		VALUES (#{ item_name }, #{ standard }, #{ material }, #{ specification_file }, #{ draw_file }, #{ sc_code })
+	</insert>
+	
 	<!-- 품목 정보 조회 -->
 	<select id="inquiryItemInfo" resultType="com.overc1ock.domain.ItemInfoVO">
-		SELECT `item_code`, `item_name`, `standard`, `material`, `specification_file`, `draw_file`, `item_registration_date`, `sc_code` 
-		FROM `mesdb`.`item` WHERE  `item_code`=#{ item_code }
+		SELECT item_code, item_name, standard, material, specification_file, draw_file, item_registration_date, sc_code
+		FROM item LEFT JOIN sub_category USING(sc_code) LEFT JOIN major_category USING(mc_code)
+		WHERE item_code = #{ item_code }
 	</select>
 	
 	<!-- 품목 정보 삭제 -->
 	<delete id="deleteItemInfo">
-		DELETE FROM `mesdb`.`item` WHERE  `item_code`=#{ item_code }
+		DELETE FROM item WHERE item_code = #{ item_code }
 	</delete>
 	
 	<!-- 품목 정보 수정 -->
 	<update id="modifyItemInfo">
-		UPDATE `mesdb`.`item` 
-		SET `item_name`=#{ item_name }, `standard`=#{ standard }, `material`=#{ material }, 
-		`specification_file`=#{ specification_file }, `draw_file`=#{ draw_file }, `sc_code`=#{ sc_code } WHERE  `item_code`=#{ item_code };
+		UPDATE item
+		SET item_name = #{ item_name }, standard = #{ standard }, material = #{ material },
+		specification_file = #{ specification_file }, draw_file = #{ draw_file }, sc_code = #{ sc_code } WHERE item_code = #{ item_code };
 	</update>
 	
 	<!-- 계약 품목 정보 목록 출력 -->
 	<select id="getContract" resultType="com.overc1ock.domain.ContractVO">
-		SELECT contract_name, product_name, item_code, item_name, subcontractor_name, agreement_date, leadtime
+		SELECT contract_name, item_code, product_name, item_name, subcontractor_name, agreement_date, leadtime
 		FROM contract LEFT JOIN item USING(item_code) LEFT JOIN item_has_product USING(item_code) 
 		ORDER BY contract_date DESC
 	</select>
@@ -63,6 +64,33 @@
 		FROM item_has_product LEFT JOIN item USING(item_code)
 		ORDER BY item_code
 	</select>
+	
+	<!-- 계약 등록 -->
+	<insert id="registerContract">
+		INSERT INTO 
+		contract (contract_name, subcontractor_name, item_code, supply_price, agreement_date, leadtime, contract_file, contract_text)
+		VALUES (#{ contract_name }, #{ subcontractor_name }, #{ item_code }, #{ supply_price }, #{ agreement_date }, #{ leadtime }, #{ contract_file }, #{ contract_text })
+	</insert>
+	
+	<!-- 계약 조회 -->
+	<select id="inquiryContract" resultType="com.overc1ock.domain.ItemInfoVO">
+		SELECT contract_name, item_code, product_name, item_name, subcontractor_name, agreement_date, leadtime
+		FROM contract LEFT JOIN item_has_product USING(item_code) LEFT JOIN item USING(item_code) 
+		WHERE contract_code = #{ contract_code }
+	</select>
+	
+	<!-- 계약 삭제 -->
+	<delete id="deleteContract">
+		DELETE FROM contract WHERE contract_code = ${ contract_code }
+	</delete>
+	
+	<!-- 계약 수정 -->
+	<update id="modifyContract">
+		UPDATE contract
+		SET contract_name = #{ contract_name }, subcontractor_name = #{ subcontractor_name }, item_code = #{ item_code },
+		supply_price = #{ supply_price }, agreement_date = #{ agreement_date }, leadtime = #{ leadtime }, 
+		contract_file = #{ contract_file }, contract_text = #{ contract_text } WHERE contract_code = #{ contract_code }
+	</update>
 	
 	<!-- 조달 예정 목록 출력 -->
 	<select id="getProcurementPlan" resultType="com.overc1ock.domain.ProcurementPlanVO">

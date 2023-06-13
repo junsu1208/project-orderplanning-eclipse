@@ -24,16 +24,16 @@ public class ItemInfoServiceImpl implements ItemInfoService {
 	}
 
 	@Override
+	public List<ItemInfoVO> getSubCategory() {
+		return mapper.getSubCategory();
+	}
+	
+	@Override
 	public void saveItemInfo(ItemInfoVO vo) {
 		log.info("품목 정보 저장 요청, 변수값: " + vo);
 		mapper.saveItemInfo(vo);
 	}
 	
-	@Override
-	public List<ItemInfoVO> getSubCategory() {
-		return mapper.getSubCategory();
-	}
-
 	@Override
 	public ItemInfoVO inquiryItemInfo(Long item_code) {
 		log.info("품목 정보 조회 요청, 변수값: " + item_code);

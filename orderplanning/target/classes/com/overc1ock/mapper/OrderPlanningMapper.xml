@@ -54,7 +54,7 @@
 	<select id="getSubcontractor" resultType="com.overc1ock.domain.ContractVO">
 		SELECT *
 		FROM subcontractor
-		ORDER BY subcontractor_date DESC
+		ORDER BY subcontractor_date
 	</select>
 	
 	<!-- 품목 정보 목록 가져오기 -->

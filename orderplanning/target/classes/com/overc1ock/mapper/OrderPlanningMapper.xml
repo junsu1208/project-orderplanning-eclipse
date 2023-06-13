@@ -45,9 +45,9 @@
 	
 	<!-- 계약 품목 정보 목록 출력 -->
 	<select id="getContract" resultType="com.overc1ock.domain.ContractVO">
-		SELECT contract_name, item_code, product_name, item_name, subcontractor_name, agreement_date, leadtime
+		SELECT contract_name, product_name, item_code, item_name, subcontractor_name, agreement_date, leadtime
 		FROM contract LEFT JOIN item USING(item_code) LEFT JOIN item_has_product USING(item_code) 
-		ORDER BY agreement_date DESC
+		ORDER BY contract_date DESC
 	</select>
 	
 	<!-- 협력 업체 정보 가져오기 -->

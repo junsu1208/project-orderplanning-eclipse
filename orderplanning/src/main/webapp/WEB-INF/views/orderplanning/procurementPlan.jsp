@@ -88,52 +88,40 @@
 					<div class="card-body">
 						<div class="row g-3">
 							<div class="col-md-6">
-	                            <div class="input-group mb-3">
-									<label for="itemCode" class="input-group-text">품목 코드</label>
-									<input type="number" class="form-control" id="item_code" name="item_code" />
-								</div>
+								<label for="itemCode" class="form-label">품목 코드: </label>
+								<input type="number" class="form-control" id="item_code" name="item_code" />
 							</div>
 							<div class="col-md-6">
-	                            <div class="input-group mb-3">
-									<label for="itemName" class="input-group-text">품목명</label>
-									<input type="text" class="form-control" id="item_name" name="item_name" />
-								</div>
+								<label for="itemName" class="form-label">품목명: </label>
+								<input type="text" class="form-control" id="item_name" name="item_name" />
 							</div>
 							<div class="col-md-6">
-	                            <div class="input-group mb-3">
-									<label for="process" class="input-group-text">자재 소요 공정</label>
-									<input type="text" class="form-control" id="process" name="standard" />
-								</div>
+								<label for="process" class="form-label">자재 소요 공정: </label>
+								<input type="text" class="form-control" id="process" name="standard" />
 							</div>
 							<div class="col-md-6">
-	                            <div class="input-group mb-3">
-									<span class="input-group-text">생산일</span>
-									<input
-										type="date" id="production_date"
-										class="form-control datepicker"
-										name="production_date"
-										aria-label="productionDate">
-								</div>
+	                            <label for="productionDate" class="form-label">생산일: </label>
+								<input
+									type="date" id="production_date"
+									class="form-control datepicker"
+									name="production_date"
+									aria-label="productionDate">
 							</div>
 							<div class="col-md-6">
-	                            <div class="input-group mb-3">
-									<label for="consumption" class="input-group-text">소요량</label>
-									<input type="number" class="form-control" id="consumption" name="consumption" />
-								</div>
+								<label for="consumption" class="form-label">소요량: </label>
+								<input type="number" class="form-control" id="consumption" name="consumption" />
 							</div>
 							<div class="col-md-6">
-								<div class="input-group mb-3">
-									<span class="input-group-text">조달 납기</span>
-									<input
-										type="date" id="procurement_date"
-										class="form-control datepicker"
-										name="procurement_date"
-										aria-label="procurementDate">
-								</div>
+								<label for="procurementDate" class="form-label">조달 납기: </label>
+								<input
+									type="date" id="procurement_date"
+									class="form-control datepicker"
+									name="procurement_date"
+									aria-label="procurementDate">
 							</div>
 							<div>
                               <label for="address" class="form-label">비고:</label>
-                                <textarea rows="5" class="form-control"
+                                <textarea rows="3" class="form-control"
                                           id="text" name="text"></textarea>
                             </div>
 							<div class="col-md-1">

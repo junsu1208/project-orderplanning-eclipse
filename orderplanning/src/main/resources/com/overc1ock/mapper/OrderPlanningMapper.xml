@@ -5,38 +5,45 @@
     
 <mapper namespace="com.overc1ock.mapper.OrderPlanningMapper">
 	
+	<!-- 품목 정보 목록 출력 -->
 	<select id="getItemInfo" resultType="com.overc1ock.domain.ItemInfoVO">
 		SELECT item_code, item_name, standard, material, specification_file, draw_file, item_registration_date, sc_code
 		FROM item LEFT JOIN sub_category USING(sc_code) LEFT JOIN major_category USING(mc_code) 
 		ORDER BY item_registration_date desc
 	</select>
 	
+	<!-- 품목 정보 저장 -->
 	<insert id="saveItemInfo">
 		INSERT INTO `mesdb`.`item` (`item_name`, `standard`, `material`, `specification_file`, `draw_file`, `sc_code`) 
 		VALUES (#{ item_name }, #{ standard }, #{ material }, #{ specification_file }, #{ draw_file }, #{ sc_code });
 	</insert>
 	
+	<!-- 품목 정보 조회 -->
 	<select id="inquiryItemInfo" resultType="com.overc1ock.domain.ItemInfoVO">
 		SELECT `item_code`, `item_name`, `standard`, `material`, `specification_file`, `draw_file`, `item_registration_date`, `sc_code` 
 		FROM `mesdb`.`item` WHERE  `item_code`=#{ item_code }
 	</select>
 	
+	<!-- 품목 정보 삭제 -->
 	<delete id="deleteItemInfo">
 		DELETE FROM `mesdb`.`item` WHERE  `item_code`=#{ item_code }
 	</delete>
 	
+	<!-- 품목 정보 수정 -->
 	<update id="modifyItemInfo">
 		UPDATE `mesdb`.`item` 
 		SET `item_name`=#{ item_name }, `standard`=#{ standard }, `material`=#{ material }, 
 		`specification_file`=#{ specification_file }, `draw_file`=#{ draw_file }, `sc_code`=#{ sc_code } WHERE  `item_code`=#{ item_code };
 	</update>
 	
+	<!-- 계약 품목 정보 목록 출력 -->
 	<select id="getContract" resultType="com.overc1ock.domain.ContractVO">
 		SELECT contract_name, product_name, item_code, item_name, subcontractor_name, agreement_date, leadtime
 		FROM contract LEFT JOIN item USING(item_code) LEFT JOIN item_has_product USING(item_code) 
 		ORDER BY agreement_date desc
 	</select>
 	
+	<!-- 조달 예정 목록 출력 -->
 	<select id="getProcurementPlan" resultType="com.overc1ock.domain.ProcurementPlanVO">
 		SELECT item_code, item_name, process, production_date, consumption
 		FROM item LEFT JOIN item_has_product USING(item_code) 

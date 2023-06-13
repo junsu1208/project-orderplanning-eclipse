@@ -97,7 +97,7 @@
 									id="subcontractor_name" name="subcontractor_name">
 									<option selected>(협력 업체명)</option>
 									<c:forEach items="${getSubcontractor}" var="subcontractor">
-										<option><c:out value="${subcontractor.subcontractor_name}"></c:out>
+										<option><c:out value="${subcontractor.subcontractor_name}"></c:out></option>
 									</c:forEach>
 								</select>
 							</div>

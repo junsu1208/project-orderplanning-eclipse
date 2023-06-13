@@ -93,7 +93,7 @@
 									id="item_code" name="item_code">
 									<option selected>(품목 코드)</option>
 									<c:forEach items="${getItemInfoForProcurementPlan}" var="item">
-										<option><c:out value="${item.item_code}"></c:out>
+										<option><c:out value="${item.item_code}"></c:out></option>
 									</c:forEach>
 								</select>
 							</div>

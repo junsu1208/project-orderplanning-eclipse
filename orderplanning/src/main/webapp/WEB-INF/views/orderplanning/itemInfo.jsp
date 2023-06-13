@@ -122,7 +122,7 @@
 								<select id="scCode" class="form-select" tabindex="1" id="sc_code" name="sc_code">
 									<option selected>입력</option>
 									<c:forEach items="${getSubCategory}" var="sub_category">
-										<option><c:out value="${sub_category.sc_code}"></c:out>
+										<option><c:out value="${sub_category.sc_code}"></c:out></option>
 									</c:forEach>
 								</select>
 							</div>
@@ -193,7 +193,7 @@
 								<select id="scCode" class="form-select" tabindex="1" name="sc_code" id="sc_code" style="width:80px">
 									<option selected>입력</option>
 									<c:forEach items="${getSubCategory}" var="sub_category">
-										<option><c:out value="${sub_category.sc_code}"></c:out>
+										<option><c:out value="${sub_category.sc_code}"></c:out></option>
 									</c:forEach>
 								</select>
 							</span></td>

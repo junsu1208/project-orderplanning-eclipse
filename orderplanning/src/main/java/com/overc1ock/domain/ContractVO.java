@@ -15,7 +15,7 @@ public class ContractVO {
 	private String subcontractor_email;
 	private String subcontractor_person;
 	private String product_name;
-	private Integer item_code;
+	private Long item_code;
 	private String item_name;
 	private String standard;
 	private String material;

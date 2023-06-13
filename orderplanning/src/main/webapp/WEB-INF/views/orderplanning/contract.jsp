@@ -171,11 +171,11 @@
                               <label for="address" class="form-label">비고: </label>
 							  <textarea rows="3" class="form-control" id="text" name="text"></textarea>
                             </div>
-							<div class="col-md-1">
-								<button type="button" class="btn btn-primary btn-primary">조회</button>
+                            <div class="col-md-1">
+								<button type="button" class="btn btn-primary btn-success">등록</button>
 							</div>
 							<div class="col-md-1">
-								<button type="button" class="btn btn-primary btn-success">등록</button>
+								<button type="button" class="btn btn-primary btn-primary">조회</button>
 							</div>
 							<div class="col-md-1">
                             	<button type="button" class="btn btn-primary btn-danger">삭제</button>
@@ -215,8 +215,8 @@
 							<th scope="col" style="text-align: center;"></th>
                             <th scope="col" style="text-align: center;">순번</th>
                             <th scope="col" style="text-align: center;">계약명</th>
-                            <th scope="col" style="text-align: center;">제품명</th>
                             <th scope="col" style="text-align: center;">품목 코드</th>
+                            <th scope="col" style="text-align: center;">제품명</th>
                             <th scope="col" style="text-align: center;">품목명</th>
                             <th scope="col" style="text-align: center;">협력 업체</th>
                             <th scope="col" style="text-align: center;">계약 날짜</th>
@@ -231,8 +231,8 @@
                                        value="1" /></th>
 							<td style="text-align: center;">${ no = no + 1 }</td>
 							<td style="text-align: center;"><span>${ contract.contract_name }</span></td>
-							<td style="text-align: center;"><span>${ contract.product_name }</span></td>
 							<td style="text-align: center;"><span>${ contract.item_code }</span></td>
+							<td style="text-align: center;"><span>${ contract.product_name }</span></td>
 							<td style="text-align: center;"><span>${ contract.item_name }</span></td>
 							<td style="text-align: center;"><span>${ contract.subcontractor_name }</span></td>
 							<td style="text-align: center;"><span><fmt:formatDate pattern="yyyy-MM-dd" value="${ contract.agreement_date }"/></span></td>

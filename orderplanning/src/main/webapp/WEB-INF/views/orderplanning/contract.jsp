@@ -227,8 +227,7 @@
 					<c:set var="no" value="0"/>
 					<c:forEach items="${ contract }" var="contract">
 						<tr>
-							<th scope="row" style="text-align: center;"><input type="checkbox" name="selection" onclick="checkOnlyOne(this)"
-                                       value="1" /></th>
+							<th scope="row" style="text-align: center;"><input type="checkbox" name="selection" value="1" /></th>
 							<td style="text-align: center;">${ no = no + 1 }</td>
 							<td style="text-align: center;"><span>${ contract.contract_name }</span></td>
 							<td style="text-align: center;"><span>${ contract.item_code }</span></td>
@@ -255,14 +254,17 @@
 	<script src="/resources/js/core/bootstrap-5.min.js" type="text/javascript"></script>
 	<script src="/resources/js/core/jquery-ui.min.js" type="text/javascript"></script>
 	<script type="text/javascript">
-		function checkOnlyOne(element) {
-			const checkboxes 
-				= document.getElementsByName("selection");
-			checkboxes.forEach((cb) => {
-				cb.checked = false;
-			})
-			element.checked = true;
-		}
+		$(document).on('click', "input[type='checkbox']", function() {
+			if (this.checked) {
+				const checkboxes = $("input[type='checkbox']");
+				for (let ind = 0; ind < checkboxes.length; ind++) {
+					checkboxes[ind].checked = false;
+				}
+				this.checked = true;
+			} else {
+				this.checked = false;
+			}
+		});
 	</script>
 	<script type="text/javascript">
 		$(document).ready(function() {

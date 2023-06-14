@@ -202,8 +202,7 @@
 					<c:set var="no" value="0"/>
 					<c:forEach items="${ itemInfo }" var="itemInfo">
 						 <tr>
-                            <th scope="row" style="text-align: center;"><input type="checkbox" name="selection" onclick="checkOnlyOne(this)"
-                                       value="1" /></th>
+                            <th scope="row" style="text-align: center;"><input type="checkbox" name="selection" value="1" /></th>
                             <td style="text-align: center;">${ no = no + 1 }</td>
                             <td style="text-align: center;"><span>${ itemInfo.item_code }</span></td>
                             <td style="text-align: center;"><span>${ itemInfo.item_name }</span></td>
@@ -215,7 +214,9 @@
                             <td style="text-align: center;">
                             	<span><button type="button" class="btn btn-secondary btn-sm">다운로드</button></span>
                             </td>
-                            <td style="text-align: center;"><span><fmt:formatDate pattern="yyyy-MM-dd" value="${ itemInfo.item_registration_date }"/></span></td>
+                            <td style="text-align: center;">
+                            	<span><fmt:formatDate pattern="yyyy-MM-dd" value="${ itemInfo.item_registration_date }"/></span>
+                            </td>
                             <td style="text-align: center;"><span>${ itemInfo.sc_code }</span></td>
                             <td style="text-align: center;"></td>
                         </tr>
@@ -230,6 +231,19 @@
 	<script src="/resources/js/core/popper.min.js" type="text/javascript"></script>
 	<script src="/resources/js/core/bootstrap-5.min.js" type="text/javascript"></script>
 	<script src="/resources/js/core/jquery-ui.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(document).on('click', "input[type='checkbox']", function() {
+			if (this.checked) {
+				const checkboxes = $("input[type='checkbox']");
+				for (let ind = 0; ind < checkboxes.length; ind++) {
+					checkboxes[ind].checked = false;
+				}
+				this.checked = true;
+			} else {
+				this.checked = false;
+			}
+		});
+	</script>
 	<script>
 		if (document.getElementById("flag").value == 2) {
 			document.getElementById("outbound").style.backgroundColor = "#fff";
@@ -238,16 +252,6 @@
 			document.getElementById("procurement").style.backgroundColor = "#fff";
 			document.getElementById("procurement").style.color = "#000000";
 			document.getElementById("procurement").style.fontWeight = "bold";
-		}
-	</script>
-	<script type="text/javascript">
-		function checkOnlyOne(element) {
-			const checkboxes 
-				= document.getElementsByName("selection");
-			checkboxes.forEach((cb) => {
-				cb.checked = false;
-			})
-			element.checked = true;
 		}
 	</script>
 </body>

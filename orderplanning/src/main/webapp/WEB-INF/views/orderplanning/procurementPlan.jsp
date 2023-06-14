@@ -207,6 +207,16 @@
 	<script src="/resources/js/core/bootstrap-5.min.js" type="text/javascript"></script>
 	<script src="/resources/js/core/jquery-ui.min.js" type="text/javascript"></script>
 	<script type="text/javascript">
+		function checkOnlyOne(element) {
+			const checkboxes 
+				= document.getElementsByName("selection");
+			checkboxes.forEach((cb) => {
+				cb.checked = false;
+			})
+			element.checked = true;
+		}
+	</script>
+	<script type="text/javascript">
 		$(document).ready(function() {
 			$(function() {
 				$("#procurementDate").datepicker();

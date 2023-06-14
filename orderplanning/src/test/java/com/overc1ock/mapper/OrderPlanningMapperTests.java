@@ -83,6 +83,31 @@ public class OrderPlanningMapperTests {
 	}
 	
 	@Test
+	public void testInquiryContract() {
+		mapper.inquiryContract(1L);
+	}
+	
+	@Test
+	public void testDeleteContract() {
+		mapper.deleteContract(27L);
+	}
+	
+	@Test
+	public void testModifyContract() {
+		ContractVO vo = new ContractVO();
+		vo.setContract_name("수정된 계약서");
+		vo.setSubcontractor_name("(유)길승산업");
+		vo.setItem_code(1);
+		vo.setSupply_price(1500);
+		vo.setAgreement_date("2023-06-14");
+		vo.setLeadtime(20);
+		vo.setContract_file("수정된 계약서 파일");
+		vo.setContract_text("수정된 비고");
+		vo.setContract_code(30L);
+		mapper.modifyContract(vo);
+	}
+	
+	@Test
 	public void testGetProcurementPlan() {
 		mapper.getProcurementPlan().forEach(vo -> log.info(vo));
 	}

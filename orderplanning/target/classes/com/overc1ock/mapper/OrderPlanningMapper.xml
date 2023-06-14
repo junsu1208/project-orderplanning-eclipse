@@ -73,7 +73,7 @@
 	</insert>
 	
 	<!-- 계약 조회 -->
-	<select id="inquiryContract" resultType="com.overc1ock.domain.ItemInfoVO">
+	<select id="inquiryContract" resultType="com.overc1ock.domain.ContractVO">
 		SELECT contract_name, item_code, product_name, item_name, subcontractor_name, agreement_date, leadtime
 		FROM contract LEFT JOIN item_has_product USING(item_code) LEFT JOIN item USING(item_code) 
 		WHERE contract_code = #{ contract_code }
@@ -81,7 +81,7 @@
 	
 	<!-- 계약 삭제 -->
 	<delete id="deleteContract">
-		DELETE FROM contract WHERE contract_code = ${ contract_code }
+		DELETE FROM contract WHERE contract_code = #{ contract_code }
 	</delete>
 	
 	<!-- 계약 수정 -->

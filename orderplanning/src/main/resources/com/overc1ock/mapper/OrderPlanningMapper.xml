@@ -92,12 +92,12 @@
 		contract_file = #{ contract_file }, contract_text = #{ contract_text } WHERE contract_code = #{ contract_code }
 	</update>
 	
-	<!-- 조달 예정 목록 출력 -->
+	<!-- 조달 예정 품목 목록 출력 -->
 	<select id="getProcurementPlan" resultType="com.overc1ock.domain.ProcurementPlanVO">
 		SELECT item_code, item_name, process, production_date, consumption
-		FROM procurement_plan LEFT JOIN item_use_plan USING(iup_code) 
-		LEFT JOIN products_production_plan USING(ppp_code) 
-		LEFT JOIN item USING(item_code) ORDER BY pp_code DESC
+		FROM procurement_plan LEFT JOIN item_use_plan USING(iup_code) LEFT JOIN item USING(item_code)
+		LEFT JOIN products_production_plan USING(ppp_code) LEFT JOIN purchase_order USING(po_code) 
+		ORDER BY pp_code DESC, procurement_date DESC
 	</select>
 	
 	<!-- 품목 정보 목록 가져오기 -->

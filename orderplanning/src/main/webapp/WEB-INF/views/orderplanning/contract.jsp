@@ -235,7 +235,12 @@
 							<td style="text-align: center;"><span>${ contract.product_name }</span></td>
 							<td style="text-align: center;"><span>${ contract.item_name }</span></td>
 							<td style="text-align: center;"><span>${ contract.subcontractor_name }</span></td>
-							<td style="text-align: center;"><span><fmt:formatDate pattern="yyyy-MM-dd" value="${ contract.agreement_date }"/></span></td>
+							<td style="text-align: center;">
+								<span>
+									<fmt:parseDate value="${ contract.agreement_date }" var="agreement_date" pattern="yyyy-MM-dd"/>
+									<fmt:formatDate value="${ agreement_date }" pattern="yyyy-MM-dd"/>
+								</span>
+							</td>
 							<td style="text-align: center;"><span>${ contract.leadtime }</span></td>
 						</tr>
 					</c:forEach>

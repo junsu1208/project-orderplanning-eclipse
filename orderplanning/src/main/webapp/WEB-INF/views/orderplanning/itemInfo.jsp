@@ -82,7 +82,7 @@
 			<div class="wrap">
 				<div class="card">
 					<div class="card-header">
-						<b>품목 정보 조회</b>
+						<b>품목 정보 등록 및 조회</b>
 					</div>
 					<div class="card-body">
 						<div class="row g-3">

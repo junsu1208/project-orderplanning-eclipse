@@ -20,7 +20,7 @@
 	</select>
 	
 	<!-- 품목 정보 저장 -->
-	<insert id="saveItemInfo">
+	<insert id="registerItemInfo">
 		INSERT INTO item (item_name, standard, material, specification_file, draw_file, sc_code)
 		VALUES (#{ item_name }, #{ standard }, #{ material }, #{ specification_file }, #{ draw_file }, #{ sc_code })
 	</insert>
@@ -94,7 +94,7 @@
 	
 	<!-- 조달 예정 품목 목록 출력 -->
 	<select id="getProcurementPlan" resultType="com.overc1ock.domain.ProcurementPlanVO">
-		SELECT item_code, item_name, process, production_date, consumption
+		SELECT item_code, item_name, process, production_date, consumption, procurement_date
 		FROM procurement_plan LEFT JOIN item_use_plan USING(iup_code) LEFT JOIN item USING(item_code)
 		LEFT JOIN products_production_plan USING(ppp_code) LEFT JOIN purchase_order USING(po_code) 
 		ORDER BY pp_code DESC, procurement_date DESC

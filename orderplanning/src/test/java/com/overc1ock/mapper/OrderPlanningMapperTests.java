@@ -29,7 +29,7 @@ public class OrderPlanningMapperTests {
 	}
 	
 	@Test
-	public void testSaveItemInfo() {
+	public void testRegisterItemInfo() {
 		ItemInfoVO vo = new ItemInfoVO();
 		vo.setItem_name("테스트 품목");
 		vo.setStandard("테스트 규격");
@@ -37,7 +37,7 @@ public class OrderPlanningMapperTests {
 		vo.setSpecification_file("테스트 제작 사양 파일");
 		vo.setDraw_file("테스트 도면 파일");
 		vo.setSc_code(1);
-		mapper.saveItemInfo(vo);
+		mapper.registerItemInfo(vo);
 	}
 	
 	@Test

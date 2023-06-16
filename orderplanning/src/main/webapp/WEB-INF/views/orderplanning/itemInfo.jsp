@@ -127,6 +127,9 @@
 								</select>
 							</div>
 							<div class="col-md-1">
+								<button type="button" class="btn btn-primary btn-success">등록</button>
+							</div>
+							<div class="col-md-1">
 								<button type="button" class="btn btn-primary btn-primary">조회</button>
 							</div>
 							<div class="col-md-1">
@@ -157,7 +160,6 @@
 						d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
 		                </symbol>
 		            </svg>
-				<form action="saveItemInfo" method="post">
 				<table id='myTable'
 					class="table table-bordered table-striped table-hover caption-top">
 					<caption style="color: black;">
@@ -175,30 +177,9 @@
                             <th scope="col" style="text-align: center;">도면 파일</th>
                             <th scope="col" style="text-align: center;">등록일</th>
                             <th scope="col" style="text-align: center;">중분류 코드</th>
-                            <th scope="col" style="text-align: center;"></th>
                         </tr>
 					</thead>
 					<tbody>
-						<tr>
-                            <th style="text-align: center;"></th>
-                            <td style="text-align: center;"></td>
-                            <td style="text-align: center;"></td>
-                            <td style="text-align: center;"><span><input type="text" name="item_name" id="item_name" style="width:100px"/></span></td>
-                            <td style="text-align: center;"><span><input type="text" name="standard" id="standard" style="width:100px"/></span></td>
-                            <td style="text-align: center;"><span><input type="text" name="material" id="material" style="width:100px"/></span></td>
-                            <td style="text-align: center;"><span><input type="file" name="specification_file" id="specification_file" style="width:80px"/></span></td>
-                            <td style="text-align: center;"><span><input type="file" name="draw_file" id="draw_file" style="width:80px"/></span></td>
-                            <td style="text-align: center;"></td>
-                            <td style="text-align: center;"><span>
-								<select id="scCode" class="form-select" tabindex="1" name="sc_code" id="sc_code" style="width:80px">
-									<option selected>입력</option>
-									<c:forEach items="${getSubCategory}" var="sub_category">
-										<option><c:out value="${sub_category.sc_code}"></c:out></option>
-									</c:forEach>
-								</select>
-							</span></td>
-                            <td style="text-align: center;"><span><button type="submit" class="btn btn-success btn-sm">저장</button></span></td>
-                        </tr>
 					<c:set var="no" value="0"/>
 					<c:forEach items="${ itemInfo }" var="itemInfo">
 						 <tr>
@@ -208,22 +189,16 @@
                             <td style="text-align: center;"><span>${ itemInfo.item_name }</span></td>
                             <td style="text-align: center;"><span>${ itemInfo.standard }</span></td>
                             <td style="text-align: center;"><span>${ itemInfo.material }</span></td>
-                            <td style="text-align: center;">
-                            	<span><button type="button" class="btn btn-secondary btn-sm">다운로드</button></span>
-                            </td>
-                            <td style="text-align: center;">
-                            	<span><button type="button" class="btn btn-secondary btn-sm">다운로드</button></span>
-                            </td>
+                            <td style="text-align: center;"><span>${ itemInfo.specification_file }</span></td>
+                            <td style="text-align: center;"><span>${ itemInfo.draw_file }</span></td>
                             <td style="text-align: center;">
                             	<span><fmt:formatDate pattern="yyyy-MM-dd" value="${ itemInfo.item_registration_date }"/></span>
                             </td>
                             <td style="text-align: center;"><span>${ itemInfo.sc_code }</span></td>
-                            <td style="text-align: center;"></td>
                         </tr>
 					</c:forEach>
 					</tbody>
 				</table>
-				</form>
 			</div>
 		</div>
 	<input type="hidden" value="2" id="flag">

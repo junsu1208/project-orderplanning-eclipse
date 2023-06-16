@@ -31,10 +31,9 @@ public class OrderPlanningController {
 		model.addAttribute("getSubCategory", itemInfoService.getSubCategory());
 	}
 	
-	@PostMapping("/saveItemInfo")
+	@PostMapping("/ItemInfo")
 	public String saveItemInfo(ItemInfoVO vo) {
-		log.info("품목 정보 저장 기능 요청");
-		itemInfoService.saveItemInfo(vo);
+		itemInfoService.registerItemInfo(vo);
 		return "redirect:/orderplanning/itemInfo";
 	}
 	

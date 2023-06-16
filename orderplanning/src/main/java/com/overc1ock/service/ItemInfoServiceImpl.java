@@ -29,9 +29,9 @@ public class ItemInfoServiceImpl implements ItemInfoService {
 	}
 	
 	@Override
-	public void saveItemInfo(ItemInfoVO vo) {
+	public void registerItemInfo(ItemInfoVO vo) {
 		log.info("품목 정보 저장 요청, 변수값: " + vo);
-		mapper.saveItemInfo(vo);
+		mapper.registerItemInfo(vo);
 	}
 	
 	@Override

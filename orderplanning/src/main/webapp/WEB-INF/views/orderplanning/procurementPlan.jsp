@@ -76,7 +76,7 @@
 			<br />
 		</div>
 	</div>
-	<form method="POST" action="listTransactions"
+	<form action="procurementPlan" method="post" 
 		style="position: relative;">
 		<div class="container"
 			style="position: absolute; left: 250px; width: 3000px;">
@@ -179,6 +179,7 @@
                             <th scope="col" style="text-align: center;">자재 소요 공정</th>
                             <th scope="col" style="text-align: center;">생산일</th>
                             <th scope="col" style="text-align: center;">소요량</th>
+                            <th scope="col" style="text-align: center;">조달 납기</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -193,6 +194,7 @@
 							<td style="text-align: center;"><span>${ procurementPlan.process }</span></td>
 							<td style="text-align: center;"><span><fmt:formatDate pattern="yyyy-MM-dd" value="${ procurementPlan.production_date }"/></span></td>
 							<td style="text-align: center;"><span>${ procurementPlan.consumption }</span></td>
+							<td style="text-align: center;"><span><fmt:formatDate pattern="yyyy-MM-dd" value="${ procurementPlan.procurement_date }"/></span></td>
 						</tr>
 					</c:forEach>
 					</tbody>

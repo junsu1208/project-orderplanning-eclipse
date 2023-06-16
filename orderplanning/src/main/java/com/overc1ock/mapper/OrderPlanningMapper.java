@@ -13,7 +13,7 @@ public interface OrderPlanningMapper {
 	List<ItemInfoVO> getItemInfo(); // 목록 가져오기
 	List<ItemInfoVO> getItemInfoWithPaging(Criteria cri); // 페이징 처리
 	List<ItemInfoVO> getSubCategory(); // 중분류 코드 가져오기
-	int saveItemInfo(ItemInfoVO vo); // 저장
+	int registerItemInfo(ItemInfoVO vo); // 저장
 	ItemInfoVO inquiryItemInfo(Long item_code); // 조회
 	int deleteItemInfo(Long item_code); // 삭제
 	int modifyItemInfo(ItemInfoVO vo); // 수정

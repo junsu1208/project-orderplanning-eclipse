@@ -143,8 +143,8 @@
 								</div>
 							</div>
 							<div>
-                              	<label for="address" class="form-label">비고:</label>
-                                <textarea rows="3" class="form-control" id="text" name="text"></textarea>
+                              	<label for="ppText" class="form-label">비고:</label>
+                                <textarea rows="3" class="form-control" id="pp_text" name="pp_text"></textarea>
                             </div>
 							<div class="col-md-1">
 								<button type="button" id="registerProcurementPlan" class="btn btn-primary btn-success">등록</button>

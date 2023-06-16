@@ -89,8 +89,8 @@
 						<div class="row g-3">
 							<div class="col-md-6">
 								<div class="input-group mb-3">
-									<label for="contactName" class="input-group-text">계약명</label>
-									<input type="text" class="form-control" id="contact_name" name="contact_name" />
+									<label for="contractName" class="input-group-text">계약명</label>
+									<input type="text" class="form-control" id="contract_name" name="contract_name" />
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -196,13 +196,13 @@
 							</div>
 							<div class="col-md-6">
 								<div class="input-group mb-3">
-									<label for="contactFile" class="input-group-text">계약서 첨부</label>
-									<input type="file" class="form-control" id="contact_file" name="contact_file" />
+									<label for="contractFile" class="input-group-text">계약서 첨부</label>
+									<input type="file" class="form-control" id="contract_file" name="contract_file" />
 								</div>
 							</div>
 							<div>
-								<label for="address" class="form-label">비고:</label>
-                                <textarea rows="3" class="form-control" id="text" name="text"></textarea>
+								<label for="contractText" class="form-label">비고:</label>
+                                <textarea rows="3" class="form-control" id="contract_text" name="contract_text"></textarea>
                             </div>
                             <div class="col-md-1">
 								<button type="button" id="registerContract" class="btn btn-primary btn-success">등록</button>

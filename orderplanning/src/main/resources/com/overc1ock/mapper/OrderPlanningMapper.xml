@@ -19,7 +19,7 @@
 		ORDER BY sc_code
 	</select>
 	
-	<!-- 품목 정보 저장 -->
+	<!-- 품목 정보 등록 -->
 	<insert id="registerItemInfo">
 		INSERT INTO item (item_name, standard, material, specification_file, draw_file, sc_code)
 		VALUES (#{ item_name }, #{ standard }, #{ material }, #{ specification_file }, #{ draw_file }, #{ sc_code })

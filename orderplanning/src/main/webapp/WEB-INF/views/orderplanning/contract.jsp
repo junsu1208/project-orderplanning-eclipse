@@ -92,28 +92,6 @@
 								<input type="text" class="form-control" id="contact_name" name="contact_name" />
 							</div>
 							<div class="col-md-6">
-								<label for="subcontractorName" class="form-label">협력 업체명: </label>
-								<select id="subcontractorName" class="form-select" tabindex="1" 
-									id="subcontractor_name" name="subcontractor_name">
-									<option selected>(협력 업체명)</option>
-									<c:forEach items="${getSubcontractor}" var="subcontractor">
-										<option><c:out value="${subcontractor.subcontractor_name}"></c:out></option>
-									</c:forEach>
-								</select>
-							</div>
-							<div class="col-md-6">
-								<label for="subcontractorTel" class="form-label">협력 업체 전화번호: </label>
-								<input type="text" class="form-control" id="subcontractor_tel" name="subcontractor_tel" readonly />
-							</div>
-							<div class="col-md-6">
-								<label for="subcontractorEmail" class="form-label">협력 업체 이메일: </label>
-								<input type="text" class="form-control" id="subcontractor_email" name="subcontractor_email" readonly />
-							</div>
-							<div class="col-md-6">
-								<label for="subcontractorPerson" class="form-label">협력 업체 담당자: </label>
-								<input type="text" class="form-control" id="subcontractor_person" name="subcontractor_person" readonly />
-							</div>
-							<div class="col-md-6">
 								<label for="itemCode" class="form-label">품목 코드: </label>
 								<select id="itemCode" class="form-select" tabindex="1" 
 									id="item_code" name="item_code">
@@ -146,6 +124,28 @@
 							<div class="col-md-6">
 								<label for="drawFile" class="form-label">도면 파일: </label>
 								<input type="text" class="form-control" id="draw_file" name="draw_file" readonly />
+							</div>
+							<div class="col-md-6">
+								<label for="subcontractorName" class="form-label">협력 업체명: </label>
+								<select id="subcontractorName" class="form-select" tabindex="1" 
+									id="subcontractor_name" name="subcontractor_name">
+									<option selected>(협력 업체명)</option>
+									<c:forEach items="${getSubcontractor}" var="subcontractor">
+										<option><c:out value="${subcontractor.subcontractor_name}"></c:out></option>
+									</c:forEach>
+								</select>
+							</div>
+							<div class="col-md-6">
+								<label for="subcontractorTel" class="form-label">협력 업체 전화번호: </label>
+								<input type="text" class="form-control" id="subcontractor_tel" name="subcontractor_tel" readonly />
+							</div>
+							<div class="col-md-6">
+								<label for="subcontractorEmail" class="form-label">협력 업체 이메일: </label>
+								<input type="text" class="form-control" id="subcontractor_email" name="subcontractor_email" readonly />
+							</div>
+							<div class="col-md-6">
+								<label for="subcontractorPerson" class="form-label">협력 업체 담당자: </label>
+								<input type="text" class="form-control" id="subcontractor_person" name="subcontractor_person" readonly />
 							</div>
 							<div class="col-md-6">
 								<label for="supplyPrice" class="form-label">공급 가격: </label>

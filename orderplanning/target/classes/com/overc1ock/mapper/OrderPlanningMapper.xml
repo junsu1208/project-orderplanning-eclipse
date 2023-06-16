@@ -58,7 +58,7 @@
 		ORDER BY subcontractor_date
 	</select>
 	
-	<!-- 품목 정보 목록 가져오기 -->
+	<!-- 품목 정보 가져오기 -->
 	<select id="getItemInfoForContract" resultType="com.overc1ock.domain.ContractVO">
 		SELECT *
 		FROM item_has_product LEFT JOIN item USING(item_code)
@@ -100,7 +100,7 @@
 		ORDER BY pp_code DESC, procurement_date DESC
 	</select>
 	
-	<!-- 품목 정보 목록 가져오기 -->
+	<!-- 품목 정보 가져오기 -->
 	<select id="getItemInfoForProcurementPlan" resultType="com.overc1ock.domain.ProcurementPlanVO">
 		SELECT *
 		FROM item_has_product LEFT JOIN item USING(item_code)

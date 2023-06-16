@@ -87,44 +87,63 @@
 					<div class="card-body">
 						<div class="row g-3">
 							<div class="col-md-6">
-								<label for="itemCode" class="form-label">품목 코드: </label>
-								<input type="number" class="form-control" id="item_code" name="item_code"/>
+								<div class="input-group mb-3">
+									<label for="itemCode" class="input-group-text">품목 코드</label>
+									<input type="number" class="form-control" id="item_code" name="item_code"/>
+								</div>
 							</div>
 							<div class="col-md-6">
-								<label for="itemName" class="form-label">품목명: </label>
-								<input type="text" class="form-control" id="item_name" name="item_name" />
+								<div class="input-group mb-3">
+									<label for="itemName" class="input-group-text">품목명</label>
+									<input type="text" class="form-control" id="item_name" name="item_name" />
+								</div>
 							</div>
 							<div class="col-md-6">
-								<label for="standard" class="form-label">규격: </label>
-								<input type="text" class="form-control" id="standard" name="standard" />
+								<div class="input-group mb-3">
+									<label for="standard" class="input-group-text">규격</label>
+									<input type="text" class="form-control" id="standard" name="standard" />
+								</div>
 							</div>
 							<div class="col-md-6">
-								<label for="material" class="form-label">재질: </label>
-								<input type="text" class="form-control" id="material" name="material" />
+								<div class="input-group mb-3">
+									<label for="material" class="input-group-text">재질</label>
+									<input type="text" class="form-control" id="material" name="material" />
+								</div>
 							</div>
 							<div class="col-md-6">
-								<label for="specificationFile" class="form-label">제작 사양: </label>
-                              	<input type="file" class="form-control" id="specification_file" name="specification_file" />
+								<div class="input-group mb-3">
+									<label for="specificationFile" class="input-group-text">제작 사양</label>
+	                              	<input type="file" class="form-control" id="specification_file" name="specification_file" />
+								</div>
 							</div>
 							<div class="col-md-6">
-								<label for="drawFile" class="form-label">도면 파일: </label>
-                              	<input type="file" class="form-control" id="draw_file" name="draw_file" />
+								<div class="input-group mb-3">
+									<label for="drawFile" class="input-group-text">도면 파일</label>
+	                              	<input type="file" class="form-control" id="draw_file" name="draw_file" />
+								</div>
 							</div>				
 							<div class="col-md-6">
-								<label for="itemRegistrationDate" class="form-label">등록일: </label>
-								<input type="date" id="item_registration_date" 
-									   class="form-control datepicker"
-									   name="item_registration_date"
-									   aria-label="itemRegistrationDate">
+								<div class="input-group mb-3">
+									<label for="itemRegistrationDate" class="input-group-text">등록일</label>
+									<input type="date" id="item_registration_date" 
+										   class="form-control datepicker"
+										   name="item_registration_date"
+										   aria-label="itemRegistrationDate">
+									<span class="input-group-text">
+										<img src="/resources/img/calendar3.svg" alt="" width="16" height="16" title="calendar" />
+									</span>
+								</div>
 							</div>
 							<div class="col-md-6">
-								<label for="scCode" class="form-label">중분류 코드: </label>
-								<select id="scCode" class="form-select" tabindex="1" id="sc_code" name="sc_code">
-									<option selected>입력</option>
-									<c:forEach items="${getSubCategory}" var="sub_category">
-										<option><c:out value="${sub_category.sc_code}"></c:out></option>
-									</c:forEach>
-								</select>
+								<div class="input-group mb-3">
+									<label for="scCode" class="input-group-text">중분류 코드</label>
+									<select id="sc_code" class="form-select" tabindex="1" name="sc_code">
+										<option selected>입력</option>
+										<c:forEach items="${getSubCategory}" var="sub_category">
+											<option><c:out value="${sub_category.sc_code}"></c:out></option>
+										</c:forEach>
+									</select>
+								</div>
 							</div>
 							<div class="col-md-1">
 								<button type="button" id="registerItemInfo" class="btn btn-primary btn-success">등록</button>

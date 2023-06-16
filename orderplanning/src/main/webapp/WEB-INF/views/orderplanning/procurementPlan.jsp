@@ -88,47 +88,63 @@
 					<div class="card-body">
 						<div class="row g-3">
 							<div class="col-md-6">
-								<label for="itemCode" class="form-label">품목 코드: </label>
-								<select id="itemCode" class="form-select" tabindex="1" 
-									id="item_code" name="item_code">
-									<option selected>(품목 코드)</option>
-									<c:forEach items="${getItemInfoForProcurementPlan}" var="item">
-										<option><c:out value="${item.item_code}"></c:out></option>
-									</c:forEach>
-								</select>
+								<div class="input-group mb-3">
+									<label for="itemCode" class="input-group-text">품목 코드</label>
+									<select id="item_code" class="form-select" tabindex="1" name="item_code">
+										<option selected>(품목 코드)</option>
+										<c:forEach items="${getItemInfoForProcurementPlan}" var="item">
+											<option><c:out value="${item.item_code}"></c:out></option>
+										</c:forEach>
+									</select>
+								</div>
 							</div>
 							<div class="col-md-6">
-								<label for="itemName" class="form-label">품목명: </label>
-								<input type="text" class="form-control" id="item_name" name="item_name" readonly />
+								<div class="input-group mb-3">
+									<label for="itemName" class="input-group-text">품목명</label>
+									<input type="text" class="form-control" id="item_name" name="item_name" readonly />
+								</div>
 							</div>
 							<div class="col-md-6">
-								<label for="process" class="form-label">자재 소요 공정: </label>
-								<input type="text" class="form-control" id="process" name="standard" />
+								<div class="input-group mb-3">
+									<label for="process" class="input-group-text">자재 소요 공정</label>
+									<input type="text" class="form-control" id="process" name="standard" />
+								</div>
 							</div>
 							<div class="col-md-6">
-	                            <label for="productionDate" class="form-label">생산일: </label>
-								<input
-									type="date" id="production_date"
-									class="form-control datepicker"
-									name="production_date"
-									aria-label="productionDate">
+								<div class="input-group mb-3">
+		                            <label for="productionDate" class="input-group-text">생산일</label>
+									<input
+										type="date" id="production_date"
+										class="form-control datepicker"
+										name="production_date"
+										aria-label="productionDate">
+									<span class="input-group-text">
+										<img src="/resources/img/calendar3.svg" alt="" width="16" height="16" title="calendar" />
+									</span>
+								</div>
 							</div>
 							<div class="col-md-6">
-								<label for="consumption" class="form-label">소요량: </label>
-								<input type="number" class="form-control" id="consumption" name="consumption" />
+								<div class="input-group mb-3">
+									<label for="consumption" class="input-group-text">소요량</label>
+									<input type="number" class="form-control" id="consumption" name="consumption" />
+								</div>
 							</div>
 							<div class="col-md-6">
-								<label for="procurementDate" class="form-label">조달 납기: </label>
-								<input
-									type="date" id="procurement_date"
-									class="form-control datepicker"
-									name="procurement_date"
-									aria-label="procurementDate">
+								<div class="input-group mb-3">
+									<label for="procurementDate" class="input-group-text">조달 납기</label>
+									<input
+										type="date" id="procurement_date"
+										class="form-control datepicker"
+										name="procurement_date"
+										aria-label="procurementDate">
+									<span class="input-group-text">
+										<img src="/resources/img/calendar3.svg" alt="" width="16" height="16" title="calendar" />
+									</span>
+								</div>
 							</div>
 							<div>
-                              <label for="address" class="form-label">비고:</label>
-                                <textarea rows="3" class="form-control"
-                                          id="text" name="text"></textarea>
+                              	<label for="address" class="form-label">비고:</label>
+                                <textarea rows="3" class="form-control" id="text" name="text"></textarea>
                             </div>
 							<div class="col-md-1">
 								<button type="button" id="registerProcurementPlan" class="btn btn-primary btn-success">등록</button>

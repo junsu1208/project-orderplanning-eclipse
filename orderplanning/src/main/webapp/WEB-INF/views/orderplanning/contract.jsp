@@ -172,16 +172,16 @@
 							  <textarea rows="3" class="form-control" id="text" name="text"></textarea>
                             </div>
                             <div class="col-md-1">
-								<button type="button" class="btn btn-primary btn-success">등록</button>
+								<button type="button" id="registerContract" class="btn btn-primary btn-success">등록</button>
 							</div>
 							<div class="col-md-1">
-								<button type="button" class="btn btn-primary btn-primary">조회</button>
+								<button type="button" id="inquiryContract" class="btn btn-primary btn-primary">조회</button>
 							</div>
 							<div class="col-md-1">
-                            	<button type="button" class="btn btn-primary btn-danger">삭제</button>
+                            	<button type="button" id="deleteContract" class="btn btn-primary btn-danger">삭제</button>
                             </div>
                             <div class="col-md-1">
-                            	<button type="button" class="btn btn-primary btn-primary">수정</button>
+                            	<button type="button" id="modifyContract" class="btn btn-primary btn-primary">수정</button>
                             </div>
                         </div>
 					</div>

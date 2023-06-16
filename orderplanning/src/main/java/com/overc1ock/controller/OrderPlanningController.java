@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.overc1ock.domain.ContractVO;
 import com.overc1ock.domain.ItemInfoVO;
 import com.overc1ock.service.ContractService;
 import com.overc1ock.service.ItemInfoService;
@@ -31,9 +32,27 @@ public class OrderPlanningController {
 		model.addAttribute("getSubCategory", itemInfoService.getSubCategory());
 	}
 	
-	@PostMapping("/ItemInfo")
-	public String saveItemInfo(ItemInfoVO vo) {
+	@PostMapping("/registerItemInfo")
+	public String registerItemInfo(ItemInfoVO vo) {
 		itemInfoService.registerItemInfo(vo);
+		return "redirect:/orderplanning/itemInfo";
+	}
+	
+	@PostMapping("/inquiryItemInfo")
+	public String inquiryItemInfo(Long item_code, Model model) {
+		model.addAttribute(itemInfoService.inquiryItemInfo(item_code));
+		return "redirect:/orderplanning/itemInfo";
+	}
+	
+	@PostMapping("/deleteItemInfo")
+	public String deleteItemInfo(Long item_code) {
+		itemInfoService.deleteItemInfo(item_code);
+		return "redirect:/orderplanning/itemInfo";
+	}
+	
+	@PostMapping("/modifyItemInfo")
+	public String modifyItemInfo(ItemInfoVO vo) {
+		itemInfoService.modifyItemInfo(vo);
 		return "redirect:/orderplanning/itemInfo";
 	}
 	
@@ -43,6 +62,30 @@ public class OrderPlanningController {
 		model.addAttribute("contract", contractService.getContract());
 		model.addAttribute("getSubcontractor", contractService.getSubcontractor());
 		model.addAttribute("getItemInfoForContract", contractService.getItemInfoForContract());
+	}
+	
+	@PostMapping("/registerContract")
+	public String registerContract(ContractVO vo) {
+		contractService.registerContract(vo);
+		return "redirect:/orderplanning/contract";
+	}
+	
+	@PostMapping("/inquiryContract")
+	public String inquiryContract(Long contract_code, Model model) {
+		contractService.inquiryContract(contract_code);
+		return "redirect:/orderplanning/contract";
+	}
+	
+	@PostMapping("/deleteContract")
+	public String deleteContract(Long contract_code) {
+		contractService.deleteContract(contract_code);
+		return "redirect:/orderplanning/contract";
+	}
+	
+	@PostMapping("/modifyContract")
+	public String modifyContract(ContractVO vo) {
+		contractService.modifyContract(vo);
+		return "redirect:/orderplanning/contract";
 	}
 	
 	@GetMapping("/procurementPlan")

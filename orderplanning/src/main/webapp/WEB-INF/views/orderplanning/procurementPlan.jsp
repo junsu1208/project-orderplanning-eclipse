@@ -131,16 +131,16 @@
                                           id="text" name="text"></textarea>
                             </div>
 							<div class="col-md-1">
-								<button type="button" class="btn btn-primary btn-success">등록</button>
+								<button type="button" id="registerProcurementPlan" class="btn btn-primary btn-success">등록</button>
 							</div>
 							<div class="col-md-1">
-								<button type="button" class="btn btn-primary btn-primary">조회</button>
+								<button type="button" id="inquiryProcurementPlan" class="btn btn-primary btn-primary">조회</button>
 							</div>
 							<div class="col-md-1">
-                            	<button type="button" class="btn btn-primary btn-danger">삭제</button>
+                            	<button type="button" id="deleteProcurementPlan" class="btn btn-primary btn-danger">삭제</button>
                             </div>
                             <div class="col-md-1">
-                            	<button type="button" class="btn btn-primary btn-primary">수정</button>
+                            	<button type="button" id="modifyProcurementPlan" class="btn btn-primary btn-primary">수정</button>
                             </div>
                         </div>
 					</div>

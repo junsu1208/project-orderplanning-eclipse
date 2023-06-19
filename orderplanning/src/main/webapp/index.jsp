@@ -25,7 +25,7 @@
 		<div>
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="position: relative;">
 			    <div class="container-fluid">
-			        <a class="navbar-brand" href="#" onclick="goToHome();" >
+			        <a class="navbar-brand" href="/" onclick="goToHome();" >
 			            <h2><b>조달구매시스템</b></h2>
 			        </a>
 			    </div>
@@ -44,7 +44,7 @@
 	    <div class="wrap">
 	        <div class="row g-3">
 	            <div class="col-md-3">
-	                <button class="mybtn">조달 관리</button>
+	                <a href="/orderplanning/itemInfo"><button class="mybtn">조달 관리</button></a>
 	            </div>
 	            <div class="col-md-3">
 	                <button class="mybtn">발주 관리</button>

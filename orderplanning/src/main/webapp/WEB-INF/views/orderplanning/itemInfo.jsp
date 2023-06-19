@@ -34,7 +34,7 @@
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
 				style="position: relative;">
 				<div class="container-fluid">
-					<a class="navbar-brand" href="#" onclick="goToHome();">
+					<a class="navbar-brand" href="/" onclick="goToHome();">
 						<h2>
 							<b>조달구매시스템</b>
 						</h2>
@@ -56,7 +56,7 @@
 			<div class="area"></div>
 			<nav class="main-menu">
 				<ul>
-					<li class="has-subnav" style="font-size: 10px;"><a href="#"
+					<li class="has-subnav" style="font-size: 10px;"><a href="/orderplanning/itemInfo"
 						style="height: 50px;" id="procurement">
 							<div class="nav-text" style="position: relative; left: 10px;">
 								조달 관리</div>

@@ -76,7 +76,7 @@
 			<br />
 		</div>
 	</div>
-	<form action="procurementPlan" method="post" 
+	<form action="procurementPlan" method="post"
 		style="position: relative;">
 		<div class="container"
 			style="position: absolute; left: 250px; width: 3000px;">

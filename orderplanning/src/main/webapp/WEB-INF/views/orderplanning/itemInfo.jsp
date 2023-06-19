@@ -76,7 +76,7 @@
 			<br />
 		</div>
 	</div>
-	<form action="itemInfo" method="post">
+	<form action="itemInfo" method="post" enctype="multipart/form-data">
 		<div class="container"
 			style="position: absolute; left: 250px; width: 3000px;">
 			<div class="wrap">

@@ -76,7 +76,7 @@
 			<br />
 		</div>
 	</div>
-	<form action="contract" method="post"
+	<form action="contract" method="post" enctype="multipart/form-data"
 		style="position: relative;">
 		<div class="container"
 			style="position: absolute; left: 250px; width: 3000px;">

@@ -1,10 +1,13 @@
 package com.overc1ock.controller;
 
+import java.io.File;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.overc1ock.domain.ContractVO;
 import com.overc1ock.domain.ItemInfoVO;
@@ -26,15 +29,45 @@ public class OrderPlanningController {
 	ProcurementPlanService procurementPlanService;
 
 	@GetMapping("/itemInfo")
-	public void itemInfo(Model model) {
+	public String itemInfo(Model model) {
 		log.info("품목 정보 등록 페이지 요청");
 		model.addAttribute("itemInfo", itemInfoService.getItemInfo());
 		model.addAttribute("getSubCategory", itemInfoService.getSubCategory());
+		return "/orderplanning/itemInfo";
 	}
 	
 	@PostMapping("/registerItemInfo")
-	public String registerItemInfo(ItemInfoVO vo) {
+	public String registerItemInfo(ItemInfoVO vo, 
+			MultipartFile[] specification_file, MultipartFile[] draw_file, Model model) {
 		log.info("품목 정보 등록 기능 요청");
+		String uploadSpecificationFile = "C:/orderplanning/specification_file"; // 제작 사양 파일 업로드
+		String uploadDrawFile = "C:/orderplanning/draw_file"; // 도면 파일 업로드
+		// 제작 사양 파일 저장
+		for (MultipartFile multipartFile : specification_file) {
+			log.info("--------------------------------------------------");
+			log.info("업로드된 제작 사양 파일 이름: " + multipartFile.getOriginalFilename());
+			log.info("제작 사양 파일 크기: " + multipartFile.getSize());
+			File saveSpecificationFile = new File(uploadSpecificationFile, 
+					multipartFile.getOriginalFilename());
+			try {
+				multipartFile.transferTo(saveSpecificationFile);
+			} catch (Exception e) {
+				log.error(e.getMessage());
+			}
+		}
+		// 도면 파일 저장
+		for (MultipartFile multipartFile : draw_file) {
+			log.info("--------------------------------------------------");
+			log.info("업로드된 도면 파일 이름: " + multipartFile.getOriginalFilename());
+			log.info("도면 파일 크기: " + multipartFile.getSize());
+			File saveDrawFile = new File(uploadDrawFile, 
+					multipartFile.getOriginalFilename());
+			try {
+				multipartFile.transferTo(saveDrawFile);
+			} catch (Exception e) {
+				log.error(e.getMessage());
+			}
+		}
 		itemInfoService.registerItemInfo(vo);
 		return "redirect:/orderplanning/itemInfo";
 	}
@@ -54,23 +87,67 @@ public class OrderPlanningController {
 	}
 	
 	@PostMapping("/modifyItemInfo")
-	public String modifyItemInfo(ItemInfoVO vo) {
+	public String modifyItemInfo(ItemInfoVO vo,
+			MultipartFile[] specification_file, MultipartFile[] draw_file) {
 		log.info("품목 정보 수정 기능 요청");
+		String uploadSpecificationFile = "C:/orderplanning/specification_file"; // 제작 사양 파일 업로드
+		String uploadDrawFile = "C:/orderplanning/draw_file"; // 도면 파일 업로드
+		// 제작 사양 파일 저장
+		for (MultipartFile multipartFile : specification_file) {
+			log.info("--------------------------------------------------");
+			log.info("업로드된 제작 사양 파일 이름: " + multipartFile.getOriginalFilename());
+			log.info("제작 사양 파일 크기: " + multipartFile.getSize());
+			File saveSpecificationFile = new File(uploadSpecificationFile, 
+					multipartFile.getOriginalFilename());
+			try {
+				multipartFile.transferTo(saveSpecificationFile);
+			} catch (Exception e) {
+				log.error(e.getMessage());
+			}
+		}
+		// 도면 파일 저장
+		for (MultipartFile multipartFile : draw_file) {
+			log.info("--------------------------------------------------");
+			log.info("업로드된 도면 파일 이름: " + multipartFile.getOriginalFilename());
+			log.info("도면 파일 크기: " + multipartFile.getSize());
+			File saveDrawFile = new File(uploadDrawFile, 
+					multipartFile.getOriginalFilename());
+			try {
+				multipartFile.transferTo(saveDrawFile);
+			} catch (Exception e) {
+				log.error(e.getMessage());
+			}
+		}
 		itemInfoService.modifyItemInfo(vo);
 		return "redirect:/orderplanning/itemInfo";
 	}
 	
 	@GetMapping("/contract")
-	public void contract(Model model) {
+	public String contract(Model model) {
 		log.info("계약 등록 페이지 요청");
 		model.addAttribute("contract", contractService.getContract());
 		model.addAttribute("getSubcontractor", contractService.getSubcontractor());
 		model.addAttribute("getItemInfoForContract", contractService.getItemInfoForContract());
+		return "/orderplanning/contract";
 	}
 	
 	@PostMapping("/registerContract")
-	public String registerContract(ContractVO vo) {
+	public String registerContract(ContractVO vo, MultipartFile[] contract_file) {
 		log.info("계약 등록 기능 요청");
+		String uploadContractFile = "C:/orderplanning/contract_file"; // 계약서 파일 업로드
+		// 계약서 파일 저장
+		for (MultipartFile multipartFile : contract_file) {
+			log.info("--------------------------------------------------");
+			log.info("업로드된 계약서 파일 이름: " + multipartFile.getOriginalFilename());
+			log.info("계약서 파일 크기: " + multipartFile.getSize());
+			File saveContractFile = new File(uploadContractFile, 
+					multipartFile.getOriginalFilename());
+			try {
+				multipartFile.transferTo(saveContractFile);
+			} catch (Exception e) {
+				log.error(e.getMessage());
+			}
+		}
 		contractService.registerContract(vo);
 		return "redirect:/orderplanning/contract";
 	}
@@ -90,18 +167,33 @@ public class OrderPlanningController {
 	}
 	
 	@PostMapping("/modifyContract")
-	public String modifyContract(ContractVO vo) {
+	public String modifyContract(ContractVO vo, MultipartFile[] contract_file) {
 		log.info("계약 수정 기능 요청");
+		String uploadContractFile = "C:/orderplanning/contract_file"; // 계약서 파일 업로드
+		// 계약서 파일 저장
+		for (MultipartFile multipartFile : contract_file) {
+			log.info("--------------------------------------------------");
+			log.info("업로드된 계약서 파일 이름: " + multipartFile.getOriginalFilename());
+			log.info("계약서 파일 크기: " + multipartFile.getSize());
+			File saveContractFile = new File(uploadContractFile, 
+					multipartFile.getOriginalFilename());
+			try {
+				multipartFile.transferTo(saveContractFile);
+			} catch (Exception e) {
+				log.error(e.getMessage());
+			}
+		}
 		contractService.modifyContract(vo);
 		return "redirect:/orderplanning/contract";
 	}
 	
 	@GetMapping("/procurementPlan")
-	public void procurementPlan(Model model) {
+	public String procurementPlan(Model model) {
 		log.info("조달 계획 등록 페이지 요청");
 		model.addAttribute("procurementPlan", procurementPlanService.getProcurementPlan());
 		model.addAttribute("getItemInfoForProcurementPlan", 
 				procurementPlanService.getItemInfoForProcurementPlan());
+		return "/orderplanning/procurementPlan";
 	}
 
 }

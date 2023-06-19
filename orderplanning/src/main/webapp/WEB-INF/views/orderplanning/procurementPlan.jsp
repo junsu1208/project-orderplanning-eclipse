@@ -204,7 +204,7 @@
 						<tr>
 							<th scope="row" style="text-align: center;"><input type="checkbox" name="selection" value="1" /></th>
 							<td style="text-align: center;">${ no = no + 1 }</td>
-							<td style="text-align: center;"><span>등록</span></td>
+							<td style="text-align: center;"><span>등록됨</span></td>
 							<td style="text-align: center;"><span>${ procurementPlan.item_code }</span></td>
 							<td style="text-align: center;"><span>${ procurementPlan.item_name }</span></td>
 							<td style="text-align: center;"><span>${ procurementPlan.process }</span></td>

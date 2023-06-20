@@ -92,8 +92,8 @@
 									<label for="itemCode" class="input-group-text">품목 코드</label>
 									<select id="item_code" class="form-select" tabindex="1" name="item_code">
 										<option selected>(품목 코드)</option>
-										<c:forEach items="${getItemInfoForProcurementPlan}" var="item">
-											<option><c:out value="${item.item_code}"></c:out></option>
+										<c:forEach items="${ getItemInfoForProcurementPlan }" var="item">
+											<option><c:out value="${ item.item_code }"></c:out></option>
 										</c:forEach>
 									</select>
 								</div>

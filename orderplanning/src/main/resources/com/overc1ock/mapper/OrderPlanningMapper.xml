@@ -14,7 +14,7 @@
 	
 	<!-- 중분류 코드 가져오기 -->
 	<select id="getSubCategory" resultType="com.overc1ock.domain.ItemInfoVO">
-		SELECT *
+		SELECT sc_code
 		FROM sub_category
 		ORDER BY sc_code
 	</select>
@@ -53,14 +53,14 @@
 	
 	<!-- 협력 업체 정보 가져오기 -->
 	<select id="getSubcontractor" resultType="com.overc1ock.domain.ContractVO">
-		SELECT *
+		SELECT subcontractor_tel, subcontractor_email, subcontractor_person
 		FROM subcontractor
-		ORDER BY subcontractor_date
+		WHERE subcontractor_name = #{ subcontractor_name }
 	</select>
 	
 	<!-- 품목 정보 가져오기 -->
 	<select id="getItemInfoForContract" resultType="com.overc1ock.domain.ContractVO">
-		SELECT *
+		SELECT product_name, item_name, standard, material, specification_file, draw_file
 		FROM item_has_product LEFT JOIN item USING(item_code)
 		ORDER BY item_code
 	</select>
@@ -100,9 +100,9 @@
 		ORDER BY pp_code DESC, procurement_date DESC
 	</select>
 	
-	<!-- 품목 정보 가져오기 -->
+	<!-- 품목명 가져오기 -->
 	<select id="getItemInfoForProcurementPlan" resultType="com.overc1ock.domain.ProcurementPlanVO">
-		SELECT *
+		SELECT item_name
 		FROM item_has_product LEFT JOIN item USING(item_code)
 		ORDER BY item_code
 	</select>

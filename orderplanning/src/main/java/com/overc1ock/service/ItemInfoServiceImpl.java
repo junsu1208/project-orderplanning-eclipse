@@ -30,7 +30,7 @@ public class ItemInfoServiceImpl implements ItemInfoService {
 	
 	@Override
 	public void registerItemInfo(ItemInfoVO vo) {
-		log.info("품목 정보 저장 요청, 변수값: " + vo);
+		log.info("품목 정보 등록 요청, 변수값: " + vo);
 		mapper.registerItemInfo(vo);
 	}
 	

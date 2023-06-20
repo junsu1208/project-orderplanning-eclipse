@@ -97,7 +97,7 @@
 								<div class="input-group mb-3">
 									<label for="itemCode" class="input-group-text">품목 코드</label>
 									<select id="item_code" class="form-select" tabindex="1" name="item_code">
-										<option selected>(품목 코드)</option>
+										<option selected>(품목 코드 선택)</option>
 										<c:forEach items="${ getItemInfoForContract }" var="item">
 											<option><c:out value="${ item.item_code }"></c:out>
 										</c:forEach>
@@ -144,7 +144,7 @@
 								<div class="input-group mb-3">
 									<label for="subcontractorName" class="input-group-text">협력 업체명</label>
 									<select id="subcontractor_name" class="form-select" tabindex="1" name="subcontractor_name">
-										<option selected>(협력 업체명)</option>
+										<option selected>(협력 업체명 선택)</option>
 										<c:forEach items="${ getSubcontractor }" var="subcontractor">
 											<option><c:out value="${ subcontractor.subcontractor_name }"></c:out></option>
 										</c:forEach>

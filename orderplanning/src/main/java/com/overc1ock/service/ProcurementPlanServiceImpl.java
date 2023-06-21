@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.overc1ock.domain.Criteria;
 import com.overc1ock.domain.ProcurementPlanVO;
 import com.overc1ock.mapper.OrderPlanningMapper;
 
@@ -18,37 +19,21 @@ public class ProcurementPlanServiceImpl implements ProcurementPlanService {
 	OrderPlanningMapper mapper;
 	
 	@Override
-	public List<ProcurementPlanVO> getProcurementPlan() {
+	public List<ProcurementPlanVO> getProcurementPlan(Criteria cri) {
 		log.info("조달 예정 품목 목록 요청");
-		return mapper.getProcurementPlan();
-	}
-	
-	@Override
-	public List<ProcurementPlanVO> getItemCodeForProcurementPlan() {
-		return mapper.getItemCodeForProcurementPlan();
-	}
-	
-	@Override
-	public List<ProcurementPlanVO> getItemNameForProcurementPlan() {
-		return mapper.getItemNameForProcurementPlan();
+		return mapper.getProcurementPlan(cri);
 	}
 
 	@Override
-	public void registerProcurementPlan(ProcurementPlanVO vo) {
-		log.info("조달 계획 등록 요청, 변수값: " + vo);
-		mapper.registerProcurementPlan(vo);
+	public void registerProcurementPlan(List<ProcurementPlanVO> list) {
+		list.forEach(vo -> log.info("조달 계획 등록 요청, 변수값: "+vo));
+		mapper.registerProcurementPlan(list);
 	}
 	
 	@Override
-	public ProcurementPlanVO inquiryProcurementPlan(Integer pp_code) {
-		log.info("조달 계획 조회 요청, 변수값: " + pp_code);
-		return mapper.inquiryProcurementPlan(pp_code);
-	}
-	
-	@Override
-	public boolean deleteProcurementPlan(Integer pp_code) {
+	public Integer deleteProcurementPlan(Integer pp_code) {
 		log.info("조달 계획 삭제 요청, 변수값: " + pp_code);
-		return mapper.deleteProcurementPlan(pp_code) == 1;
+		return mapper.deleteProcurementPlan(pp_code);
 	}
 
 	@Override

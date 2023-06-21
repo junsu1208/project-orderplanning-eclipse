@@ -44,7 +44,7 @@
 	    <div class="wrap">
 	        <div class="row g-3">
 	            <div class="col-md-3">
-	                <a href="/orderplanning/itemInfo"><button class="mybtn">조달 관리</button></a>
+	                <a href="/orderplanning/iteminfo"><button class="mybtn">조달 관리</button></a>
 	            </div>
 	            <div class="col-md-3">
 	                <button class="mybtn">발주 관리</button>

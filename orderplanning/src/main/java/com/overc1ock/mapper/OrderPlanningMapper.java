@@ -3,6 +3,7 @@ package com.overc1ock.mapper;
 import java.util.List;
 
 import com.overc1ock.domain.ContractVO;
+import com.overc1ock.domain.Criteria;
 import com.overc1ock.domain.ItemInfoVO;
 import com.overc1ock.domain.ProcurementPlanVO;
 
@@ -22,18 +23,15 @@ public interface OrderPlanningMapper {
 	List<ContractVO> getItemInfoForContract(); // 품목 코드로 선택된 품목 정보 가져오기 
 	List<ContractVO> getSubcontractorName(); // 협력 업체명 가져오기
 	List<ContractVO> getSubcontractor(); // 협력 업체명으로 선택된 협력 업체 정보 가져오기
-	int registerContract(ContractVO vo); // 등록
+	Integer registerContract(ContractVO vo); // 등록
 	ContractVO inquiryContract(Integer contract_code); // 조회
-	int deleteContract(Integer contract_code); // 삭제
-	int modifyContract(ContractVO vo); // 수정
+	Integer deleteContract(Integer contract_code); // 삭제
+	Integer modifyContract(ContractVO vo); // 수정
 	
 	// 조달 계획 등록
-	List<ProcurementPlanVO> getProcurementPlan(); // 목록 가져오기
-	List<ProcurementPlanVO> getItemCodeForProcurementPlan(); // 품목 코드 가져오기
-	List<ProcurementPlanVO> getItemNameForProcurementPlan(); // 품목 코드로 선택된 품목명 가져오기
-	int registerProcurementPlan(ProcurementPlanVO vo); // 등록
-	ProcurementPlanVO inquiryProcurementPlan(Integer pp_code); // 조회
-	int deleteProcurementPlan(Integer pp_code); // 삭제
-	int modifyProcurementPlan(ProcurementPlanVO vo); // 수정
+	List<ProcurementPlanVO> getProcurementPlan(Criteria cri); // 목록 가져오기
+	Integer registerProcurementPlan(List<ProcurementPlanVO> list); // 등록
+	Integer deleteProcurementPlan(Integer pp_code); // 삭제
+	Integer modifyProcurementPlan(ProcurementPlanVO vo); // 수정
 	
 }

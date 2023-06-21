@@ -1,6 +1,8 @@
 package com.overc1ock.controller;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.overc1ock.domain.ContractVO;
+import com.overc1ock.domain.Criteria;
 import com.overc1ock.domain.ItemInfoVO;
+import com.overc1ock.domain.ProcurementPlanVO;
 import com.overc1ock.service.ContractService;
 import com.overc1ock.service.ItemInfoService;
 import com.overc1ock.service.ProcurementPlanService;
@@ -28,15 +32,14 @@ public class OrderPlanningController {
 	ContractService contractService;
 	ProcurementPlanService procurementPlanService;
 
-	@GetMapping("/itemInfo")
-	public String itemInfo(Model model) {
+	@GetMapping("/iteminfo")
+	public void itemInfo(Model model) {
 		log.info("품목 정보 등록 페이지 요청");
 		model.addAttribute("itemInfo", itemInfoService.getItemInfo());
 		model.addAttribute("getSubCategoryCode", itemInfoService.getSubCategoryCode());
-		return "/orderplanning/itemInfo";
 	}
 	
-	@PostMapping("/registerItemInfo")
+	@PostMapping("/registeriteminfo")
 	public String registerItemInfo(ItemInfoVO vo, 
 			MultipartFile[] specification_file, MultipartFile[] draw_file, Model model) {
 		log.info("품목 정보 등록 기능 요청");
@@ -69,24 +72,24 @@ public class OrderPlanningController {
 			}
 		}
 		itemInfoService.registerItemInfo(vo);
-		return "redirect:/orderplanning/itemInfo";
+		return "redirect:/orderplanning/iteminfo";
 	}
 	
-	@PostMapping("/inquiryItemInfo")
+	@PostMapping("/inquiryiteminfo")
 	public String inquiryItemInfo(String item_code, Model model) {
 		log.info("품목 정보 조회 기능 요청");
 		model.addAttribute(itemInfoService.inquiryItemInfo(item_code));
-		return "redirect:/orderplanning/itemInfo";
+		return "redirect:/orderplanning/iteminfo";
 	}
 	
-	@PostMapping("/deleteItemInfo")
+	@PostMapping("/deleteiteminfo")
 	public String deleteItemInfo(String item_code) {
 		log.info("품목 정보 삭제 기능 요청");
 		itemInfoService.deleteItemInfo(item_code);
-		return "redirect:/orderplanning/itemInfo";
+		return "redirect:/orderplanning/iteminfo";
 	}
 	
-	@PostMapping("/modifyItemInfo")
+	@PostMapping("/modifyiteminfo")
 	public String modifyItemInfo(ItemInfoVO vo,
 			MultipartFile[] specification_file, MultipartFile[] draw_file) {
 		log.info("품목 정보 수정 기능 요청");
@@ -119,19 +122,18 @@ public class OrderPlanningController {
 			}
 		}
 		itemInfoService.modifyItemInfo(vo);
-		return "redirect:/orderplanning/itemInfo";
+		return "redirect:/orderplanning/iteminfo";
 	}
 	
 	@GetMapping("/contract")
-	public String contract(Model model) {
+	public void contract(Model model) {
 		log.info("계약 등록 페이지 요청");
 		model.addAttribute("contract", contractService.getContract());
 		model.addAttribute("getItemInfoForContract", contractService.getItemCodeForContract());
 		model.addAttribute("getSubcontractor", contractService.getSubcontractorName());
-		return "/orderplanning/contract";
 	}
 	
-	@PostMapping("/registerContract")
+	@PostMapping("/registercontract")
 	public String registerContract(ContractVO vo, MultipartFile[] contract_file) {
 		log.info("계약 등록 기능 요청");
 		String uploadContractFile = "C:/orderplanning/contract_file"; // 계약서 파일 업로드
@@ -152,21 +154,21 @@ public class OrderPlanningController {
 		return "redirect:/orderplanning/contract";
 	}
 	
-	@PostMapping("/inquiryContract")
+	@PostMapping("/inquirycontract")
 	public String inquiryContract(Integer contract_code, Model model) {
 		log.info("계약 조회 기능 요청");
 		contractService.inquiryContract(contract_code);
 		return "redirect:/orderplanning/contract";
 	}
 	
-	@PostMapping("/deleteContract")
+	@PostMapping("/deletecontract")
 	public String deleteContract(Integer contract_code) {
 		log.info("계약 삭제 기능 요청");
 		contractService.deleteContract(contract_code);
 		return "redirect:/orderplanning/contract";
 	}
 	
-	@PostMapping("/modifyContract")
+	@PostMapping("/modifycontract")
 	public String modifyContract(ContractVO vo, MultipartFile[] contract_file) {
 		log.info("계약 수정 기능 요청");
 		String uploadContractFile = "C:/orderplanning/contract_file"; // 계약서 파일 업로드
@@ -187,13 +189,29 @@ public class OrderPlanningController {
 		return "redirect:/orderplanning/contract";
 	}
 	
-	@GetMapping("/procurementPlan")
-	public String procurementPlan(Model model) {
+	@GetMapping("/procurementplan")
+	public void procurementPlan(Model model, Criteria cri) {
 		log.info("조달 계획 등록 페이지 요청");
-		model.addAttribute("procurementPlan", procurementPlanService.getProcurementPlan());
-		model.addAttribute("getItemInfoForProcurementPlan", 
-				procurementPlanService.getItemCodeForProcurementPlan());
-		return "/orderplanning/procurementPlan";
+		model.addAttribute("ppList", procurementPlanService.getProcurementPlan(cri));
+		model.addAttribute("cri", cri);
+		
+	}
+	
+	@PostMapping("/registerprocurementplan")
+	public String registerProcurementPlan(ProcurementPlanVO procurementPlanVO, Criteria cri) {
+		log.info("post 조달계획등록 요청");
+		List<ProcurementPlanVO> list = new ArrayList<ProcurementPlanVO>();
+		for (ProcurementPlanVO vo : procurementPlanVO.getProcurementPlanVOList()) {
+			if (vo.getProcurement_date() != null) {
+				list.add(vo);
+			}
+		}
+		log.info(list);
+		if (list != null && !list.isEmpty()) {
+			log.info("조달계획 등록 수행되나");
+			procurementPlanService.registerProcurementPlan(list);
+		}
+		return "redirect:/orderplanning/procurementplan";
 	}
 
 }

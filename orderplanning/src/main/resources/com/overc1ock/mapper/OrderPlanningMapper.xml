@@ -7,9 +7,9 @@
 	
 	<!-- 품목 정보 목록 출력 -->
 	<select id="getItemInfo" resultType="com.overc1ock.domain.ItemInfoVO">
-		SELECT item_code, item_name, standard, material, specification_file, draw_file, item_registration_date, sc_code
-		FROM item LEFT JOIN sub_category USING(sc_code) LEFT JOIN major_category USING(mc_code) 
-		ORDER BY item_registration_date DESC
+		select item_code, item_name, sc_name, mc_name, standard, material, specification_file, draw_file, item_registration_date
+		from item join sub_category using(sc_code) join major_category using(mc_code)
+		order by item_code, item_registration_date
 	</select>
 	
 	<!-- 중분류 코드 가져오기 -->
@@ -34,14 +34,14 @@
 	
 	<!-- 품목 정보 삭제 -->
 	<delete id="deleteItemInfo">
-		DELETE FROM item WHERE item_code = #{ item_code }
+		DELETE FROM item WHERE item_code = #{item_code}
 	</delete>
 	
 	<!-- 품목 정보 수정 -->
 	<update id="modifyItemInfo">
 		UPDATE item
-		SET item_name = #{ item_name }, standard = #{ standard }, material = #{ material },
-		specification_file = #{ specification_file }, draw_file = #{ draw_file }, sc_code = #{ sc_code } WHERE item_code = #{ item_code };
+		SET item_name = #{item_name}, standard = #{ standard }, material = #{ material },
+		specification_file = #{ specification_file }, draw_file = #{ draw_file }, sc_code = #{ sc_code }, mc_code = #{mc_code} WHERE item_code = #{ item_code };
 	</update>
 	
 	<!-- 계약 품목 정보 목록 출력 -->
@@ -108,24 +108,27 @@
 	
 	<!-- 조달 예정 품목 목록 출력 -->
 	<select id="getProcurementPlan" resultType="com.overc1ock.domain.ProcurementPlanVO">
-		SELECT item_code, item_name, process, production_date, consumption, procurement_date
-		FROM procurement_plan LEFT JOIN item_use_plan USING(iup_code) LEFT JOIN item USING(item_code)
-		LEFT JOIN products_production_plan USING(ppp_code) LEFT JOIN purchase_order USING(po_code) 
-		ORDER BY pp_code DESC, procurement_date DESC
+		select pp_code,item_code,item_name,`process`,consumption,production_date,procurement_date,pp_text, iup_code 
+		from products_production_plan join item_use_plan using(ppp_code) join item using(item_code) left join procurement_plan using(iup_code) 
+		where (pp_status is null or pp_status = 0)
+			<if test="startDate != null and startDate != '' and endDate != null and endDate != ''">
+		    	AND production_date between date(#{startDate}) and date(#{endDate})+1
+			</if>
+			<if test="word != null and word != ''">
+		    	AND item_name like concat('%',#{word},'%')
+			</if>
+		
+		ORDER BY procurement_date,production_date, item_code
 	</select>
 	
-	<!-- 품목 코드 가져오기 -->
-	<select id="getItemCodeForProcurementPlan" resultType="com.overc1ock.domain.ProcurementPlanVO">
-		SELECT item_code
-		FROM item_has_product LEFT JOIN item USING(item_code)
-		ORDER BY item_code
-	</select>
+	<!-- 조달계획 등록 -->
 	
-	<!-- 품목 코드로 선택된 품목명 가져오기 -->
-	<select id="getItemNameForProcurementPlan" resultType="com.overc1ock.domain.ProcurementPlanVO">
-		SELECT item_name
-		FROM item_has_product LEFT JOIN item USING(item_code)
-		WHERE item_code = #{ item_code }
-	</select>
+	<insert id="registerProcurementPlan" parameterType="java.util.List">
+    	<foreach collection="list" item="vo" separator=";">
+    	insert into procurement_plan(procurement_date,pp_text,iup_code)
+    		values(#{vo.procurement_date},#{vo.pp_text},#{vo.iup_code})
+    	</foreach>
+    </insert>
+
 	
 </mapper>

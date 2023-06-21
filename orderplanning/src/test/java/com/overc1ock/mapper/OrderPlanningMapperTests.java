@@ -1,5 +1,9 @@
 package com.overc1ock.mapper;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +11,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.overc1ock.domain.ContractVO;
+import com.overc1ock.domain.Criteria;
 import com.overc1ock.domain.ItemInfoVO;
+import com.overc1ock.domain.ProcurementPlanVO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -36,7 +42,7 @@ public class OrderPlanningMapperTests {
 		vo.setMaterial("테스트 재질");
 		vo.setSpecification_file("테스트 제작 사양 파일");
 		vo.setDraw_file("테스트 도면 파일");
-		vo.setSc_code(1);
+//		vo.setSc_name(?);
 		mapper.registerItemInfo(vo);
 	}
 	
@@ -58,7 +64,7 @@ public class OrderPlanningMapperTests {
 		vo.setMaterial("수정된 재질");
 		vo.setSpecification_file("수정된 제작 사양 파일");
 		vo.setDraw_file("수정된 도면 파일");
-		vo.setSc_code(2);
+//		vo.setSc_code(2);
 		vo.setItem_code("30");
 		mapper.modifyItemInfo(vo);
 	}
@@ -109,7 +115,22 @@ public class OrderPlanningMapperTests {
 	
 	@Test
 	public void testGetProcurementPlan() {
-		mapper.getProcurementPlan().forEach(vo -> log.info(vo));
+		Criteria cri = new Criteria();
+		mapper.getProcurementPlan(cri).forEach(vo -> log.info(vo));
+	}
+	
+	@Test
+	public void testRegisterProcurementPlan() {
+		List<ProcurementPlanVO> list = new ArrayList<ProcurementPlanVO>();
+		ProcurementPlanVO vo1 = new ProcurementPlanVO();
+		vo1.setProcurement_date(new Date());
+		vo1.setIup_code(12);
+		list.add(vo1);
+		ProcurementPlanVO vo2 = new ProcurementPlanVO();
+		vo1.setProcurement_date(new Date());
+		vo1.setIup_code(13);
+		list.add(vo2);
+		mapper.registerProcurementPlan(list);
 	}
 	
 }

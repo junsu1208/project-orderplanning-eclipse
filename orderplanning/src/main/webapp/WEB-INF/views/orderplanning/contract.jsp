@@ -44,11 +44,11 @@
 					style="position: absolute; left: 250px; top: 40px;">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item" style="margin-left: 10px;"><a
-							class="nav-link" href="/orderplanning/itemInfo" id="inbound">품목 정보 등록</a></li>
+							class="nav-link" href="/orderplanning/iteminfo" id="iteminfo">품목 정보 등록</a></li>
 						<li class="nav-item" style="margin-left: 10px;"><a
-							class="nav-link" href="/orderplanning/contract"" id="outbound">계약 등록</a></li>
+							class="nav-link" href="/orderplanning/contract"" id="contract">계약 등록</a></li>
 						<li class="nav-item" style="margin-left: 10px;"><a
-							class="nav-link" href="/orderplanning/procurementPlan"" id="inbound">조달 계획 등록</a></li>
+							class="nav-link" href="/orderplanning/procurementplan"" id="procurementplan">조달 계획 등록</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -311,9 +311,9 @@
 	</script>
 	<script>
 		if (document.getElementById("flag").value == 2) {
-			document.getElementById("outbound").style.backgroundColor = "#fff";
-			document.getElementById("outbound").style.color = "#000000";
-			document.getElementById("outbound").style.fontWeight = "bold";
+			document.getElementById("contract").style.backgroundColor = "#fff";
+			document.getElementById("contract").style.color = "#000000";
+			document.getElementById("contract").style.fontWeight = "bold";
 			document.getElementById("procurement").style.backgroundColor = "#fff";
 			document.getElementById("procurement").style.color = "#000000";
 			document.getElementById("procurement").style.fontWeight = "bold";

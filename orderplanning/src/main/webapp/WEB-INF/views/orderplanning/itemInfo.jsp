@@ -139,7 +139,7 @@
 									<label for="scCode" class="input-group-text">중분류 코드</label>
 									<select id="sc_code" class="form-select" tabindex="1" name="sc_code">
 										<option selected>(중분류 코드 선택)</option>
-										<c:forEach items="${ getSubCategory }" var="sub_category">
+										<c:forEach items="${ getSubCategoryCode }" var="sub_category">
 											<option><c:out value="${ sub_category.sc_code }"></c:out></option>
 										</c:forEach>
 									</select>

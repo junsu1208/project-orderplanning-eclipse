@@ -32,7 +32,7 @@ public class OrderPlanningController {
 	public String itemInfo(Model model) {
 		log.info("품목 정보 등록 페이지 요청");
 		model.addAttribute("itemInfo", itemInfoService.getItemInfo());
-		model.addAttribute("getSubCategory", itemInfoService.getSubCategory());
+		model.addAttribute("getSubCategoryCode", itemInfoService.getSubCategoryCode());
 		return "/orderplanning/itemInfo";
 	}
 	
@@ -126,8 +126,8 @@ public class OrderPlanningController {
 	public String contract(Model model) {
 		log.info("계약 등록 페이지 요청");
 		model.addAttribute("contract", contractService.getContract());
-		model.addAttribute("getSubcontractor", contractService.getSubcontractor());
-		model.addAttribute("getItemInfoForContract", contractService.getItemInfoForContract());
+		model.addAttribute("getItemInfoForContract", contractService.getItemCodeForContract());
+		model.addAttribute("getSubcontractor", contractService.getSubcontractorName());
 		return "/orderplanning/contract";
 	}
 	
@@ -192,7 +192,7 @@ public class OrderPlanningController {
 		log.info("조달 계획 등록 페이지 요청");
 		model.addAttribute("procurementPlan", procurementPlanService.getProcurementPlan());
 		model.addAttribute("getItemInfoForProcurementPlan", 
-				procurementPlanService.getItemInfoForProcurementPlan());
+				procurementPlanService.getItemCodeForProcurementPlan());
 		return "/orderplanning/procurementPlan";
 	}
 

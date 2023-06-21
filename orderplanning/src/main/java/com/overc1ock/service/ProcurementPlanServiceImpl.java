@@ -24,8 +24,8 @@ public class ProcurementPlanServiceImpl implements ProcurementPlanService {
 	}
 	
 	@Override
-	public List<ProcurementPlanVO> getItemInfoForProcurementPlan() {
-		return mapper.getItemInfoForProcurementPlan();
+	public List<ProcurementPlanVO> getItemCodeForProcurementPlan() {
+		return mapper.getItemCodeForProcurementPlan();
 	}
 
 	@Override

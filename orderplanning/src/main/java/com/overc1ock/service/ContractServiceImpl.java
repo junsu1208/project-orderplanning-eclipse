@@ -24,15 +24,16 @@ public class ContractServiceImpl implements ContractService {
 	}
 	
 	@Override
-	public List<ContractVO> getSubcontractor() {
-		return mapper.getSubcontractor();
-	}
-	
-	@Override
-	public List<ContractVO> getItemInfoForContract() {
-		return mapper.getItemInfoForContract();
+	public List<ContractVO> getItemCodeForContract() {
+		return mapper.getItemCodeForContract();
 	}
 
+	
+	@Override
+	public List<ContractVO> getSubcontractorName() {
+		return mapper.getSubcontractorName();
+	}
+	
 	@Override
 	public void registerContract(ContractVO vo) {
 		log.info("계약 등록 요청, 변수값: " + vo);

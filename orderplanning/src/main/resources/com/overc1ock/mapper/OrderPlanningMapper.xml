@@ -58,11 +58,25 @@
 		ORDER BY item_code
 	</select>
 	
+	<!-- 품목 코드로 선택된 품목 정보 가져오기  -->
+	<select id="getItemInfoForContract" resultType="com.overc1ock.domain.ContractVO">
+		SELECT product_name, item_name, standard, material, specification_file, draw_file
+		FROM item_has_product LEFT JOIN item USING(item_code)
+		WHERE item_code = #{ item_code }
+	</select>
+	
 	<!-- 협력 업체명 가져오기 -->
 	<select id="getSubcontractorName" resultType="com.overc1ock.domain.ContractVO">
 		SELECT subcontractor_name
 		FROM subcontractor
 		ORDER BY subcontractor_date
+	</select>
+	
+	<!-- 협력 업체명으로 선택된 협력 업체 정보 가져오기 -->
+	<select id="getSubcontractor" resultType="com.overc1ock.domain.ContractVO">
+		SELECT subcontractor_tel, subcontractor_email, subcontractor_person
+		FROM subcontractor
+		WHERE subcontractor_name = #{ subcontractor_name }
 	</select>
 	
 	<!-- 계약 등록 -->
@@ -105,6 +119,13 @@
 		SELECT item_code
 		FROM item_has_product LEFT JOIN item USING(item_code)
 		ORDER BY item_code
+	</select>
+	
+	<!-- 품목 코드로 선택된 품목명 가져오기 -->
+	<select id="getItemNameForProcurementPlan" resultType="com.overc1ock.domain.ProcurementPlanVO">
+		SELECT item_name
+		FROM item_has_product LEFT JOIN item USING(item_code)
+		WHERE item_code = #{ item_code }
 	</select>
 	
 </mapper>

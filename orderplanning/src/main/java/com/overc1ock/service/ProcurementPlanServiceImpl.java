@@ -35,13 +35,13 @@ public class ProcurementPlanServiceImpl implements ProcurementPlanService {
 	}
 	
 	@Override
-	public ProcurementPlanVO inquiryProcurementPlan(Long pp_code) {
+	public ProcurementPlanVO inquiryProcurementPlan(Integer pp_code) {
 		log.info("조달 계획 조회 요청, 변수값: " + pp_code);
 		return mapper.inquiryProcurementPlan(pp_code);
 	}
 	
 	@Override
-	public boolean deleteProcurementPlan(Long pp_code) {
+	public boolean deleteProcurementPlan(Integer pp_code) {
 		log.info("조달 계획 삭제 요청, 변수값: " + pp_code);
 		return mapper.deleteProcurementPlan(pp_code) == 1;
 	}

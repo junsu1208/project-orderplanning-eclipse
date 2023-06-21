@@ -73,14 +73,14 @@ public class OrderPlanningController {
 	}
 	
 	@PostMapping("/inquiryItemInfo")
-	public String inquiryItemInfo(Long item_code, Model model) {
+	public String inquiryItemInfo(String item_code, Model model) {
 		log.info("품목 정보 조회 기능 요청");
 		model.addAttribute(itemInfoService.inquiryItemInfo(item_code));
 		return "redirect:/orderplanning/itemInfo";
 	}
 	
 	@PostMapping("/deleteItemInfo")
-	public String deleteItemInfo(Long item_code) {
+	public String deleteItemInfo(String item_code) {
 		log.info("품목 정보 삭제 기능 요청");
 		itemInfoService.deleteItemInfo(item_code);
 		return "redirect:/orderplanning/itemInfo";
@@ -153,14 +153,14 @@ public class OrderPlanningController {
 	}
 	
 	@PostMapping("/inquiryContract")
-	public String inquiryContract(Long contract_code, Model model) {
+	public String inquiryContract(Integer contract_code, Model model) {
 		log.info("계약 조회 기능 요청");
 		contractService.inquiryContract(contract_code);
 		return "redirect:/orderplanning/contract";
 	}
 	
 	@PostMapping("/deleteContract")
-	public String deleteContract(Long contract_code) {
+	public String deleteContract(Integer contract_code) {
 		log.info("계약 삭제 기능 요청");
 		contractService.deleteContract(contract_code);
 		return "redirect:/orderplanning/contract";

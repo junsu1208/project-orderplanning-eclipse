@@ -10,8 +10,8 @@ import lombok.Data;
 @Data
 public class ProcurementPlanVO {
 	
-	private Long pp_code;
-	private Long item_code;
+	private Integer pp_code;
+	private Integer item_code;
 	private String item_name;
 	private String process;
 	private Date production_date;

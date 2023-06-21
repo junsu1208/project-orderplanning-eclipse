@@ -41,13 +41,13 @@ public class ContractServiceImpl implements ContractService {
 	}
 	
 	@Override
-	public ContractVO inquiryContract(Long contract_code) {
+	public ContractVO inquiryContract(Integer contract_code) {
 		log.info("계약 조회 요청, 변수값: " + contract_code);
 		return mapper.inquiryContract(contract_code);
 	}
 	
 	@Override
-	public boolean deleteContract(Long contract_code) {
+	public boolean deleteContract(Integer contract_code) {
 		log.info("계약 삭제 요청, 변수값: " + contract_code);
 		return mapper.deleteContract(contract_code) == 1;
 	}

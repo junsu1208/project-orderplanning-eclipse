@@ -42,12 +42,12 @@ public class OrderPlanningMapperTests {
 	
 	@Test
 	public void testInquiryItemInfo() {
-		mapper.inquiryItemInfo(1L);
+		mapper.inquiryItemInfo("1");
 	}
 	
 	@Test
 	public void testDeleteItemInfo() {
-		mapper.deleteItemInfo(27L);
+		mapper.deleteItemInfo("27");
 	}
 	
 	@Test
@@ -59,7 +59,7 @@ public class OrderPlanningMapperTests {
 		vo.setSpecification_file("수정된 제작 사양 파일");
 		vo.setDraw_file("수정된 도면 파일");
 		vo.setSc_code(2);
-		vo.setItem_code(30L);
+		vo.setItem_code("30");
 		mapper.modifyItemInfo(vo);
 	}
 	
@@ -73,7 +73,7 @@ public class OrderPlanningMapperTests {
 		ContractVO vo = new ContractVO();
 		vo.setContract_name("테스트 계약서");
 		vo.setSubcontractor_name("(주)애니웨어컴퍼니");
-		vo.setItem_code(5);
+		vo.setItem_code("5");
 		vo.setSupply_price(1000);
 		vo.setAgreement_date("2023-06-12");
 		vo.setLeadtime(10);
@@ -84,12 +84,12 @@ public class OrderPlanningMapperTests {
 	
 	@Test
 	public void testInquiryContract() {
-		mapper.inquiryContract(1L);
+		mapper.inquiryContract(1);
 	}
 	
 	@Test
 	public void testDeleteContract() {
-		mapper.deleteContract(27L);
+		mapper.deleteContract(27);
 	}
 	
 	@Test
@@ -97,13 +97,13 @@ public class OrderPlanningMapperTests {
 		ContractVO vo = new ContractVO();
 		vo.setContract_name("수정된 계약서");
 		vo.setSubcontractor_name("(유)길승산업");
-		vo.setItem_code(1);
+		vo.setItem_code("1");
 		vo.setSupply_price(1500);
 		vo.setAgreement_date("2023-06-14");
 		vo.setLeadtime(20);
 		vo.setContract_file("수정된 계약서 파일");
 		vo.setContract_text("수정된 비고");
-		vo.setContract_code(30L);
+		vo.setContract_code(30);
 		mapper.modifyContract(vo);
 	}
 	

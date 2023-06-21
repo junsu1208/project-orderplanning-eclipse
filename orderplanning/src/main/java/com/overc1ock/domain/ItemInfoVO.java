@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 public class ItemInfoVO {
 	
-	private Long item_code;
+	private String item_code;
 	private String item_name;
 	private String standard;
 	private String material;

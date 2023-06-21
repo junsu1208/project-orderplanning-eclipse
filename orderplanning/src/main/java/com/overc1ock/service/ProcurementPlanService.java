@@ -10,8 +10,8 @@ public interface ProcurementPlanService {
 	List<ProcurementPlanVO> getProcurementPlan(); // 목록 가져오기
 	List<ProcurementPlanVO> getItemCodeForProcurementPlan(); // 품목 코드 가져오기
 	void registerProcurementPlan(ProcurementPlanVO vo); // 등록
-	ProcurementPlanVO inquiryProcurementPlan(Long pp_code);// 조회
-	boolean deleteProcurementPlan(Long pp_code); // 삭제
+	ProcurementPlanVO inquiryProcurementPlan(Integer pp_code);// 조회
+	boolean deleteProcurementPlan(Integer pp_code); // 삭제
 	boolean modifyProcurementPlan(ProcurementPlanVO vo); // 수정
 
 }

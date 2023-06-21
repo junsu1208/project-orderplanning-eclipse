@@ -35,13 +35,13 @@ public class ItemInfoServiceImpl implements ItemInfoService {
 	}
 	
 	@Override
-	public ItemInfoVO inquiryItemInfo(Long item_code) {
+	public ItemInfoVO inquiryItemInfo(String item_code) {
 		log.info("품목 정보 조회 요청, 변수값: " + item_code);
 		return mapper.inquiryItemInfo(item_code);
 	}
 
 	@Override
-	public boolean deleteItemInfo(Long item_code) {
+	public boolean deleteItemInfo(String item_code) {
 		log.info("품목 정보 삭제 요청, 변수값: " + item_code);
 		return mapper.deleteItemInfo(item_code) == 1;
 	}

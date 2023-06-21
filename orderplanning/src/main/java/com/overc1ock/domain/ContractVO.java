@@ -9,14 +9,14 @@ import lombok.Data;
 @Data
 public class ContractVO {
 	
-	private Long contract_code;
+	private Integer contract_code;
 	private String contract_name;
 	private String subcontractor_name;
 	private String subcontractor_tel;
 	private String subcontractor_email;
 	private String subcontractor_person;
 	private String product_name;
-	private Integer item_code;
+	private String item_code;
 	private String item_name;
 	private String standard;
 	private String material;

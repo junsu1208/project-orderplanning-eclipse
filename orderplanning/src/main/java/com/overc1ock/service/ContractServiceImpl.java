@@ -27,11 +27,21 @@ public class ContractServiceImpl implements ContractService {
 	public List<ContractVO> getItemCodeForContract() {
 		return mapper.getItemCodeForContract();
 	}
+	
+	@Override
+	public List<ContractVO> getItemInfoForContract() {
+		return mapper.getItemInfoForContract();
+	}
 
 	
 	@Override
 	public List<ContractVO> getSubcontractorName() {
 		return mapper.getSubcontractorName();
+	}
+	
+	@Override
+	public List<ContractVO> getSubcontractor() {
+		return mapper.getSubcontractor();
 	}
 	
 	@Override

@@ -36,7 +36,8 @@ public class OrderPlanningController {
 	public void itemInfo(Model model) {
 		log.info("품목 정보 등록 페이지 요청");
 		model.addAttribute("itemInfo", itemInfoService.getItemInfo());
-		model.addAttribute("getSubCategoryCode", itemInfoService.getSubCategoryCode());
+		model.addAttribute("getMajorCategory", itemInfoService.getMajorCategory());
+		model.addAttribute("getSubCategory", itemInfoService.getSubCategory());
 	}
 	
 	@PostMapping("/registeriteminfo")
@@ -199,7 +200,7 @@ public class OrderPlanningController {
 	
 	@PostMapping("/registerprocurementplan")
 	public String registerProcurementPlan(ProcurementPlanVO procurementPlanVO, Criteria cri) {
-		log.info("post 조달계획등록 요청");
+		log.info("조달 계획 등록 작업 요청");
 		List<ProcurementPlanVO> list = new ArrayList<ProcurementPlanVO>();
 		for (ProcurementPlanVO vo : procurementPlanVO.getProcurementPlanVOList()) {
 			if (vo.getProcurement_date() != null) {
@@ -208,7 +209,7 @@ public class OrderPlanningController {
 		}
 		log.info(list);
 		if (list != null && !list.isEmpty()) {
-			log.info("조달계획 등록 수행되나");
+			log.info("조달 계획 등록 수행 확인");
 			procurementPlanService.registerProcurementPlan(list);
 		}
 		return "redirect:/orderplanning/procurementplan";

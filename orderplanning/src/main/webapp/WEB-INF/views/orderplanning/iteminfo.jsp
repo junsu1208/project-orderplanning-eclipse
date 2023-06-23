@@ -108,22 +108,22 @@
 							</div>
 							<div class="col-md-3">
 								<div class="input-group mb-3">
-									<label for="scCode" class="input-group-text">대분류</label> <select
-										id="sc_code" class="form-select" tabindex="1" name="sc_code">
-										<option selected>(중분류 코드 선택)</option>
-										<c:forEach items="${ getSubCategoryCode }" var="sub_category">
-											<option><c:out value="${ sub_category.sc_code }"></c:out></option>
+									<label for="McName" class="input-group-text">대분류</label> <select
+										id="mc_name" class="form-select" tabindex="1" name="mc_name">
+										<option selected>(대분류 선택)</option>
+										<c:forEach items="${ getMajorCategory }" var="major_category">
+											<option><c:out value="${ major_category.mc_name }"></c:out></option>
 										</c:forEach>
 									</select>
 								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="input-group mb-3">
-									<label for="scCode" class="input-group-text">중분류 코드</label> <select
-										id="sc_code" class="form-select" tabindex="1" name="sc_code">
-										<option selected>(중분류 코드 선택)</option>
-										<c:forEach items="${ getSubCategoryCode }" var="sub_category">
-											<option><c:out value="${ sub_category.sc_code }"></c:out></option>
+									<label for="scName" class="input-group-text">중분류</label> <select
+										id="sc_name" class="form-select" tabindex="1" name="sc_name">
+										<option selected>(중분류 선택)</option>
+										<c:forEach items="${ getSubCategory }" var="sub_category">
+											<option><c:out value="${ sub_category.sc_name }"></c:out></option>
 										</c:forEach>
 									</select>
 								</div>
@@ -140,7 +140,7 @@
 										type="text" class="form-control" id="material" name="material" />
 								</div>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-6">
 								<div class="input-group mb-3">
 									<label for="itemRegistrationDate" class="input-group-text">등록일</label>
 									<input type="date" id="item_registration_date"
@@ -156,16 +156,16 @@
 						<div class="row g-3">
 							<div class="col-md-6">
 								<div class="input-group mb-3">
-									<label for="specificationFile" class="input-group-text">제작
-										사양</label> <input type="file" class="form-control"
+									<label for="specificationFile" class="input-group-text">제작 사양</label>
+									<input type="file" class="form-control"
 										id="specification_file" name="specification_file" />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="input-group mb-3">
-									<label for="drawFile" class="input-group-text">도면 파일</label> <input
-										type="file" class="form-control" id="draw_file"
-										name="draw_file" />
+									<label for="drawFile" class="input-group-text">도면 파일</label> 
+									<input type="file" class="form-control"
+										id="draw_file" name="draw_file" />
 								</div>
 							</div>
 						</div>

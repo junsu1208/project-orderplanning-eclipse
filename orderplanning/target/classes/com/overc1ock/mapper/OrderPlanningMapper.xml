@@ -12,9 +12,16 @@
 		order by item_code, item_registration_date
 	</select>
 	
-	<!-- 중분류 코드 가져오기 -->
-	<select id="getSubCategoryCode" resultType="com.overc1ock.domain.ItemInfoVO">
-		SELECT sc_code
+	<!-- 대분류 가져오기 -->
+	<select id="getMajorCategory" resultType="com.overc1ock.domain.ItemInfoVO">
+		SELECT mc_name
+		FROM major_category
+		ORDER BY mc_code
+	</select>
+	
+	<!-- 중분류 가져오기 -->
+	<select id="getSubCategory" resultType="com.overc1ock.domain.ItemInfoVO">
+		SELECT sc_name
 		FROM sub_category
 		ORDER BY sc_code
 	</select>
@@ -34,7 +41,7 @@
 	
 	<!-- 품목 정보 삭제 -->
 	<delete id="deleteItemInfo">
-		DELETE FROM item WHERE item_code = #{item_code}
+		DELETE FROM item WHERE item_code = #{ item_code }
 	</delete>
 	
 	<!-- 품목 정보 수정 -->
@@ -121,14 +128,12 @@
 		ORDER BY procurement_date,production_date, item_code
 	</select>
 	
-	<!-- 조달계획 등록 -->
-	
+	<!-- 조달 계획 등록 -->
 	<insert id="registerProcurementPlan" parameterType="java.util.List">
     	<foreach collection="list" item="vo" separator=";">
-    	insert into procurement_plan(procurement_date,pp_text,iup_code)
-    		values(#{vo.procurement_date},#{vo.pp_text},#{vo.iup_code})
+	    	insert into procurement_plan(procurement_date,pp_text,iup_code)
+	    	values(#{vo.procurement_date},#{vo.pp_text},#{vo.iup_code})
     	</foreach>
     </insert>
-
-	
+    
 </mapper>

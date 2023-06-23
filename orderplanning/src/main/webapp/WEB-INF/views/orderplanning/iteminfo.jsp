@@ -85,7 +85,7 @@
 	<div class="container"
 		style="position: absolute; left: 250px; width: 3000px;">
 		<div class="wrap">
-			<form action="itemInfo" method="post" enctype="multipart/form-data">
+			<form action="iteminfo" method="post" enctype="multipart/form-data">
 				<div class="card">
 					<div class="card-header">
 						<b>품목 정보 등록 및 조회</b>
@@ -170,21 +170,17 @@
 							</div>
 						</div>
 						<div class="row g-3">
-							<div class="col-md-1">
-								<button type="button" id="registerItemInfo"
-									class="btn btn-primary btn-success">등록</button>
+							<div class="col-md-3">
+								<button type="button" id="registerItemInfo" class="btn btn-primary btn-primary" style="background-color:#42d676; border-color:#42d676;">품목 정보 등록</button>
 							</div>
-							<div class="col-md-1">
-								<button type="button" id="modifyItemInfo"
-									class="btn btn-primary btn-primary">수정</button>
+							<div class="col-md-3">
+								<button type="button" id="modifyItemInfo" class="btn btn-primary btn-primary">품목 정보 수정</button>
 							</div>
-							<div class="col-md-1">
-								<button type="button" id="deleteItemInfo"
-									class="btn btn-primary btn-danger">삭제</button>
+							<div class="col-md-3">
+								<button type="button" id="deleteItemInfo" class="btn btn-primary btn-primary" style="background-color:red; border-color:red;">품목 정보 삭제</button>
 							</div>
-							<div class="col-md-1">
-								<button type="button" id="inquiryItemInfo"
-									class="btn btn-primary btn-primary">조회</button>
+							<div class="col-md-3">
+								<button type="button" id="inquiryItemInfo" class="btn btn-primary btn-primary">품목 정보 조회</button>
 							</div>
 						</div>
 					</div>

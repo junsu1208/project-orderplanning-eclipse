@@ -82,16 +82,16 @@
 			<div class="wrap">
 				<div class="card">
 					<div class="card-header">
-						<b>조달예정품목 조회</b>
+						<b>조달 예정 품목 조회</b>
 					</div>
 					<form action="procurementplan">
 						<div class="card-body">
 							<div class="row g-3">
 								<div class="col-md-3">
 									<div class="input-group mb-3">
-										<span class="input-group-text">생산일 (From)</span> <input
+										<span class="input-group-text">생산일(From)</span> <input
 											type="date" id="startDate" class="form-control datepicker"
-											name="startDate" aria-label="Reported Date (From)" value="${cri.startDate}"> <span
+											name="startDate" aria-label="Reported Date (From)" value="${ cri.startDate }"> <span
 											class="input-group-text"><img
 											src="/resources/img/calendar3.svg" alt="" width="16"
 											height="16" title="calendar" /></span> <b
@@ -100,9 +100,9 @@
 								</div>
 								<div class="col-md-3">
 									<div class="input-group mb-3">
-										<span class="input-group-text">생산일 (To)</span> <input
+										<span class="input-group-text">생산일(To)</span> <input
 											type="date" id="endDate" class="form-control datepicker"
-											name="endDate" aria-label="Reported Date (To)" value="${cri.endDate}"> <span
+											name="endDate" aria-label="Reported Date (To)" value="${ cri.endDate }"> <span
 											class="input-group-text"><img
 											src="/resources/img/calendar3.svg" alt="" width="16"
 											height="16" title="calendar" /></span>
@@ -112,11 +112,11 @@
 									<div class="input-group mb-3">
 										<span class="input-group-text">품목명</span> <input type="text"
 											name="word" list="productName"
-											style="border: 1px solid #ced4da;" value="${cri.word}">
+											style="border: 1px solid #ced4da;" value="${ cri.word }">
 										<datalist id="productName"
 											style="border: 1px solid #DBE0E4;">
-											<c:forEach var="list" items="${pnList }">
-												<option value="${list.product_name }"></option>
+											<c:forEach var="list" items="${ pnList }">
+												<option value="${ list.product_name }"></option>
 											</c:forEach>
 										</datalist>
 									</div>
@@ -152,63 +152,63 @@
 					<table id='myTable'
 						class="table table-bordered table-striped table-hover caption-top">
 						<caption style="color: black;">
-							<b>조달예정품목</b>
+							<b>조달 예정 품목</b>
 						</caption>
+						<button type="submit" class="btn btn-success"
+							style="position: absolute; left: 930px; background-color:#42d676; border-color:#42d676;">조달 계획 등록</button>
 						<button type="submit" class="btn btn-primary"
-							style="position: absolute; left: 930px;">조달계획등록</button>
-						<button type="submit" class="btn btn-primary"
-							style="position: absolute; left: 1060px; background-color:#42d676; border-color:#42d676;">조달계획수정</button>
-						<button type="submit" class="btn btn-primary"
-							style="position: absolute; left: 1190px; background-color:red; border-color:red;">조달계획삭제</button>
+							style="position: absolute; left: 1060px;">조달 계획 수정</button>
+						<button type="submit" class="btn btn-danger"
+							style="position: absolute; left: 1190px; background-color:red; border-color:red;">조달 계획 삭제</button>
 						<thead class="table-dark">
 							<tr>
 								<th scope="col" style="text-align: center;"></th>
 								<th scope="col" style="text-align: center;">순번</th>
-								<th scope="col" style="text-align: center;">품목코드</th>
+								<th scope="col" style="text-align: center;">품목 코드</th>
 								<th scope="col" style="text-align: center;">품목명</th>
-								<th scope="col" style="text-align: center;">자재소요공정</th>
+								<th scope="col" style="text-align: center;">자재 소요 공정</th>
 								<th scope="col" style="text-align: center;">소요량</th>
 								<th scope="col" style="text-align: center;">생산일</th>
-								<th scope="col" style="text-align: center;">조달납기</th>
+								<th scope="col" style="text-align: center;">조달 납기</th>
 								<th scope="col" style="text-align: center;">비고</th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:set value="0" var="no" />
 							<c:set var="now" value="<%=new java.util.Date()%>" />
-							<fmt:formatDate var="nowdate" type="date" value="${now}" pattern="yyyy-MM-dd"/>
-							<c:forEach var="list" items="${ppList}">
+							<fmt:formatDate var="nowdate" type="date" value="${ now }" pattern="yyyy-MM-dd"/>
+							<c:forEach var="list" items="${ ppList }">
 							
 								<tr>
-									<td style="text-align: center;"><input type="radio" name="pp_code" value="${list.pp_code}"> </td>
-									<td style="text-align: center;">${no = no+1}</td>
-									<td style="text-align: center;">${list.item_code}</td>
-									<td style="text-align: center;">${list.item_name}</td>
-									<td style="text-align: center;">${list.process}</td>
-									<td style="text-align: center;"><fmt:formatNumber value="${list.consumption}" pattern="#,###"/></td>
-									<td style="text-align: center;"><fmt:formatDate value="${list.production_date}" pattern="yyyy-MM-dd"/></td>
+									<td style="text-align: center;"><input type="radio" name="pp_code" value="${ list.pp_code }"> </td>
+									<td style="text-align: center;">${ no = no + 1 }</td>
+									<td style="text-align: center;">${ list.item_code }</td>
+									<td style="text-align: center;">${ list.item_name }</td>
+									<td style="text-align: center;">${ list.process }</td>
+									<td style="text-align: center;"><fmt:formatNumber value="${ list.consumption }" pattern="#,###"/></td>
+									<td style="text-align: center;"><fmt:formatDate value="${ list.production_date }" pattern="yyyy-MM-dd"/></td>
 									<td style="text-align: center;">
-										<c:if test="${list.procurement_date == null}">
-											<input type="date" id="date" name="procurementPlanVOList[${no-1}].procurement_date">
+										<c:if test="${ list.procurement_date == null }">
+											<input type="date" id="date" name="procurementPlanVOList[${ no-1 }].procurement_date">
 										</c:if>
-										<c:if test="${list.procurement_date != null}">
-											<fmt:formatDate value="${list.procurement_date}" pattern="yyyy-MM-dd"/>
+										<c:if test="${ list.procurement_date != null }">
+											<fmt:formatDate value="${ list.procurement_date }" pattern="yyyy-MM-dd"/>
 										</c:if>
 									</td>
 									<td style="text-align: center;">
-										<c:if test="${list.procurement_date == null}">
-											<input type="textarea" id="pp_text" name="procurementPlanVOList[${no-1}].pp_text">
+										<c:if test="${ list.procurement_date == null }">
+											<input type="textarea" id="pp_text" name="procurementPlanVOList[${ no-1 }].pp_text">
 										</c:if>
-										<c:if test="${list.procurement_date != null &&( list.pp_text == null || list.pp_text == '')}">
+										<c:if test="${ list.procurement_date != null &&( list.pp_text == null || list.pp_text == '') }">
 											비고 없음
 										</c:if>
-										<c:if test="${list.pp_text != null || list.pp_text != ''}">
-											${list.pp_text}
+										<c:if test="${ list.pp_text != null || list.pp_text != '' }">
+											${ list.pp_text }
 										</c:if>
 									</td>
 
 								</tr>
-								<input type="hidden" name="procurementPlanVOList[${no-1}].iup_code" value="${list.iup_code}">
+								<input type="hidden" name="procurementPlanVOList[${ no - 1 }].iup_code" value="${ list.iup_code }">
 							</c:forEach>
 						</tbody>
 					</table>
@@ -216,25 +216,11 @@
 			</div>
 		</div>
 	</div>
-	</form>
 	<input type="hidden" value="2" id="flag">
 	<script src="/resources/js/core/jquery-3.2.1.min.js" type="text/javascript"></script>
 	<script src="/resources/js/core/popper.min.js" type="text/javascript"></script>
 	<script src="/resources/js/core/bootstrap-5.min.js" type="text/javascript"></script>
 	<script src="/resources/js/core/jquery-ui.min.js" type="text/javascript"></script>
-	<script type="text/javascript">
-		$(document).on('click', "input[type='checkbox']", function() {
-			if (this.checked) {
-				const checkboxes = $("input[type='checkbox']");
-				for (let ind = 0; ind < checkboxes.length; ind++) {
-					checkboxes[ind].checked = false;
-				}
-				this.checked = true;
-			} else {
-				this.checked = false;
-			}
-		});
-	</script>
 	<script>
 		if (document.getElementById("flag").value == 2) {
 			document.getElementById("procurementplan").style.backgroundColor = "#fff";

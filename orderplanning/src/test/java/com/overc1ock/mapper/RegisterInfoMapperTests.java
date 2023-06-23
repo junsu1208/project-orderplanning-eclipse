@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.overc1ock.domain.ProductionPlanVO;
 import com.overc1ock.domain.SubcontractorVO;
 
 import lombok.extern.log4j.Log4j;
@@ -32,6 +33,21 @@ public class RegisterInfoMapperTests {
 		vo.setSubcontractor_email("test3@example.com");
 		vo.setSubcontractor_address("테스트 주소(3)");
 		mapper.registerSubcontractor(vo);
+	}
+	
+	@Test
+	public void testGetProductionPlan() {
+		mapper.getProductionPlan().forEach(vo -> log.info(vo));
+	}
+	
+	@Test
+	public void testRegisterProductionPlan() {
+		ProductionPlanVO vo = new ProductionPlanVO();
+		vo.setProduct_name("test제품2");
+		vo.setProduction(3000);
+		vo.setProcess("H공정");
+		vo.setProduction_date("2023-06-01");
+		mapper.registerProductionPlan(vo);
 	}
 
 }

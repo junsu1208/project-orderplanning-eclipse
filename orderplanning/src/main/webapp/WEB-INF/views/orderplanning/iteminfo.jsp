@@ -105,8 +105,8 @@
 							</div>
 							<div class="col-md-3">
 								<div class="input-group mb-3">
-									<label for="McName" class="input-group-text">대분류</label> <select
-										id="mc_name" class="form-select" tabindex="1" name="mc_name">
+									<label for="McName" class="input-group-text">대분류</label> 
+									<select id="mc_name" class="form-select" tabindex="1" name="mc_name">
 										<option selected>(대분류 선택)</option>
 										<c:forEach items="${ getMajorCategory }" var="major_category">
 											<option><c:out value="${ major_category.mc_name }"></c:out></option>
@@ -116,8 +116,8 @@
 							</div>
 							<div class="col-md-3">
 								<div class="input-group mb-3">
-									<label for="scName" class="input-group-text">중분류</label> <select
-										id="sc_name" class="form-select" tabindex="1" name="sc_name">
+									<label for="scName" class="input-group-text">중분류</label> 
+									<select id="sc_name" class="form-select" tabindex="1" name="sc_name">
 										<option selected>(중분류 선택)</option>
 										<c:forEach items="${ getSubCategory }" var="sub_category">
 											<option><c:out value="${ sub_category.sc_name }"></c:out></option>
@@ -149,8 +149,6 @@
 									</span>
 								</div>
 							</div>
-						</div>
-						<div class="row g-3">
 							<div class="col-md-6">
 								<div class="input-group mb-3">
 									<label for="specificationFile" class="input-group-text">제작 사양</label>
@@ -236,9 +234,11 @@
 							<td style="text-align: center;"><span>${ itemInfo.material }</span></td>
 							<td style="text-align: center;"><span>${ itemInfo.specification_file }</span></td>
 							<td style="text-align: center;"><span>${ itemInfo.draw_file }</span></td>
-							<td style="text-align: center;"><span><fmt:formatDate
-										pattern="yyyy-MM-dd"
-										value="${ itemInfo.item_registration_date }" /></span></td>
+							<td style="text-align: center;">
+								<span>
+									<fmt:formatDate pattern="yyyy-MM-dd" value="${ itemInfo.item_registration_date }" />
+								</span>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>

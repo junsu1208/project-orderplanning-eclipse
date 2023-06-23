@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="/resources/css/custom.css" type="text/css" />
 <link rel="stylesheet" href="/resources/css/core/flag-icon.min.css"
 	type="text/css" />
-<title>생산 계획 등록</title>
+<title>제품 생산 계획 등록</title>
 <script type="text/javascript" src="/resources/js/txn-add-scripts.js"></script>
 <script type="text/javascript" src="/resources/js/common-scripts.js"></script>
 <script type="text/javascript" src="/resources/js/navbar-scripts.js"></script>
@@ -48,7 +48,7 @@
 						<li class="nav-item" style="margin-left: 10px;"><a
 							class="nav-link" href="/registerinfo/subcontractor" id="subcontractor">협력 업체 등록</a></li>
 						<li class="nav-item" style="margin-left: 10px;"><a
-							class="nav-link" href="/registerinfo/productionplan" id="productionplan">생산 계획 등록</a></li>
+							class="nav-link" href="/registerinfo/productionplan" id="productionplan">제품 생산 계획 등록</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -68,7 +68,7 @@
 							<div class="nav-text" style="position: relative; left: 10px;">
 								자재 관리</div>
 					</a></li>
-					<li class="has-subnav" style="font-size: 10px;"><a href="/registerinfo/registersubcontractor" style="height: 50px;" id="register">
+					<li class="has-subnav" style="font-size: 10px;"><a href="/registerinfo/subcontractor" style="height: 50px;" id="register">
 							<div class="nav-text" style="position: relative; left: 10px;">
 								정보 등록</div>
 					</a></li>
@@ -80,67 +80,42 @@
 	<div class="container"
 		style="position: absolute; left: 250px; width: 3000px;">
 		<div class="wrap">
-			<form action="iteminfo" method="post" enctype="multipart/form-data">
+			<form action="registerProductionPlan" method="post">
 				<div class="card">
 					<div class="card-header">
-						<b>품목 정보 등록 및 조회</b>
+						<b>제품 생산 계획 등록</b>
 					</div>
 					<div class="card-body">
 						<div class="row g-3">
-							<div class="col-md-3">
+							<div class="col-md-6">
 								<div class="input-group mb-3">
-									<label for="itemCode" class="input-group-text">품목 코드</label> <input
-										type="number" class="form-control" id="item_code"
-										name="item_code" />
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="input-group mb-3">
-									<label for="itemName" class="input-group-text">품목명</label> <input
-										type="text" class="form-control" id="item_name"
-										name="item_name" />
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="input-group mb-3">
-									<label for="McName" class="input-group-text">대분류</label> <select
-										id="mc_name" class="form-select" tabindex="1" name="mc_name">
-										<option selected>(대분류 선택)</option>
-										<c:forEach items="${ getMajorCategory }" var="major_category">
-											<option><c:out value="${ major_category.mc_name }"></c:out></option>
+									<label for="productName" class="input-group-text">제품명</label>
+									<select id="product_name" class="form-select" tabindex="1" name="product_name">
+										<option selected>(제품명 선택)</option>
+										<c:forEach items="${ getProductName }" var="product">
+											<option><c:out value="${ product.product_name }"></c:out></option>
 										</c:forEach>
 									</select>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="input-group mb-3">
-									<label for="scName" class="input-group-text">중분류</label> <select
-										id="sc_name" class="form-select" tabindex="1" name="sc_name">
-										<option selected>(중분류 선택)</option>
-										<c:forEach items="${ getSubCategory }" var="sub_category">
-											<option><c:out value="${ sub_category.sc_name }"></c:out></option>
-										</c:forEach>
-									</select>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="input-group mb-3">
-									<label for="standard" class="input-group-text">규격</label> <input
-										type="text" class="form-control" id="standard" name="standard" />
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="input-group mb-3">
-									<label for="material" class="input-group-text">재질</label> <input
-										type="text" class="form-control" id="material" name="material" />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="input-group mb-3">
-									<label for="itemRegistrationDate" class="input-group-text">등록일</label>
-									<input type="date" id="item_registration_date"
-										class="form-control datepicker" name="item_registration_date"
-										aria-label="itemRegistrationDate"> <span
+									<label for="production" class="input-group-text">생산량</label>
+									<input type="number" class="form-control" id="production" name="production" />
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="input-group mb-3">
+									<label for="process" class="input-group-text">자재 소요 공정</label>
+									<input type="text" class="form-control" id="process" name="process" />
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="input-group mb-3">
+									<label for="productionDate" class="input-group-text">생산일</label>
+									<input type="date" id="production_date"
+										class="form-control datepicker" name="production_date"
+										aria-label="productionDate"> <span
 										class="input-group-text"> <img
 										src="/resources/img/calendar3.svg" alt="" width="16"
 										height="16" title="calendar" />
@@ -149,33 +124,8 @@
 							</div>
 						</div>
 						<div class="row g-3">
-							<div class="col-md-6">
-								<div class="input-group mb-3">
-									<label for="specificationFile" class="input-group-text">제작 사양</label>
-									<input type="file" class="form-control"
-										id="specification_file" name="specification_file" />
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="input-group mb-3">
-									<label for="drawFile" class="input-group-text">도면 파일</label> 
-									<input type="file" class="form-control"
-										id="draw_file" name="draw_file" />
-								</div>
-							</div>
-						</div>
-						<div class="row g-3">
 							<div class="col-md-3">
-								<button type="button" id="registerItemInfo" class="btn btn-primary btn-primary" style="background-color:#42d676; border-color:#42d676;">품목 정보 등록</button>
-							</div>
-							<div class="col-md-3">
-								<button type="button" id="modifyItemInfo" class="btn btn-primary btn-primary">품목 정보 수정</button>
-							</div>
-							<div class="col-md-3">
-								<button type="button" id="deleteItemInfo" class="btn btn-primary btn-primary" style="background-color:red; border-color:red;">품목 정보 삭제</button>
-							</div>
-							<div class="col-md-3">
-								<button type="button" id="inquiryItemInfo" class="btn btn-primary btn-primary">품목 정보 조회</button>
+								<button type="submit" id="registerProductionPlan" class="btn btn-primary btn-primary" style="background-color:#42d676; border-color:#42d676;">제품 생산 계획 등록</button>
 							</div>
 						</div>
 					</div>
@@ -202,41 +152,39 @@
 			<table id='myTable'
 				class="table table-bordered table-striped table-hover caption-top">
 				<caption style="color: black;">
-					<b>품목 정보 목록</b>
+					<b>제품 생산 계획 목록</b>
 				</caption>
 				<thead class="table-dark">
 					<tr>
-						<th scope="col" style="text-align: center;"></th>
 						<th scope="col" style="text-align: center;">순번</th>
-						<th scope="col" style="text-align: center;">품목 코드</th>
-						<th scope="col" style="text-align: center;">품목명</th>
-						<th scope="col" style="text-align: center;">대분류</th>
-						<th scope="col" style="text-align: center;">중분류</th>
-						<th scope="col" style="text-align: center;">규격</th>
-						<th scope="col" style="text-align: center;">재질</th>
-						<th scope="col" style="text-align: center;">제작 사양</th>
-						<th scope="col" style="text-align: center;">도면 파일</th>
-						<th scope="col" style="text-align: center;">등록일</th>
+						<th scope="col" style="text-align: center;">관리 코드</th>
+						<th scope="col" style="text-align: center;">제품명</th>
+						<th scope="col" style="text-align: center;">생산량</th>
+						<th scope="col" style="text-align: center;">자재 소요 공정</th>
+						<th scope="col" style="text-align: center;">생산일</th>
+						<th scope="col" style="text-align: center;">계획 등록일</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:set var="no" value="0" />
-					<c:forEach items="${ itemInfo }" var="itemInfo">
+					<c:forEach items="${ productionPlan }" var="productionPlan">
 						<tr>
-							<th scope="row" style="text-align: center;"><input
-								type="checkbox" name="selection" value="1" /></th>
 							<td style="text-align: center;">${ no = no + 1 }</td>
-							<td style="text-align: center;"><span>${ itemInfo.item_code }</span></td>
-							<td style="text-align: center;"><span>${ itemInfo.item_name }</span></td>
-							<td style="text-align: center;"><span>${ itemInfo.mc_name }</span></td>
-							<td style="text-align: center;"><span>${ itemInfo.sc_name }</span></td>
-							<td style="text-align: center;"><span>${ itemInfo.standard }</span></td>
-							<td style="text-align: center;"><span>${ itemInfo.material }</span></td>
-							<td style="text-align: center;"><span>${ itemInfo.specification_file }</span></td>
-							<td style="text-align: center;"><span>${ itemInfo.draw_file }</span></td>
-							<td style="text-align: center;"><span><fmt:formatDate
-										pattern="yyyy-MM-dd"
-										value="${ itemInfo.item_registration_date }" /></span></td>
+							<td style="text-align: center;"><span>${ productionPlan.ppp_code }</span></td>
+							<td style="text-align: center;"><span>${ productionPlan.product_name }</span></td>
+							<td style="text-align: center;"><span>${ productionPlan.production }</span></td>
+							<td style="text-align: center;"><span>${ productionPlan.process }</span></td>
+							<td style="text-align: center;">
+								<span>
+									<fmt:parseDate value="${ productionPlan.production_date }" var="production_date" pattern="yyyy-MM-dd"/>
+									<fmt:formatDate value="${ production_date }" pattern="yyyy-MM-dd"/>
+								</span>
+							</td>
+							<td style="text-align: center;">
+								<span>
+									<fmt:formatDate pattern="yyyy-MM-dd" value="${ productionPlan.ppp_registration_date }" />
+								</span>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>

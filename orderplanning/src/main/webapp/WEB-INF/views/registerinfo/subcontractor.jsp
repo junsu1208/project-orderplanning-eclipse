@@ -48,7 +48,7 @@
 						<li class="nav-item" style="margin-left: 10px;"><a
 							class="nav-link" href="/registerinfo/subcontractor" id="subcontractor">협력 업체 등록</a></li>
 						<li class="nav-item" style="margin-left: 10px;"><a
-							class="nav-link" href="/registerinfo/productionplan" id="productionplan">생산 계획 등록</a></li>
+							class="nav-link" href="/registerinfo/productionplan" id="productionplan">제품 생산 계획 등록</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -68,7 +68,7 @@
 							<div class="nav-text" style="position: relative; left: 10px;">
 								자재 관리</div>
 					</a></li>
-					<li class="has-subnav" style="font-size: 10px;"><a href="/registerinfo/registersubcontractor" style="height: 50px;" id="register">
+					<li class="has-subnav" style="font-size: 10px;"><a href="/registerinfo/subcontractor" style="height: 50px;" id="register">
 							<div class="nav-text" style="position: relative; left: 10px;">
 								정보 등록</div>
 					</a></li>
@@ -89,41 +89,36 @@
 						<div class="row g-3">
 							<div class="col-md-6">
 								<div class="input-group mb-3">
-									<label for="subcontractorName" class="input-group-text">협력 업체명</label> <input
-										type="text" class="form-control" id="subcontractor_name"
-										name="subcontractor_name" />
+									<label for="subcontractorName" class="input-group-text">협력 업체명</label>
+									<input type="text" class="form-control" id="subcontractor_name" name="subcontractor_name" />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="input-group mb-3">
-									<label for="subcontractorPerson" class="input-group-text">담당자 성함</label> <input
-										type="text" class="form-control" id="subcontractor_person"
-										name="subcontractor_person" />
+									<label for="subcontractorPerson" class="input-group-text">담당자 성함</label>
+									<input type="text" class="form-control" id="subcontractor_person" name="subcontractor_person" />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="input-group mb-3">
-									<label for="subcontractorTel" class="input-group-text">전화번호</label> <input
-										type="text" class="form-control" id="subcontractor_tel"
-										name="subcontractor_tel" />
+									<label for="subcontractorTel" class="input-group-text">전화번호</label>
+									<input type="text" class="form-control" id="subcontractor_tel" name="subcontractor_tel" />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="input-group mb-3">
-									<label for="subcontractorEmail" class="input-group-text">이메일</label> <input
-										type="text" class="form-control" id="subcontractor_email"
-										name="subcontractor_email" />
+									<label for="subcontractorEmail" class="input-group-text">이메일</label>
+									<input type="text" class="form-control" id="subcontractor_email" name="subcontractor_email" />
 								</div>
 							</div>
-								<div class="input-group mb-3">
-									<label for="subcontractorAddress" class="input-group-text">주소</label> <input
-										type="text" class="form-control" id="subcontractor_address"
-										name="subcontractor_address" />
-								</div>
+							<div class="input-group mb-3">
+								<label for="subcontractorAddress" class="input-group-text">주소</label>
+								<input type="text" class="form-control" id="subcontractor_address" name="subcontractor_address" />
+							</div>
 						</div>
 						<div class="row g-3">
 							<div class="col-md-3">
-								<button type="submit" id="subcontractor" class="btn btn-primary btn-primary" style="background-color:#42d676; border-color:#42d676;">협력 업체 등록</button>
+								<button type="submit" id="registerSubcontractor" class="btn btn-primary btn-primary" style="background-color:#42d676; border-color:#42d676;">협력 업체 등록</button>
 							</div>
 						</div>
 					</div>

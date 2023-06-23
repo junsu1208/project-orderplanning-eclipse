@@ -1,15 +1,10 @@
-package com.overc1ock.mapper;
+package com.overc1ock.service;
 
 import java.util.List;
 
 import com.overc1ock.domain.ProductionPlanVO;
-import com.overc1ock.domain.SubcontractorVO;
 
-public interface RegisterInfoMapper {
-	
-	// 협력 업체 등록
-	List<SubcontractorVO> getSubcontractor(); // 목록 가져오기
-	void registerSubcontractor(SubcontractorVO vo); // 등록
+public interface ProductionPlanService {
 	
 	// 제품 생산 계획 등록
 	List<ProductionPlanVO> getProductionPlan(); // 목록 가져오기

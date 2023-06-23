@@ -130,8 +130,8 @@ public class OrderPlanningController {
 	public void contract(Model model) {
 		log.info("계약 등록 페이지 요청");
 		model.addAttribute("contract", contractService.getContract());
-		model.addAttribute("getItemInfoForContract", contractService.getItemCodeForContract());
-		model.addAttribute("getSubcontractor", contractService.getSubcontractorName());
+		model.addAttribute("getItemCodeForContract", contractService.getItemCodeForContract());
+		model.addAttribute("getSubcontractorName", contractService.getSubcontractorName());
 	}
 	
 	@PostMapping("/registercontract")

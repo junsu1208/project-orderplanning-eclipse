@@ -46,9 +46,9 @@
 						<li class="nav-item" style="margin-left: 10px;"><a
 							class="nav-link" href="/orderplanning/iteminfo" id="iteminfo">품목 정보 등록</a></li>
 						<li class="nav-item" style="margin-left: 10px;"><a
-							class="nav-link" href="/orderplanning/contract"" id="contract">계약 등록</a></li>
+							class="nav-link" href="/orderplanning/contract" id="contract">계약 등록</a></li>
 						<li class="nav-item" style="margin-left: 10px;"><a
-							class="nav-link" href="/orderplanning/procurementplan"" id="procurementplan">조달 계획 등록</a></li>
+							class="nav-link" href="/orderplanning/procurementplan" id="procurementplan">조달 계획 등록</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -56,20 +56,21 @@
 			<div class="area"></div>
 			<nav class="main-menu">
 				<ul>
-					<li class="has-subnav" style="font-size: 10px;"><a href="/orderplanning/itemInfo"
-						style="height: 50px;" id="procurement">
+					<li class="has-subnav" style="font-size: 10px;"><a href="/orderplanning/iteminfo" style="height: 50px;" id="procurement">
 							<div class="nav-text" style="position: relative; left: 10px;">
 								조달 관리</div>
 					</a></li>
-					<li class="has-subnav" style="font-size: 10px;"><a href="#"
-						style="height: 50px;" id="order">
+					<li class="has-subnav" style="font-size: 10px;"><a href="#" style="height: 50px;" id="order">
 							<div class="nav-text" style="position: relative; left: 10px;">
 								발주 관리</div>
 					</a></li>
-					<li class="has-subnav" style="font-size: 10px;"><a href="#"
-						style="height: 50px;" id="stock">
+					<li class="has-subnav" style="font-size: 10px;"><a href="#" style="height: 50px;" id="stock">
 							<div class="nav-text" style="position: relative; left: 10px;">
 								자재 관리</div>
+					</a></li>
+					<li class="has-subnav" style="font-size: 10px;"><a href="/registerinfo/subcontractor" style="height: 50px;" id="register">
+							<div class="nav-text" style="position: relative; left: 10px;">
+								정보 등록</div>
 					</a></li>
 				</ul>
 			</nav>

@@ -42,7 +42,7 @@ public class OrderPlanningController {
 	
 	@PostMapping("/registeriteminfo")
 	public String registerItemInfo(ItemInfoVO vo, 
-			MultipartFile[] specification_file, MultipartFile[] draw_file, Model model) {
+			MultipartFile[] specification_file, MultipartFile[] draw_file) {
 		log.info("품목 정보 등록 기능 요청");
 		String uploadSpecificationFile = "C:/orderplanning/specification_file"; // 제작 사양 파일 업로드
 		String uploadDrawFile = "C:/orderplanning/draw_file"; // 도면 파일 업로드

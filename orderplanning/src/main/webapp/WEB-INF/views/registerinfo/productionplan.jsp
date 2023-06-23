@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="/resources/css/custom.css" type="text/css" />
 <link rel="stylesheet" href="/resources/css/core/flag-icon.min.css"
 	type="text/css" />
-<title>품목 정보 등록</title>
+<title>생산 계획 등록</title>
 <script type="text/javascript" src="/resources/js/txn-add-scripts.js"></script>
 <script type="text/javascript" src="/resources/js/common-scripts.js"></script>
 <script type="text/javascript" src="/resources/js/navbar-scripts.js"></script>
@@ -46,11 +46,9 @@
 					style="position: absolute; left: 250px; top: 40px;">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item" style="margin-left: 10px;"><a
-							class="nav-link" href="/orderplanning/iteminfo" id="iteminfo">품목 정보 등록</a></li>
+							class="nav-link" href="/registerinfo/subcontractor" id="subcontractor">협력 업체 등록</a></li>
 						<li class="nav-item" style="margin-left: 10px;"><a
-							class="nav-link" href="/orderplanning/contract" id="contract">계약 등록</a></li>
-						<li class="nav-item" style="margin-left: 10px;"><a
-							class="nav-link" href="/orderplanning/procurementplan" id="procurementplan">조달 계획 등록</a></li>
+							class="nav-link" href="/registerinfo/productionplan" id="productionplan">생산 계획 등록</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -70,7 +68,7 @@
 							<div class="nav-text" style="position: relative; left: 10px;">
 								자재 관리</div>
 					</a></li>
-					<li class="has-subnav" style="font-size: 10px;"><a href="/registerinfo/subcontractor" style="height: 50px;" id="register">
+					<li class="has-subnav" style="font-size: 10px;"><a href="/registerinfo/registersubcontractor" style="height: 50px;" id="register">
 							<div class="nav-text" style="position: relative; left: 10px;">
 								정보 등록</div>
 					</a></li>
@@ -253,27 +251,14 @@
 		type="text/javascript"></script>
 	<script src="/resources/js/core/jquery-ui.min.js"
 		type="text/javascript"></script>
-	<script type="text/javascript">
-		$(document).on('click', "input[type='checkbox']", function() {
-			if (this.checked) {
-				const checkboxes = $("input[type='checkbox']");
-				for (let ind = 0; ind < checkboxes.length; ind++) {
-					checkboxes[ind].checked = false;
-				}
-				this.checked = true;
-			} else {
-				this.checked = false;
-			}
-		});
-	</script>
 	<script>
 		if (document.getElementById("flag").value == 2) {
-			document.getElementById("iteminfo").style.backgroundColor = "#fff";
-			document.getElementById("iteminfo").style.color = "#000000";
-			document.getElementById("iteminfo").style.fontWeight = "bold";
-			document.getElementById("procurement").style.backgroundColor = "#fff";
-			document.getElementById("procurement").style.color = "#000000";
-			document.getElementById("procurement").style.fontWeight = "bold";
+			document.getElementById("productionplan").style.backgroundColor = "#fff";
+			document.getElementById("productionplan").style.color = "#000000";
+			document.getElementById("productionplan").style.fontWeight = "bold";
+			document.getElementById("register").style.backgroundColor = "#fff";
+			document.getElementById("register").style.color = "#000000";
+			document.getElementById("register").style.fontWeight = "bold";
 		}
 	</script>
 </body>

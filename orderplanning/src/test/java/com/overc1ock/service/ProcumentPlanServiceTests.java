@@ -8,8 +8,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.overc1ock.domain.Criteria;
 import com.overc1ock.mapper.OrderPlanningMapper;
-import com.overc1ock.mapper.OrderPlanningMapperTests;
-
 import lombok.extern.log4j.Log4j;
 
 @Log4j

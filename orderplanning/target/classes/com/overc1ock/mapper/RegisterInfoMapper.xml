@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.overc1ock.mapper.RegisterInfoMapper">
+	
+	<!-- 협력 업체 목록 출력 -->
+	<select id="getSubcontractor" resultType="com.overc1ock.domain.SubcontractorVO">
+		SELECT subcontractor_name, subcontractor_person, subcontractor_tel, subcontractor_email, subcontractor_address, subcontractor_date
+		FROM subcontractor
+		ORDER BY subcontractor_date
+	</select>
+	
+	<!-- 협력 업체 등록 -->
+	<insert id="registerSubcontractor">
+		INSERT INTO subcontractor (subcontractor_name, subcontractor_person, subcontractor_tel, subcontractor_email, subcontractor_address)
+		VALUES (#{ subcontractor_name }, #{ subcontractor_person }, #{ subcontractor_tel }, #{ subcontractor_email }, #{ subcontractor_address })
+	</insert>
+    
+</mapper>

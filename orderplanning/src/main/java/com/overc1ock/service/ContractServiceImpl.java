@@ -29,8 +29,8 @@ public class ContractServiceImpl implements ContractService {
 	}
 	
 	@Override
-	public List<ContractVO> getItemInfoForContract() {
-		return mapper.getItemInfoForContract();
+	public ContractVO getItemInfoForContract(Integer item_code) {
+		return mapper.getItemInfoForContract(item_code);
 	}
 
 	
@@ -40,8 +40,8 @@ public class ContractServiceImpl implements ContractService {
 	}
 	
 	@Override
-	public List<ContractVO> getSubcontractor() {
-		return mapper.getSubcontractor();
+	public ContractVO getSubcontractor(String subcontractor_name) {
+		return mapper.getSubcontractor(subcontractor_name);
 	}
 	
 	@Override

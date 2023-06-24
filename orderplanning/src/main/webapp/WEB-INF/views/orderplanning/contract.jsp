@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,11 +18,13 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" href="/resources/css/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="/resources/css/jquery-ui.css"
+	type="text/css" />
 <link rel="stylesheet" href="/resources/css/core/bootstrap-5.min.css"
 	type="text/css" />
 <link rel="stylesheet" href="/resources/css/custom.css" type="text/css" />
-<link rel="stylesheet" href="/resources/css/core/flag-icon.min.css" type="text/css" />
+<link rel="stylesheet" href="/resources/css/core/flag-icon.min.css"
+	type="text/css" />
 <title>계약 등록</title>
 <script type="text/javascript" src="/resources/js/txn-add-scripts.js"></script>
 <script type="text/javascript" src="/resources/js/common-scripts.js"></script>
@@ -44,11 +46,14 @@
 					style="position: absolute; left: 250px; top: 40px;">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item" style="margin-left: 10px;"><a
-							class="nav-link" href="/orderplanning/iteminfo" id="iteminfo">품목 정보 등록</a></li>
+							class="nav-link" href="/orderplanning/iteminfo" id="iteminfo">품목
+								정보 등록</a></li>
 						<li class="nav-item" style="margin-left: 10px;"><a
-							class="nav-link" href="/orderplanning/contract" id="contract">계약 등록</a></li>
+							class="nav-link" href="/orderplanning/contract" id="contract">계약
+								등록</a></li>
 						<li class="nav-item" style="margin-left: 10px;"><a
-							class="nav-link" href="/orderplanning/procurementplan" id="procurementplan">조달 계획 등록</a></li>
+							class="nav-link" href="/orderplanning/procurementplan"
+							id="procurementplan">조달 계획 등록</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -56,19 +61,25 @@
 			<div class="area"></div>
 			<nav class="main-menu">
 				<ul>
-					<li class="has-subnav" style="font-size: 10px;"><a href="/orderplanning/iteminfo" style="height: 50px;" id="procurement">
+					<li class="has-subnav" style="font-size: 10px;"><a
+						href="/orderplanning/iteminfo" style="height: 50px;"
+						id="procurement">
 							<div class="nav-text" style="position: relative; left: 10px;">
 								조달 관리</div>
 					</a></li>
-					<li class="has-subnav" style="font-size: 10px;"><a href="#" style="height: 50px;" id="order">
+					<li class="has-subnav" style="font-size: 10px;"><a href="#"
+						style="height: 50px;" id="order">
 							<div class="nav-text" style="position: relative; left: 10px;">
 								발주 관리</div>
 					</a></li>
-					<li class="has-subnav" style="font-size: 10px;"><a href="#" style="height: 50px;" id="stock">
+					<li class="has-subnav" style="font-size: 10px;"><a href="#"
+						style="height: 50px;" id="stock">
 							<div class="nav-text" style="position: relative; left: 10px;">
 								자재 관리</div>
 					</a></li>
-					<li class="has-subnav" style="font-size: 10px;"><a href="/registerinfo/subcontractor" style="height: 50px;" id="register">
+					<li class="has-subnav" style="font-size: 10px;"><a
+						href="/registerinfo/subcontractor" style="height: 50px;"
+						id="register">
 							<div class="nav-text" style="position: relative; left: 10px;">
 								정보 등록</div>
 					</a></li>
@@ -77,8 +88,8 @@
 			<br />
 		</div>
 	</div>
-	<form action="contract" method="post" enctype="multipart/form-data"
-		style="position: relative;">
+	<form action="registercontract" method="post"
+		enctype="multipart/form-data" style="position: relative;">
 		<div class="container"
 			style="position: absolute; left: 250px; width: 3000px;">
 			<div class="wrap">
@@ -88,16 +99,20 @@
 					</div>
 					<div class="card-body">
 						<div class="row g-3">
-							<div class="col-md-3">
+							<div class="col-md-6">
 								<div class="input-group mb-3">
 									<label for="contractName" class="input-group-text">계약명</label>
-									<input type="text" class="form-control" id="contract_name" name="contract_name" />
+									<input type="text" class="form-control" id="contract_name"
+										name="contract_name" required />
 								</div>
 							</div>
+						</div>
+						<div class="row g-3">
 							<div class="col-md-3">
 								<div class="input-group mb-3">
-									<label for="itemCode" class="input-group-text">품목 코드</label>
-									<select id="item_code" class="form-select" tabindex="1" name="item_code">
+									<label for="itemCode" class="input-group-text">품목 코드</label> <select
+										id="item_code" class="form-select" tabindex="1"
+										name="item_code" required>
 										<option selected>(품목 코드 선택)</option>
 										<c:forEach items="${ getItemCodeForContract }" var="item">
 											<option><c:out value="${ item.item_code }"></c:out>
@@ -107,186 +122,214 @@
 							</div>
 							<div class="col-md-3">
 								<div class="input-group mb-3">
-									<label for="productName" class="input-group-text">제품명</label>
-									<input type="text" class="form-control" id="product_name" name="product_name" readonly />
+									<label for="itemName" class="input-group-text">품목명</label> <input
+										type="text" class="form-control" id="item_name"
+										name="item_name" readonly />
+								</div>
+							</div>
+						</div>
+						<div class="row g-3">
+							<div class="col-md-3">
+								<div class="input-group mb-3">
+									<label for="majorcategory" class="input-group-text">대분류</label>
+									<input type="text" class="form-control" id="mc_name"
+										name="major_category" readonly />
 								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="input-group mb-3">
-									<label for="itemName" class="input-group-text">품목명</label>
-									<input type="text" class="form-control" id="item_name" name="item_name" readonly />
+									<label for="subcategory" class="input-group-text">중분류</label> <input
+										type="text" class="form-control" id="sc_name"
+										name="sub_category" readonly />
 								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="input-group mb-3">
-									<label for="standard" class="input-group-text">규격</label>
-									<input type="text" class="form-control" id="standard" name="standard" readonly />
+									<label for="standard" class="input-group-text">규격</label> <input
+										type="text" class="form-control" id="standard" name="standard"
+										readonly />
 								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="input-group mb-3">
-									<label for="material" class="input-group-text">재질</label>
-									<input type="text" class="form-control" id="material" name="material" readonly />
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="input-group mb-3">
-									<label for="specificationFile" class="input-group-text">제작 사양</label>
-									<input type="text" class="form-control" id="specification_file" name="specification_file" readonly />
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="input-group mb-3">
-									<label for="drawFile" class="input-group-text">도면 파일</label>
-									<input type="text" class="form-control" id="draw_file" name="draw_file" readonly />
+									<label for="material" class="input-group-text">재질</label> <input
+										type="text" class="form-control" id="material" name="material"
+										readonly />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="input-group mb-3">
-									<label for="subcontractorName" class="input-group-text">협력 업체명</label>
-									<select id="subcontractor_name" class="form-select" tabindex="1" name="subcontractor_name">
+									<label for="specificationFile" class="input-group-text">제작
+										사양</label> <input type="text" class="form-control"
+										id="specification_file" name="specification_file" readonly />
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="input-group mb-3">
+									<label for="drawFile" class="input-group-text">도면 파일</label> <input
+										type="text" class="form-control" id="draw_file"
+										name="draw_file" readonly />
+								</div>
+							</div>
+						</div>
+						<div class="row g-3">
+							<div class="col-md-6">
+								<div class="input-group mb-3">
+									<label for="subcontractorName" class="input-group-text">협력
+										업체명</label> <select id="subcontractor_name" class="form-select"
+										tabindex="1" name="subcontractor_name" required>
 										<option selected>(협력 업체명 선택)</option>
-										<c:forEach items="${ getSubcontractorName }" var="subcontractor">
-											<option><c:out value="${ subcontractor.subcontractor_name }"></c:out></option>
+										<c:forEach items="${ getSubcontractorName }"
+											var="subcontractor">
+											<option><c:out
+													value="${ subcontractor.subcontractor_name }"></c:out></option>
 										</c:forEach>
 									</select>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="input-group mb-3">
-									<label for="subcontractorTel" class="input-group-text">협력 업체 전화번호</label>
-									<input type="text" class="form-control" id="subcontractor_tel" name="subcontractor_tel" readonly />
+									<label for="subcontractorTel" class="input-group-text">협력
+										업체 전화번호</label> <input type="text" class="form-control"
+										id="subcontractor_tel" name="subcontractor_tel" readonly />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="input-group mb-3">
-									<label for="subcontractorEmail" class="input-group-text">협력 업체 이메일</label>
-									<input type="text" class="form-control" id="subcontractor_email" name="subcontractor_email" readonly />
+									<label for="subcontractorEmail" class="input-group-text">협력
+										업체 이메일</label> <input type="text" class="form-control"
+										id="subcontractor_email" name="subcontractor_email" readonly />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="input-group mb-3">
-									<label for="subcontractorPerson" class="input-group-text">협력 업체 담당자</label>
-									<input type="text" class="form-control" id="subcontractor_person" name="subcontractor_person" readonly />
+									<label for="subcontractorPerson" class="input-group-text">협력
+										업체 담당자</label> <input type="text" class="form-control"
+										id="subcontractor_person" name="subcontractor_person" readonly />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="input-group mb-3">
 									<label for="supplyPrice" class="input-group-text">공급 가격</label>
-									<input type="number" class="form-control" id="supply_price" name="supply_price" />
+									<input type="number" class="form-control" id="supply_price"
+										name="supply_price" required />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="input-group mb-3">
-									<label for="agreementDate" class="input-group-text">계약 날짜</label>
-									<input
-										type="date" id="agreement_date"
-										class="form-control datepicker"
-										name="agreement_date"
-										aria-label="agreementDate">
-									<span class="input-group-text">
-										<img src="/resources/img/calendar3.svg" alt="" width="16" height="16" title="calendar" />
+									<label for="agreementDate" class="input-group-text">계약
+										날짜</label> <input type="date" id="agreement_date"
+										class="form-control datepicker" name="agreement_date"
+										aria-label="agreementDate" required> <span
+										class="input-group-text"> <img
+										src="/resources/img/calendar3.svg" alt="" width="16"
+										height="16" title="calendar" />
 									</span>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="input-group mb-3">
-									<label for="leadtime" class="input-group-text">L/T</label>
-									<input type="number" class="form-control" id="leadtime" name="leadtime" />
+									<label for="leadtime" class="input-group-text">L/T</label> <input
+										type="number" class="form-control" id="leadtime"
+										name="leadtime" required />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="input-group mb-3">
-									<label for="contractFile" class="input-group-text">계약서 첨부</label>
-									<input type="file" class="form-control" id="contract_file" name="contract_file" />
+									<label for="contractFile" class="input-group-text">계약서
+										첨부</label> <input type="file" class="form-control" id="contract_imagefile"
+										name="contract_imagefile" required/>
 								</div>
 							</div>
 							<div>
 								<label for="contractText" class="form-label">비고:</label>
-                                <textarea rows="5" class="form-control" id="contract_text" name="contract_text"></textarea>
-                            </div>
-                            <div class="col-md-3">
-								<button type="button" id="registerContract" class="btn btn-primary btn-primary" style="background-color:#42d676; border-color:#42d676;">계약 등록</button>
+								<textarea rows="5" class="form-control" id="contract_text"
+									name="contract_text"></textarea>
 							</div>
 							<div class="col-md-3">
-								<button type="button" id="inquiryContract" class="btn btn-primary btn-primary">계약 조회</button>
+								<button type="submit" id="registerContract"
+									class="btn btn-primary btn-primary"
+									style="background-color: #42d676; border-color: #42d676;">계약
+									등록</button>
 							</div>
-							<div class="col-md-3">
-                            	<button type="button" id="deleteContract" class="btn btn-primary btn-primary" style="background-color:red; border-color:red;">계약 삭제</button>
-                            </div>
-                            <div class="col-md-3">
-                            	<button type="button" id="modifyContract" class="btn btn-primary btn-primary">계약 수정</button>
-                            </div>
-                        </div>
+						</div>
 					</div>
 				</div>
-				<br /> <br />
-				<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+	</form>
+	<br />
+	<br />
+	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
 		                <symbol id="check-circle-fill" fill="currentColor"
-						viewBox="0 0 16 16">
+			viewBox="0 0 16 16">
 		                    <path
-						d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+			d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
 		                </symbol>
 		                <symbol id="info-fill" fill="currentColor"
-						viewBox="0 0 16 16">
+			viewBox="0 0 16 16">
 		                    <path
-						d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+			d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
 		                </symbol>
 		                <symbol id="exclamation-triangle-fill"
-						fill="currentColor" viewBox="0 0 16 16">
+			fill="currentColor" viewBox="0 0 16 16">
 		                    <path
-						d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+			d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
 		                </symbol>
 		            </svg>
 
-				<table id='myTable'
-					class="table table-bordered table-striped table-hover caption-top">
-					<caption style="color: black;">
-						<b>계약 품목 정보 목록</b>
-					</caption>
-					<thead class="table-dark">
-						<tr>
-							<th scope="col" style="text-align: center;"></th>
-                            <th scope="col" style="text-align: center;">순번</th>
-                            <th scope="col" style="text-align: center;">계약명</th>
-                            <th scope="col" style="text-align: center;">품목 코드</th>
-                            <th scope="col" style="text-align: center;">제품명</th>
-                            <th scope="col" style="text-align: center;">품목명</th>
-                            <th scope="col" style="text-align: center;">협력 업체</th>
-                            <th scope="col" style="text-align: center;">계약 날짜</th>
-                            <th scope="col" style="text-align: center;">L/T</th>
-						</tr>
-					</thead>
-					<tbody>
-					<c:set var="no" value="0"/>
-					<c:forEach items="${ contract }" var="contract">
-						<tr>
-							<th scope="row" style="text-align: center;"><input type="checkbox" name="selection" value="1" /></th>
-							<td style="text-align: center;">${ no = no + 1 }</td>
-							<td style="text-align: center;"><span>${ contract.contract_name }</span></td>
-							<td style="text-align: center;"><span>${ contract.item_code }</span></td>
-							<td style="text-align: center;"><span>${ contract.product_name }</span></td>
-							<td style="text-align: center;"><span>${ contract.item_name }</span></td>
-							<td style="text-align: center;"><span>${ contract.subcontractor_name }</span></td>
-							<td style="text-align: center;">
-								<span>
-									<fmt:parseDate value="${ contract.agreement_date }" var="agreement_date" pattern="yyyy-MM-dd"/>
-									<fmt:formatDate value="${ agreement_date }" pattern="yyyy-MM-dd"/>
-								</span>
-							</td>
-							<td style="text-align: center;"><span>${ contract.leadtime }</span></td>
-						</tr>
-					</c:forEach>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</form>
+	<table id='myTable'
+		class="table table-bordered table-striped table-hover caption-top">
+		<caption style="color: black;">
+			<b>계약 품목 정보 목록</b>
+		</caption>
+		<button type="submit" class="btn btn-primary"
+			style="position: absolute; left: 1060px;">계약 수정</button>
+		<button type="submit" class="btn btn-danger"
+			style="position: absolute; left: 1190px; background-color: red; border-color: red;">계약
+			삭제</button>
+
+		<thead class="table-dark">
+			<tr>
+				<th scope="col" style="text-align: center;"></th>
+				<th scope="col" style="text-align: center;">순번</th>
+				<th scope="col" style="text-align: center;">계약명</th>
+				<th scope="col" style="text-align: center;">품목 코드</th>
+				<th scope="col" style="text-align: center;">품목명</th>
+				<th scope="col" style="text-align: center;">협력 업체</th>
+				<th scope="col" style="text-align: center;">계약 날짜</th>
+				<th scope="col" style="text-align: center;">L/T</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:set var="no" value="0" />
+			<c:forEach items="${ contract }" var="contract">
+				<tr>
+					<th scope="row" style="text-align: center;"><input
+						type="radio" name="selection" value="${ contract.contract_code }" /></th>
+					<td style="text-align: center;">${ no = no + 1 }</td>
+					<td style="text-align: center;"><span>${ contract.contract_name }</span></td>
+					<td style="text-align: center;"><span>${ contract.item_code }</span></td>
+					<td style="text-align: center;"><span>${ contract.item_name }</span></td>
+					<td style="text-align: center;"><span>${ contract.subcontractor_name }</span></td>
+					<td style="text-align: center;"><span> <fmt:parseDate
+								value="${ contract.agreement_date }" var="agreement_date"
+								pattern="yyyy-MM-dd" /> <fmt:formatDate
+								value="${ agreement_date }" pattern="yyyy-MM-dd" />
+					</span></td>
+					<td style="text-align: center;"><span>${ contract.leadtime }</span></td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+	</div>
+	</div>
 	<input type="hidden" value="2" id="flag">
-	<script src="/resources/js/core/jquery-3.2.1.min.js" type="text/javascript"></script>
+	<script src="/resources/js/core/jquery-3.2.1.min.js"
+		type="text/javascript"></script>
 	<script src="/resources/js/core/popper.min.js" type="text/javascript"></script>
-	<script src="/resources/js/core/bootstrap-5.min.js" type="text/javascript"></script>
-	<script src="/resources/js/core/jquery-ui.min.js" type="text/javascript"></script>
+	<script src="/resources/js/core/bootstrap-5.min.js"
+		type="text/javascript"></script>
+	<script src="/resources/js/core/jquery-ui.min.js"
+		type="text/javascript"></script>
 	<script type="text/javascript">
 		$(document).on('click', "input[type='checkbox']", function() {
 			if (this.checked) {
@@ -319,6 +362,76 @@
 			document.getElementById("procurement").style.color = "#000000";
 			document.getElementById("procurement").style.fontWeight = "bold";
 		}
+	</script>
+	<script>
+		$('#item_code')
+				.change(
+						function() {
+							var itemCode = $('#item_code').val();
+							console.log("선택된  품목코드 : " + itemCode);
+							$
+									.ajax({
+										type : 'get',
+										url : '/orderplanning/api/getiteminfoforcontract?item_code='
+												+ itemCode,
+										contentType : 'application/json; charset=utf-8',
+										success : function(data, status, xhr) {
+											console.log("품목코드 ajax 결과 > "
+													+ data.item_name,
+													data.standard,
+													data.material,
+													data.specification_file,
+													data.draw_file,
+													data.sc_name, data.mc_name);
+											$('#item_name').val(data.item_name);
+											$('#standard').val(data.standard);
+											$('#material').val(data.material);
+											$('#specification_file').val(
+													data.specification_file);
+											$('#draw_file').val(data.draw_file);
+											$('#sc_name').val(data.sc_name);
+											$('#mc_name').val(data.mc_name);
+										}
+									})
+						});
+
+		$('#subcontractor_name')
+				.change(
+						function() {
+							var subcontractorName = $('#subcontractor_name')
+									.val();
+							console.log("선택된 협력업체 이름 : " + subcontractorName);
+							$
+									.ajax({
+										type : 'get',
+										url : '/orderplanning/api/getsubcontractor?subcontractor_name='
+												+ subcontractorName,
+										contentType : 'application/json; charset=utf-8',
+										success : function(data, status, xhr) {
+											console.log("협력업체이름 ajax 결과 > "
+													+ data.subcontractor_tel,
+													data.subcontractor_email,
+													data.subcontractor_person);
+											$('#subcontractor_tel').val(
+													data.subcontractor_tel);
+											$('#subcontractor_email').val(
+													data.subcontractor_email);
+											$('#subcontractor_person').val(
+													data.subcontractor_person);
+										}
+									})
+						});
+	</script>
+	<script>
+	$(document).on('keyup','#supply_price',function(){
+		$('#agreement_date').val(new Date().toISOString().slice(0,10));
+	})
+	</script>
+	<script>
+	var cItemCode = "${cvo.item_code}";
+	if (cItemCode != "" ) {
+		alert("품목코드 : "+"${cvo.item_code}"+"\n품목명 : "+"${cvo.item_name}"+"\n협력업체 : "+"${cvo.subcontractor_name}"+"\n공급가격 : "+"${cvo.supply_price}"+"\nL/T : "+"${cvo.leadtime}"+"\n계약서 등록이 완료되었습니다.")
+	}
 	</script>
 </body>
 </html>

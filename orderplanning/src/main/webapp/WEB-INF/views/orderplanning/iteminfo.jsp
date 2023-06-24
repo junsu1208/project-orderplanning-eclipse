@@ -174,9 +174,6 @@
 							<div class="col-md-3">
 								<button type="button" id="deleteItemInfo" class="btn btn-primary btn-primary" style="background-color:red; border-color:red;">품목 정보 삭제</button>
 							</div>
-							<div class="col-md-3">
-								<button type="button" id="inquiryItemInfo" class="btn btn-primary btn-primary">품목 정보 조회</button>
-							</div>
 						</div>
 					</div>
 				</div>

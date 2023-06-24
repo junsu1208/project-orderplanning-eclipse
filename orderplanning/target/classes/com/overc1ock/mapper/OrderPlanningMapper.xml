@@ -35,7 +35,7 @@
 	<!-- 품목 정보 조회 -->
 	<select id="inquiryItemInfo" resultType="com.overc1ock.domain.ItemInfoVO">
 		SELECT item_code, item_name, standard, material, specification_file, draw_file, item_registration_date, sc_code
-		FROM item LEFT JOIN sub_category USING(sc_code) LEFT JOIN major_category USING(mc_code)
+		FROM item JOIN sub_category USING(sc_code) JOIN major_category USING(mc_code)
 		WHERE item_code = #{ item_code }
 	</select>
 	
@@ -53,22 +53,20 @@
 	
 	<!-- 계약 품목 정보 목록 출력 -->
 	<select id="getContract" resultType="com.overc1ock.domain.ContractVO">
-		SELECT contract_name, item_code, product_name, item_name, subcontractor_name, agreement_date, leadtime
+		SELECT contract_code, contract_name, item_code, product_name, item_name, subcontractor_name, agreement_date, leadtime
 		FROM contract LEFT JOIN item USING(item_code) LEFT JOIN item_has_product USING(item_code) 
 		ORDER BY contract_date DESC
 	</select>
 	
 	<!-- 품목 코드 가져오기 -->
 	<select id="getItemCodeForContract" resultType="com.overc1ock.domain.ContractVO">
-		SELECT item_code
-		FROM item_has_product LEFT JOIN item USING(item_code)
-		ORDER BY item_code
+		select item_code from item order by item_code
 	</select>
 	
 	<!-- 품목 코드로 선택된 품목 정보 가져오기  -->
 	<select id="getItemInfoForContract" resultType="com.overc1ock.domain.ContractVO">
-		SELECT product_name, item_name, standard, material, specification_file, draw_file
-		FROM item_has_product LEFT JOIN item USING(item_code)
+		SELECT item_name, standard, material, specification_file, draw_file, sc_name, mc_name
+		FROM item join sub_category using(sc_code) join major_category using(mc_code)
 		WHERE item_code = #{ item_code }
 	</select>
 	
@@ -76,7 +74,7 @@
 	<select id="getSubcontractorName" resultType="com.overc1ock.domain.ContractVO">
 		SELECT subcontractor_name
 		FROM subcontractor
-		ORDER BY subcontractor_date
+		ORDER by subcontractor_name
 	</select>
 	
 	<!-- 협력 업체명으로 선택된 협력 업체 정보 가져오기 -->

@@ -75,6 +75,21 @@ public class OrderPlanningMapperTests {
 	}
 	
 	@Test
+	public void testGetItemCodeForContract() {
+		mapper.getItemCodeForContract().forEach(vo -> log.info(vo));
+	}
+	
+	@Test
+	public void testGetSubcontractorName() {
+		mapper.getSubcontractorName().forEach(vo -> log.info(vo));
+	}
+	
+	@Test
+	public void testGetSubcontractor() {
+		log.info(mapper.getSubcontractor("(유)길승산업"));
+	}
+	
+	@Test
 	public void testRegisterContract() {
 		ContractVO vo = new ContractVO();
 		vo.setContract_name("테스트 계약서");

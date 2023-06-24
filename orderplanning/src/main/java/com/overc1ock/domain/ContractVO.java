@@ -20,6 +20,8 @@ public class ContractVO {
 	private String item_name;
 	private String standard;
 	private String material;
+	private String mc_name;
+	private String sc_name;
 	private String specification_file;
 	private String draw_file;
 	private Integer supply_price;

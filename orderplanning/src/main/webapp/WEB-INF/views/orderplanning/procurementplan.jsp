@@ -181,7 +181,11 @@
 							<c:forEach var="list" items="${ ppList }">
 							
 								<tr>
-									<td style="text-align: center;"><input type="radio" name="pp_code" value="${ list.pp_code }"> </td>
+									<td style="text-align: center;">
+									<c:if test="${ list.procurement_date != null }">
+										<input type="radio" name="pp_code" value="${ list.pp_code }">
+									</c:if>
+									</td>
 									<td style="text-align: center;">${ no = no + 1 }</td>
 									<td style="text-align: center;">${ list.item_code }</td>
 									<td style="text-align: center;">${ list.item_name }</td>

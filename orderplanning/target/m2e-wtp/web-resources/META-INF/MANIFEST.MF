@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 Manifest-Version: 1.0
 Built-By: hhsh1
 Build-Jdk: 1.8.0_202
 Created-By: Maven Integration for Eclipse
 
+=======
+Manifest-Version: 1.0
+Built-By: JJS
+Build-Jdk: 1.8.0_202
+Created-By: Maven Integration for Eclipse
+
+>>>>>>> branch 'main' of https://github.com/junsu1208/project-orderplanning-eclipse.git

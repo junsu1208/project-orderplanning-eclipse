@@ -46,9 +46,9 @@
 						<li class="nav-item" style="margin-left: 10px;"><a
 							class="nav-link" href="/orderplanning/iteminfo" id="iteminfo">품목 정보 등록</a></li>
 						<li class="nav-item" style="margin-left: 10px;"><a
-							class="nav-link" href="/orderplanning/contract"" id="contract">계약 등록</a></li>
+							class="nav-link" href="/orderplanning/contract" id="contract">계약 등록</a></li>
 						<li class="nav-item" style="margin-left: 10px;"><a
-							class="nav-link" href="/orderplanning/procurementplan"" id="procurementplan">조달 계획 등록</a></li>
+							class="nav-link" href="/orderplanning/procurementplan" id="procurementplan">조달 계획 등록</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -56,20 +56,21 @@
 			<div class="area"></div>
 			<nav class="main-menu">
 				<ul>
-					<li class="has-subnav" style="font-size: 10px;"><a href="/orderplanning/itemInfo"
-						style="height: 50px;" id="procurement">
+					<li class="has-subnav" style="font-size: 10px;"><a href="/orderplanning/iteminfo" style="height: 50px;" id="procurement">
 							<div class="nav-text" style="position: relative; left: 10px;">
 								조달 관리</div>
 					</a></li>
-					<li class="has-subnav" style="font-size: 10px;"><a href="#"
-						style="height: 50px;" id="order">
+					<li class="has-subnav" style="font-size: 10px;"><a href="#" style="height: 50px;" id="order">
 							<div class="nav-text" style="position: relative; left: 10px;">
 								발주 관리</div>
 					</a></li>
-					<li class="has-subnav" style="font-size: 10px;"><a href="#"
-						style="height: 50px;" id="stock">
+					<li class="has-subnav" style="font-size: 10px;"><a href="#" style="height: 50px;" id="stock">
 							<div class="nav-text" style="position: relative; left: 10px;">
 								자재 관리</div>
+					</a></li>
+					<li class="has-subnav" style="font-size: 10px;"><a href="/registerinfo/subcontractor" style="height: 50px;" id="register">
+							<div class="nav-text" style="position: relative; left: 10px;">
+								정보 등록</div>
 					</a></li>
 				</ul>
 			</nav>
@@ -87,13 +88,13 @@
 					</div>
 					<div class="card-body">
 						<div class="row g-3">
-							<div class="col-md-6">
+							<div class="col-md-3">
 								<div class="input-group mb-3">
 									<label for="contractName" class="input-group-text">계약명</label>
 									<input type="text" class="form-control" id="contract_name" name="contract_name" />
 								</div>
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-3">
 								<div class="input-group mb-3">
 									<label for="itemCode" class="input-group-text">품목 코드</label>
 									<select id="item_code" class="form-select" tabindex="1" name="item_code">
@@ -104,37 +105,37 @@
 									</select>
 								</div>
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-3">
 								<div class="input-group mb-3">
 									<label for="productName" class="input-group-text">제품명</label>
 									<input type="text" class="form-control" id="product_name" name="product_name" readonly />
 								</div>
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-3">
 								<div class="input-group mb-3">
 									<label for="itemName" class="input-group-text">품목명</label>
 									<input type="text" class="form-control" id="item_name" name="item_name" readonly />
 								</div>
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-3">
 								<div class="input-group mb-3">
 									<label for="standard" class="input-group-text">규격</label>
 									<input type="text" class="form-control" id="standard" name="standard" readonly />
 								</div>
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-3">
 								<div class="input-group mb-3">
 									<label for="material" class="input-group-text">재질</label>
 									<input type="text" class="form-control" id="material" name="material" readonly />
 								</div>
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-3">
 								<div class="input-group mb-3">
 									<label for="specificationFile" class="input-group-text">제작 사양</label>
 									<input type="text" class="form-control" id="specification_file" name="specification_file" readonly />
 								</div>
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-3">
 								<div class="input-group mb-3">
 									<label for="drawFile" class="input-group-text">도면 파일</label>
 									<input type="text" class="form-control" id="draw_file" name="draw_file" readonly />
@@ -202,19 +203,19 @@
 							</div>
 							<div>
 								<label for="contractText" class="form-label">비고:</label>
-                                <textarea rows="3" class="form-control" id="contract_text" name="contract_text"></textarea>
+                                <textarea rows="5" class="form-control" id="contract_text" name="contract_text"></textarea>
                             </div>
-                            <div class="col-md-1">
-								<button type="button" id="registerContract" class="btn btn-primary btn-success">등록</button>
+                            <div class="col-md-3">
+								<button type="button" id="registerContract" class="btn btn-primary btn-primary" style="background-color:#42d676; border-color:#42d676;">계약 등록</button>
 							</div>
-							<div class="col-md-1">
-								<button type="button" id="inquiryContract" class="btn btn-primary btn-primary">조회</button>
+							<div class="col-md-3">
+								<button type="button" id="inquiryContract" class="btn btn-primary btn-primary">계약 조회</button>
 							</div>
-							<div class="col-md-1">
-                            	<button type="button" id="deleteContract" class="btn btn-primary btn-danger">삭제</button>
+							<div class="col-md-3">
+                            	<button type="button" id="deleteContract" class="btn btn-primary btn-primary" style="background-color:red; border-color:red;">계약 삭제</button>
                             </div>
-                            <div class="col-md-1">
-                            	<button type="button" id="modifyContract" class="btn btn-primary btn-primary">수정</button>
+                            <div class="col-md-3">
+                            	<button type="button" id="modifyContract" class="btn btn-primary btn-primary">계약 수정</button>
                             </div>
                         </div>
 					</div>

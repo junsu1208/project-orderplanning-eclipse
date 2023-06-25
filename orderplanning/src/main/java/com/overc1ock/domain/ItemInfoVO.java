@@ -2,6 +2,7 @@ package com.overc1ock.domain;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import lombok.Data;
@@ -20,6 +21,8 @@ public class ItemInfoVO {
 	private String material;
 	private String specification_file;
 	private String draw_file;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date item_registration_date;
 	
 }

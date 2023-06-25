@@ -36,6 +36,14 @@ public class ItemInfoServiceImpl implements ItemInfoService {
 	@Override
 	public void registerItemInfo(ItemInfoVO vo) {
 		log.info("품목 정보 등록 요청, 변수값: " + vo);
+//		String firstCode = vo.getMc_name().toUpperCase().substring(0, 1);
+//		String secondCode = vo.getSc_name().toUpperCase().substring(0, 1);
+//		String itemCode = firstCode+secondCode;
+//		String getItemCode = mapper.getItemCode(itemCode).getItem_code();
+//		
+//		if (getItemCode.isEmpty() || getItemCode != null) {
+//			
+//		}
 		mapper.registerItemInfo(vo);
 	}
 	

@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -46,8 +47,11 @@ public class OrderPlanningController {
 	}
 
 	@PostMapping("/registeriteminfo")
-	public String registerItemInfo(ItemInfoVO vo, MultipartFile specification_file, MultipartFile draw_file) {
+	public String registerItemInfo(ItemInfoVO vo, MultipartFile specificationFile, MultipartFile drawFile) {
 		log.info("품목 정보 등록 기능 요청");
+		log.info("사양파일 "+specificationFile);
+		log.info("도면파일 "+drawFile);
+		log.info("vo "+vo);
 		String uploadSFolder = request.getServletContext().getRealPath("/resources/specification_file"); // 사양 저장 경로
 		//폴더 생성
 		File uploadSPath = new File(uploadSFolder);
@@ -61,27 +65,30 @@ public class OrderPlanningController {
 			uploadDPath.mkdirs();
 		}
 		// 제작 사양 파일 저장
-			log.info("--------------------------------------------------");
-			log.info("업로드될 제작 사양 파일 이름: " + specification_file.getOriginalFilename());
-			log.info("제작 사양 파일 크기: " + specification_file.getSize());
-			File saveSpecificationFile = new File(uploadSPath, specification_file.getOriginalFilename());
-			try {
-				specification_file.transferTo(saveSpecificationFile);
-			} catch (Exception e) {
-				log.error(e.getMessage());
-			}
-		// 도면 파일 저장
-			log.info("--------------------------------------------------");
-			log.info("업로드될 도면 파일 이름: " + draw_file.getOriginalFilename());
-			log.info("도면 파일 크기: " + draw_file.getSize());
-			File saveDrawFile = new File(uploadDPath, draw_file.getOriginalFilename());
-			try {
-				draw_file.transferTo(saveDrawFile);
-			} catch (Exception e) {
-				log.error(e.getMessage());
-			}
-			vo.setSpecification_file("/resources/specification_file/"+saveSpecificationFile);
-			vo.setDraw_file("/resources/draw_file/"+saveDrawFile);
+		log.info("--------------------------------------------------");
+		log.info("업로드될 제작 사양 파일 이름: " + specificationFile.getOriginalFilename());
+		log.info("제작 사양 파일 크기: " + specificationFile.getSize());
+		UUID uuid = UUID.randomUUID();
+		String uploadSFileName = uuid.toString()+"_"+specificationFile.getOriginalFilename();
+		File saveSpecificationFile = new File(uploadSPath, uploadSFileName);
+		try {
+			specificationFile.transferTo(saveSpecificationFile);
+		} catch (Exception e) {
+			log.error(e.getMessage());
+		}
+	// 도면 파일 저장
+		log.info("--------------------------------------------------");
+		log.info("업로드될 도면 파일 이름: " + drawFile.getOriginalFilename());
+		log.info("도면 파일 크기: " + drawFile.getSize());
+		String uploadDFileName = uuid.toString()+"_"+drawFile.getOriginalFilename();
+		File saveDrawFile = new File(uploadDPath, uploadDFileName);
+		try {
+			drawFile.transferTo(saveDrawFile);
+		} catch (Exception e) {
+			log.error(e.getMessage());
+		}
+		vo.setSpecification_file("/resources/specification_file/"+uploadSFileName);
+		vo.setDraw_file("/resources/draw_file/"+uploadDFileName);
 			
 		itemInfoService.registerItemInfo(vo);
 		return "redirect:/orderplanning/iteminfo";
@@ -102,15 +109,15 @@ public class OrderPlanningController {
 	}
 
 	@PostMapping("/modifyiteminfo")
-	public String modifyItemInfo(ItemInfoVO vo, MultipartFile specification_file, MultipartFile draw_file) {
+	public String modifyItemInfo(ItemInfoVO vo, MultipartFile specificationFile, MultipartFile drawFile) {
 		log.info("품목 정보 수정 기능 요청");
-		String uploadSFolder = request.getServletContext().getRealPath("/resources/contract_file"); // 사양 저장 경로
+		String uploadSFolder = request.getServletContext().getRealPath("/resources/specification_file"); // 사양 저장 경로
 		//폴더 생성
 		File uploadSPath = new File(uploadSFolder);
 		if (uploadSPath.exists() == false) {
 			uploadSPath.mkdirs();
 		}
-		String uploadDFolder = request.getServletContext().getRealPath("/resources/contract_file"); // 도면 저장 경로
+		String uploadDFolder = request.getServletContext().getRealPath("/resources/draw_file"); // 도면 저장 경로
 		//폴더 생성
 		File uploadDPath = new File(uploadDFolder);
 		if (uploadDPath.exists() == false) {
@@ -119,26 +126,29 @@ public class OrderPlanningController {
 		
 		// 제작 사양 파일 저장
 		log.info("--------------------------------------------------");
-		log.info("업로드될 제작 사양 파일 이름: " + specification_file.getOriginalFilename());
-		log.info("제작 사양 파일 크기: " + specification_file.getSize());
-		File saveSpecificationFile = new File(uploadSPath, specification_file.getOriginalFilename());
+		log.info("업로드될 제작 사양 파일 이름: " + specificationFile.getOriginalFilename());
+		log.info("제작 사양 파일 크기: " + specificationFile.getSize());
+		UUID uuid = UUID.randomUUID();
+		String uploadSFileName = uuid.toString()+"_"+specificationFile.getOriginalFilename();
+		File saveSpecificationFile = new File(uploadSPath, uploadSFileName);
 		try {
-			specification_file.transferTo(saveSpecificationFile);
+			specificationFile.transferTo(saveSpecificationFile);
 		} catch (Exception e) {
 			log.error(e.getMessage());
 		}
 	// 도면 파일 저장
 		log.info("--------------------------------------------------");
-		log.info("업로드될 도면 파일 이름: " + draw_file.getOriginalFilename());
-		log.info("도면 파일 크기: " + draw_file.getSize());
-		File saveDrawFile = new File(uploadDPath, draw_file.getOriginalFilename());
+		log.info("업로드될 도면 파일 이름: " + drawFile.getOriginalFilename());
+		log.info("도면 파일 크기: " + drawFile.getSize());
+		String uploadDFileName = uuid.toString()+"_"+drawFile.getOriginalFilename();
+		File saveDrawFile = new File(uploadDPath, uploadDFileName);
 		try {
-			draw_file.transferTo(saveDrawFile);
+			drawFile.transferTo(saveDrawFile);
 		} catch (Exception e) {
 			log.error(e.getMessage());
 		}
-		vo.setSpecification_file("/resources/specification_file/"+saveSpecificationFile);
-		vo.setDraw_file("/resources/draw_file/"+saveDrawFile);
+		vo.setSpecification_file("/resources/specification_file/"+uploadSFileName);
+		vo.setDraw_file("/resources/draw_file/"+uploadDFileName);
 		
 		itemInfoService.modifyItemInfo(vo);
 		return "redirect:/orderplanning/iteminfo";

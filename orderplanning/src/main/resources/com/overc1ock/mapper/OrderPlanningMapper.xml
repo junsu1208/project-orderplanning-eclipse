@@ -27,6 +27,11 @@
 		ORDER BY sc_code
 	</select>
 	
+	<!-- 품목코드 조회 -->
+	<select id="getItemCode" resultType="com.overc1ock.domain.ItemInfoVO">
+		select max(item_code) item_code from item where item_code like concat('%',#{itemCode},'%')
+	</select>
+	
 	<!-- 품목 정보 등록 -->
 	<insert id="registerItemInfo">
 		INSERT INTO item (item_name, standard, material, specification_file, draw_file, sc_code)
@@ -56,7 +61,7 @@
 	<select id="getContract" resultType="com.overc1ock.domain.ContractVO">
 		SELECT contract_code, contract_name, item_code, item_name, subcontractor_name, agreement_date, leadtime, supply_price
 		FROM contract JOIN item USING(item_code)
-		ORDER BY agreement_date DESC
+		ORDER BY agreement_date DESC, item_code
 	</select>
 	
 	<!-- 품목 코드 가져오기 -->

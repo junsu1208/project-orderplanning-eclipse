@@ -13,6 +13,7 @@ public interface OrderPlanningMapper {
 	List<ItemInfoVO> getItemInfo(); // 목록 가져오기
 	List<ItemInfoVO> getMajorCategory(); // 대분류 가져오기
 	List<ItemInfoVO> getSubCategory(Integer mc_code); // 중분류 가져오기
+	ItemInfoVO getItemCode(String itemCode); // 등록 전 품목코드 확인
 	Integer registerItemInfo(ItemInfoVO vo); // 등록
 	ItemInfoVO inquiryItemInfo(String item_code); // 조회
 	Integer deleteItemInfo(String item_code); // 삭제

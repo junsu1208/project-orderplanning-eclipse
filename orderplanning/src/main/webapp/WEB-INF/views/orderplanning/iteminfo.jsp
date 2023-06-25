@@ -91,10 +91,10 @@
 	<div class="container"
 		style="position: absolute; left: 250px; width: 3000px;">
 		<div class="wrap">
-			<form action="iteminfo" method="post" enctype="multipart/form-data">
+			<form action="registeriteminfo" method="post" enctype="multipart/form-data">
 				<div class="card">
 					<div class="card-header">
-						<b>품목 정보 등록 및 조회</b>
+						<b>품목 정보 등록</b>
 					</div>
 					<div class="card-body">
 						<div class="row g-3">
@@ -108,7 +108,7 @@
 							<div class="col-md-3">
 								<div class="input-group mb-3">
 									<label for="McName" class="input-group-text">대분류</label> <select
-										id="mc_name" class="form-select" tabindex="1" name="mc_name">
+										id="mc_name" class="form-select" tabindex="1" name="mc_code">
 										<option selected>(대분류 선택)</option>
 										<c:forEach items="${ getMajorCategory }" var="major_category">
 											<option value="${major_category.mc_code}"><c:out
@@ -120,7 +120,7 @@
 							<div class="col-md-3">
 								<div class="input-group mb-3">
 									<label for="scName" class="input-group-text">중분류</label> <select
-										id="sc_name" class="form-select" tabindex="1" name="sc_name">
+										id="sc_name" class="form-select" tabindex="1" name="sc_code">
 									</select>
 								</div>
 							</div>
@@ -154,33 +154,23 @@
 								<div class="input-group mb-3">
 									<label for="specificationFile" class="input-group-text">제작
 										사양</label> <input type="file" class="form-control"
-										id="specification_file" name="specification_file" />
+										id="specification_file" name="specificationFile" />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="input-group mb-3">
 									<label for="drawFile" class="input-group-text">도면 파일</label> <input
 										type="file" class="form-control" id="draw_file"
-										name="draw_file" />
+										name="drawFile" />
 								</div>
 							</div>
 						</div>
 						<div class="row g-3">
 							<div class="col-md-3">
-								<button type="button" id="registerItemInfo"
+								<button type="submit" id="registerItemInfo"
 									class="btn btn-primary btn-primary"
 									style="background-color: #42d676; border-color: #42d676;">품목
 									정보 등록</button>
-							</div>
-							<div class="col-md-3">
-								<button type="button" id="modifyItemInfo"
-									class="btn btn-primary btn-primary">품목 정보 수정</button>
-							</div>
-							<div class="col-md-3">
-								<button type="button" id="deleteItemInfo"
-									class="btn btn-primary btn-primary"
-									style="background-color: red; border-color: red;">품목
-									정보 삭제</button>
 							</div>
 						</div>
 					</div>
@@ -204,49 +194,53 @@
 					d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
 		                </symbol>
 		            </svg>
-			<table id='myTable'
-				class="table table-bordered table-striped table-hover caption-top">
-				<caption style="color: black;">
-					<b>품목 정보 목록</b>
-				</caption>
-				<thead class="table-dark">
-					<tr>
-						<th scope="col" style="text-align: center;"></th>
-						<th scope="col" style="text-align: center;">순번</th>
-						<th scope="col" style="text-align: center;">품목 코드</th>
-						<th scope="col" style="text-align: center;">품목명</th>
-						<th scope="col" style="text-align: center;">대분류</th>
-						<th scope="col" style="text-align: center;">중분류</th>
-						<th scope="col" style="text-align: center;">규격</th>
-						<th scope="col" style="text-align: center;">재질</th>
-						<th scope="col" style="text-align: center;">제작 사양</th>
-						<th scope="col" style="text-align: center;">도면 파일</th>
-						<th scope="col" style="text-align: center;">등록일</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:set var="no" value="0" />
-					<c:forEach items="${ itemInfo }" var="itemInfo">
+			<form>
+				<table id='myTable'
+					class="table table-bordered table-striped table-hover caption-top">
+					<caption style="color: black;">
+						<b>품목 정보 목록</b>
+					</caption>
+					<button type="button" class="btn btn-primary"
+						style="position: absolute; left: 1030px;" onclick="">품목
+						조회 및 수정</button>
+					<button type="submit" class="btn btn-danger"
+						style="position: absolute; left: 1190px; background-color: red; border-color: red;">품목
+						삭제</button>
+					<thead class="table-dark">
 						<tr>
-							<th scope="row" style="text-align: center;"><input
-								type="checkbox" name="selection" value="1" /></th>
-							<td style="text-align: center;">${ no = no + 1 }</td>
-							<td style="text-align: center;"><span>${ itemInfo.item_code }</span></td>
-							<td style="text-align: center;"><span>${ itemInfo.item_name }</span></td>
-							<td style="text-align: center;"><span>${ itemInfo.mc_name }</span></td>
-							<td style="text-align: center;"><span>${ itemInfo.sc_name }</span></td>
-							<td style="text-align: center;"><span>${ itemInfo.standard }</span></td>
-							<td style="text-align: center;"><span>${ itemInfo.material }</span></td>
-							<td style="text-align: center;"><span>${ itemInfo.specification_file }</span></td>
-							<td style="text-align: center;"><span>${ itemInfo.draw_file }</span></td>
-							<td style="text-align: center;"><span> <fmt:formatDate
-										pattern="yyyy-MM-dd"
-										value="${ itemInfo.item_registration_date }" />
-							</span></td>
+							<th scope="col" style="text-align: center;"></th>
+							<th scope="col" style="text-align: center;">순번</th>
+							<th scope="col" style="text-align: center;">품목 코드</th>
+							<th scope="col" style="text-align: center;">품목명</th>
+							<th scope="col" style="text-align: center;">대분류</th>
+							<th scope="col" style="text-align: center;">중분류</th>
+							<th scope="col" style="text-align: center;">규격</th>
+							<th scope="col" style="text-align: center;">재질</th>
+							<th scope="col" style="text-align: center;">등록일</th>
 						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						<c:set var="no" value="0" />
+						<c:forEach items="${ itemInfo }" var="itemInfo">
+							<tr>
+								<th scope="row" style="text-align: center;"><input
+									type="checkbox" name="selection" value="1" /></th>
+								<td style="text-align: center;">${ no = no + 1 }</td>
+								<td style="text-align: center;"><span>${ itemInfo.item_code }</span></td>
+								<td style="text-align: center;"><span>${ itemInfo.item_name }</span></td>
+								<td style="text-align: center;"><span>${ itemInfo.mc_name }</span></td>
+								<td style="text-align: center;"><span>${ itemInfo.sc_name }</span></td>
+								<td style="text-align: center;"><span>${ itemInfo.standard }</span></td>
+								<td style="text-align: center;"><span>${ itemInfo.material }</span></td>
+								<td style="text-align: center;"><span> <fmt:formatDate
+											pattern="yyyy-MM-dd"
+											value="${ itemInfo.item_registration_date }" />
+								</span></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</form>
 		</div>
 	</div>
 	<input type="hidden" value="2" id="flag">
@@ -266,6 +260,11 @@
 			document.getElementById("procurement").style.color = "#000000";
 			document.getElementById("procurement").style.fontWeight = "bold";
 		}
+	</script>
+	<script>
+		$(document).on('keyup', '#item_name', function() {
+			$('#item_registration_date').val(new Date().toISOString().slice(0, 10));
+		})
 	</script>
 	<script>
 		$(document).on(

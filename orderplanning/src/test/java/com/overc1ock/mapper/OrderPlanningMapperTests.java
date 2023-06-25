@@ -35,6 +35,11 @@ public class OrderPlanningMapperTests {
 	}
 	
 	@Test
+	public void testGetItemCode() {
+		mapper.getItemCode("1");
+	}
+	
+	@Test
 	public void testRegisterItemInfo() {
 		ItemInfoVO vo = new ItemInfoVO();
 		vo.setItem_name("테스트 품목");

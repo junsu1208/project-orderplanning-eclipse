@@ -48,13 +48,13 @@ public class OrderPlanningController {
 	@PostMapping("/registeriteminfo")
 	public String registerItemInfo(ItemInfoVO vo, MultipartFile specification_file, MultipartFile draw_file) {
 		log.info("품목 정보 등록 기능 요청");
-		String uploadSFolder = request.getServletContext().getRealPath("/resources/contract_file"); // 사양 저장 경로
+		String uploadSFolder = request.getServletContext().getRealPath("/resources/specification_file"); // 사양 저장 경로
 		//폴더 생성
 		File uploadSPath = new File(uploadSFolder);
 		if (uploadSPath.exists() == false) {
 			uploadSPath.mkdirs();
 		}
-		String uploadDFolder = request.getServletContext().getRealPath("/resources/contract_file"); // 도면 저장 경로
+		String uploadDFolder = request.getServletContext().getRealPath("/resources/draw_file"); // 도면 저장 경로
 		//폴더 생성
 		File uploadDPath = new File(uploadDFolder);
 		if (uploadDPath.exists() == false) {
@@ -80,8 +80,8 @@ public class OrderPlanningController {
 			} catch (Exception e) {
 				log.error(e.getMessage());
 			}
-			vo.setSpecification_file(saveSpecificationFile.getPath());
-			vo.setDraw_file(saveDrawFile.getPath());
+			vo.setSpecification_file("/resources/specification_file/"+saveSpecificationFile);
+			vo.setDraw_file("/resources/draw_file/"+saveDrawFile);
 			
 		itemInfoService.registerItemInfo(vo);
 		return "redirect:/orderplanning/iteminfo";
@@ -137,8 +137,8 @@ public class OrderPlanningController {
 		} catch (Exception e) {
 			log.error(e.getMessage());
 		}
-		vo.setSpecification_file(saveSpecificationFile.getPath());
-		vo.setDraw_file(saveDrawFile.getPath());
+		vo.setSpecification_file("/resources/specification_file/"+saveSpecificationFile);
+		vo.setDraw_file("/resources/draw_file/"+saveDrawFile);
 		
 		itemInfoService.modifyItemInfo(vo);
 		return "redirect:/orderplanning/iteminfo";
@@ -173,7 +173,7 @@ public class OrderPlanningController {
 		} catch (Exception e) {
 			log.error(e.getMessage());
 		}
-		vo.setContract_file(saveContractFile.getPath());
+		vo.setContract_file("/resources/contract_file/"+uploadFileName);
 		contractService.registerContract(vo);
 		rttr.addFlashAttribute("cvo", vo);
 		return "redirect:/orderplanning/contract";
@@ -215,7 +215,7 @@ public class OrderPlanningController {
 			} catch (Exception e) {
 				log.error(e.getMessage());
 			}
-			vo.setContract_file(saveContractFile.getPath());
+			vo.setContract_file("/resources/contract_file/"+uploadFileName);
 		}
 		rttr.addFlashAttribute("modifyres", contractService.modifyContract(vo));
 		rttr.addFlashAttribute("modifyvo", vo);

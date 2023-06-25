@@ -61,16 +61,15 @@ public class APIController {
 		return vo;
 	}
 	
-	@PostMapping("/display")
-	public byte[] displayImage(String fileName) {
-		File file = new File(fileName);
-		byte[] result = null;
+	@GetMapping("/display")
+	public ResponseEntity<byte[]> displayImage(String fileName) {
+		File file = new File(request.getServletContext().getRealPath("")+fileName);
+		ResponseEntity<byte[]> result = null;
 		
 		try {
 			HttpHeaders header =  new HttpHeaders();
 			header.add("Content-Type",Files.probeContentType(file.toPath()));
-//			result = new ResponseEntity<byte[]>(FileCopyUtils.copyToByteArray(file),header,HttpStatus.OK);
-			result = FileCopyUtils.copyToByteArray(file);
+			result = new ResponseEntity<byte[]>(FileCopyUtils.copyToByteArray(file),header,HttpStatus.OK);
 		} catch (IOException e) {
 			e.printStackTrace();
 			log.info("파일 byte로 변환 중 문제 발생");

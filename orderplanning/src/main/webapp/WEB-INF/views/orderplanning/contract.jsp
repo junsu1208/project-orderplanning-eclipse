@@ -339,8 +339,6 @@
 			</table>
 	</form>
 	</div>
-	</div>
-	<img id="img"></img>
 	<input type="hidden" value="2" id="flag">
 	<script src="/resources/js/core/popper.min.js" type="text/javascript"></script>
 	<script src="/resources/js/core/bootstrap-5.min.js"
@@ -417,17 +415,9 @@
 	});
 	
 	$(document).on('click','#contractviewbtn',function() {
-		var contractFile = 'fileName='+$('#cFile').val();
+		var contractFile = $('#cFile').val();
 		console.log("선택된  계약서 파일경로 : " + contractFile);
-		$.ajax({
-					type : 'post',
-					url : '/orderplanning/api/display',
-					data : contractFile,
-					success : function(data, status, xhr) {
-						console.log("계약서 파일 ajax 결과 > "+ data);
-						$('#img').attr("src","data:image/jpg;base64,"+data);
-					}
-				})
+		window.open("/orderplanning/api/display?fileName="+contractFile,"_blank");
 	});
 
 	</script>

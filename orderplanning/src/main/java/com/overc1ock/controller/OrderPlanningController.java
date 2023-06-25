@@ -1,11 +1,14 @@
 package com.overc1ock.controller;
 
 import java.io.File;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -141,7 +144,9 @@ public class OrderPlanningController {
 		log.info("--------------------------------------------------");
 		log.info("업로드된 계약서 파일 이름: " + contract_imagefile.getOriginalFilename());
 		log.info("계약서 파일 크기: " + contract_imagefile.getSize());
-		File saveContractFile = new File(uploadContractFile, contract_imagefile.getOriginalFilename());
+		UUID uuid = UUID.randomUUID();
+		String uploadFileName = uuid.toString()+"_"+contract_imagefile.getOriginalFilename();
+		File saveContractFile = new File(uploadContractFile, uploadFileName);
 		try {
 			contract_imagefile.transferTo(saveContractFile);
 		} catch (Exception e) {
@@ -161,29 +166,40 @@ public class OrderPlanningController {
 	}
 
 	@PostMapping("/deletecontract")
-	public String deleteContract(Integer contract_code) {
+	public String deleteContract(Integer contract_code, RedirectAttributes rttr) {
 		log.info("계약 삭제 기능 요청");
-		contractService.deleteContract(contract_code);
+		try {
+			rttr.addFlashAttribute("deleteres", contractService.deleteContract(contract_code));
+			
+		} catch (DataIntegrityViolationException e) {
+			log.info("계약 삭제도중 에러 발생");
+			e.printStackTrace();
+			rttr.addFlashAttribute("deleteres", -1);
+		}
 		return "redirect:/orderplanning/contract";
 	}
 
 	@PostMapping("/modifycontract")
-	public String modifyContract(ContractVO vo, MultipartFile[] contract_file) {
+	public String modifyContract(ContractVO vo, MultipartFile contract_imagefile, RedirectAttributes rttr) {
 		log.info("계약 수정 기능 요청");
-		String uploadContractFile = "C:/orderplanning/contract_file"; // 계약서 파일 업로드
-		// 계약서 파일 저장
-		for (MultipartFile multipartFile : contract_file) {
+		String uploadContractFile = request.getServletContext().getRealPath("/resources/contract_file"); // 계약서 파일 업로드
+		if (!contract_imagefile.isEmpty()) {
+			// 계약서 파일 저장
 			log.info("--------------------------------------------------");
-			log.info("업로드된 계약서 파일 이름: " + multipartFile.getOriginalFilename());
-			log.info("계약서 파일 크기: " + multipartFile.getSize());
-			File saveContractFile = new File(uploadContractFile, multipartFile.getOriginalFilename());
+			log.info("업로드된 계약서 파일 이름: " + contract_imagefile.getOriginalFilename());
+			log.info("계약서 파일 크기: " + contract_imagefile.getSize());
+			UUID uuid = UUID.randomUUID();
+			String uploadFileName = uuid.toString()+"_"+contract_imagefile.getOriginalFilename();
+			File saveContractFile = new File(uploadContractFile, uploadFileName);
 			try {
-				multipartFile.transferTo(saveContractFile);
+				contract_imagefile.transferTo(saveContractFile);
 			} catch (Exception e) {
 				log.error(e.getMessage());
 			}
+			vo.setContract_file(saveContractFile.getPath());
 		}
-		contractService.modifyContract(vo);
+		rttr.addFlashAttribute("modifyres", contractService.modifyContract(vo));
+		rttr.addFlashAttribute("modifyvo", vo);
 		return "redirect:/orderplanning/contract";
 	}
 

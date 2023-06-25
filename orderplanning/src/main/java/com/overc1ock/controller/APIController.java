@@ -26,6 +26,17 @@ public class APIController {
 	public ContractVO getSubcontractor(String subcontractor_name) {
 		return cservice.getSubcontractor(subcontractor_name);
 	}
+	
+	@GetMapping("/inquirycontract")
+	public ContractVO inquiryContract(Integer contract_code) {
+		ContractVO vo = cservice.inquiryContract(contract_code);
+		String contractFile = vo.getContract_file();
+		log.info(contractFile);
+		contractFile = contractFile.replace("\\", "/");
+		log.info(contractFile);
+		vo.setContract_file(contractFile);
+		return vo;
+	}
 
 
 }

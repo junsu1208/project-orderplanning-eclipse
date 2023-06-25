@@ -14,7 +14,7 @@ public interface ContractService {
 	ContractVO getSubcontractor(String subcontractor_name); // 협력 업체명으로 선택된 협력 업체 정보 가져오기
 	void registerContract(ContractVO vo); // 등록
 	ContractVO inquiryContract(Integer contract_code); // 조회
-	boolean deleteContract(Integer contract_code); // 삭제
+	Integer deleteContract(Integer contract_code); // 삭제
 	boolean modifyContract(ContractVO vo); // 수정
 
 }

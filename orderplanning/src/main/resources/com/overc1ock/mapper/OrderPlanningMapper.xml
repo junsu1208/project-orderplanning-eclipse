@@ -53,9 +53,9 @@
 	
 	<!-- 계약 품목 정보 목록 출력 -->
 	<select id="getContract" resultType="com.overc1ock.domain.ContractVO">
-		SELECT contract_code, contract_name, item_code, product_name, item_name, subcontractor_name, agreement_date, leadtime
-		FROM contract LEFT JOIN item USING(item_code) LEFT JOIN item_has_product USING(item_code) 
-		ORDER BY contract_date DESC
+		SELECT contract_code, contract_name, item_code, item_name, subcontractor_name, agreement_date, leadtime, supply_price
+		FROM contract JOIN item USING(item_code)
+		ORDER BY agreement_date DESC
 	</select>
 	
 	<!-- 품목 코드 가져오기 -->
@@ -93,8 +93,8 @@
 	
 	<!-- 계약 조회 -->
 	<select id="inquiryContract" resultType="com.overc1ock.domain.ContractVO">
-		SELECT contract_name, item_code, product_name, item_name, subcontractor_name, agreement_date, leadtime
-		FROM contract LEFT JOIN item_has_product USING(item_code) LEFT JOIN item USING(item_code) 
+		SELECT contract_code, contract_name, item_code, item_name, standard, material, specification_file, draw_file, sc_name, mc_name, subcontractor_name, subcontractor_tel, subcontractor_email, subcontractor_person, agreement_date, leadtime, supply_price, contract_file, contract_text
+		FROM contract JOIN item USING(item_code) join subcontractor using(subcontractor_name) join sub_category using(sc_code) join major_category using(mc_code) 
 		WHERE contract_code = #{ contract_code }
 	</select>
 	
@@ -107,8 +107,11 @@
 	<update id="modifyContract">
 		UPDATE contract
 		SET contract_name = #{ contract_name }, subcontractor_name = #{ subcontractor_name }, item_code = #{ item_code },
-		supply_price = #{ supply_price }, agreement_date = #{ agreement_date }, leadtime = #{ leadtime }, 
-		contract_file = #{ contract_file }, contract_text = #{ contract_text } WHERE contract_code = #{ contract_code }
+		supply_price = #{ supply_price }, agreement_date = #{ agreement_date }, leadtime = #{ leadtime }, contract_text = #{ contract_text } 
+		<if test="contract_file != null and contract_file != ''">
+			,contract_file = #{ contract_file } 
+		</if>
+		 WHERE contract_code = #{ contract_code }
 	</update>
 	
 	<!-- 조달 예정 품목 목록 출력 -->

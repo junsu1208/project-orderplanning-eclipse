@@ -14,15 +14,16 @@
 	
 	<!-- 대분류 가져오기 -->
 	<select id="getMajorCategory" resultType="com.overc1ock.domain.ItemInfoVO">
-		SELECT mc_name
+		SELECT mc_code, mc_name
 		FROM major_category
 		ORDER BY mc_code
 	</select>
 	
 	<!-- 중분류 가져오기 -->
 	<select id="getSubCategory" resultType="com.overc1ock.domain.ItemInfoVO">
-		SELECT sc_name
+		SELECT sc_code, sc_name
 		FROM sub_category
+		where mc_code = #{mc_code}
 		ORDER BY sc_code
 	</select>
 	

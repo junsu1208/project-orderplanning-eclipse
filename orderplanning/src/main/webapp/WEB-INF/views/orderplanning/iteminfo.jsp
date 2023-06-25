@@ -46,11 +46,14 @@
 					style="position: absolute; left: 250px; top: 40px;">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item" style="margin-left: 10px;"><a
-							class="nav-link" href="/orderplanning/iteminfo" id="iteminfo">품목 정보 등록</a></li>
+							class="nav-link" href="/orderplanning/iteminfo" id="iteminfo">품목
+								정보 등록</a></li>
 						<li class="nav-item" style="margin-left: 10px;"><a
-							class="nav-link" href="/orderplanning/contract" id="contract">계약 등록</a></li>
+							class="nav-link" href="/orderplanning/contract" id="contract">계약
+								등록</a></li>
 						<li class="nav-item" style="margin-left: 10px;"><a
-							class="nav-link" href="/orderplanning/procurementplan" id="procurementplan">조달 계획 등록</a></li>
+							class="nav-link" href="/orderplanning/procurementplan"
+							id="procurementplan">조달 계획 등록</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -58,19 +61,25 @@
 			<div class="area"></div>
 			<nav class="main-menu">
 				<ul>
-					<li class="has-subnav" style="font-size: 10px;"><a href="/orderplanning/iteminfo" style="height: 50px;" id="procurement">
+					<li class="has-subnav" style="font-size: 10px;"><a
+						href="/orderplanning/iteminfo" style="height: 50px;"
+						id="procurement">
 							<div class="nav-text" style="position: relative; left: 10px;">
 								조달 관리</div>
 					</a></li>
-					<li class="has-subnav" style="font-size: 10px;"><a href="#" style="height: 50px;" id="order">
+					<li class="has-subnav" style="font-size: 10px;"><a href="#"
+						style="height: 50px;" id="order">
 							<div class="nav-text" style="position: relative; left: 10px;">
 								발주 관리</div>
 					</a></li>
-					<li class="has-subnav" style="font-size: 10px;"><a href="#" style="height: 50px;" id="stock">
+					<li class="has-subnav" style="font-size: 10px;"><a href="#"
+						style="height: 50px;" id="stock">
 							<div class="nav-text" style="position: relative; left: 10px;">
 								자재 관리</div>
 					</a></li>
-					<li class="has-subnav" style="font-size: 10px;"><a href="/registerinfo/subcontractor" style="height: 50px;" id="register">
+					<li class="has-subnav" style="font-size: 10px;"><a
+						href="/registerinfo/subcontractor" style="height: 50px;"
+						id="register">
 							<div class="nav-text" style="position: relative; left: 10px;">
 								정보 등록</div>
 					</a></li>
@@ -91,13 +100,6 @@
 						<div class="row g-3">
 							<div class="col-md-3">
 								<div class="input-group mb-3">
-									<label for="itemCode" class="input-group-text">품목 코드</label> <input
-										type="number" class="form-control" id="item_code"
-										name="item_code" />
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="input-group mb-3">
 									<label for="itemName" class="input-group-text">품목명</label> <input
 										type="text" class="form-control" id="item_name"
 										name="item_name" />
@@ -105,26 +107,25 @@
 							</div>
 							<div class="col-md-3">
 								<div class="input-group mb-3">
-									<label for="McName" class="input-group-text">대분류</label> 
-									<select id="mc_name" class="form-select" tabindex="1" name="mc_name">
+									<label for="McName" class="input-group-text">대분류</label> <select
+										id="mc_name" class="form-select" tabindex="1" name="mc_name">
 										<option selected>(대분류 선택)</option>
 										<c:forEach items="${ getMajorCategory }" var="major_category">
-											<option><c:out value="${ major_category.mc_name }"></c:out></option>
+											<option value="${major_category.mc_code}"><c:out
+													value="${ major_category.mc_name }"></c:out></option>
 										</c:forEach>
 									</select>
 								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="input-group mb-3">
-									<label for="scName" class="input-group-text">중분류</label> 
-									<select id="sc_name" class="form-select" tabindex="1" name="sc_name">
-										<option selected>(중분류 선택)</option>
-										<c:forEach items="${ getSubCategory }" var="sub_category">
-											<option><c:out value="${ sub_category.sc_name }"></c:out></option>
-										</c:forEach>
+									<label for="scName" class="input-group-text">중분류</label> <select
+										id="sc_name" class="form-select" tabindex="1" name="sc_name">
 									</select>
 								</div>
 							</div>
+						</div>
+						<div class="row g-3">
 							<div class="col-md-3">
 								<div class="input-group mb-3">
 									<label for="standard" class="input-group-text">규격</label> <input
@@ -151,28 +152,35 @@
 							</div>
 							<div class="col-md-6">
 								<div class="input-group mb-3">
-									<label for="specificationFile" class="input-group-text">제작 사양</label>
-									<input type="file" class="form-control"
+									<label for="specificationFile" class="input-group-text">제작
+										사양</label> <input type="file" class="form-control"
 										id="specification_file" name="specification_file" />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="input-group mb-3">
-									<label for="drawFile" class="input-group-text">도면 파일</label> 
-									<input type="file" class="form-control"
-										id="draw_file" name="draw_file" />
+									<label for="drawFile" class="input-group-text">도면 파일</label> <input
+										type="file" class="form-control" id="draw_file"
+										name="draw_file" />
 								</div>
 							</div>
 						</div>
 						<div class="row g-3">
 							<div class="col-md-3">
-								<button type="button" id="registerItemInfo" class="btn btn-primary btn-primary" style="background-color:#42d676; border-color:#42d676;">품목 정보 등록</button>
+								<button type="button" id="registerItemInfo"
+									class="btn btn-primary btn-primary"
+									style="background-color: #42d676; border-color: #42d676;">품목
+									정보 등록</button>
 							</div>
 							<div class="col-md-3">
-								<button type="button" id="modifyItemInfo" class="btn btn-primary btn-primary">품목 정보 수정</button>
+								<button type="button" id="modifyItemInfo"
+									class="btn btn-primary btn-primary">품목 정보 수정</button>
 							</div>
 							<div class="col-md-3">
-								<button type="button" id="deleteItemInfo" class="btn btn-primary btn-primary" style="background-color:red; border-color:red;">품목 정보 삭제</button>
+								<button type="button" id="deleteItemInfo"
+									class="btn btn-primary btn-primary"
+									style="background-color: red; border-color: red;">품목
+									정보 삭제</button>
 							</div>
 						</div>
 					</div>
@@ -231,11 +239,10 @@
 							<td style="text-align: center;"><span>${ itemInfo.material }</span></td>
 							<td style="text-align: center;"><span>${ itemInfo.specification_file }</span></td>
 							<td style="text-align: center;"><span>${ itemInfo.draw_file }</span></td>
-							<td style="text-align: center;">
-								<span>
-									<fmt:formatDate pattern="yyyy-MM-dd" value="${ itemInfo.item_registration_date }" />
-								</span>
-							</td>
+							<td style="text-align: center;"><span> <fmt:formatDate
+										pattern="yyyy-MM-dd"
+										value="${ itemInfo.item_registration_date }" />
+							</span></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -250,19 +257,6 @@
 		type="text/javascript"></script>
 	<script src="/resources/js/core/jquery-ui.min.js"
 		type="text/javascript"></script>
-	<script type="text/javascript">
-		$(document).on('click', "input[type='checkbox']", function() {
-			if (this.checked) {
-				const checkboxes = $("input[type='checkbox']");
-				for (let ind = 0; ind < checkboxes.length; ind++) {
-					checkboxes[ind].checked = false;
-				}
-				this.checked = true;
-			} else {
-				this.checked = false;
-			}
-		});
-	</script>
 	<script>
 		if (document.getElementById("flag").value == 2) {
 			document.getElementById("iteminfo").style.backgroundColor = "#fff";
@@ -272,6 +266,31 @@
 			document.getElementById("procurement").style.color = "#000000";
 			document.getElementById("procurement").style.fontWeight = "bold";
 		}
+	</script>
+	<script>
+		$(document).on(
+				'change',
+				'#mc_name',
+				function() {
+					var mcCode = $('#mc_name').val();
+					console.log("선택된 대분류 값 : " + mcCode);
+					$.ajax({
+						type : 'get',
+						url : '/orderplanning/api/getsubcategory?mc_code='
+								+ mcCode,
+						contentType : 'application/json; charset=utf-8',
+						success : function(data, status, xhr) {
+							$('#sc_name').html(
+									"<option selected>(중분류 선택)</option>");
+							$.each(data, function(index, item) {
+								console.log(item.sc_name);
+								$('#sc_name').append(
+										'<option value="'+item.sc_code+'">'
+												+ item.sc_name + '</option>');
+							});
+						}
+					})
+				});
 	</script>
 </body>
 </html>

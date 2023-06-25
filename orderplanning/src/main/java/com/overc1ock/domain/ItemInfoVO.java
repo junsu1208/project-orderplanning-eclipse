@@ -12,7 +12,9 @@ public class ItemInfoVO {
 	
 	private String item_code;
 	private String item_name;
+	private String sc_code;
 	private String sc_name;
+	private String mc_code;
 	private String mc_name;
 	private String standard;
 	private String material;

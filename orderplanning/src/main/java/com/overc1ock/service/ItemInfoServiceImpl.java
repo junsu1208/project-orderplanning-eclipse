@@ -29,8 +29,8 @@ public class ItemInfoServiceImpl implements ItemInfoService {
 	}
 	
 	@Override
-	public List<ItemInfoVO> getSubCategory() {
-		return mapper.getSubCategory();
+	public List<ItemInfoVO> getSubCategory(Integer mc_code) {
+		return mapper.getSubCategory(mc_code);
 	}
 	
 	@Override

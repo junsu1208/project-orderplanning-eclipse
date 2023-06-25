@@ -1,7 +1,6 @@
 package com.overc1ock.controller;
 
 import java.io.File;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -44,38 +43,46 @@ public class OrderPlanningController {
 		log.info("품목 정보 등록 페이지 요청");
 		model.addAttribute("itemInfo", itemInfoService.getItemInfo());
 		model.addAttribute("getMajorCategory", itemInfoService.getMajorCategory());
-		model.addAttribute("getSubCategory", itemInfoService.getSubCategory());
 	}
 
 	@PostMapping("/registeriteminfo")
-	public String registerItemInfo(ItemInfoVO vo, MultipartFile[] specification_file, MultipartFile[] draw_file) {
+	public String registerItemInfo(ItemInfoVO vo, MultipartFile specification_file, MultipartFile draw_file) {
 		log.info("품목 정보 등록 기능 요청");
-		String uploadSpecificationFile = "C:/orderplanning/specification_file"; // 제작 사양 파일 업로드
-		String uploadDrawFile = "C:/orderplanning/draw_file"; // 도면 파일 업로드
+		String uploadSFolder = request.getServletContext().getRealPath("/resources/contract_file"); // 사양 저장 경로
+		//폴더 생성
+		File uploadSPath = new File(uploadSFolder);
+		if (uploadSPath.exists() == false) {
+			uploadSPath.mkdirs();
+		}
+		String uploadDFolder = request.getServletContext().getRealPath("/resources/contract_file"); // 도면 저장 경로
+		//폴더 생성
+		File uploadDPath = new File(uploadDFolder);
+		if (uploadDPath.exists() == false) {
+			uploadDPath.mkdirs();
+		}
 		// 제작 사양 파일 저장
-		for (MultipartFile multipartFile : specification_file) {
 			log.info("--------------------------------------------------");
-			log.info("업로드된 제작 사양 파일 이름: " + multipartFile.getOriginalFilename());
-			log.info("제작 사양 파일 크기: " + multipartFile.getSize());
-			File saveSpecificationFile = new File(uploadSpecificationFile, multipartFile.getOriginalFilename());
+			log.info("업로드될 제작 사양 파일 이름: " + specification_file.getOriginalFilename());
+			log.info("제작 사양 파일 크기: " + specification_file.getSize());
+			File saveSpecificationFile = new File(uploadSPath, specification_file.getOriginalFilename());
 			try {
-				multipartFile.transferTo(saveSpecificationFile);
+				specification_file.transferTo(saveSpecificationFile);
 			} catch (Exception e) {
 				log.error(e.getMessage());
 			}
-		}
 		// 도면 파일 저장
-		for (MultipartFile multipartFile : draw_file) {
 			log.info("--------------------------------------------------");
-			log.info("업로드된 도면 파일 이름: " + multipartFile.getOriginalFilename());
-			log.info("도면 파일 크기: " + multipartFile.getSize());
-			File saveDrawFile = new File(uploadDrawFile, multipartFile.getOriginalFilename());
+			log.info("업로드될 도면 파일 이름: " + draw_file.getOriginalFilename());
+			log.info("도면 파일 크기: " + draw_file.getSize());
+			File saveDrawFile = new File(uploadDPath, draw_file.getOriginalFilename());
 			try {
-				multipartFile.transferTo(saveDrawFile);
+				draw_file.transferTo(saveDrawFile);
 			} catch (Exception e) {
 				log.error(e.getMessage());
 			}
-		}
+			vo.setSpecification_file(saveSpecificationFile.getPath());
+			vo.setDraw_file(saveDrawFile.getPath());
+			
 		itemInfoService.registerItemInfo(vo);
 		return "redirect:/orderplanning/iteminfo";
 	}
@@ -95,34 +102,44 @@ public class OrderPlanningController {
 	}
 
 	@PostMapping("/modifyiteminfo")
-	public String modifyItemInfo(ItemInfoVO vo, MultipartFile[] specification_file, MultipartFile[] draw_file) {
+	public String modifyItemInfo(ItemInfoVO vo, MultipartFile specification_file, MultipartFile draw_file) {
 		log.info("품목 정보 수정 기능 요청");
-		String uploadSpecificationFile = "C:/orderplanning/specification_file"; // 제작 사양 파일 업로드
-		String uploadDrawFile = "C:/orderplanning/draw_file"; // 도면 파일 업로드
+		String uploadSFolder = request.getServletContext().getRealPath("/resources/contract_file"); // 사양 저장 경로
+		//폴더 생성
+		File uploadSPath = new File(uploadSFolder);
+		if (uploadSPath.exists() == false) {
+			uploadSPath.mkdirs();
+		}
+		String uploadDFolder = request.getServletContext().getRealPath("/resources/contract_file"); // 도면 저장 경로
+		//폴더 생성
+		File uploadDPath = new File(uploadDFolder);
+		if (uploadDPath.exists() == false) {
+			uploadDPath.mkdirs();
+		}
+		
 		// 제작 사양 파일 저장
-		for (MultipartFile multipartFile : specification_file) {
-			log.info("--------------------------------------------------");
-			log.info("업로드된 제작 사양 파일 이름: " + multipartFile.getOriginalFilename());
-			log.info("제작 사양 파일 크기: " + multipartFile.getSize());
-			File saveSpecificationFile = new File(uploadSpecificationFile, multipartFile.getOriginalFilename());
-			try {
-				multipartFile.transferTo(saveSpecificationFile);
-			} catch (Exception e) {
-				log.error(e.getMessage());
-			}
+		log.info("--------------------------------------------------");
+		log.info("업로드될 제작 사양 파일 이름: " + specification_file.getOriginalFilename());
+		log.info("제작 사양 파일 크기: " + specification_file.getSize());
+		File saveSpecificationFile = new File(uploadSPath, specification_file.getOriginalFilename());
+		try {
+			specification_file.transferTo(saveSpecificationFile);
+		} catch (Exception e) {
+			log.error(e.getMessage());
 		}
-		// 도면 파일 저장
-		for (MultipartFile multipartFile : draw_file) {
-			log.info("--------------------------------------------------");
-			log.info("업로드된 도면 파일 이름: " + multipartFile.getOriginalFilename());
-			log.info("도면 파일 크기: " + multipartFile.getSize());
-			File saveDrawFile = new File(uploadDrawFile, multipartFile.getOriginalFilename());
-			try {
-				multipartFile.transferTo(saveDrawFile);
-			} catch (Exception e) {
-				log.error(e.getMessage());
-			}
+	// 도면 파일 저장
+		log.info("--------------------------------------------------");
+		log.info("업로드될 도면 파일 이름: " + draw_file.getOriginalFilename());
+		log.info("도면 파일 크기: " + draw_file.getSize());
+		File saveDrawFile = new File(uploadDPath, draw_file.getOriginalFilename());
+		try {
+			draw_file.transferTo(saveDrawFile);
+		} catch (Exception e) {
+			log.error(e.getMessage());
 		}
+		vo.setSpecification_file(saveSpecificationFile.getPath());
+		vo.setDraw_file(saveDrawFile.getPath());
+		
 		itemInfoService.modifyItemInfo(vo);
 		return "redirect:/orderplanning/iteminfo";
 	}
@@ -138,15 +155,19 @@ public class OrderPlanningController {
 	@PostMapping("/registercontract")
 	public String registerContract(ContractVO vo, MultipartFile contract_imagefile,RedirectAttributes rttr) {
 		log.info("계약 등록 기능 요청");
-//		String uploadContractFile = "C:\\upload\\contract_file"; // 계약서 파일 업로드
-		String uploadContractFile = request.getServletContext().getRealPath("/resources/contract_file"); // 계약서 파일 업로드
+		String uploadFolder = request.getServletContext().getRealPath("/resources/contract_file"); // 저장 경로
+		//폴더 생성
+		File uploadPath = new File(uploadFolder);
+		if (uploadPath.exists() == false) {
+			uploadPath.mkdirs();
+		}
 		// 계약서 파일 저장
 		log.info("--------------------------------------------------");
-		log.info("업로드된 계약서 파일 이름: " + contract_imagefile.getOriginalFilename());
+		log.info("업로드될 계약서 파일 이름: " + contract_imagefile.getOriginalFilename());
 		log.info("계약서 파일 크기: " + contract_imagefile.getSize());
 		UUID uuid = UUID.randomUUID();
 		String uploadFileName = uuid.toString()+"_"+contract_imagefile.getOriginalFilename();
-		File saveContractFile = new File(uploadContractFile, uploadFileName);
+		File saveContractFile = new File(uploadPath, uploadFileName);
 		try {
 			contract_imagefile.transferTo(saveContractFile);
 		} catch (Exception e) {
@@ -155,13 +176,6 @@ public class OrderPlanningController {
 		vo.setContract_file(saveContractFile.getPath());
 		contractService.registerContract(vo);
 		rttr.addFlashAttribute("cvo", vo);
-		return "redirect:/orderplanning/contract";
-	}
-
-	@PostMapping("/inquirycontract")
-	public String inquiryContract(Integer contract_code, Model model) {
-		log.info("계약 조회 기능 요청");
-		contractService.inquiryContract(contract_code);
 		return "redirect:/orderplanning/contract";
 	}
 
@@ -182,15 +196,20 @@ public class OrderPlanningController {
 	@PostMapping("/modifycontract")
 	public String modifyContract(ContractVO vo, MultipartFile contract_imagefile, RedirectAttributes rttr) {
 		log.info("계약 수정 기능 요청");
-		String uploadContractFile = request.getServletContext().getRealPath("/resources/contract_file"); // 계약서 파일 업로드
+		String uploadFolder = request.getServletContext().getRealPath("/resources/contract_file"); // 저장 경로
+		//폴더 생성
+		File uploadPath = new File(uploadFolder);
+		if (uploadPath.exists() == false) {
+			uploadPath.mkdirs();
+		}
 		if (!contract_imagefile.isEmpty()) {
 			// 계약서 파일 저장
 			log.info("--------------------------------------------------");
-			log.info("업로드된 계약서 파일 이름: " + contract_imagefile.getOriginalFilename());
+			log.info("업로드될 계약서 파일 이름: " + contract_imagefile.getOriginalFilename());
 			log.info("계약서 파일 크기: " + contract_imagefile.getSize());
 			UUID uuid = UUID.randomUUID();
 			String uploadFileName = uuid.toString()+"_"+contract_imagefile.getOriginalFilename();
-			File saveContractFile = new File(uploadContractFile, uploadFileName);
+			File saveContractFile = new File(uploadPath, uploadFileName);
 			try {
 				contract_imagefile.transferTo(saveContractFile);
 			} catch (Exception e) {

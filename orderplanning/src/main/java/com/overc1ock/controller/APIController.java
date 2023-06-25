@@ -1,11 +1,26 @@
 package com.overc1ock.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.overc1ock.domain.ContractVO;
+import com.overc1ock.domain.ItemInfoVO;
 import com.overc1ock.service.ContractService;
+import com.overc1ock.service.ItemInfoService;
+
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
@@ -15,7 +30,15 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class APIController {
 	
+	ItemInfoService iservice;
 	ContractService cservice;
+	private HttpServletRequest request;
+	
+	@GetMapping("/getsubcategory")
+	public List<ItemInfoVO> getSubCategory(Integer mc_code) {
+		return iservice.getSubCategory(mc_code);
+	}
+
 	
 	@GetMapping("/getiteminfoforcontract")
 	public ContractVO getItemInfoForContract(Integer item_code) {
@@ -37,6 +60,24 @@ public class APIController {
 		vo.setContract_file(contractFile);
 		return vo;
 	}
+	
+	@PostMapping("/display")
+	public byte[] displayImage(String fileName) {
+		File file = new File(fileName);
+		byte[] result = null;
+		
+		try {
+			HttpHeaders header =  new HttpHeaders();
+			header.add("Content-Type",Files.probeContentType(file.toPath()));
+//			result = new ResponseEntity<byte[]>(FileCopyUtils.copyToByteArray(file),header,HttpStatus.OK);
+			result = FileCopyUtils.copyToByteArray(file);
+		} catch (IOException e) {
+			e.printStackTrace();
+			log.info("파일 byte로 변환 중 문제 발생");
+		}
+		return result;
+	}
+	
 
 
 }

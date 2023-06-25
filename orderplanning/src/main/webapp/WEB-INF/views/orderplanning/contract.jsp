@@ -267,6 +267,7 @@
 			</div>
 			<input type="hidden" name="contract_code" id="cCode">
 		</form>
+			<input type="hidden" name="contract_file" id="cFile">
 		<br /> <br />
 		<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
 		                <symbol id="check-circle-fill" fill="currentColor"
@@ -336,9 +337,10 @@
 					</c:forEach>
 				</tbody>
 			</table>
-	</div>
 	</form>
 	</div>
+	</div>
+	<img id="img"></img>
 	<input type="hidden" value="2" id="flag">
 	<script src="/resources/js/core/popper.min.js" type="text/javascript"></script>
 	<script src="/resources/js/core/bootstrap-5.min.js"
@@ -412,6 +414,20 @@
 						data.subcontractor_person);
 			}
 		})
+	});
+	
+	$(document).on('click','#contractviewbtn',function() {
+		var contractFile = 'fileName='+$('#cFile').val();
+		console.log("선택된  계약서 파일경로 : " + contractFile);
+		$.ajax({
+					type : 'post',
+					url : '/orderplanning/api/display',
+					data : contractFile,
+					success : function(data, status, xhr) {
+						console.log("계약서 파일 ajax 결과 > "+ data);
+						$('#img').attr("src","data:image/jpg;base64,"+data);
+					}
+				})
 	});
 
 	</script>
@@ -495,12 +511,13 @@
 								$('#contract_text').val(data.contract_text);
 								$('#contractfile_tag').attr('class','col-md-4');
 								$('#contractfile_view').attr('class','col-md-2');
-								$('#contractfile_view').html('<button type="button" class="btn btn-primary" onclick="window.open(\''+data.contract_file+'\')">기존 계약서 보기</button>');
+								$('#contractfile_view').html('<button type="button" class="btn btn-primary" id="contractviewbtn">기존 계약서 보기</button>');
 								$('#registerContract').text('계약 수정');
 								$('#backbtn').html('<button type="button" class="btn btn-primary" onclick="registerContractForm()">돌아가기</button>');
 								$('#registerForm').attr('action','modifycontract');
 								$('#contract_imagefile').attr('required',false);
 								$('#cCode').val(data.contract_code);
+								$('#cFile').val(data.contract_file);
 								$('#cardTitle').text("계약조회");
 
 							}

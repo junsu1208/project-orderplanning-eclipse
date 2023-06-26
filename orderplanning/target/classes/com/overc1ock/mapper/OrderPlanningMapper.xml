@@ -27,15 +27,25 @@
 		ORDER BY sc_code
 	</select>
 	
+	<!-- 대분류 이름 가져오기 -->
+	<select id="getMc_name" resultType="com.overc1ock.domain.ItemInfoVO">
+		select mc_name from major_category where mc_code=#{mc_code}
+	</select>
+	
+	<!-- 중분류 이름 가져오기 -->
+	<select id="getSc_name" resultType="com.overc1ock.domain.ItemInfoVO">
+		select sc_name from sub_category where sc_code=#{sc_code}
+	</select>
+	
 	<!-- 품목코드 조회 -->
 	<select id="getItemCode" resultType="com.overc1ock.domain.ItemInfoVO">
-		select max(item_code) item_code from item where item_code like concat('%',#{itemCode},'%')
+		select ifnull(max(item_code),0) item_code from item where item_code like concat('%',#{itemCode},'%')
 	</select>
 	
 	<!-- 품목 정보 등록 -->
 	<insert id="registerItemInfo">
-		INSERT INTO item (item_name, standard, material, specification_file, draw_file, sc_code)
-		VALUES (#{ item_name }, #{ standard }, #{ material }, #{ specification_file }, #{ draw_file }, #{ sc_code })
+		INSERT INTO item (item_code, item_name, standard, material, specification_file, draw_file, sc_code)
+		VALUES (#{item_code},#{ item_name }, #{ standard }, #{ material }, #{ specification_file }, #{ draw_file }, #{ sc_code })
 	</insert>
 	
 	<!-- 품목 정보 조회 -->

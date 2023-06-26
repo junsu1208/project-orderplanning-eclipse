@@ -52,7 +52,7 @@ public class OrderPlanningController {
 		log.info("도면 파일: " + drawFile);
 		log.info("vo " + vo);
 		String uploadSFolder = request.getServletContext().getRealPath("/resources/specification_file"); // 제작 사양 파일 저장 경로
-		// 사양 파일 저장 폴더 생성
+		// 제작 사양 파일 저장 폴더 생성
 		File uploadSPath = new File(uploadSFolder);
 		if (uploadSPath.exists() == false) {
 			uploadSPath.mkdirs();
@@ -87,8 +87,7 @@ public class OrderPlanningController {
 			log.error(e.getMessage());
 		}
 		vo.setSpecification_file("/resources/specification_file/"+uploadSFileName);
-		vo.setDraw_file("/resources/draw_file/"+uploadDFileName);
-			
+		vo.setDraw_file("/resources/draw_file/"+uploadDFileName);	
 		itemInfoService.registerItemInfo(vo);
 		return "redirect:/orderplanning/iteminfo";
 	}
@@ -122,7 +121,6 @@ public class OrderPlanningController {
 		if (uploadDPath.exists() == false) {
 			uploadDPath.mkdirs();
 		}
-		
 		// 제작 사양 파일 저장
 		log.info("--------------------------------------------------");
 		log.info("업로드할 제작 사양 파일 이름: " + specificationFile.getOriginalFilename());
@@ -135,7 +133,7 @@ public class OrderPlanningController {
 		} catch (Exception e) {
 			log.error(e.getMessage());
 		}
-	// 도면 파일 저장
+		// 도면 파일 저장
 		log.info("--------------------------------------------------");
 		log.info("업로드할 도면 파일 이름: " + drawFile.getOriginalFilename());
 		log.info("도면 파일 크기: " + drawFile.getSize());
@@ -192,8 +190,7 @@ public class OrderPlanningController {
 	public String deleteContract(Integer contract_code, RedirectAttributes rttr) {
 		log.info("계약 삭제 기능 요청");
 		try {
-			rttr.addFlashAttribute("deleteres", contractService.deleteContract(contract_code));
-			
+			rttr.addFlashAttribute("deleteres", contractService.deleteContract(contract_code));	
 		} catch (DataIntegrityViolationException e) {
 			log.info("계약 삭제 도중 오류 발생");
 			e.printStackTrace();
@@ -206,7 +203,7 @@ public class OrderPlanningController {
 	public String modifyContract(ContractVO vo, MultipartFile contract_imagefile, RedirectAttributes rttr) {
 		log.info("계약 수정 기능 요청");
 		String uploadFolder = request.getServletContext().getRealPath("/resources/contract_file"); // 저장 경로
-		//폴더 생성
+		// 계약서 파일 저장 폴더 생성
 		File uploadPath = new File(uploadFolder);
 		if (uploadPath.exists() == false) {
 			uploadPath.mkdirs();

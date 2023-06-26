@@ -117,7 +117,7 @@
 										id="mc_name" class="form-select" tabindex="1" name="mc_code">
 										<option selected>(대분류 선택)</option>
 										<c:forEach items="${ getMajorCategory }" var="major_category">
-											<option value="${major_category.mc_code}"><c:out
+											<option value="${ major_category.mc_code }"><c:out
 													value="${ major_category.mc_name }"></c:out></option>
 										</c:forEach>
 									</select>

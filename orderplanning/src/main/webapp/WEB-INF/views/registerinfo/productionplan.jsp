@@ -49,6 +49,8 @@
 							class="nav-link" href="/registerinfo/subcontractor" id="subcontractor">협력 업체 등록</a></li>
 						<li class="nav-item" style="margin-left: 10px;"><a
 							class="nav-link" href="/registerinfo/productionplan" id="productionplan">제품 생산 계획 등록</a></li>
+						<li class="nav-item" style="margin-left: 10px;"><a
+							class="nav-link" href="/registerinfo/itemuseplan" id="itemuseplan">품목 사용 계획 등록</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->

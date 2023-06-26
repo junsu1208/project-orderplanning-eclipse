@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -63,20 +62,18 @@ public class APIController {
 	
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> displayImage(String fileName) {
-		File file = new File(request.getServletContext().getRealPath("")+fileName);
+		File file = new File(request.getServletContext().getRealPath("") + fileName);
 		ResponseEntity<byte[]> result = null;
 		
 		try {
 			HttpHeaders header =  new HttpHeaders();
 			header.add("Content-Type",Files.probeContentType(file.toPath()));
-			result = new ResponseEntity<byte[]>(FileCopyUtils.copyToByteArray(file),header,HttpStatus.OK);
+			result = new ResponseEntity<byte[]>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
 		} catch (IOException e) {
 			e.printStackTrace();
-			log.info("파일 byte로 변환 중 문제 발생");
+			log.info("파일을 byte로 변환하는 도중 오류 발생");
 		}
 		return result;
 	}
 	
-
-
 }

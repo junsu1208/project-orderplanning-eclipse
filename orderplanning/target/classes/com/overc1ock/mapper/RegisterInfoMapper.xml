@@ -36,5 +36,34 @@
 		INSERT INTO products_production_plan (product_name, production, process, production_date)
 		VALUES (#{ product_name }, #{ production }, #{ process }, #{ production_date })
 	</insert>
+	
+	<!-- 품목 사용 계획 목록 출력 -->
+	<select id="getItemUsePlan" resultType="com.overc1ock.domain.ItemUsePlanVO">
+		SELECT iup_code, product_name, item_name, consumption, iup_date 
+		FROM item_use_plan 
+		LEFT JOIN products_production_plan USING(ppp_code)
+		LEFT JOIN item USING(item_code)
+		ORDER BY iup_date
+	</select>
+	
+	<!-- 제품 생산 계획 코드 가져오기 -->
+	<select id="getPppCode" resultType="com.overc1ock.domain.ItemUsePlanVO">
+		SELECT ppp_code
+		FROM products_production_plan
+		ORDER BY ppp_code
+	</select>
+	
+	<!-- 품목 코드 가져오기 -->
+	<select id="getItemCode" resultType="com.overc1ock.domain.ItemUsePlanVO">
+		SELECT item_code
+		FROM item
+		ORDER BY item_code
+	</select>
+	
+	<!-- 제품 생산 계획 등록 -->
+	<insert id="registerItemUsePlan">
+		INSERT INTO item_use_plan (ppp_code, item_code, consumption)
+		VALUES (#{ ppp_code }, #{ item_code }, #{ consumption })
+	</insert>
     
 </mapper>

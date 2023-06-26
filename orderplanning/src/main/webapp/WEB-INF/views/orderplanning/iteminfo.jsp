@@ -289,7 +289,7 @@
 							$.each(data, function(index, item) {
 								console.log(item.sc_name);
 								$('#sc_name').append(
-										'<option value="'+item.sc_code+'">'
+										'<option value="' + item.sc_code + '">'
 												+ item.sc_name + '</option>');
 							});
 						}

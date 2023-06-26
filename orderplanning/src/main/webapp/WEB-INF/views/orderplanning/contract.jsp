@@ -290,9 +290,7 @@
 					onclick="inquiryContractFunc()">계약 조회 및 수정</button>
 				<button type="submit" class="btn btn-danger"
 					style="position: absolute; left: 1190px; background-color: red; border-color: red;">계약
-					삭제</button>
-
-
+					삭제</button>	
 				<thead class="table-dark">
 					<tr>
 						<th scope="col" style="text-align: center;"></th>
@@ -384,7 +382,7 @@
 					}
 				})
 	});
-	$(document).on('change','#subcontractor_name',function() {
+	$(document).on('change', '#subcontractor_name', function() {
 		var subcontractorName = $('#subcontractor_name').val();
 		console.log("선택된 협력 업체 이름 : " + subcontractorName);
 		$.ajax({
@@ -407,12 +405,11 @@
 		})
 	});
 	
-	$(document).on('click','#contractviewbtn',function() {
+	$(document).on('click', '#contractviewbtn', function() {
 		var contractFile = $('#cFile').val();
 		console.log("선택된 계약서 파일 경로 : " + contractFile);
 		window.open("/orderplanning/api/display?fileName=" + contractFile, "_blank");
 	});
-
 	</script>
 	<script>
 		$(document).on('keyup', '#supply_price', function() {
@@ -447,7 +444,7 @@
 		var deleteResult = "${ deleteres }";
 		if (deleteResult == 1) {
 			alert("계약서 삭제가 완료되었습니다.");
-		} else if(deleteResult == -1) {
+		} else if (deleteResult == -1) {
 			alert("해당 계약서는 삭제할 수 없습니다.\n구매발주서 발행 시에 이미 사용된 계약서가 아닌지 확인 바랍니다.");
 		}
 	</script>
@@ -461,8 +458,7 @@
 			var checkedContractCode = $(
 					'input[type=radio][name=contract_code]:checked').val();
 			if (checkedContractCode) {
-				$
-						.ajax({
+				$.ajax({
 							type : 'get',
 							url : '/orderplanning/api/inquirycontract?contract_code='
 									+ checkedContractCode,
@@ -501,7 +497,6 @@
 								$('#contract_imagefile').attr('required', false);
 								$('#cCode').val(data.contract_code);
 								$('#cFile').val(data.contract_file);
-
 							}	
 						})
 			} else {
@@ -670,7 +665,7 @@
 					</div>
 				</div>
 			</div>`);
-			$('#registerForm').attr('action','registercontract');
+			$('#registerForm').attr('action', 'registercontract');
 		}
 	</script>
 </body>

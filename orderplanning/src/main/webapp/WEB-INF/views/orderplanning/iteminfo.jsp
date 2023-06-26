@@ -29,6 +29,12 @@
 <script type="text/javascript" src="/resources/js/txn-add-scripts.js"></script>
 <script type="text/javascript" src="/resources/js/common-scripts.js"></script>
 <script type="text/javascript" src="/resources/js/navbar-scripts.js"></script>
+<script src="/resources/js/core/jquery-3.2.1.min.js"
+		type="text/javascript"></script>
+<script src="/resources/js/core/jquery-ui.min.js"
+		type="text/javascript"></script>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
 </head>
 <body>
 	<div>
@@ -224,7 +230,7 @@
 						<c:forEach items="${ itemInfo }" var="itemInfo">
 							<tr>
 								<th scope="row" style="text-align: center;"><input
-									type="checkbox" name="selection" value="1" /></th>
+									type="radio" name="item_code" value="${ itemInfo.item_code }" /></th>
 								<td style="text-align: center;">${ no = no + 1 }</td>
 								<td style="text-align: center;"><span>${ itemInfo.item_code }</span></td>
 								<td style="text-align: center;"><span>${ itemInfo.item_name }</span></td>
@@ -244,12 +250,8 @@
 		</div>
 	</div>
 	<input type="hidden" value="2" id="flag">
-	<script src="/resources/js/core/jquery-3.2.1.min.js"
-		type="text/javascript"></script>
 	<script src="/resources/js/core/popper.min.js" type="text/javascript"></script>
 	<script src="/resources/js/core/bootstrap-5.min.js"
-		type="text/javascript"></script>
-	<script src="/resources/js/core/jquery-ui.min.js"
 		type="text/javascript"></script>
 	<script>
 		if (document.getElementById("flag").value == 2) {
@@ -265,6 +267,11 @@
 		$(document).on('keyup', '#item_name', function() {
 			$('#item_registration_date').val(new Date().toISOString().slice(0, 10));
 		})
+	</script>
+	<script>
+	    $(document).ready(function() {
+	        $('#myTable').tablesorter();
+	      });
 	</script>
 	<script>
 		$(document).on(

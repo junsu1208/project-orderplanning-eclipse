@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="/resources/css/custom.css" type="text/css" />
 <link rel="stylesheet" href="/resources/css/core/flag-icon.min.css"
 	type="text/css" />
-<title>협력 업체 등록</title>
+<title>품목 사용 계획 등록</title>
 <script type="text/javascript" src="/resources/js/txn-add-scripts.js"></script>
 <script type="text/javascript" src="/resources/js/common-scripts.js"></script>
 <script type="text/javascript" src="/resources/js/navbar-scripts.js"></script>
@@ -82,45 +82,43 @@
 	<div class="container"
 		style="position: absolute; left: 250px; width: 3000px;">
 		<div class="wrap">
-			<form action="registerSubcontractor" method="post">
+			<form action="registerItemUsePlan" method="post">
 				<div class="card">
 					<div class="card-header">
-						<b>협력 업체 등록</b>
+						<b>품목 사용 계획 등록</b>
 					</div>
 					<div class="card-body">
 						<div class="row g-3">
-							<div class="col-md-6">
-								<div class="input-group mb-3">
-									<label for="subcontractorName" class="input-group-text">협력 업체명</label>
-									<input type="text" class="form-control" id="subcontractor_name" name="subcontractor_name" />
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="input-group mb-3">
-									<label for="subcontractorPerson" class="input-group-text">담당자 성함</label>
-									<input type="text" class="form-control" id="subcontractor_person" name="subcontractor_person" />
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="input-group mb-3">
-									<label for="subcontractorTel" class="input-group-text">전화번호</label>
-									<input type="text" class="form-control" id="subcontractor_tel" name="subcontractor_tel" />
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="input-group mb-3">
-									<label for="subcontractorEmail" class="input-group-text">이메일</label>
-									<input type="text" class="form-control" id="subcontractor_email" name="subcontractor_email" />
-								</div>
-							</div>
-							<div class="input-group mb-3">
-								<label for="subcontractorAddress" class="input-group-text">주소</label>
-								<input type="text" class="form-control" id="subcontractor_address" name="subcontractor_address" />
-							</div>
-						</div>
-						<div class="row g-3">
 							<div class="col-md-3">
-								<button type="submit" id="registerSubcontractor" class="btn btn-primary btn-primary" style="background-color:#42d676; border-color:#42d676;">협력 업체 등록</button>
+								<div class="input-group mb-3">
+									<label for="PppCode" class="input-group-text">제품 생산 계획 코드</label>
+									<select id="ppp_code" class="form-select" tabindex="1" name="ppp_code">
+										<option selected>(입력)</option>
+										<c:forEach items="${ getPppCode }" var="products_production_plan">
+											<option><c:out value="${ products_production_plan.ppp_code }"></c:out></option>
+										</c:forEach>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="input-group mb-3">
+									<label for="itemCode" class="input-group-text">품목 코드</label>
+									<select id="item_code" class="form-select" tabindex="1" name="item_code">
+										<option selected>(입력)</option>
+										<c:forEach items="${ getItemCode }" var="item">
+											<option><c:out value="${ item.item_code }"></c:out></option>
+										</c:forEach>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="input-group mb-3">
+									<label for="consumption" class="input-group-text">소요량</label>
+									<input type="number" class="form-control" id="consumption" name="consumption" />
+								</div>
+							</div>
+							<div class="col-md-3">
+								<button type="submit" id="registerItemUsePlan" class="btn btn-primary btn-primary" style="background-color:#42d676; border-color:#42d676;">품목 사용 계획 등록</button>
 							</div>
 						</div>
 					</div>
@@ -147,33 +145,30 @@
 			<table id='myTable'
 				class="table table-bordered table-striped table-hover caption-top">
 				<caption style="color: black;">
-					<b>협력 업체 목록</b>
+					<b>품목 사용 계획 목록</b>
 				</caption>
 				<thead class="table-dark">
 					<tr>
 						<th scope="col" style="text-align: center;">순번</th>
-						<th scope="col" style="text-align: center;">협력 업체명</th>
-						<th scope="col" style="text-align: center;">담당자 성함</th>
-						<th scope="col" style="text-align: center;">전화번호</th>
-						<th scope="col" style="text-align: center;">이메일</th>
-						<th scope="col" style="text-align: center;">주소</th>
-						<th scope="col" style="text-align: center;">등록 날짜</th>
+						<th scope="col" style="text-align: center;">관리 코드</th>
+						<th scope="col" style="text-align: center;">제품명</th>
+						<th scope="col" style="text-align: center;">품목명</th>
+						<th scope="col" style="text-align: center;">소요량</th>
+						<th scope="col" style="text-align: center;">계획 등록일</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:set var="no" value="0" />
-					<c:forEach items="${ subcontractor }" var="subcontractor">
+					<c:forEach items="${ itemUsePlan }" var="itemUsePlan">
 						<tr>
 							<td style="text-align: center;">${ no = no + 1 }</td>
-							<td style="text-align: center;"><span>${ subcontractor.subcontractor_name }</span></td>
-							<td style="text-align: center;"><span>${ subcontractor.subcontractor_person }</span></td>
-							<td style="text-align: center;"><span>${ subcontractor.subcontractor_tel }</span></td>
-							<td style="text-align: center;"><span>${ subcontractor.subcontractor_email }</span></td>
-							<td style="text-align: center;"><span>${ subcontractor.subcontractor_address }</span></td>
+							<td style="text-align: center;"><span>${ itemUsePlan.iup_code }</span></td>
+							<td style="text-align: center;"><span>${ itemUsePlan.product_name }</span></td>
+							<td style="text-align: center;"><span>${ itemUsePlan.item_name }</span></td>
+							<td style="text-align: center;"><span>${ itemUsePlan.consumption }</span></td>
 							<td style="text-align: center;">
 								<span>
-									<fmt:parseDate value="${ subcontractor.subcontractor_date }" var="subcontractor_date" pattern="yyyy-MM-dd"/>
-									<fmt:formatDate value="${ subcontractor_date }" pattern="yyyy-MM-dd"/>
+									<fmt:formatDate pattern="yyyy-MM-dd" value="${ itemUsePlan.iup_date }" />
 								</span>
 							</td>
 						</tr>
@@ -192,9 +187,9 @@
 		type="text/javascript"></script>
 	<script>
 		if (document.getElementById("flag").value == 2) {
-			document.getElementById("subcontractor").style.backgroundColor = "#fff";
-			document.getElementById("subcontractor").style.color = "#000000";
-			document.getElementById("subcontractor").style.fontWeight = "bold";
+			document.getElementById("itemuseplan").style.backgroundColor = "#fff";
+			document.getElementById("itemuseplan").style.color = "#000000";
+			document.getElementById("itemuseplan").style.fontWeight = "bold";
 			document.getElementById("register").style.backgroundColor = "#fff";
 			document.getElementById("register").style.color = "#000000";
 			document.getElementById("register").style.fontWeight = "bold";

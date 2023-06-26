@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.overc1ock.domain.ItemUsePlanVO;
 import com.overc1ock.domain.ProductionPlanVO;
 import com.overc1ock.domain.SubcontractorVO;
 
@@ -48,6 +49,20 @@ public class RegisterInfoMapperTests {
 		vo.setProcess("H공정");
 		vo.setProduction_date("2023-06-01");
 		mapper.registerProductionPlan(vo);
+	}
+	
+	@Test
+	public void testItemUsePlan() {
+		mapper.getItemUsePlan().forEach(vo -> log.info(vo));
+	}
+	
+	@Test
+	public void testRegisterItemUsePlan() {
+		ItemUsePlanVO vo = new ItemUsePlanVO();
+		vo.setPpp_code(1);
+		vo.setItem_code("1");
+		vo.setConsumption(100);
+		mapper.registerItemUsePlan(vo);
 	}
 
 }

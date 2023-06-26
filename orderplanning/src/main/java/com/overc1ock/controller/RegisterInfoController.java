@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.overc1ock.domain.ItemUsePlanVO;
 import com.overc1ock.domain.ProductionPlanVO;
 import com.overc1ock.domain.SubcontractorVO;
+import com.overc1ock.service.ItemUsePlanService;
 import com.overc1ock.service.ProductionPlanService;
 import com.overc1ock.service.SubcontractorService;
 
@@ -22,6 +24,7 @@ public class RegisterInfoController {
 	
 	SubcontractorService subcontractorService;
 	ProductionPlanService productionPlanService;
+	ItemUsePlanService itemUsePlanService;
 	
 	@GetMapping("/subcontractor")
 	public void subcontractor(Model model) {
@@ -48,6 +51,21 @@ public class RegisterInfoController {
 		log.info("제품 생산 계획 등록 기능 요청");
 		productionPlanService.registerProductionPlan(vo);
 		return "redirect:/registerinfo/productionplan";
+	}
+	
+	@GetMapping("/itemuseplan")
+	public void itemUsePlan(Model model) {
+		log.info("품목 사용 계획 등록 페이지 요청");
+		model.addAttribute("itemUsePlan", itemUsePlanService.getItemUsePlan());
+		model.addAttribute("getPppCode", itemUsePlanService.getPppCode());
+		model.addAttribute("getItemCode", itemUsePlanService.getItemCode());
+	}
+	
+	@PostMapping("/registerItemUsePlan")
+	public String registerItemUsePlan(ItemUsePlanVO vo) {
+		log.info("품목 사용 계획 등록 기능 요청");
+		itemUsePlanService.registerItemUsePlan(vo);
+		return "redirect:/registerinfo/itemuseplan";
 	}
 	
 }

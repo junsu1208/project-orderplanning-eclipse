@@ -101,7 +101,7 @@
 			<div class="wrap">
 				<div class="card">
 					<div class="card-header">
-						<b id="cardTitle">계약 등록</b>
+						<b id="cardTitle">계약 등록 및 조회</b>
 					</div>
 					<div class="card-body">
 						<div class="row g-3">
@@ -498,7 +498,7 @@
 								$('#registerContract').text('계약 수정');
 								$('#backbtn').html('<button type="button" class="btn btn-primary" onclick="registerContractForm()">돌아가기</button>');
 								$('#registerForm').attr('action','modifycontract');
-								$('#contract_imagefile').attr('required',false);
+								$('#contract_imagefile').attr('required', false);
 								$('#cCode').val(data.contract_code);
 								$('#cFile').val(data.contract_file);
 								$('#cardTitle').text("계약 조회");
@@ -514,7 +514,7 @@
 			$('#registerForm').html(`<div class="wrap">
 				<div class="card">
 					<div class="card-header">
-						<b>계약 조회 및 수정</b>
+						<b>계약 등록 및 조회</b>
 					</div>
 					<div class="card-body">
 						<div class="row g-3">

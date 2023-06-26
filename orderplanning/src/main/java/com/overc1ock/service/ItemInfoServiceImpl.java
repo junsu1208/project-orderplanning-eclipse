@@ -41,14 +41,14 @@ public class ItemInfoServiceImpl implements ItemInfoService {
 		String firstCode = mapper.getMc_name(vo.getMc_code()).getMc_name().toUpperCase().substring(0, 1);
 		String secondCode = mapper.getSc_name(vo.getSc_code()).getSc_name().toUpperCase().substring(0, 1);
 		String itemCode = firstCode+secondCode;
-		log.info("만들어낸 품목코드 앞부분 "+itemCode);
+		log.info("생성된 품목 코드 앞부분: " + itemCode);
 		String getItemCode = mapper.getItemCode(itemCode).getItem_code();
 		log.info(getItemCode);
 		
 		if (getItemCode.equals("0")) {
-			vo.setItem_code(itemCode+"0001");
+			vo.setItem_code(itemCode + "0001");
 		}else {
-			vo.setItem_code(itemCode+String.format("%04d",Integer.parseInt(getItemCode.substring(2,getItemCode.length()))+1));
+			vo.setItem_code(itemCode + String.format("%04d", Integer.parseInt(getItemCode.substring(2, getItemCode.length())) + 1));
 		}
 		mapper.registerItemInfo(vo);
 	}

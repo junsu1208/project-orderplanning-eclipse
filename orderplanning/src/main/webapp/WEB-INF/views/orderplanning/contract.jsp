@@ -244,7 +244,7 @@
 							<div id="contractfile_view"></div>
 							<div>
 								<label for="contractText" class="form-label">비고:</label>
-								<textarea rows="5" class="form-control" id="contract_text"
+								<textarea rows="3" class="form-control" id="contract_text"
 									name="contract_text"></textarea>
 							</div>
 							<div class="col-md-3" id="inputbtn">

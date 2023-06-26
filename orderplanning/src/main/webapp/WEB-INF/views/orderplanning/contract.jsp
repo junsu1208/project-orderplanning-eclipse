@@ -514,7 +514,7 @@
 			$('#registerForm').html(`<div class="wrap">
 				<div class="card">
 					<div class="card-header">
-						<b>계약 등록 및 조회</b>
+						<b>계약 조회 및 수정</b>
 					</div>
 					<div class="card-body">
 						<div class="row g-3">
@@ -525,8 +525,6 @@
 										name="contract_name" required />
 								</div>
 							</div>
-						</div>
-						<div class="row g-3">
 							<div class="col-md-3">
 								<div class="input-group mb-3">
 									<label for="itemCode" class="input-group-text">품목 코드</label> <select
@@ -546,8 +544,6 @@
 										name="item_name" readonly />
 								</div>
 							</div>
-						</div>
-						<div class="row g-3">
 							<div class="col-md-3">
 								<div class="input-group mb-3">
 									<label for="majorcategory" class="input-group-text">대분류</label>
@@ -590,8 +586,6 @@
 										name="draw_file" readonly />
 								</div>
 							</div>
-						</div>
-						<div class="row g-3">
 							<div class="col-md-6">
 								<div class="input-group mb-3">
 									<label for="subcontractorName" class="input-group-text">협력
@@ -663,7 +657,7 @@
 							<div id="contractfile_view"></div>
 							<div>
 								<label for="contractText" class="form-label">비고:</label>
-								<textarea rows="5" class="form-control" id="contract_text"
+								<textarea rows="3" class="form-control" id="contract_text"
 									name="contract_text"></textarea>
 							</div>
 							<div class="col-md-3">
@@ -673,7 +667,6 @@
 									등록</button>
 							</div>
 							<div class="col-md-3" id='backbtn'></div>
-
 						</div>
 					</div>
 				</div>

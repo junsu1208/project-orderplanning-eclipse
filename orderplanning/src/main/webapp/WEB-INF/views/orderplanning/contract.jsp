@@ -501,9 +501,8 @@
 								$('#contract_imagefile').attr('required', false);
 								$('#cCode').val(data.contract_code);
 								$('#cFile').val(data.contract_file);
-								$('#cardTitle').text("계약 조회");
 
-							}
+							}	
 						})
 			} else {
 				alert("계약 조회를 위해 계약서를 선택해 주세요.");

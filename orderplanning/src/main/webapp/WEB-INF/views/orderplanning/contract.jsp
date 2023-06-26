@@ -112,8 +112,6 @@
 										name="contract_name" required />
 								</div>
 							</div>
-						</div>
-						<div class="row g-3">
 							<div class="col-md-3">
 								<div class="input-group mb-3">
 									<label for="itemCode" class="input-group-text">품목 코드</label> <select
@@ -364,16 +362,16 @@
 		}
 	</script>
 	<script>
-	$(document).on('change','#item_code',function() {
+	$(document).on('change', '#item_code', function() {
 		var itemCode = $('#item_code').val();
-		console.log("선택된  품목코드 : " + itemCode);
+		console.log("선택된 품목 코드 : " + itemCode);
 		$.ajax({
 					type : 'get',
 					url : '/orderplanning/api/getiteminfoforcontract?item_code='
 							+ itemCode,
 					contentType : 'application/json; charset=utf-8',
 					success : function(data, status, xhr) {
-						console.log("품목코드 ajax 결과 > "
+						console.log("품목 코드 ajax 결과 > "
 								+ data.item_name,
 								data.standard,
 								data.material,
@@ -393,14 +391,14 @@
 	});
 	$(document).on('change','#subcontractor_name',function() {
 		var subcontractorName = $('#subcontractor_name').val();
-		console.log("선택된 협력업체 이름 : " + subcontractorName);
+		console.log("선택된 협력 업체 이름 : " + subcontractorName);
 		$.ajax({
 			type : 'get',
 			url : '/orderplanning/api/getsubcontractor?subcontractor_name='
 					+ subcontractorName,
 			contentType : 'application/json; charset=utf-8',
 			success : function(data, status, xhr) {
-				console.log("협력업체이름 ajax 결과 > "
+				console.log("협력 업체 이름 ajax 결과 > "
 						+ data.subcontractor_tel,
 						data.subcontractor_email,
 						data.subcontractor_person);
@@ -416,8 +414,8 @@
 	
 	$(document).on('click','#contractviewbtn',function() {
 		var contractFile = $('#cFile').val();
-		console.log("선택된  계약서 파일경로 : " + contractFile);
-		window.open("/orderplanning/api/display?fileName="+contractFile,"_blank");
+		console.log("선택된 계약서 파일 경로 : " + contractFile);
+		window.open("/orderplanning/api/display?fileName=" + contractFile, "_blank");
 	});
 
 	</script>
@@ -428,33 +426,33 @@
 	</script>
 	<script>
 		function contractConfirm() {
-			var content = "계약서명: " + $('#contract_name').val() + "\n품목코드: "
+			var content = "계약서명: " + $('#contract_name').val() + "\n품목 코드: "
 					+ $('#item_code').val() + "\n품목명: " + $('#item_name').val()
-					+ "\n협력업체: " + $('#subcontractor_name').val() + "\n공급가격: "
+					+ "\n협력 업체: " + $('#subcontractor_name').val() + "\n공급 가격: "
 					+ $('#supply_price').val() + "원\nL/T: "
-					+ $('#leadtime').val() + "일\n비고: "+$('#contract_text').val()+"\n위 내용으로 계약서를 등록하시겠습니까?"
+					+ $('#leadtime').val() + "일\n비고: " + $('#contract_text').val() + "\n위 내용으로 계약서를 등록하시겠습니까?"
 			return confirm(content);
 		}
 	</script>
 	<script>
-		var cItemCode = "${cvo.item_code}";
+		var cItemCode = "${ cvo.item_code }";
 		if (cItemCode != "") {
-			alert("품목코드 : " + "${cvo.item_code}" + "\n품목명 : "
-					+ "${cvo.item_name}" + "\n협력업체 : "
-					+ "${cvo.subcontractor_name}" + "\n공급가격 : "
-					+ "${cvo.supply_price}" + "\nL/T : " + "${cvo.leadtime}"
+			alert("품목 코드: " + "${ cvo.item_code }" + "\n품목명: "
+					+ "${ cvo.item_name }" + "\n협력 업체: "
+					+ "${ cvo.subcontractor_name }" + "\n공급 가격: "
+					+ "${ cvo.supply_price }" + "\nL/T : " + "${ cvo.leadtime }"
 					+ "\n계약서 등록이 완료되었습니다.");
 		}
-		var mContractCode = "${modifyvo.contract_code}";
-		var mFlag = "${modifyres}";
+		var mContractCode = "${ modifyvo.contract_code }";
+		var mFlag = "${ modifyres }";
 		if (mContractCode != "" && mFlag){
-			alert("계약서명 : " + "${modifyvo.contract_name}"
+			alert("계약서명: " + "${ modifyvo.contract_name }"
 					+ "\n계약서 수정이 완료되었습니다.");
 		}
-		var deleteResult = "${deleteres}";
+		var deleteResult = "${ deleteres }";
 		if (deleteResult == 1) {
 			alert("계약서 삭제가 완료되었습니다.");
-		}else if(deleteResult == -1){
+		} else if(deleteResult == -1) {
 			alert("해당 계약서는 삭제할 수 없습니다.\n구매발주서 발행 시에 이미 사용된 계약서가 아닌지 확인 바랍니다.");
 		}
 	</script>
@@ -508,7 +506,7 @@
 								$('#contract_imagefile').attr('required',false);
 								$('#cCode').val(data.contract_code);
 								$('#cFile').val(data.contract_file);
-								$('#cardTitle').text("계약조회");
+								$('#cardTitle').text("계약 조회");
 
 							}
 						})

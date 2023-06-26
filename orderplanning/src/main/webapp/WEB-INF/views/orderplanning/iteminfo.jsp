@@ -104,26 +104,26 @@
 					</div>
 					<div class="card-body">
 						<div class="row g-3">
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<div class="input-group mb-3">
 									<label for="itemName" class="input-group-text">품목명</label> <input
 										type="text" class="form-control" id="item_name"
 										name="item_name" />
 								</div>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<div class="input-group mb-3">
 									<label for="McName" class="input-group-text">대분류</label> <select
 										id="mc_name" class="form-select" tabindex="1" name="mc_code">
 										<option selected>(대분류 선택)</option>
 										<c:forEach items="${ getMajorCategory }" var="major_category">
-											<option value="${major_category.mc_code}"><c:out
+											<option value="${ major_category.mc_code }"><c:out
 													value="${ major_category.mc_name }"></c:out></option>
 										</c:forEach>
 									</select>
 								</div>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<div class="input-group mb-3">
 									<label for="scName" class="input-group-text">중분류</label> <select
 										id="sc_name" class="form-select" tabindex="1" name="sc_code">
@@ -132,19 +132,19 @@
 							</div>
 						</div>
 						<div class="row g-3">
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<div class="input-group mb-3">
 									<label for="standard" class="input-group-text">규격</label> <input
 										type="text" class="form-control" id="standard" name="standard" />
 								</div>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<div class="input-group mb-3">
 									<label for="material" class="input-group-text">재질</label> <input
 										type="text" class="form-control" id="material" name="material" />
 								</div>
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-4">
 								<div class="input-group mb-3">
 									<label for="itemRegistrationDate" class="input-group-text">등록일</label>
 									<input type="date" id="item_registration_date"

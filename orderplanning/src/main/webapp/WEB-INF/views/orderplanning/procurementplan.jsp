@@ -194,7 +194,7 @@
 									<td style="text-align: center;"><fmt:formatDate value="${ list.production_date }" pattern="yyyy-MM-dd"/></td>
 									<td style="text-align: center;">
 										<c:if test="${ list.procurement_date == null }">
-											<input type="date" id="date" name="procurementPlanVOList[${ no-1 }].procurement_date">
+											<input type="date" id="date" name="procurementPlanVOList[${ no - 1 }].procurement_date">
 										</c:if>
 										<c:if test="${ list.procurement_date != null }">
 											<fmt:formatDate value="${ list.procurement_date }" pattern="yyyy-MM-dd"/>
@@ -202,7 +202,7 @@
 									</td>
 									<td style="text-align: center;">
 										<c:if test="${ list.procurement_date == null }">
-											<input type="textarea" id="pp_text" name="procurementPlanVOList[${ no-1 }].pp_text">
+											<input type="textarea" id="pp_text" name="procurementPlanVOList[${ no - 1 }].pp_text">
 										</c:if>
 										<c:if test="${ list.procurement_date != null &&( list.pp_text == null || list.pp_text == '') }">
 											비고 없음

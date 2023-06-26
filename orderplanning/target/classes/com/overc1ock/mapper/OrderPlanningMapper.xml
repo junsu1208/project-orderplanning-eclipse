@@ -29,23 +29,24 @@
 	
 	<!-- 대분류 이름 가져오기 -->
 	<select id="getMc_name" resultType="com.overc1ock.domain.ItemInfoVO">
-		select mc_name from major_category where mc_code=#{mc_code}
+		SELECT mc_name FROM major_category WHERE mc_code = #{ mc_code }
 	</select>
 	
 	<!-- 중분류 이름 가져오기 -->
 	<select id="getSc_name" resultType="com.overc1ock.domain.ItemInfoVO">
-		select sc_name from sub_category where sc_code=#{sc_code}
+		SELECT sc_name FROM sub_category WHERE sc_code = #{ sc_code }
 	</select>
 	
-	<!-- 품목 코드 조회 -->
+	<!-- 품목 코드 확인 -->
 	<select id="getItemCode" resultType="com.overc1ock.domain.ItemInfoVO">
 		select ifnull(max(item_code),0) item_code from item where item_code like concat('%',#{itemCode},'%')
+
 	</select>
 	
 	<!-- 품목 정보 등록 -->
 	<insert id="registerItemInfo">
 		INSERT INTO item (item_code, item_name, standard, material, specification_file, draw_file, sc_code)
-		VALUES (#{item_code},#{ item_name }, #{ standard }, #{ material }, #{ specification_file }, #{ draw_file }, #{ sc_code })
+		VALUES (#{ item_code }, #{ item_name }, #{ standard }, #{ material }, #{ specification_file }, #{ draw_file }, #{ sc_code })
 	</insert>
 	
 	<!-- 품목 정보 조회 -->
@@ -82,7 +83,7 @@
 	<!-- 품목 코드로 선택된 품목 정보 가져오기  -->
 	<select id="getItemInfoForContract" resultType="com.overc1ock.domain.ContractVO">
 		SELECT item_name, standard, material, specification_file, draw_file, sc_name, mc_name
-		FROM item join sub_category using(sc_code) join major_category using(mc_code)
+		FROM item join sub_category using(sc_code) JOIN major_category USING(mc_code)
 		WHERE item_code = #{ item_code }
 	</select>
 	

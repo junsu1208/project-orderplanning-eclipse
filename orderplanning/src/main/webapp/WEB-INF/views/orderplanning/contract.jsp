@@ -112,8 +112,6 @@
 										name="contract_name" required />
 								</div>
 							</div>
-						</div>
-						<div class="row g-3">
 							<div class="col-md-3">
 								<div class="input-group mb-3">
 									<label for="itemCode" class="input-group-text">품목 코드</label> <select

@@ -39,7 +39,7 @@
 	
 	<!-- 품목 코드 확인 -->
 	<select id="getItemCode" resultType="com.overc1ock.domain.ItemInfoVO">
-		SELECT IFNULL(MAX(item_code), 0) item_code FROM item WHERE item_code LIKE CONCAT('%', #{itemCode},'%')
+		SELECT IFNULL(MAX(item_code), 0) item_code FROM item WHERE item_code LIKE CONCAT('%', #{ itemCode },'%')
 
 	</select>
 	

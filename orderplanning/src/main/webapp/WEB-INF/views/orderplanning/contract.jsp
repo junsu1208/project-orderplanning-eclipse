@@ -131,8 +131,6 @@
 										name="item_name" readonly />
 								</div>
 							</div>
-						</div>
-						<div class="row g-3">
 							<div class="col-md-3">
 								<div class="input-group mb-3">
 									<label for="majorcategory" class="input-group-text">대분류</label>
@@ -175,8 +173,6 @@
 										name="draw_file" readonly />
 								</div>
 							</div>
-						</div>
-						<div class="row g-3">
 							<div class="col-md-6">
 								<div class="input-group mb-3">
 									<label for="subcontractorName" class="input-group-text">협력
@@ -258,7 +254,6 @@
 									등록</button>
 							</div>
 							<div class="col-md-3" id='backbtn'></div>
-
 						</div>
 					</div>
 				</div>

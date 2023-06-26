@@ -130,8 +130,6 @@
 									</select>
 								</div>
 							</div>
-						</div>
-						<div class="row g-3">
 							<div class="col-md-4">
 								<div class="input-group mb-3">
 									<label for="standard" class="input-group-text">규격</label> <input

@@ -7,9 +7,9 @@
 	
 	<!-- 품목 정보 목록 출력 -->
 	<select id="getItemInfo" resultType="com.overc1ock.domain.ItemInfoVO">
-		select item_code, item_name, sc_name, mc_name, standard, material, specification_file, draw_file, item_registration_date
-		from item join sub_category using(sc_code) join major_category using(mc_code)
-		order by item_code, item_registration_date
+		SELECT item_code, item_name, sc_name, mc_name, standard, material, specification_file, draw_file, item_registration_date
+		FROM item join sub_category USING(sc_code) JOIN major_category USING(mc_code)
+		ORDER BY item_code, item_registration_date
 	</select>
 	
 	<!-- 대분류 가져오기 -->
@@ -23,13 +23,13 @@
 	<select id="getSubCategory" resultType="com.overc1ock.domain.ItemInfoVO">
 		SELECT sc_code, sc_name
 		FROM sub_category
-		where mc_code = #{mc_code}
+		where mc_code = #{ mc_code }
 		ORDER BY sc_code
 	</select>
 	
-	<!-- 품목코드 조회 -->
+	<!-- 품목 코드 조회 -->
 	<select id="getItemCode" resultType="com.overc1ock.domain.ItemInfoVO">
-		select max(item_code) item_code from item where item_code like concat('%',#{itemCode},'%')
+		SELECT MAX(item_code) item_code FROM item WHERE item_code LIKE CONCAT('%', #{ itemCode }, '%')
 	</select>
 	
 	<!-- 품목 정보 등록 -->
@@ -53,7 +53,7 @@
 	<!-- 품목 정보 수정 -->
 	<update id="modifyItemInfo">
 		UPDATE item
-		SET item_name = #{item_name}, standard = #{ standard }, material = #{ material },
+		SET item_name = #{ item_name }, standard = #{ standard }, material = #{ material },
 		specification_file = #{ specification_file }, draw_file = #{ draw_file }, sc_code = #{ sc_code }, mc_code = #{mc_code} WHERE item_code = #{ item_code };
 	</update>
 	
@@ -66,7 +66,7 @@
 	
 	<!-- 품목 코드 가져오기 -->
 	<select id="getItemCodeForContract" resultType="com.overc1ock.domain.ContractVO">
-		select item_code from item order by item_code
+		SELECT item_code FROM item ORDER BY item_code
 	</select>
 	
 	<!-- 품목 코드로 선택된 품목 정보 가져오기  -->
@@ -100,7 +100,7 @@
 	<!-- 계약 조회 -->
 	<select id="inquiryContract" resultType="com.overc1ock.domain.ContractVO">
 		SELECT contract_code, contract_name, item_code, item_name, standard, material, specification_file, draw_file, sc_name, mc_name, subcontractor_name, subcontractor_tel, subcontractor_email, subcontractor_person, agreement_date, leadtime, supply_price, contract_file, contract_text
-		FROM contract JOIN item USING(item_code) join subcontractor using(subcontractor_name) join sub_category using(sc_code) join major_category using(mc_code) 
+		FROM contract JOIN item USING(item_code) JOIN subcontractor USING(subcontractor_name) JOIN sub_category USING(sc_code) JOIN major_category using(mc_code)
 		WHERE contract_code = #{ contract_code }
 	</select>
 	
@@ -122,24 +122,23 @@
 	
 	<!-- 조달 예정 품목 목록 출력 -->
 	<select id="getProcurementPlan" resultType="com.overc1ock.domain.ProcurementPlanVO">
-		select pp_code,item_code,item_name,`process`,consumption,production_date,procurement_date,pp_text, iup_code 
-		from products_production_plan join item_use_plan using(ppp_code) join item using(item_code) left join procurement_plan using(iup_code) 
-		where (pp_status is null or pp_status = 0)
+		SELECT pp_code, item_code, item_name, `process`, consumption, production_date, procurement_date, pp_text, iup_code
+		FROM products_production_plan JOIN item_use_plan USING(ppp_code) JOIN item USING(item_code) LEFT JOIN procurement_plan USING(iup_code) 
+		WHERE (pp_status IS NULL OR pp_status = 0)
 			<if test="startDate != null and startDate != '' and endDate != null and endDate != ''">
-		    	AND production_date between date(#{startDate}) and date(#{endDate})+1
+		    	AND production_date between date(#{ startDate }) and date(#{ endDate }) + 1
 			</if>
 			<if test="word != null and word != ''">
-		    	AND item_name like concat('%',#{word},'%')
+		    	AND item_name like concat('%', #{ word }, '%')
 			</if>
-		
-		ORDER BY procurement_date,production_date, item_code
+		ORDER BY procurement_date, production_date, item_code
 	</select>
 	
 	<!-- 조달 계획 등록 -->
 	<insert id="registerProcurementPlan" parameterType="java.util.List">
     	<foreach collection="list" item="vo" separator=";">
-	    	insert into procurement_plan(procurement_date,pp_text,iup_code)
-	    	values(#{vo.procurement_date},#{vo.pp_text},#{vo.iup_code})
+	    	INSERT INTO procurement_plan (procurement_date, pp_text, iup_code)
+	    	values (#{ vo.procurement_date }, #{ vo.pp_text }, #{ vo.iup_code })
     	</foreach>
     </insert>
     

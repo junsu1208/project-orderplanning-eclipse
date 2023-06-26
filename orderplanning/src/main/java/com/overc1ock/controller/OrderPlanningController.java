@@ -13,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -49,24 +48,24 @@ public class OrderPlanningController {
 	@PostMapping("/registeriteminfo")
 	public String registerItemInfo(ItemInfoVO vo, MultipartFile specificationFile, MultipartFile drawFile) {
 		log.info("품목 정보 등록 기능 요청");
-		log.info("사양파일 "+specificationFile);
-		log.info("도면파일 "+drawFile);
-		log.info("vo "+vo);
-		String uploadSFolder = request.getServletContext().getRealPath("/resources/specification_file"); // 사양 저장 경로
-		//폴더 생성
+		log.info("사양 파일: " + specificationFile);
+		log.info("도면 파일: " + drawFile);
+		log.info("vo " + vo);
+		String uploadSFolder = request.getServletContext().getRealPath("/resources/specification_file"); // 제작 사양 파일 저장 경로
+		// 사양 파일 저장 폴더 생성
 		File uploadSPath = new File(uploadSFolder);
 		if (uploadSPath.exists() == false) {
 			uploadSPath.mkdirs();
 		}
-		String uploadDFolder = request.getServletContext().getRealPath("/resources/draw_file"); // 도면 저장 경로
-		//폴더 생성
+		String uploadDFolder = request.getServletContext().getRealPath("/resources/draw_file"); // 도면 파일 저장 경로
+		// 도면 파일 저장 폴더 생성
 		File uploadDPath = new File(uploadDFolder);
 		if (uploadDPath.exists() == false) {
 			uploadDPath.mkdirs();
 		}
 		// 제작 사양 파일 저장
 		log.info("--------------------------------------------------");
-		log.info("업로드될 제작 사양 파일 이름: " + specificationFile.getOriginalFilename());
+		log.info("업로드할 제작 사양 파일 이름: " + specificationFile.getOriginalFilename());
 		log.info("제작 사양 파일 크기: " + specificationFile.getSize());
 		UUID uuid = UUID.randomUUID();
 		String uploadSFileName = uuid.toString()+"_"+specificationFile.getOriginalFilename();
@@ -76,9 +75,9 @@ public class OrderPlanningController {
 		} catch (Exception e) {
 			log.error(e.getMessage());
 		}
-	// 도면 파일 저장
+		// 도면 파일 저장
 		log.info("--------------------------------------------------");
-		log.info("업로드될 도면 파일 이름: " + drawFile.getOriginalFilename());
+		log.info("업로드할 도면 파일 이름: " + drawFile.getOriginalFilename());
 		log.info("도면 파일 크기: " + drawFile.getSize());
 		String uploadDFileName = uuid.toString()+"_"+drawFile.getOriginalFilename();
 		File saveDrawFile = new File(uploadDPath, uploadDFileName);
@@ -111,14 +110,14 @@ public class OrderPlanningController {
 	@PostMapping("/modifyiteminfo")
 	public String modifyItemInfo(ItemInfoVO vo, MultipartFile specificationFile, MultipartFile drawFile) {
 		log.info("품목 정보 수정 기능 요청");
-		String uploadSFolder = request.getServletContext().getRealPath("/resources/specification_file"); // 사양 저장 경로
-		//폴더 생성
+		String uploadSFolder = request.getServletContext().getRealPath("/resources/specification_file"); // 제작 사양 파일 저장 경로
+		// 사양 파일 저장 폴더 생성
 		File uploadSPath = new File(uploadSFolder);
 		if (uploadSPath.exists() == false) {
 			uploadSPath.mkdirs();
 		}
-		String uploadDFolder = request.getServletContext().getRealPath("/resources/draw_file"); // 도면 저장 경로
-		//폴더 생성
+		String uploadDFolder = request.getServletContext().getRealPath("/resources/draw_file"); // 도면 파일 저장 경로
+		// 도면 파일 저장 폴더 생성
 		File uploadDPath = new File(uploadDFolder);
 		if (uploadDPath.exists() == false) {
 			uploadDPath.mkdirs();
@@ -126,7 +125,7 @@ public class OrderPlanningController {
 		
 		// 제작 사양 파일 저장
 		log.info("--------------------------------------------------");
-		log.info("업로드될 제작 사양 파일 이름: " + specificationFile.getOriginalFilename());
+		log.info("업로드할 제작 사양 파일 이름: " + specificationFile.getOriginalFilename());
 		log.info("제작 사양 파일 크기: " + specificationFile.getSize());
 		UUID uuid = UUID.randomUUID();
 		String uploadSFileName = uuid.toString()+"_"+specificationFile.getOriginalFilename();
@@ -138,7 +137,7 @@ public class OrderPlanningController {
 		}
 	// 도면 파일 저장
 		log.info("--------------------------------------------------");
-		log.info("업로드될 도면 파일 이름: " + drawFile.getOriginalFilename());
+		log.info("업로드할 도면 파일 이름: " + drawFile.getOriginalFilename());
 		log.info("도면 파일 크기: " + drawFile.getSize());
 		String uploadDFileName = uuid.toString()+"_"+drawFile.getOriginalFilename();
 		File saveDrawFile = new File(uploadDPath, uploadDFileName);
@@ -165,15 +164,15 @@ public class OrderPlanningController {
 	@PostMapping("/registercontract")
 	public String registerContract(ContractVO vo, MultipartFile contract_imagefile,RedirectAttributes rttr) {
 		log.info("계약 등록 기능 요청");
-		String uploadFolder = request.getServletContext().getRealPath("/resources/contract_file"); // 저장 경로
-		//폴더 생성
+		String uploadFolder = request.getServletContext().getRealPath("/resources/contract_file"); // 계약서 파일 저장 경로
+		// 계약서 파일 저장 폴더 생성
 		File uploadPath = new File(uploadFolder);
 		if (uploadPath.exists() == false) {
 			uploadPath.mkdirs();
 		}
 		// 계약서 파일 저장
 		log.info("--------------------------------------------------");
-		log.info("업로드될 계약서 파일 이름: " + contract_imagefile.getOriginalFilename());
+		log.info("업로드할 계약서 파일 이름: " + contract_imagefile.getOriginalFilename());
 		log.info("계약서 파일 크기: " + contract_imagefile.getSize());
 		UUID uuid = UUID.randomUUID();
 		String uploadFileName = uuid.toString()+"_"+contract_imagefile.getOriginalFilename();
@@ -196,7 +195,7 @@ public class OrderPlanningController {
 			rttr.addFlashAttribute("deleteres", contractService.deleteContract(contract_code));
 			
 		} catch (DataIntegrityViolationException e) {
-			log.info("계약 삭제도중 에러 발생");
+			log.info("계약 삭제 도중 오류 발생");
 			e.printStackTrace();
 			rttr.addFlashAttribute("deleteres", -1);
 		}
@@ -215,10 +214,10 @@ public class OrderPlanningController {
 		if (!contract_imagefile.isEmpty()) {
 			// 계약서 파일 저장
 			log.info("--------------------------------------------------");
-			log.info("업로드될 계약서 파일 이름: " + contract_imagefile.getOriginalFilename());
+			log.info("업로드할 계약서 파일 이름: " + contract_imagefile.getOriginalFilename());
 			log.info("계약서 파일 크기: " + contract_imagefile.getSize());
 			UUID uuid = UUID.randomUUID();
-			String uploadFileName = uuid.toString()+"_"+contract_imagefile.getOriginalFilename();
+			String uploadFileName = uuid.toString() + "_" + contract_imagefile.getOriginalFilename();
 			File saveContractFile = new File(uploadPath, uploadFileName);
 			try {
 				contract_imagefile.transferTo(saveContractFile);

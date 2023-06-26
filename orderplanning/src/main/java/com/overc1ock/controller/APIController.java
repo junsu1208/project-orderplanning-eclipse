@@ -37,7 +37,6 @@ public class APIController {
 	public List<ItemInfoVO> getSubCategory(Integer mc_code) {
 		return iservice.getSubCategory(mc_code);
 	}
-
 	
 	@GetMapping("/getiteminfoforcontract")
 	public ContractVO getItemInfoForContract(Integer item_code) {
@@ -64,7 +63,6 @@ public class APIController {
 	public ResponseEntity<byte[]> displayImage(String fileName) {
 		File file = new File(request.getServletContext().getRealPath("") + fileName);
 		ResponseEntity<byte[]> result = null;
-		
 		try {
 			HttpHeaders header =  new HttpHeaders();
 			header.add("Content-Type",Files.probeContentType(file.toPath()));

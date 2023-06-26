@@ -27,7 +27,6 @@
 		ORDER BY sc_code
 	</select>
 	
-<<<<<<< HEAD
 	<!-- 대분류 이름 가져오기 -->
 	<select id="getMc_name" resultType="com.overc1ock.domain.ItemInfoVO">
 		select mc_name from major_category where mc_code=#{mc_code}
@@ -38,16 +37,9 @@
 		select sc_name from sub_category where sc_code=#{sc_code}
 	</select>
 	
-	<!-- 품목코드 조회 -->
-=======
 	<!-- 품목 코드 조회 -->
->>>>>>> branch 'main' of https://github.com/junsu1208/project-orderplanning-eclipse.git
 	<select id="getItemCode" resultType="com.overc1ock.domain.ItemInfoVO">
-<<<<<<< HEAD
 		select ifnull(max(item_code),0) item_code from item where item_code like concat('%',#{itemCode},'%')
-=======
-		SELECT MAX(item_code) item_code FROM item WHERE item_code LIKE CONCAT('%', #{ itemCode }, '%')
->>>>>>> branch 'main' of https://github.com/junsu1208/project-orderplanning-eclipse.git
 	</select>
 	
 	<!-- 품목 정보 등록 -->

@@ -7,8 +7,6 @@ import java.util.List;
 
 import javax.activation.MimetypesFileTypeMap;
 import javax.servlet.http.HttpServletRequest;
-import javax.sound.midi.MidiDevice.Info;
-
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -63,14 +61,15 @@ public class APIController {
 	
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> displayImage(String fileName) {
-		File file = new File("C:/usr/uploadFile" + fileName); // 파일 불러오기 >> 개발용
+		File file1 = new File("C:/usr/uploadFile" + fileName); // 파일 불러오기 >> 개발용
 //		File file = new File("/usr/uploadFile" + fileName); // 파일 불러오기 >> 운영용
+		File file = new File(request.getServletContext().getRealPath("") + fileName);
 		ResponseEntity<byte[]> result = null;
 		try {
 			HttpHeaders header =  new HttpHeaders();
 			MimetypesFileTypeMap mimeTypesMap = new MimetypesFileTypeMap();
-			header.add("Content-Type",mimeTypesMap.getContentType(file));
-			log.info("나는 파일 경로"+file.toPath()+"컨텐츠 타입"+Files.probeContentType(file.toPath()));
+			header.add("Content-Type", mimeTypesMap.getContentType(file));
+			log.info("파일 경로: " + file.toPath() + "콘텐츠 타입: " + Files.probeContentType(file.toPath()));
 			result = new ResponseEntity<byte[]>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -121,7 +121,7 @@
 							</div>
 							<div class="input-group mb-3">
 								<label for="subcontractorEmail" class="input-group-text">주소</label>
-								<input type="text" class="form-control" id="subcontractor_address" name="subcontractor_address" placeholder="(주소 입력)" readonly />
+								<input type="text" class="form-control" id="subcontractor_address" name="subcontractor_address" readonly />
 								<button type="button" id="address" class="btn btn-primary btn-primary" onclick="execPostCode(); return false;">우편번호 찾기</button>
 							</div>
 						</div>

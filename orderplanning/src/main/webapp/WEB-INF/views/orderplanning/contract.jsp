@@ -101,7 +101,7 @@
 			<div class="wrap">
 				<div class="card">
 					<div class="card-header">
-						<b id="cardTitle">계약 등록 및 조회</b>
+						<b id="cardTitle">계약 등록</b>
 					</div>
 					<div class="card-body">
 						<div class="row g-3">
@@ -379,6 +379,11 @@
 						$('#draw_file').val(data.draw_file);
 						$('#sc_name').val(data.sc_name);
 						$('#mc_name').val(data.mc_name);
+						
+						var sfcontent= "/orderplanning/api/display?fileName="+data.specification_file;
+						var dfcontent= "/orderplanning/api/display?fileName="+data.draw_file;
+						$('#specification_file').attr('onclick','window.open('+'"'+sfcontent+'"'+', "_blank")');
+						$('#draw_file').attr('onclick','window.open('+'"'+dfcontent+'"'+', "_blank")');
 					}
 				})
 	});
@@ -497,6 +502,12 @@
 								$('#contract_imagefile').attr('required', false);
 								$('#cCode').val(data.contract_code);
 								$('#cFile').val(data.contract_file);
+								$('#cardTitle').text("계약 조회");
+								
+								var sfcontent= "/orderplanning/api/display?fileName="+data.specification_file;
+								var dfcontent= "/orderplanning/api/display?fileName="+data.draw_file;
+								$('#specification_file').attr('onclick','window.open('+'"'+sfcontent+'"'+', "_blank")');
+								$('#draw_file').attr('onclick','window.open('+'"'+dfcontent+'"'+', "_blank")');
 							}	
 						})
 			} else {
@@ -508,7 +519,7 @@
 			$('#registerForm').html(`<div class="wrap">
 				<div class="card">
 					<div class="card-header">
-						<b>계약 등록 및 조회</b>
+						<b id="cardTitle">계약 등록</b>
 					</div>
 					<div class="card-body">
 						<div class="row g-3">

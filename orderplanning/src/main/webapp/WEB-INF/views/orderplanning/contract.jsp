@@ -101,7 +101,7 @@
 			<div class="wrap">
 				<div class="card">
 					<div class="card-header">
-						<b id="cardTitle">계약 등록</b>
+						<b id="cardTitle">계약 등록 및 조회</b>
 					</div>
 					<div class="card-body">
 						<div class="row g-3">
@@ -131,8 +131,6 @@
 										name="item_name" readonly />
 								</div>
 							</div>
-						</div>
-						<div class="row g-3">
 							<div class="col-md-3">
 								<div class="input-group mb-3">
 									<label for="majorcategory" class="input-group-text">대분류</label>
@@ -175,8 +173,6 @@
 										name="draw_file" readonly />
 								</div>
 							</div>
-						</div>
-						<div class="row g-3">
 							<div class="col-md-6">
 								<div class="input-group mb-3">
 									<label for="subcontractorName" class="input-group-text">협력
@@ -248,7 +244,7 @@
 							<div id="contractfile_view"></div>
 							<div>
 								<label for="contractText" class="form-label">비고:</label>
-								<textarea rows="5" class="form-control" id="contract_text"
+								<textarea rows="3" class="form-control" id="contract_text"
 									name="contract_text"></textarea>
 							</div>
 							<div class="col-md-3" id="inputbtn">
@@ -258,7 +254,6 @@
 									등록</button>
 							</div>
 							<div class="col-md-3" id='backbtn'></div>
-
 						</div>
 					</div>
 				</div>
@@ -295,9 +290,7 @@
 					onclick="inquiryContractFunc()">계약 조회 및 수정</button>
 				<button type="submit" class="btn btn-danger"
 					style="position: absolute; left: 1190px; background-color: red; border-color: red;">계약
-					삭제</button>
-
-
+					삭제</button>	
 				<thead class="table-dark">
 					<tr>
 						<th scope="col" style="text-align: center;"></th>
@@ -389,7 +382,7 @@
 					}
 				})
 	});
-	$(document).on('change','#subcontractor_name',function() {
+	$(document).on('change', '#subcontractor_name', function() {
 		var subcontractorName = $('#subcontractor_name').val();
 		console.log("선택된 협력 업체 이름 : " + subcontractorName);
 		$.ajax({
@@ -412,12 +405,11 @@
 		})
 	});
 	
-	$(document).on('click','#contractviewbtn',function() {
+	$(document).on('click', '#contractviewbtn', function() {
 		var contractFile = $('#cFile').val();
 		console.log("선택된 계약서 파일 경로 : " + contractFile);
 		window.open("/orderplanning/api/display?fileName=" + contractFile, "_blank");
 	});
-
 	</script>
 	<script>
 		$(document).on('keyup', '#supply_price', function() {
@@ -452,7 +444,7 @@
 		var deleteResult = "${ deleteres }";
 		if (deleteResult == 1) {
 			alert("계약서 삭제가 완료되었습니다.");
-		} else if(deleteResult == -1) {
+		} else if (deleteResult == -1) {
 			alert("해당 계약서는 삭제할 수 없습니다.\n구매발주서 발행 시에 이미 사용된 계약서가 아닌지 확인 바랍니다.");
 		}
 	</script>
@@ -466,8 +458,7 @@
 			var checkedContractCode = $(
 					'input[type=radio][name=contract_code]:checked').val();
 			if (checkedContractCode) {
-				$
-						.ajax({
+				$.ajax({
 							type : 'get',
 							url : '/orderplanning/api/inquirycontract?contract_code='
 									+ checkedContractCode,
@@ -503,12 +494,10 @@
 								$('#registerContract').text('계약 수정');
 								$('#backbtn').html('<button type="button" class="btn btn-primary" onclick="registerContractForm()">돌아가기</button>');
 								$('#registerForm').attr('action','modifycontract');
-								$('#contract_imagefile').attr('required',false);
+								$('#contract_imagefile').attr('required', false);
 								$('#cCode').val(data.contract_code);
 								$('#cFile').val(data.contract_file);
-								$('#cardTitle').text("계약 조회");
-
-							}
+							}	
 						})
 			} else {
 				alert("계약 조회를 위해 계약서를 선택해 주세요.");
@@ -530,8 +519,6 @@
 										name="contract_name" required />
 								</div>
 							</div>
-						</div>
-						<div class="row g-3">
 							<div class="col-md-3">
 								<div class="input-group mb-3">
 									<label for="itemCode" class="input-group-text">품목 코드</label> <select
@@ -551,8 +538,6 @@
 										name="item_name" readonly />
 								</div>
 							</div>
-						</div>
-						<div class="row g-3">
 							<div class="col-md-3">
 								<div class="input-group mb-3">
 									<label for="majorcategory" class="input-group-text">대분류</label>
@@ -595,8 +580,6 @@
 										name="draw_file" readonly />
 								</div>
 							</div>
-						</div>
-						<div class="row g-3">
 							<div class="col-md-6">
 								<div class="input-group mb-3">
 									<label for="subcontractorName" class="input-group-text">협력
@@ -668,7 +651,7 @@
 							<div id="contractfile_view"></div>
 							<div>
 								<label for="contractText" class="form-label">비고:</label>
-								<textarea rows="5" class="form-control" id="contract_text"
+								<textarea rows="3" class="form-control" id="contract_text"
 									name="contract_text"></textarea>
 							</div>
 							<div class="col-md-3">
@@ -678,12 +661,11 @@
 									등록</button>
 							</div>
 							<div class="col-md-3" id='backbtn'></div>
-
 						</div>
 					</div>
 				</div>
 			</div>`);
-			$('#registerForm').attr('action','registercontract');
+			$('#registerForm').attr('action', 'registercontract');
 		}
 	</script>
 </body>

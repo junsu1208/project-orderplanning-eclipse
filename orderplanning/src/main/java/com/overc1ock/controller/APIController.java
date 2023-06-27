@@ -61,9 +61,8 @@ public class APIController {
 	
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> displayImage(String fileName) {
-		File file1 = new File("C:/usr/uploadFile" + fileName); // 파일 불러오기 >> 개발용
+		File file = new File("C:/usr/uploadFile" + fileName); // 파일 불러오기 >> 개발용
 //		File file = new File("/usr/uploadFile" + fileName); // 파일 불러오기 >> 운영용
-		File file = new File(request.getServletContext().getRealPath("") + fileName);
 		ResponseEntity<byte[]> result = null;
 		try {
 			HttpHeaders header =  new HttpHeaders();

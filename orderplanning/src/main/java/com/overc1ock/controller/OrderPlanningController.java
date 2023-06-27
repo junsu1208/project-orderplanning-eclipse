@@ -51,13 +51,15 @@ public class OrderPlanningController {
 		log.info("사양 파일: " + specificationFile);
 		log.info("도면 파일: " + drawFile);
 		log.info("vo " + vo);
-		String uploadSFolder = request.getServletContext().getRealPath("/resources/specification_file"); // 제작 사양 파일 저장 경로
+		String uploadSFolder = "C:/usr/uploadFile/resources/specification_file"; // 제작 사양 파일 저장 경로 >> 개발용
+//		String uploadSFolder = "/usr/uploadFile/resources/specification_file"; // 제작 사양 파일 저장 경로 >> 운영용
 		// 제작 사양 파일 저장 폴더 생성
 		File uploadSPath = new File(uploadSFolder);
 		if (uploadSPath.exists() == false) {
 			uploadSPath.mkdirs();
 		}
-		String uploadDFolder = request.getServletContext().getRealPath("/resources/draw_file"); // 도면 파일 저장 경로
+		String uploadDFolder = "C:/usr/uploadFile/resources/draw_file"; // 도면 파일 저장 경로 >> 개발용
+//		String uploadDFolder = "/usr/uploadFile/resources/draw_file"; // 도면 파일 저장 경로 >> 운영용
 		// 도면 파일 저장 폴더 생성
 		File uploadDPath = new File(uploadDFolder);
 		if (uploadDPath.exists() == false) {
@@ -109,13 +111,15 @@ public class OrderPlanningController {
 	@PostMapping("/modifyiteminfo")
 	public String modifyItemInfo(ItemInfoVO vo, MultipartFile specificationFile, MultipartFile drawFile) {
 		log.info("품목 정보 수정 기능 요청");
-		String uploadSFolder = request.getServletContext().getRealPath("/resources/specification_file"); // 제작 사양 파일 저장 경로
+		String uploadSFolder = "C:/usr/uploadFile/resources/specification_file"; // 제작 사양 파일 저장 경로 >> 개발용
+//		String uploadSFolder = "/usr/uploadFile/resources/specification_file"; // 제작 사양 파일 저장 경로 >> 운영용
 		// 사양 파일 저장 폴더 생성
 		File uploadSPath = new File(uploadSFolder);
 		if (uploadSPath.exists() == false) {
 			uploadSPath.mkdirs();
 		}
-		String uploadDFolder = request.getServletContext().getRealPath("/resources/draw_file"); // 도면 파일 저장 경로
+		String uploadDFolder = "C:/usr/uploadFile/resources/draw_file"; // 도면 파일 저장 경로 >> 개발용
+//		String uploadDFolder = "/usr/uploadFile/resources/draw_file"; // 도면 파일 저장 경로 >> 운영용
 		// 도면 파일 저장 폴더 생성
 		File uploadDPath = new File(uploadDFolder);
 		if (uploadDPath.exists() == false) {
@@ -162,7 +166,9 @@ public class OrderPlanningController {
 	@PostMapping("/registercontract")
 	public String registerContract(ContractVO vo, MultipartFile contract_imagefile,RedirectAttributes rttr) {
 		log.info("계약 등록 기능 요청");
-		String uploadFolder = request.getServletContext().getRealPath("/resources/contract_file"); // 계약서 파일 저장 경로
+		String uploadFolder = "C:/usr/uploadFile/resources/contract_file"; // 계약서 파일 저장 경로 >> 개발용
+//		String uploadFolder = "/usr/uploadFile/resources/contract_file"; // 계약서 파일 저장 경로 >> 운영용
+		
 		// 계약서 파일 저장 폴더 생성
 		File uploadPath = new File(uploadFolder);
 		if (uploadPath.exists() == false) {
@@ -202,7 +208,8 @@ public class OrderPlanningController {
 	@PostMapping("/modifycontract")
 	public String modifyContract(ContractVO vo, MultipartFile contract_imagefile, RedirectAttributes rttr) {
 		log.info("계약 수정 기능 요청");
-		String uploadFolder = request.getServletContext().getRealPath("/resources/contract_file"); // 저장 경로
+		String uploadFolder = "C:/usr/uploadFile/resources/contract_file"; // 계약서 파일 저장 경로 >> 개발용
+//		String uploadFolder = "/usr/uploadFile/resources/contract_file"; // 계약서 파일 저장 경로 >> 운영용
 		// 계약서 파일 저장 폴더 생성
 		File uploadPath = new File(uploadFolder);
 		if (uploadPath.exists() == false) {

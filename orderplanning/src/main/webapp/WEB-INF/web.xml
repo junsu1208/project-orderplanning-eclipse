@@ -26,7 +26,8 @@
 		
 		<!-- 파일 업로드 설정 -->
 		<multipart-config>
-			<location>uploadFile</location>
+	 	    <location>C:/usr/uploadFile</location>  <!-- 개발용 경로 -->
+<!-- 	    	<location>/usr/uploadFile</location>  -->  <!-- 운영용 경로 -->
 			<max-file-size>20971520</max-file-size>   <!-- 20MB = 1024byte * 1024 * 20 -->
 		    <max-request-size>41943040</max-request-size> <!-- 40MB -->
 		    <file-size-threshold>20971520</file-size-threshold> <!-- 20MB -->

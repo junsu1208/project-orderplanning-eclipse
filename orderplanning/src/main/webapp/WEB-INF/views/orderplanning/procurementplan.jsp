@@ -161,11 +161,11 @@
 						<caption style="color: black;">
 							<b>조달 예정 품목</b>
 						</caption>
-						<button type="submit" class="btn btn-success"
+						<button type="submit" class="btn btn-success" 
 							style="position: absolute; left: 930px; background-color:#42d676; border-color:#42d676;">조달 계획 등록</button>
-						<button type="submit" class="btn btn-primary"
+						<button type="submit" class="btn btn-primary" onclick="javascript: form.action='updateprocurementplan';"
 							style="position: absolute; left: 1060px;">조달 계획 수정</button>
-						<button type="submit" class="btn btn-danger"
+						<button type="submit" class="btn btn-danger" onclick="javascript: form.action='deleteprocurementplan';"
 							style="position: absolute; left: 1190px; background-color:red; border-color:red;">조달 계획 삭제</button>
 						<thead class="table-dark">
 							<tr>

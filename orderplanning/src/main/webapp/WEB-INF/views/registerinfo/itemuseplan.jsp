@@ -99,7 +99,7 @@
 								<div class="input-group mb-3">
 									<label for="PppCode" class="input-group-text">제품 생산 계획 코드</label>
 									<select id="ppp_code" class="form-select" tabindex="1" name="ppp_code">
-										<option selected>(입력)</option>
+										<option selected>(코드 선택)</option>
 										<c:forEach items="${ getPppCode }" var="products_production_plan">
 											<option><c:out value="${ products_production_plan.ppp_code }"></c:out></option>
 										</c:forEach>
@@ -110,7 +110,7 @@
 								<div class="input-group mb-3">
 									<label for="itemCode" class="input-group-text">품목 코드</label>
 									<select id="item_code" class="form-select" tabindex="1" name="item_code">
-										<option selected>(입력)</option>
+										<option selected>(코드 선택)</option>
 										<c:forEach items="${ getItemCode }" var="item">
 											<option><c:out value="${ item.item_code }"></c:out></option>
 										</c:forEach>

@@ -39,7 +39,7 @@ public class APIController {
 	}
 	
 	@GetMapping("/getiteminfoforcontract")
-	public ContractVO getItemInfoForContract(Integer item_code) {
+	public ContractVO getItemInfoForContract(String item_code) {
 		return cservice.getItemInfoForContract(item_code);
 	}
 	

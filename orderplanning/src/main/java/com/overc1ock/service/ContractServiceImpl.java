@@ -29,7 +29,7 @@ public class ContractServiceImpl implements ContractService {
 	}
 	
 	@Override
-	public ContractVO getItemInfoForContract(Integer item_code) {
+	public ContractVO getItemInfoForContract(String item_code) {
 		return mapper.getItemInfoForContract(item_code);
 	}
 

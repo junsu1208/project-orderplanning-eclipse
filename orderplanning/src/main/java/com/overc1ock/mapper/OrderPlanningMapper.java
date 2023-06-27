@@ -24,7 +24,7 @@ public interface OrderPlanningMapper {
 	// 계약 등록
 	List<ContractVO> getContract(); // 목록 가져오기
 	List<ContractVO> getItemCodeForContract(); // 품목 코드 가져오기
-	ContractVO getItemInfoForContract(Integer item_code); // 품목 코드로 선택된 품목 정보 가져오기 
+	ContractVO getItemInfoForContract(String item_code); // 품목 코드로 선택된 품목 정보 가져오기 
 	List<ContractVO> getSubcontractorName(); // 협력 업체명 가져오기
 	ContractVO getSubcontractor(String subcontractor_name); // 협력 업체명으로 선택된 협력 업체 정보 가져오기
 	Integer registerContract(ContractVO vo); // 등록

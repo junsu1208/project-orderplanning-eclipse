@@ -413,7 +413,7 @@
 								$('#dFile').val(data.draw_file);
 								$('#cardTitle')
 										.text(
-												'품목 정보 조회(품목 코드: '
+												'품목 정보 조회 (품목 코드: '
 														+ data.item_code + ')');
 
 							}

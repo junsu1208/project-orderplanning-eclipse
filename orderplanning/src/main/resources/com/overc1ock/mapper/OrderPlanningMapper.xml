@@ -162,7 +162,10 @@
     <!-- 조달 계획 수정 -->
     <update id="modifyProcurementPlan" parameterType="com.overc1ock.domain.ProcurementPlanVO">
     	update procurement_plan
-    	set procurement_date = #{procurement_date}, pp_text = #{pp_text}
+    	set procurement_date = #{procurement_date}
+    	<if test="pp_text != null and pp_text != ''">
+    		,pp_text = #{pp_text}
+    	</if>
     	where pp_code=#{ pp_code } and po_code is null
     </update>
     

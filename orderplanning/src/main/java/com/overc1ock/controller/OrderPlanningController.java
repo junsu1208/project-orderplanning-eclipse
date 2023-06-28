@@ -260,6 +260,15 @@ public class OrderPlanningController {
 		return "redirect:/orderplanning/procurementplan";
 	}
 	
+	@PostMapping("/updateprocurementplan")
+	public String updateProcurementPlan(ProcurementPlanVO vo, Criteria cri) {
+		log.info("조달 계획 수정 요청");
+		procurementPlanService.modifyProcurementPlan(vo);
+		return "redirect:/orderplanning/procurementplan";
+	}
+		
+	
+	
 	@PostMapping("/deleteprocurementplan")
 	public String deleteProcurementPlan(Integer pp_code) {
 		log.info("조달 계획 삭제 요청");

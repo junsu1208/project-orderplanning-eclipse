@@ -91,7 +91,7 @@
 					<div class="card-header">
 						<b>조달 예정 품목 조회</b>
 					</div>
-					<form action="procurementplan">
+					<form action="procurementplan" >
 						<div class="card-body">
 							<div class="row g-3">
 								<div class="col-md-3">
@@ -155,21 +155,21 @@
 						d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
 		                </symbol>
 		            </svg>
-				<form action="registerprocurementplan" method="post">
+				<form action="registerprocurementplan" method="post" id="registerForm">
 					<table id='myTable'
 						class="table table-bordered table-striped table-hover caption-top">
 						<caption style="color: black;">
 							<b>조달 예정 품목</b>
 						</caption>
-						<button type="submit" class="btn btn-success" 
+						<button type="submit" class="btn btn-success" id="registerbtn"
 							style="position: absolute; left: 930px; background-color:#42d676; border-color:#42d676;">조달 계획 등록</button>
-						<button type="submit" class="btn btn-primary" onclick="javascript: form.action='updateprocurementplan';"
+						<button type="button" class="btn btn-primary" id="modifybtn" 
 							style="position: absolute; left: 1060px;">조달 계획 수정</button>
-						<button type="submit" class="btn btn-danger" onclick="javascript: form.action='deleteprocurementplan';"
+						<button type="submit" class="btn btn-danger" onclick="javascript: form.action='deleteprocurementplan';" id="deletebtn"
 							style="position: absolute; left: 1190px; background-color:red; border-color:red;">조달 계획 삭제</button>
 						<thead class="table-dark">
 							<tr>
-								<th scope="col" style="text-align: center;"></th>
+								<th scope="col" style="text-align: center;">선택</th>
 								<th scope="col" style="text-align: center;">순번</th>
 								<th scope="col" style="text-align: center;">품목 코드</th>
 								<th scope="col" style="text-align: center;">품목명</th>
@@ -241,6 +241,58 @@
 			document.getElementById("procurement").style.color = "#000000";
 			document.getElementById("procurement").style.fontWeight = "bold";
 		}
+	</script>
+	<script>
+		var registerFormhtml = $('#registerForm').html();
+		function registerContractForm(){
+			$('#registerForm').html(registerFormhtml);
+		}
+		
+		$(document).on('click','#modifybtn',function(){
+			var checkedPPCode = $('input[type=radio][name=pp_code]:checked').val();
+			
+			if ($('#modifybtn').text() == "수정하기") {
+				$('#registerForm').attr('action','updateprocurementplan').submit();
+			}
+			
+			if (checkedPPCode && ($('#modifybtn').text() != "수정하기")) {
+				$('input[name$="procurement_date"]').remove();
+				$('input[name$="pp_text"]').remove();
+				$('input[type=radio][name=pp_code]:not(:checked)').remove();
+				$('#registerbtn').remove();
+				$('#deletebtn').text("돌아가기");
+				$('#deletebtn').attr('type','button');
+				$('#deletebtn').attr('onclick','').unbind('click');
+				$('#modifybtn').text("수정하기");
+				
+				var eq6 = $('input[type=radio][name=pp_code]:checked').parent().siblings(':eq(6)').text().trim()
+				var eq7 = $('input[type=radio][name=pp_code]:checked').parent().siblings(':eq(7)').text().trim()
+				console.log("조달납기 원래 값 "+eq6);
+				console.log("비고 원래 값 "+eq7);
+				
+				var eq6html = '<input type="date" id="date" name="procurement_date" value="'+eq6+'">';
+				var eq7html = '<input type="textarea" id="pp_text" name="pp_text" value="'+eq7+'">';
+				console.log("조달납기 새로 넣을 html "+eq6html);
+				console.log("비고 새로 넣을 html "+eq7html);
+				
+				$('input[type=radio][name=pp_code]:checked').parent().siblings(':eq(6)').html(eq6html);
+				$('input[type=radio][name=pp_code]:checked').parent().siblings(':eq(7)').html(eq7html);
+				
+				
+			} else if(checkedPPCode == null) {
+				alert("조달계획 수정을 위해 조달계획을 선택해 주세요.");
+			}
+			
+		});
+		
+		$(document).on('click','#deletebtn',function(){
+			console.log("deletebtn "+$('#deletebtn').text());
+			if ($('#deletebtn').text() == "돌아가기") {
+				registerContractForm();
+			}
+		});
+
+		
 	</script>
 </body>
 </html>

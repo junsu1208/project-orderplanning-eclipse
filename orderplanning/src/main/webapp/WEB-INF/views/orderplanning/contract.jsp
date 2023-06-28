@@ -293,7 +293,7 @@
 					삭제</button>	
 				<thead class="table-dark">
 					<tr>
-						<th scope="col" style="text-align: center;"></th>
+						<th scope="col" style="text-align: center;">선택</th>
 						<th scope="col" style="text-align: center;">순번</th>
 						<th scope="col" style="text-align: center;">계약명</th>
 						<th scope="col" style="text-align: center;">품목 코드</th>

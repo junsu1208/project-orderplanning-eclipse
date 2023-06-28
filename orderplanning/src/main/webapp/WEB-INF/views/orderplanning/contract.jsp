@@ -380,10 +380,10 @@
 						$('#sc_name').val(data.sc_name);
 						$('#mc_name').val(data.mc_name);
 						
-						var sfcontent= "/orderplanning/api/display?fileName="+data.specification_file;
-						var dfcontent= "/orderplanning/api/display?fileName="+data.draw_file;
-						$('#specification_file').attr('onclick','window.open('+'"'+sfcontent+'"'+', "_blank")');
-						$('#draw_file').attr('onclick','window.open('+'"'+dfcontent+'"'+', "_blank")');
+						var sfcontent = "/orderplanning/api/display?fileName=" + data.specification_file;
+						var dfcontent = "/orderplanning/api/display?fileName=" + data.draw_file;
+						$('#specification_file').attr('onclick', 'window.open(' + '"' + sfcontent + '"' + ', "_blank")');
+						$('#draw_file').attr('onclick', 'window.open(' + '"' + dfcontent + '"' + ', "_blank")');
 					}
 				})
 	});
@@ -504,10 +504,10 @@
 								$('#cFile').val(data.contract_file);
 								$('#cardTitle').text("계약 조회");
 								
-								var sfcontent= "/orderplanning/api/display?fileName="+data.specification_file;
-								var dfcontent= "/orderplanning/api/display?fileName="+data.draw_file;
-								$('#specification_file').attr('onclick','window.open('+'"'+sfcontent+'"'+', "_blank")');
-								$('#draw_file').attr('onclick','window.open('+'"'+dfcontent+'"'+', "_blank")');
+								var sfcontent = "/orderplanning/api/display?fileName=" + data.specification_file;
+								var dfcontent = "/orderplanning/api/display?fileName=" + data.draw_file;
+								$('#specification_file').attr('onclick', 'window.open(' + '"' + sfcontent + '"' + ', "_blank")');
+								$('#draw_file').attr('onclick', 'window.open(' + '"' + dfcontent + '"' + ', "_blank")');
 							}	
 						})
 			} else {

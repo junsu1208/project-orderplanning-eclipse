@@ -313,46 +313,46 @@
 					+ $('#sc_name option:selected').text() + "\n규격: "
 					+ $('#standard').val() + "\n재질: " + $('#material').val()
 					+ "\n등록일: " + $('#item_registration_date').val()
-					+ "\n제작사양파일: " + $('#specification_file').val()
-					+ "\n도면파일: " + $('#draw_file').val()
-					+ "\n위 내용으로 품목정보를 등록하시겠습니까?"
+					+ "\n제작 사양 파일: " + $('#specification_file').val()
+					+ "\n도면 파일: " + $('#draw_file').val()
+					+ "\n위 내용으로 품목 정보를 등록하시겠습니까?"
 			return confirm(content);
 		}
 		
 		function modifyConfirm() {
-			var sFile=$('#specification_file').val()==""?"변동없음":$('#specification_file').val();
-			var dFile=$('#draw_file').val()==""?"변동없음":$('#draw_file').val();
+			var sFile=$('#specification_file').val() == ""?"변동 없음":$('#specification_file').val();
+			var dFile=$('#draw_file').val() == ""?"변동 없음":$('#draw_file').val();
 			
 			var content = "품목명: " + $('#item_name').val()  + "\n규격: "
 					+ $('#standard').val() + "\n재질: " + $('#material').val()
 					+ "\n등록일: " + $('#item_registration_date').val()
-					+ "\n제작사양파일: " + sFile
-					+ "\n도면파일: " + dFile
-					+ "\n위 내용으로 품목정보를 수정하시겠습니까?"
+					+ "\n제작 사양 파일: " + sFile
+					+ "\n도면 파일: " + dFile
+					+ "\n위 내용으로 품목 정보를 수정하시겠습니까?"
 			return confirm(content);
 		}
 		
 
 		function deleteConfirm() {
-			var content = "품목코드: " + $('input[name=item_code]:checked').val()
-					+ "\n품목정보를 삭제하시겠습니까?"
+			var content = "품목 코드: " + $('input[name=item_code]:checked').val()
+					+ "\n품목 정보를 삭제하시겠습니까?"
 			return confirm(content);
 		}
 
 		var registerResult = "${registerResult}";
-			console.log("registerResult ",registerResult);
+			console.log("registerResult ", registerResult);
 		if (registerResult > 0) {
 			alert("품목 정보 등록이 완료되었습니다.");
 		}
 		
 		var modifyResult = "${modifyResult}";
-		console.log("modifyResult ",registerResult);
+		console.log("modifyResult ", registerResult);
 		if (modifyResult > 0) {
 			alert("품목 정보 수정이 완료되었습니다.");
 		}
 
 		var deleteResult = "${deleteResult}";
-			console.log("deleteResult ",deleteResult);
+			console.log("deleteResult ", deleteResult);
 		if (deleteResult > 0) {
 			alert("품목 정보 삭제가 완료되었습니다.");
 		} else if (deleteResult == -1) {
@@ -378,7 +378,7 @@
 									+ checkedItemCode,
 							contentType : 'application/json; charset=utf-8',
 							success : function(data, status, xhr) {
-								console.log("선택한 품목정보 불러오기 ajax 결과 > "
+								console.log("선택한 품목 정보 불러오기 ajax 결과 > "
 										+ data.item_code);
 
 								$('#item_name').val(data.item_name);
@@ -394,14 +394,14 @@
 								$('#drawfile_tag').attr('class', 'col-md-4');
 								$('#specificationfile_view')
 										.html(
-												'<button type="button" class="btn btn-primary" id="specificationviewbtn">기존 제작사양</button>');
+												'<button type="button" class="btn btn-primary" id="specificationviewbtn">기존 제작 사양</button>');
 								$('#drawfile_view')
 										.html(
 												'<button type="button" class="btn btn-primary" id="drawviewbtn">기존 도면</button>');
 								$('#registerForm').attr('action',
 										'modifyiteminfo');
-								$('#registerItemInfo').text('품목정보 수정');
-								$('#registerForm').attr('onsubmit',"return modifyConfirm()");
+								$('#registerItemInfo').text('품목 정보 수정');
+								$('#registerForm').attr('onsubmit', "return modifyConfirm()");
 								$('#backbtn')
 										.html(
 												'<button type="button" class="btn btn-primary" onclick="registerItemInfoForm()">돌아가기</button>');
@@ -413,7 +413,7 @@
 								$('#dFile').val(data.draw_file);
 								$('#cardTitle')
 										.text(
-												'품목 정보 조회(품목코드:'
+												'품목 정보 조회(품목 코드: '
 														+ data.item_code + ')');
 
 							}
@@ -428,7 +428,7 @@
 				'#specificationviewbtn',
 				function() {
 					var specificationFile = $('#sFile').val();
-					console.log("선택된 제작사양 파일 경로 : " + specificationFile);
+					console.log("선택된 제작 사양 파일 경로 : " + specificationFile);
 					window.open("/orderplanning/api/display?fileName="
 							+ specificationFile, "_blank");
 				});

@@ -66,10 +66,10 @@
 		UPDATE item
 		SET item_name = #{ item_name }, standard = #{ standard }, material = #{ material }
 		<if test="specification_file != null and specification_file != ''">
-			,specification_file = #{ specification_file } 
+			, specification_file = #{ specification_file } 
 		</if>
 		<if test="draw_file != null and draw_file != ''">
-			,draw_file = #{ draw_file } 
+			, draw_file = #{ draw_file } 
 		</if>
 		WHERE item_code = #{ item_code };
 	</update>
@@ -132,7 +132,7 @@
 		SET contract_name = #{ contract_name }, subcontractor_name = #{ subcontractor_name }, item_code = #{ item_code },
 		supply_price = #{ supply_price }, agreement_date = #{ agreement_date }, leadtime = #{ leadtime }, contract_text = #{ contract_text } 
 		<if test="contract_file != null and contract_file != ''">
-			,contract_file = #{ contract_file } 
+			, contract_file = #{ contract_file }
 		</if>
 		 WHERE contract_code = #{ contract_code }
 	</update>
@@ -161,14 +161,14 @@
     
     <!-- 조달 계획 수정 -->
     <update id="modifyProcurementPlan" parameterType="com.overc1ock.domain.ProcurementPlanVO">
-    	update procurement_plan
-    	set procurement_date = #{procurement_date}, pp_text = #{pp_text}
-    	where pp_code=#{ pp_code } and po_code is null
+    	UPDATE procurement_plan
+		SET procurement_date = #{ procurement_date }, pp_text = #{ pp_text }
+		WHERE pp_code = #{ pp_code } and po_code is null
     </update>
     
     <!-- 조달 계획 삭제 -->
     <delete id="deleteProcurementPlan">
-    	DELETE FROM procurement_plan WHERE pp_code = #{ pp_code } and po_code is null
+    	DELETE FROM procurement_plan WHERE pp_code = #{ pp_code } AND po_code IS NULL
     </delete>
     
 </mapper>

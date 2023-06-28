@@ -71,7 +71,7 @@ public class OrderPlanningController {
 		log.info("업로드할 제작 사양 파일 이름: " + specificationFile.getOriginalFilename());
 		log.info("제작 사양 파일 크기: " + specificationFile.getSize());
 		UUID uuid = UUID.randomUUID();
-		String uploadSFileName = uuid.toString()+"_"+specificationFile.getOriginalFilename();
+		String uploadSFileName = uuid.toString() + "_" + specificationFile.getOriginalFilename();
 		File saveSpecificationFile = new File(uploadSPath, uploadSFileName);
 		try {
 			specificationFile.transferTo(saveSpecificationFile);
@@ -82,16 +82,16 @@ public class OrderPlanningController {
 		log.info("--------------------------------------------------");
 		log.info("업로드할 도면 파일 이름: " + drawFile.getOriginalFilename());
 		log.info("도면 파일 크기: " + drawFile.getSize());
-		String uploadDFileName = uuid.toString()+"_"+drawFile.getOriginalFilename();
+		String uploadDFileName = uuid.toString() + "_" + drawFile.getOriginalFilename();
 		File saveDrawFile = new File(uploadDPath, uploadDFileName);
 		try {
 			drawFile.transferTo(saveDrawFile);
 		} catch (Exception e) {
 			log.error(e.getMessage());
 		}
-		vo.setSpecification_file("/resources/specification_file/"+uploadSFileName);
-		vo.setDraw_file("/resources/draw_file/"+uploadDFileName);	
-		rttr.addFlashAttribute("registerResult",itemInfoService.registerItemInfo(vo));
+		vo.setSpecification_file("/resources/specification_file/" + uploadSFileName);
+		vo.setDraw_file("/resources/draw_file/" + uploadDFileName);	
+		rttr.addFlashAttribute("registerResult", itemInfoService.registerItemInfo(vo));
 		return "redirect:/orderplanning/iteminfo";
 	}
 
@@ -99,7 +99,7 @@ public class OrderPlanningController {
 	public String deleteItemInfo(String item_code, RedirectAttributes rttr) {
 		log.info("품목 정보 삭제 기능 요청");
 		try {
-			rttr.addFlashAttribute("deleteResult",itemInfoService.deleteItemInfo(item_code));
+			rttr.addFlashAttribute("deleteResult", itemInfoService.deleteItemInfo(item_code));
 		} catch (DataIntegrityViolationException e) {
 			log.info("품목 정보 삭제 도중 오류 발생");
 			e.printStackTrace();
@@ -109,7 +109,7 @@ public class OrderPlanningController {
 	}
 
 	@PostMapping("/modifyiteminfo")
-	public String modifyItemInfo(ItemInfoVO vo, MultipartFile specificationFile, MultipartFile drawFile,RedirectAttributes rttr) {
+	public String modifyItemInfo(ItemInfoVO vo, MultipartFile specificationFile, MultipartFile drawFile, RedirectAttributes rttr) {
 		log.info("품목 정보 수정 기능 요청");
 		String uploadSFolder = "C:/usr/uploadFile/resources/specification_file"; // 제작 사양 파일 저장 경로 >> 개발용
 //		String uploadSFolder = "/usr/uploadFile/resources/specification_file"; // 제작 사양 파일 저장 경로 >> 운영용
@@ -130,7 +130,7 @@ public class OrderPlanningController {
 		log.info("업로드할 제작 사양 파일 이름: " + specificationFile.getOriginalFilename());
 		log.info("제작 사양 파일 크기: " + specificationFile.getSize());
 		UUID uuid = UUID.randomUUID();
-		String uploadSFileName = uuid.toString()+"_"+specificationFile.getOriginalFilename();
+		String uploadSFileName = uuid.toString() + "_" + specificationFile.getOriginalFilename();
 		File saveSpecificationFile = new File(uploadSPath, uploadSFileName);
 		try {
 			specificationFile.transferTo(saveSpecificationFile);
@@ -141,17 +141,16 @@ public class OrderPlanningController {
 		log.info("--------------------------------------------------");
 		log.info("업로드할 도면 파일 이름: " + drawFile.getOriginalFilename());
 		log.info("도면 파일 크기: " + drawFile.getSize());
-		String uploadDFileName = uuid.toString()+"_"+drawFile.getOriginalFilename();
+		String uploadDFileName = uuid.toString() + "_" + drawFile.getOriginalFilename();
 		File saveDrawFile = new File(uploadDPath, uploadDFileName);
 		try {
 			drawFile.transferTo(saveDrawFile);
 		} catch (Exception e) {
 			log.error(e.getMessage());
 		}
-		vo.setSpecification_file("/resources/specification_file/"+uploadSFileName);
-		vo.setDraw_file("/resources/draw_file/"+uploadDFileName);
-		
-		rttr.addFlashAttribute("modifyResult",itemInfoService.modifyItemInfo(vo));
+		vo.setSpecification_file("/resources/specification_file/" + uploadSFileName);
+		vo.setDraw_file("/resources/draw_file/" + uploadDFileName);
+		rttr.addFlashAttribute("modifyResult", itemInfoService.modifyItemInfo(vo));
 		return "redirect:/orderplanning/iteminfo";
 	}
 
@@ -164,7 +163,7 @@ public class OrderPlanningController {
 	}
 
 	@PostMapping("/registercontract")
-	public String registerContract(ContractVO vo, MultipartFile contract_imagefile,RedirectAttributes rttr) {
+	public String registerContract(ContractVO vo, MultipartFile contract_imagefile, RedirectAttributes rttr) {
 		log.info("계약 등록 기능 요청");
 		String uploadFolder = "C:/usr/uploadFile/resources/contract_file"; // 계약서 파일 저장 경로 >> 개발용
 //		String uploadFolder = "/usr/uploadFile/resources/contract_file"; // 계약서 파일 저장 경로 >> 운영용
@@ -179,14 +178,14 @@ public class OrderPlanningController {
 		log.info("업로드할 계약서 파일 이름: " + contract_imagefile.getOriginalFilename());
 		log.info("계약서 파일 크기: " + contract_imagefile.getSize());
 		UUID uuid = UUID.randomUUID();
-		String uploadFileName = uuid.toString()+"_"+contract_imagefile.getOriginalFilename();
+		String uploadFileName = uuid.toString() + "_" + contract_imagefile.getOriginalFilename();
 		File saveContractFile = new File(uploadPath, uploadFileName);
 		try {
 			contract_imagefile.transferTo(saveContractFile);
 		} catch (Exception e) {
 			log.error(e.getMessage());
 		}
-		vo.setContract_file("/resources/contract_file/"+uploadFileName);
+		vo.setContract_file("/resources/contract_file/" + uploadFileName);
 		contractService.registerContract(vo);
 		rttr.addFlashAttribute("cvo", vo);
 		return "redirect:/orderplanning/contract";
@@ -267,5 +266,4 @@ public class OrderPlanningController {
 		return "redirect:/orderplanning/procurementplan";
 	}
 	
-
 }

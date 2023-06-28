@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,7 +47,7 @@ public class OrderPlanningController {
 	}
 
 	@PostMapping("/registeriteminfo")
-	public String registerItemInfo(ItemInfoVO vo, MultipartFile specificationFile, MultipartFile drawFile) {
+	public String registerItemInfo(ItemInfoVO vo, MultipartFile specificationFile, MultipartFile drawFile, RedirectAttributes rttr) {
 		log.info("품목 정보 등록 기능 요청");
 		log.info("사양 파일: " + specificationFile);
 		log.info("도면 파일: " + drawFile);
@@ -90,26 +91,25 @@ public class OrderPlanningController {
 		}
 		vo.setSpecification_file("/resources/specification_file/"+uploadSFileName);
 		vo.setDraw_file("/resources/draw_file/"+uploadDFileName);	
-		itemInfoService.registerItemInfo(vo);
-		return "redirect:/orderplanning/iteminfo";
-	}
-
-	@PostMapping("/inquiryiteminfo")
-	public String inquiryItemInfo(String item_code, Model model) {
-		log.info("품목 정보 조회 기능 요청");
-		model.addAttribute(itemInfoService.inquiryItemInfo(item_code));
+		rttr.addFlashAttribute("registerResult",itemInfoService.registerItemInfo(vo));
 		return "redirect:/orderplanning/iteminfo";
 	}
 
 	@PostMapping("/deleteiteminfo")
-	public String deleteItemInfo(String item_code) {
+	public String deleteItemInfo(String item_code, RedirectAttributes rttr) {
 		log.info("품목 정보 삭제 기능 요청");
-		itemInfoService.deleteItemInfo(item_code);
+		try {
+			rttr.addFlashAttribute("deleteResult",itemInfoService.deleteItemInfo(item_code));
+		} catch (DataIntegrityViolationException e) {
+			log.info("품목 정보 삭제 도중 오류 발생");
+			e.printStackTrace();
+			rttr.addFlashAttribute("deleteResult", -1);
+		}
 		return "redirect:/orderplanning/iteminfo";
 	}
 
 	@PostMapping("/modifyiteminfo")
-	public String modifyItemInfo(ItemInfoVO vo, MultipartFile specificationFile, MultipartFile drawFile) {
+	public String modifyItemInfo(ItemInfoVO vo, MultipartFile specificationFile, MultipartFile drawFile,RedirectAttributes rttr) {
 		log.info("품목 정보 수정 기능 요청");
 		String uploadSFolder = "C:/usr/uploadFile/resources/specification_file"; // 제작 사양 파일 저장 경로 >> 개발용
 //		String uploadSFolder = "/usr/uploadFile/resources/specification_file"; // 제작 사양 파일 저장 경로 >> 운영용
@@ -151,7 +151,7 @@ public class OrderPlanningController {
 		vo.setSpecification_file("/resources/specification_file/"+uploadSFileName);
 		vo.setDraw_file("/resources/draw_file/"+uploadDFileName);
 		
-		itemInfoService.modifyItemInfo(vo);
+		rttr.addFlashAttribute("modifyResult",itemInfoService.modifyItemInfo(vo));
 		return "redirect:/orderplanning/iteminfo";
 	}
 
@@ -259,5 +259,13 @@ public class OrderPlanningController {
 		}
 		return "redirect:/orderplanning/procurementplan";
 	}
+	
+	@PostMapping("/deleteprocurementplan")
+	public String deleteProcurementPlan(Integer pp_code) {
+		log.info("조달 계획 삭제 요청");
+		procurementPlanService.deleteProcurementPlan(pp_code);
+		return "redirect:/orderplanning/procurementplan";
+	}
+	
 
 }

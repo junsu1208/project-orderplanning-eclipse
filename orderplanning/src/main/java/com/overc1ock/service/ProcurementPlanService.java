@@ -11,6 +11,6 @@ public interface ProcurementPlanService {
 	List<ProcurementPlanVO> getProcurementPlan(Criteria cri); // 목록 가져오기
 	void registerProcurementPlan(List<ProcurementPlanVO> list); // 등록
 	Integer deleteProcurementPlan(Integer pp_code); // 삭제
-	boolean modifyProcurementPlan(ProcurementPlanVO vo); // 수정
+	Integer modifyProcurementPlan(ProcurementPlanVO vo); // 수정
 
 }

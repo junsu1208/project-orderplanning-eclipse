@@ -247,13 +247,13 @@
 								<textarea rows="3" class="form-control" id="contract_text"
 									name="contract_text"></textarea>
 							</div>
-							<div class="col-md-3" id="inputbtn">
+							<div class="col-md-1" id="inputbtn">
 								<button type="submit" id="registerContract"
 									class="btn btn-primary btn-primary"
 									style="background-color: #42d676; border-color: #42d676;">계약
 									등록</button>
 							</div>
-							<div class="col-md-3" id='backbtn'></div>
+							<div class="col-md-1" id='backbtn'></div>
 						</div>
 					</div>
 				</div>
@@ -353,6 +353,13 @@
 			document.getElementById("procurement").style.color = "#000000";
 			document.getElementById("procurement").style.fontWeight = "bold";
 		}
+	</script>
+	<script>
+	var registerFormhtml = $('#registerForm').html();
+	function registerContractForm(){
+		$('#registerForm').html(registerFormhtml);
+		$('#registerForm').attr('action', 'registercontract');
+	}
 	</script>
 	<script>
 	$(document).on('change', '#item_code', function() {
@@ -495,7 +502,7 @@
 								$('#contract_text').val(data.contract_text);
 								$('#contractfile_tag').attr('class','col-md-4');
 								$('#contractfile_view').attr('class','col-md-2');
-								$('#contractfile_view').html('<button type="button" class="btn btn-primary" id="contractviewbtn">기존 계약서 보기</button>');
+								$('#contractfile_view').html('<button type="button" class="btn btn-primary" id="contractviewbtn">기존 계약서</button>');
 								$('#registerContract').text('계약 수정');
 								$('#backbtn').html('<button type="button" class="btn btn-primary" onclick="registerContractForm()">돌아가기</button>');
 								$('#registerForm').attr('action','modifycontract');
@@ -515,169 +522,7 @@
 			}
 		};
 		
-		function registerContractForm(){
-			$('#registerForm').html(`<div class="wrap">
-				<div class="card">
-					<div class="card-header">
-						<b id="cardTitle">계약 등록</b>
-					</div>
-					<div class="card-body">
-						<div class="row g-3">
-							<div class="col-md-6">
-								<div class="input-group mb-3">
-									<label for="contractName" class="input-group-text">계약명</label>
-									<input type="text" class="form-control" id="contract_name"
-										name="contract_name" required />
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="input-group mb-3">
-									<label for="itemCode" class="input-group-text">품목 코드</label> <select
-										id="item_code" class="form-select" tabindex="1"
-										name="item_code" required>
-										<option selected>(품목 코드 선택)</option>
-										<c:forEach items="${ getItemCodeForContract }" var="item">
-											<option><c:out value="${ item.item_code }"></c:out>
-										</c:forEach>
-									</select>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="input-group mb-3">
-									<label for="itemName" class="input-group-text">품목명</label> <input
-										type="text" class="form-control" id="item_name"
-										name="item_name" readonly />
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="input-group mb-3">
-									<label for="majorcategory" class="input-group-text">대분류</label>
-									<input type="text" class="form-control" id="mc_name"
-										name="major_category" readonly />
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="input-group mb-3">
-									<label for="subcategory" class="input-group-text">중분류</label> <input
-										type="text" class="form-control" id="sc_name"
-										name="sub_category" readonly />
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="input-group mb-3">
-									<label for="standard" class="input-group-text">규격</label> <input
-										type="text" class="form-control" id="standard" name="standard"
-										readonly />
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="input-group mb-3">
-									<label for="material" class="input-group-text">재질</label> <input
-										type="text" class="form-control" id="material" name="material"
-										readonly />
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="input-group mb-3">
-									<label for="specificationFile" class="input-group-text">제작
-										사양</label> <input type="text" class="form-control"
-										id="specification_file" name="specification_file" readonly />
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="input-group mb-3">
-									<label for="drawFile" class="input-group-text">도면 파일</label> <input
-										type="text" class="form-control" id="draw_file"
-										name="draw_file" readonly />
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="input-group mb-3">
-									<label for="subcontractorName" class="input-group-text">협력
-										업체명</label> <select id="subcontractor_name" class="form-select"
-										tabindex="1" name="subcontractor_name" required>
-										<option selected>(협력 업체명 선택)</option>
-										<c:forEach items="${ getSubcontractorName }"
-											var="subcontractor">
-											<option><c:out
-													value="${ subcontractor.subcontractor_name }"></c:out></option>
-										</c:forEach>
-									</select>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="input-group mb-3">
-									<label for="subcontractorTel" class="input-group-text">협력
-										업체 전화번호</label> <input type="text" class="form-control"
-										id="subcontractor_tel" name="subcontractor_tel" readonly />
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="input-group mb-3">
-									<label for="subcontractorEmail" class="input-group-text">협력
-										업체 이메일</label> <input type="text" class="form-control"
-										id="subcontractor_email" name="subcontractor_email" readonly />
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="input-group mb-3">
-									<label for="subcontractorPerson" class="input-group-text">협력
-										업체 담당자</label> <input type="text" class="form-control"
-										id="subcontractor_person" name="subcontractor_person" readonly />
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="input-group mb-3">
-									<label for="supplyPrice" class="input-group-text">공급 가격</label>
-									<input type="number" class="form-control" id="supply_price"
-										name="supply_price" required />
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="input-group mb-3">
-									<label for="agreementDate" class="input-group-text">계약
-										날짜</label> <input type="date" id="agreement_date"
-										class="form-control datepicker" name="agreement_date"
-										aria-label="agreementDate" required> <span
-										class="input-group-text"> <img
-										src="/resources/img/calendar3.svg" alt="" width="16"
-										height="16" title="calendar" />
-									</span>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="input-group mb-3">
-									<label for="leadtime" class="input-group-text">L/T</label> <input
-										type="number" class="form-control" id="leadtime"
-										name="leadtime" required />
-								</div>
-							</div>
-							<div class="col-md-6" id="contractfile_tag">
-								<div class="input-group mb-3">
-									<label for="contractFile" class="input-group-text">계약서
-										첨부</label> <input type="file" class="form-control"
-										id="contract_imagefile" name="contract_imagefile" required />
-								</div>
-							</div>
-							<div id="contractfile_view"></div>
-							<div>
-								<label for="contractText" class="form-label">비고:</label>
-								<textarea rows="3" class="form-control" id="contract_text"
-									name="contract_text"></textarea>
-							</div>
-							<div class="col-md-3">
-								<button type="submit" id="registerContract"
-									class="btn btn-primary btn-primary"
-									style="background-color: #42d676; border-color: #42d676;">계약
-									등록</button>
-							</div>
-							<div class="col-md-3" id='backbtn'></div>
-						</div>
-					</div>
-				</div>
-			</div>`);
-			$('#registerForm').attr('action', 'registercontract');
-		}
+
 	</script>
 </body>
 </html>

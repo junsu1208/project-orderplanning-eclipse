@@ -45,9 +45,9 @@ public class ContractServiceImpl implements ContractService {
 	}
 	
 	@Override
-	public void registerContract(ContractVO vo) {
+	public Integer registerContract(ContractVO vo) {
 		log.info("계약 등록 요청, 변수값: " + vo);
-		mapper.registerContract(vo);
+		return mapper.registerContract(vo);
 	}
 	
 	@Override
@@ -63,9 +63,9 @@ public class ContractServiceImpl implements ContractService {
 	}
 
 	@Override
-	public boolean modifyContract(ContractVO vo) {
+	public Integer modifyContract(ContractVO vo) {
 		log.info("계약 수정 요청, 변수값: " + vo);
-		return mapper.modifyContract(vo) == 1;
+		return mapper.modifyContract(vo);
 	}
 
 }

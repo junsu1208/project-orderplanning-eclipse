@@ -37,9 +37,9 @@ public class ProcurementPlanServiceImpl implements ProcurementPlanService {
 	}
 
 	@Override
-	public boolean modifyProcurementPlan(ProcurementPlanVO vo) {
+	public Integer modifyProcurementPlan(ProcurementPlanVO vo) {
 		log.info("조달 계획 수정 요청, 변수값: " + vo);
-		return mapper.modifyProcurementPlan(vo) == 1;
+		return mapper.modifyProcurementPlan(vo);
 	}
 
 }

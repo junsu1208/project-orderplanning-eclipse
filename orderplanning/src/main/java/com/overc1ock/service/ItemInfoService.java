@@ -10,9 +10,9 @@ public interface ItemInfoService {
 	List<ItemInfoVO> getItemInfo(); // 목록 가져오기
 	List<ItemInfoVO> getMajorCategory(); // 대분류 가져오기
 	List<ItemInfoVO> getSubCategory(Integer mc_code); // 중분류 가져오기
-	void registerItemInfo(ItemInfoVO vo); // 등록
+	Integer registerItemInfo(ItemInfoVO vo); // 등록
 	ItemInfoVO inquiryItemInfo(String item_code); // 조회
-	boolean deleteItemInfo(String item_code); // 삭제
-	boolean modifyItemInfo(ItemInfoVO vo); // 수정
+	Integer deleteItemInfo(String item_code); // 삭제
+	Integer modifyItemInfo(ItemInfoVO vo); // 수정
 
 }

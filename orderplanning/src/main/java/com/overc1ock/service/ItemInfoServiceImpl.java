@@ -26,17 +26,19 @@ public class ItemInfoServiceImpl implements ItemInfoService {
 
 	@Override
 	public List<ItemInfoVO> getMajorCategory() {
+		log.info("대분류 목록 요청");
 		return mapper.getMajorCategory();
 	}
 	
 	@Override
 	public List<ItemInfoVO> getSubCategory(Integer mc_code) {
+		log.info("중분류 목록 요청");
 		return mapper.getSubCategory(mc_code);
 	}
 	
 	@Override
 	@Transactional
-	public void registerItemInfo(ItemInfoVO vo) {
+	public Integer registerItemInfo(ItemInfoVO vo) {
 		log.info("품목 정보 등록 요청, 변수값: " + vo);
 		String firstCode = mapper.getMc_name(vo.getMc_code()).getMc_name().toUpperCase().substring(0, 1);
 		String secondCode = mapper.getSc_name(vo.getSc_code()).getSc_name().toUpperCase().substring(0, 1);
@@ -50,7 +52,7 @@ public class ItemInfoServiceImpl implements ItemInfoService {
 		}else {
 			vo.setItem_code(itemCode + String.format("%04d", Integer.parseInt(getItemCode.substring(2, getItemCode.length())) + 1));
 		}
-		mapper.registerItemInfo(vo);
+		return mapper.registerItemInfo(vo);
 	}
 	
 	@Override
@@ -60,15 +62,15 @@ public class ItemInfoServiceImpl implements ItemInfoService {
 	}
 
 	@Override
-	public boolean deleteItemInfo(String item_code) {
+	public Integer deleteItemInfo(String item_code) {
 		log.info("품목 정보 삭제 요청, 변수값: " + item_code);
-		return mapper.deleteItemInfo(item_code) == 1;
+		return mapper.deleteItemInfo(item_code);
 	}
 
 	@Override
-	public boolean modifyItemInfo(ItemInfoVO vo) {
+	public Integer modifyItemInfo(ItemInfoVO vo) {
 		log.info("품목 정보 수정 요청, 변수값: " + vo);
-		return mapper.modifyItemInfo(vo) == 1;
+		return mapper.modifyItemInfo(vo);
 	}
 
 }

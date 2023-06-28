@@ -48,15 +48,14 @@ public class APIController {
 		return cservice.getSubcontractor(subcontractor_name);
 	}
 	
+	@GetMapping("/inquiryiteminfo")
+	public ItemInfoVO inquiryItemInfo(String item_code) {
+		return iservice.inquiryItemInfo(item_code);
+	}
+	
 	@GetMapping("/inquirycontract")
 	public ContractVO inquiryContract(Integer contract_code) {
-		ContractVO vo = cservice.inquiryContract(contract_code);
-		String contractFile = vo.getContract_file();
-		log.info(contractFile);
-		contractFile = contractFile.replace("\\", "/");
-		log.info(contractFile);
-		vo.setContract_file(contractFile);
-		return vo;
+		return cservice.inquiryContract(contract_code);
 	}
 	
 	@GetMapping("/display")
@@ -67,8 +66,11 @@ public class APIController {
 		try {
 			HttpHeaders header =  new HttpHeaders();
 			MimetypesFileTypeMap mimeTypesMap = new MimetypesFileTypeMap();
-			header.add("Content-Type", mimeTypesMap.getContentType(file));
-			log.info("파일 경로: " + file.toPath() + "콘텐츠 타입: " + Files.probeContentType(file.toPath()));
+//			header.add("Content-Type", mimeTypesMap.getContentType(file));
+			header.add("Content-Type", Files.probeContentType(file.toPath()));
+			log.info("파일 경로: " + file.toPath());
+			log.info("콘텐츠 타입 Files.probeContentType: " + Files.probeContentType(file.toPath()));
+			log.info("콘텐츠 타입  mimeTypesMap.getContentType:" + mimeTypesMap.getContentType(file));
 			result = new ResponseEntity<byte[]>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
 		} catch (IOException e) {
 			e.printStackTrace();

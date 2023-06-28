@@ -9,7 +9,7 @@
 	<select id="getItemInfo" resultType="com.overc1ock.domain.ItemInfoVO">
 		SELECT item_code, item_name, sc_name, mc_name, standard, material, specification_file, draw_file, item_registration_date
 		FROM item join sub_category USING(sc_code) JOIN major_category USING(mc_code)
-		ORDER BY item_code, item_registration_date
+		ORDER BY item_code
 	</select>
 	
 	<!-- 대분류 가져오기 -->
@@ -51,7 +51,7 @@
 	
 	<!-- 품목 정보 조회 -->
 	<select id="inquiryItemInfo" resultType="com.overc1ock.domain.ItemInfoVO">
-		SELECT item_code, item_name, standard, material, specification_file, draw_file, item_registration_date, sc_code
+		SELECT item_code, item_name, standard, material, specification_file, draw_file, item_registration_date, sc_code, sc_name, mc_code, mc_name
 		FROM item JOIN sub_category USING(sc_code) JOIN major_category USING(mc_code)
 		WHERE item_code = #{ item_code }
 	</select>
@@ -64,8 +64,14 @@
 	<!-- 품목 정보 수정 -->
 	<update id="modifyItemInfo">
 		UPDATE item
-		SET item_name = #{ item_name }, standard = #{ standard }, material = #{ material },
-		specification_file = #{ specification_file }, draw_file = #{ draw_file }, sc_code = #{ sc_code }, mc_code = #{mc_code} WHERE item_code = #{ item_code };
+		SET item_name = #{ item_name }, standard = #{ standard }, material = #{ material }
+		<if test="specification_file != null and specification_file != ''">
+			,specification_file = #{ specification_file } 
+		</if>
+		<if test="draw_file != null and draw_file != ''">
+			,draw_file = #{ draw_file } 
+		</if>
+		WHERE item_code = #{ item_code };
 	</update>
 	
 	<!-- 계약 품목 정보 목록 출력 -->
@@ -152,5 +158,17 @@
 	    	values (#{ vo.procurement_date }, #{ vo.pp_text }, #{ vo.iup_code })
     	</foreach>
     </insert>
+    
+    <!-- 조달 계획 수정 -->
+    <update id="modifyProcurementPlan" parameterType="com.overc1ock.domain.ProcurementPlanVO">
+    	update procurement_plan
+    	set procurement_date = #{procurement_date}, pp_text = #{pp_text}
+    	where pp_code=#{ pp_code } and po_code is null
+    </update>
+    
+    <!-- 조달 계획 삭제 -->
+    <delete id="deleteProcurementPlan">
+    	DELETE FROM procurement_plan WHERE pp_code = #{ pp_code } and po_code is null
+    </delete>
     
 </mapper>

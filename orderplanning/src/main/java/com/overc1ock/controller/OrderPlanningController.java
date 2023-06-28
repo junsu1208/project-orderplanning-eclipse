@@ -7,7 +7,6 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -272,8 +271,5 @@ public class OrderPlanningController {
 		procurementPlanService.modifyProcurementPlan(vo);
 		return "redirect:/orderplanning/procurementplan";
 	}
-		
-	
-	
 	
 }

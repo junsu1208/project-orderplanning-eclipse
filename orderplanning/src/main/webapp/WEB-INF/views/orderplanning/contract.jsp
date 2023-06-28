@@ -371,7 +371,7 @@
 							+ itemCode,
 					contentType : 'application/json; charset=utf-8',
 					success : function(data, status, xhr) {
-						console.log("품목 코드 ajax 결과 > "
+						console.log("품목 코드 Ajax 결과 : "
 								+ data.item_name,
 								data.standard,
 								data.material,
@@ -403,7 +403,7 @@
 					+ subcontractorName,
 			contentType : 'application/json; charset=utf-8',
 			success : function(data, status, xhr) {
-				console.log("협력 업체 이름 ajax 결과 > "
+				console.log("협력 업체 이름 Ajax 결과 : "
 						+ data.subcontractor_tel,
 						data.subcontractor_email,
 						data.subcontractor_person);
@@ -476,7 +476,7 @@
 									+ checkedContractCode,
 							contentType : 'application/json; charset=utf-8',
 							success : function(data, status, xhr) {
-								console.log("선택한 계약서 불러오기 ajax 결과 > "
+								console.log("선택한 계약서 불러오기 Ajax 결과 : "
 										+ data.contract_name);
 								$('#contract_name').val(data.contract_name);
 								$('#item_code').val(data.item_code);

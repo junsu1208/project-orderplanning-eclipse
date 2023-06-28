@@ -378,7 +378,7 @@
 									+ checkedItemCode,
 							contentType : 'application/json; charset=utf-8',
 							success : function(data, status, xhr) {
-								console.log("선택한 품목 정보 불러오기 ajax 결과 > "
+								console.log("선택한 품목 정보 불러오기 Ajax 결과 : "
 										+ data.item_code);
 
 								$('#item_name').val(data.item_name);
@@ -413,7 +413,7 @@
 								$('#dFile').val(data.draw_file);
 								$('#cardTitle')
 										.text(
-												'품목 정보 조회(품목 코드: '
+												'품목 정보 조회 (품목 코드: '
 														+ data.item_code + ')');
 
 							}

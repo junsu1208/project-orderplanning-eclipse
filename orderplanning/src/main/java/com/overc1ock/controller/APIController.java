@@ -70,7 +70,7 @@ public class APIController {
 			header.add("Content-Type", Files.probeContentType(file.toPath()));
 			log.info("파일 경로: " + file.toPath());
 			log.info("콘텐츠 타입 Files.probeContentType: " + Files.probeContentType(file.toPath()));
-			log.info("콘텐츠 타입  mimeTypesMap.getContentType:" + mimeTypesMap.getContentType(file));
+			log.info("콘텐츠 타입 mimeTypesMap.getContentType:" + mimeTypesMap.getContentType(file));
 			result = new ResponseEntity<byte[]>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -378,7 +378,7 @@
 									+ checkedItemCode,
 							contentType : 'application/json; charset=utf-8',
 							success : function(data, status, xhr) {
-								console.log("선택한 품목 정보 불러오기 ajax 결과 > "
+								console.log("선택한 품목 정보 불러오기 Ajax 결과 : "
 										+ data.item_code);
 
 								$('#item_name').val(data.item_name);

@@ -74,7 +74,7 @@ public class APIController {
 			result = new ResponseEntity<byte[]>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
 		} catch (IOException e) {
 			e.printStackTrace();
-			log.info("파일을 byte로 변환하는 도중 오류 발생");
+			log.info("파일을 바이트로 변환하는 도중 오류 발생");
 		}
 		return result;
 	}

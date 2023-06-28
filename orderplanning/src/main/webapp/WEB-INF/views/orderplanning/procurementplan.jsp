@@ -272,8 +272,8 @@
 				
 				var eq6html = '<input type="date" id="date" name="procurement_date" value="' + eq6 + '">';
 				var eq7html = '<input type="textarea" id="pp_text" name="pp_text" value="' + eq7 + '">';
-				console.log("조달 납기 새로 넣을 html : " + eq6html);
-				console.log("비고 새로 넣을 html : " + eq7html);
+				console.log("조달 납기 새로 넣을 HTML : " + eq6html);
+				console.log("비고 새로 넣을 HTML : " + eq7html);
 				
 				$('input[type=radio][name=pp_code]:checked').parent().siblings(':eq(6)').html(eq6html);
 				$('input[type=radio][name=pp_code]:checked').parent().siblings(':eq(7)').html(eq7html);
@@ -288,7 +288,7 @@
 		$(document).on('click', '#deletebtn', function() {
 			console.log("deletebtn " + $('#deletebtn').text());
 			if ($('#deletebtn').text() == "돌아가기") {
-				registerContractForm();
+				registerContractForm();	
 			}
 		});
 	</script>

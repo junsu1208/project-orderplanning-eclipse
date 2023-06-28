@@ -129,7 +129,7 @@
 	<!-- 계약 수정 -->
 	<update id="modifyContract">
 		UPDATE contract
-		SET contract_name = #{ contract_name }, subcontractor_name = #{ subcontractor_name }, item_code = #{ item_code },
+		SET contract_name = #{ contract_name }, subcontractor_name = #{ subcontractor_name },
 		supply_price = #{ supply_price }, agreement_date = #{ agreement_date }, leadtime = #{ leadtime }, contract_text = #{ contract_text } 
 		<if test="contract_file != null and contract_file != ''">
 			,contract_file = #{ contract_file } 

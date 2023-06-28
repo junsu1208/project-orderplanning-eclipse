@@ -25,9 +25,9 @@ public class ProcurementPlanServiceImpl implements ProcurementPlanService {
 	}
 
 	@Override
-	public void registerProcurementPlan(List<ProcurementPlanVO> list) {
+	public Integer registerProcurementPlan(List<ProcurementPlanVO> list) {
 		list.forEach(vo -> log.info("조달 계획 등록 요청, 변수값: "+vo));
-		mapper.registerProcurementPlan(list);
+		return mapper.registerProcurementPlan(list);
 	}
 	
 	@Override

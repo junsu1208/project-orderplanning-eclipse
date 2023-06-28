@@ -113,7 +113,7 @@
 								</div>
 							</div>
 							<div class="col-md-3">
-								<div class="input-group mb-3">
+								<div class="input-group mb-3" id = "item_code_tag">
 									<label for="itemCode" class="input-group-text">품목 코드</label> <select
 										id="item_code" class="form-select" tabindex="1"
 										name="item_code" required>
@@ -316,7 +316,7 @@
 							<td style="text-align: center;"><span>${ contract.item_code }</span></td>
 							<td style="text-align: center;"><span>${ contract.item_name }</span></td>
 							<td style="text-align: center;"><span><fmt:formatNumber
-										value="${ contract.supply_price }" pattern="#,###" /></span></td>
+										value="${ contract.supply_price }" pattern="#,###" /></span></td> 
 							<td style="text-align: center;"><span>${ contract.leadtime }일</span></td>
 							<td style="text-align: center;"><span>${ contract.subcontractor_name }</span></td>
 							<td style="text-align: center;"><span> <fmt:parseDate
@@ -479,7 +479,7 @@
 								console.log("선택한 계약서 불러오기 Ajax 결과 : "
 										+ data.contract_name);
 								$('#contract_name').val(data.contract_name);
-								$('#item_code').val(data.item_code);
+								$('#item_code_tag').html('<label for="itemCode" class="input-group-text">품목코드</label> <input type="text" class="form-control" id="item_code" name="item_code" value="'+data.item_code+'" readonly />')
 								$('#item_name').val(data.item_name);
 								$('#standard').val(data.standard);
 								$('#material').val(data.material);

@@ -9,7 +9,7 @@ public interface ProcurementPlanService {
 	
 	// 조달 계획 등록
 	List<ProcurementPlanVO> getProcurementPlan(Criteria cri); // 목록 가져오기
-	void registerProcurementPlan(List<ProcurementPlanVO> list); // 등록
+	Integer registerProcurementPlan(List<ProcurementPlanVO> list); // 등록
 	Integer deleteProcurementPlan(Integer pp_code); // 삭제
 	Integer modifyProcurementPlan(ProcurementPlanVO vo); // 수정
 

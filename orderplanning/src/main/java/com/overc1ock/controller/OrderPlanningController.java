@@ -242,7 +242,7 @@ public class OrderPlanningController {
 	}
 
 	@PostMapping("/registerprocurementplan")
-	public String registerProcurementPlan(ProcurementPlanVO procurementPlanVO, Criteria cri) {
+	public String registerProcurementPlan(ProcurementPlanVO procurementPlanVO, RedirectAttributes rttr) {
 		log.info("조달 계획 등록 작업 요청");
 		List<ProcurementPlanVO> list = new ArrayList<ProcurementPlanVO>();
 		for (ProcurementPlanVO vo : procurementPlanVO.getProcurementPlanVOList()) {
@@ -253,22 +253,32 @@ public class OrderPlanningController {
 		log.info(list);
 		if (list != null && !list.isEmpty()) {
 			log.info("조달 계획 등록 수행 확인");
-			procurementPlanService.registerProcurementPlan(list);
+			rttr.addFlashAttribute("registerResult", procurementPlanService.registerProcurementPlan(list));
 		}
+		
 		return "redirect:/orderplanning/procurementplan";
 	}
 	
 	@PostMapping("/deleteprocurementplan")
-	public String deleteProcurementPlan(Integer pp_code) {
+	public String deleteProcurementPlan(Integer pp_code, RedirectAttributes rttr) {
 		log.info("조달 계획 삭제 요청");
-		procurementPlanService.deleteProcurementPlan(pp_code);
+		
+		try {
+			rttr.addFlashAttribute("deleteResult",procurementPlanService.deleteProcurementPlan(pp_code));	
+		} catch (DataIntegrityViolationException e) {
+			log.info("조달 계획 삭제 도중 오류 발생");
+			e.printStackTrace();
+			rttr.addFlashAttribute("deleteResult", -1);
+		}
+		
 		return "redirect:/orderplanning/procurementplan";
 	}
 	
 	@PostMapping("/updateprocurementplan")
-	public String updateProcurementPlan(ProcurementPlanVO vo, Criteria cri) {
+	public String updateProcurementPlan(ProcurementPlanVO vo, RedirectAttributes rttr) {
 		log.info("조달 계획 수정 요청");
-		procurementPlanService.modifyProcurementPlan(vo);
+		rttr.addFlashAttribute("modifyResult",procurementPlanService.modifyProcurementPlan(vo));
+		
 		return "redirect:/orderplanning/procurementplan";
 	}
 	

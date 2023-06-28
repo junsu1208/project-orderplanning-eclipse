@@ -272,8 +272,5 @@ public class OrderPlanningController {
 		procurementPlanService.modifyProcurementPlan(vo);
 		return "redirect:/orderplanning/procurementplan";
 	}
-		
-	
-	
 	
 }

@@ -244,15 +244,15 @@
 	</script>
 	<script>
 		var registerFormhtml = $('#registerForm').html();
-		function registerContractForm(){
+		function registerContractForm() {
 			$('#registerForm').html(registerFormhtml);
 		}
 		
-		$(document).on('click','#modifybtn',function(){
+		$(document).on('click', '#modifybtn', function() {
 			var checkedPPCode = $('input[type=radio][name=pp_code]:checked').val();
 			
 			if ($('#modifybtn').text() == "수정하기") {
-				$('#registerForm').attr('action','updateprocurementplan').submit();
+				$('#registerForm').attr('action', 'updateprocurementplan').submit();
 			}
 			
 			if (checkedPPCode && ($('#modifybtn').text() != "수정하기")) {
@@ -261,38 +261,36 @@
 				$('input[type=radio][name=pp_code]:not(:checked)').remove();
 				$('#registerbtn').remove();
 				$('#deletebtn').text("돌아가기");
-				$('#deletebtn').attr('type','button');
-				$('#deletebtn').attr('onclick','').unbind('click');
+				$('#deletebtn').attr('type', 'button');
+				$('#deletebtn').attr('onclick', '').unbind('click');
 				$('#modifybtn').text("수정하기");
 				
 				var eq6 = $('input[type=radio][name=pp_code]:checked').parent().siblings(':eq(6)').text().trim()
 				var eq7 = $('input[type=radio][name=pp_code]:checked').parent().siblings(':eq(7)').text().trim()
-				console.log("조달납기 원래 값 "+eq6);
-				console.log("비고 원래 값 "+eq7);
+				console.log("조달 납기 원래 값 : " + eq6);
+				console.log("비고 원래 값 : " + eq7);
 				
-				var eq6html = '<input type="date" id="date" name="procurement_date" value="'+eq6+'">';
-				var eq7html = '<input type="textarea" id="pp_text" name="pp_text" value="'+eq7+'">';
-				console.log("조달납기 새로 넣을 html "+eq6html);
-				console.log("비고 새로 넣을 html "+eq7html);
+				var eq6html = '<input type="date" id="date" name="procurement_date" value="' + eq6 + '">';
+				var eq7html = '<input type="textarea" id="pp_text" name="pp_text" value="' + eq7 + '">';
+				console.log("조달 납기 새로 넣을 html : " + eq6html);
+				console.log("비고 새로 넣을 html : " + eq7html);
 				
 				$('input[type=radio][name=pp_code]:checked').parent().siblings(':eq(6)').html(eq6html);
 				$('input[type=radio][name=pp_code]:checked').parent().siblings(':eq(7)').html(eq7html);
 				
 				
 			} else if(checkedPPCode == null) {
-				alert("조달계획 수정을 위해 조달계획을 선택해 주세요.");
+				alert("조달 계획 수정을 위해 조달 계획을 선택해 주세요.");
 			}
 			
 		});
 		
-		$(document).on('click','#deletebtn',function(){
-			console.log("deletebtn "+$('#deletebtn').text());
+		$(document).on('click', '#deletebtn', function() {
+			console.log("deletebtn " + $('#deletebtn').text());
 			if ($('#deletebtn').text() == "돌아가기") {
 				registerContractForm();
 			}
 		});
-
-		
 	</script>
 </body>
 </html>

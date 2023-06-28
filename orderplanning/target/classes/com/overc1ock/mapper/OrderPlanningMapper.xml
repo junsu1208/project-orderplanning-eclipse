@@ -162,16 +162,16 @@
     <!-- 조달 계획 수정 -->
     <update id="modifyProcurementPlan" parameterType="com.overc1ock.domain.ProcurementPlanVO">
     	UPDATE procurement_plan
-    	SET procurement_date = #{procurement_date}
+    	SET procurement_date = #{ procurement_date }
     	<if test="pp_text != null and pp_text != ''">
-    		,pp_text = #{pp_text}
+    		, pp_text = #{ pp_text }
     	</if>
-    	WHERE pp_code=#{ pp_code } and po_code is null
+    	WHERE pp_code = #{ pp_code } AND po_code IS NULL
     </update>
     
     <!-- 조달 계획 삭제 -->
     <delete id="deleteProcurementPlan">
-    	DELETE FROM procurement_plan WHERE pp_code = #{ pp_code } and po_code is null
+    	DELETE FROM procurement_plan WHERE pp_code = #{ pp_code } AND po_code IS NULL
     </delete>
     
 </mapper>

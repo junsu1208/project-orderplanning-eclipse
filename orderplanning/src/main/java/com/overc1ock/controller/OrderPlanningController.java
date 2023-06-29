@@ -238,7 +238,6 @@ public class OrderPlanningController {
 		log.info("조달 계획 등록 페이지 요청");
 		model.addAttribute("ppList", procurementPlanService.getProcurementPlan(cri));
 		model.addAttribute("cri", cri);
-
 	}
 
 	@PostMapping("/registerprocurementplan")
@@ -255,14 +254,12 @@ public class OrderPlanningController {
 			log.info("조달 계획 등록 수행 확인");
 			rttr.addFlashAttribute("registerResult", procurementPlanService.registerProcurementPlan(list));
 		}
-		
 		return "redirect:/orderplanning/procurementplan";
 	}
 	
 	@PostMapping("/deleteprocurementplan")
 	public String deleteProcurementPlan(Integer pp_code, RedirectAttributes rttr) {
 		log.info("조달 계획 삭제 요청");
-		
 		try {
 			rttr.addFlashAttribute("deleteResult", procurementPlanService.deleteProcurementPlan(pp_code));	
 		} catch (DataIntegrityViolationException e) {
@@ -270,7 +267,6 @@ public class OrderPlanningController {
 			e.printStackTrace();
 			rttr.addFlashAttribute("deleteResult", -1);
 		}
-		
 		return "redirect:/orderplanning/procurementplan";
 	}
 	
@@ -278,7 +274,6 @@ public class OrderPlanningController {
 	public String updateProcurementPlan(ProcurementPlanVO vo, RedirectAttributes rttr) {
 		log.info("조달 계획 수정 요청");
 		rttr.addFlashAttribute("modifyResult", procurementPlanService.modifyProcurementPlan(vo));
-		
 		return "redirect:/orderplanning/procurementplan";
 	}
 	

@@ -293,19 +293,19 @@
 		});
 	</script>
 	<script>
-		var registerResult = "${registerResult}";
+		var registerResult = "${ registerResult }";
 			console.log("registerResult ", registerResult);
 		if (registerResult > 0) {
 			alert("조달 계획 등록이 완료되었습니다.");
 		}
 		
-		var modifyResult = "${modifyResult}";
+		var modifyResult = "${ modifyResult }";
 		console.log("modifyResult ", registerResult);
 		if (modifyResult > 0) {
 			alert("조달 계획 수정이 완료되었습니다.");
 		}
 		
-		var deleteResult = "${deleteResult}";
+		var deleteResult = "${ deleteResult }";
 			console.log("deleteResult ", deleteResult);
 		if (deleteResult > 0) {
 			alert("조달 계획 삭제가 완료되었습니다.");

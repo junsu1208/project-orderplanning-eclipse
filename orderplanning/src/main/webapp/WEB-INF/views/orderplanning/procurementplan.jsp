@@ -293,24 +293,24 @@
 		});
 	</script>
 	<script>
-		var registerResult = "${registerResult}";
+		var registerResult = "${ registerResult }";
 			console.log("registerResult ", registerResult);
 		if (registerResult > 0) {
 			alert("조달 계획 등록이 완료되었습니다.");
 		}
 		
-		var modifyResult = "${modifyResult}";
+		var modifyResult = "${ modifyResult }";
 		console.log("modifyResult ", registerResult);
 		if (modifyResult > 0) {
 			alert("조달 계획 수정이 완료되었습니다.");
 		}
 		
-		var deleteResult = "${deleteResult}";
+		var deleteResult = "${ deleteResult }";
 			console.log("deleteResult ", deleteResult);
 		if (deleteResult > 0) {
 			alert("조달 계획 삭제가 완료되었습니다.");
 		} else if (deleteResult == -1) {
-			alert("조달 계획을 삭제할 수 없습니다.\n해당 계획이 이미 협력사에 발주되었는지 확인 바랍니다.");
+			alert("조달 계획을 삭제할 수 없습니다.\n해당 계획이 이미 협력사에 발주되었는지 확인바랍니다.");
 		}
 	</script>
 </body>

@@ -113,7 +113,7 @@
 								</div>
 							</div>
 							<div class="col-md-3">
-								<div class="input-group mb-3" id = "item_code_tag">
+								<div class="input-group mb-3" id="item_code_tag">
 									<label for="itemCode" class="input-group-text">품목 코드</label> <select
 										id="item_code" class="form-select" tabindex="1"
 										name="item_code" required>
@@ -457,7 +457,7 @@
 		if (deleteResult == 1) {
 			alert("계약서 삭제가 완료되었습니다.");
 		} else if (deleteResult == -1) {
-			alert("해당 계약서는 삭제할 수 없습니다.\n구매발주서 발행 시에 이미 사용된 계약서가 아닌지 확인 바랍니다.");
+			alert("해당 계약서는 삭제할 수 없습니다.\n구매발주서 발행 시에 이미 사용된 계약서가 아닌지 확인바랍니다.");
 		}
 	</script>
 	<script>
@@ -479,7 +479,7 @@
 								console.log("선택한 계약서 불러오기 Ajax 결과 : "
 										+ data.contract_name);
 								$('#contract_name').val(data.contract_name);
-								$('#item_code_tag').html('<label for="itemCode" class="input-group-text">품목코드</label> <input type="text" class="form-control" id="item_code" name="item_code" value="'+data.item_code+'" readonly />')
+								$('#item_code_tag').html('<label for="itemCode" class="input-group-text">품목 코드</label> <input type="text" class="form-control" id="item_code" name="item_code" value="' + data.item_code + '" readonly />')
 								$('#item_name').val(data.item_name);
 								$('#standard').val(data.standard);
 								$('#material').val(data.material);
@@ -518,7 +518,7 @@
 							}	
 						})
 			} else {
-				alert("계약 조회를 위해 계약서를 선택해 주세요.");
+				alert("계약 조회를 위해 계약서를 선택해주세요.");
 			}
 		};
 		

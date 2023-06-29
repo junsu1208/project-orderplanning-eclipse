@@ -356,7 +356,7 @@
 		if (deleteResult > 0) {
 			alert("품목 정보 삭제가 완료되었습니다.");
 		} else if (deleteResult == -1) {
-			alert("품목 정보를 삭제할 수 없습니다.\n이미 사용중인 품목인지 확인 바랍니다.");
+			alert("품목 정보를 삭제할 수 없습니다.\n이미 사용중인 품목인지 확인바랍니다.");
 		}
 	</script>
 	<script>
